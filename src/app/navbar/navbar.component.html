@@ -1,0 +1,12 @@
+<md-toolbar color="primary">
+    <span id="logo">PIVOTAL SPORT</span>
+
+    <button md-icon-button [md-menu-trigger-for]="menu">
+      <md-icon>more_vert</md-icon>
+    </button>
+  </md-toolbar>
+
+  <md-menu x-position="before" #menu="mdMenu">
+    <button md-menu-item>Login</button>
+    <button md-menu-item>Option 2</button>
+  </md-menu>
