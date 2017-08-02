@@ -10,13 +10,15 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LandingComponent } from './events/landing.component';
 import { EventThumbnailComponent } from './events/event-thumbnail.component';
 import { EventService } from "./shared/event.service";
+import { SearchResultsComponent } from './search/search-results.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     LandingComponent,
-    EventThumbnailComponent
+    EventThumbnailComponent,
+    SearchResultsComponent
   ],
   imports: [
     BrowserModule,

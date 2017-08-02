@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href=""> PIVOTAL SPORT </a>
+            <a class="navbar-brand" [routerLink]="['']"> PIVOTAL SPORT </a>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -57,10 +57,11 @@
                     <input type="text" class="form-control" placeholder="Search">
                     <span class="material-input"></span>
                 </div>
-                <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                 <button [routerLink]="['/search']" class="btn btn-white btn-round btn-just-icon">
+                    
                     <i class="material-icons">search</i>
                     <div class="ripple-container"></div>
-                </button>
+                 </button> 
             </form>
         </div>
     </div>

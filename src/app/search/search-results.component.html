@@ -1,0 +1,129 @@
+<div class="main-content">
+    <div class="container-fluid">
+
+      <div class='container row' id='search-and-display'>
+        <div id="search" class="col-md-3">
+          <form role="search">
+          <div class="form-group col-md-12 nopadding col-sm-2">
+              <label>Sport</label>
+              <input/>
+              <i class="fa fa-calendar" id="calendar2" aria-hidden="true" ></i>
+          </div>
+          <div class="form-group col-md-12 nopadding col-sm-2">
+              <label>Date</label>
+              <input/>
+              <i class="fa fa-calendar" id="calendar2" aria-hidden="true" ></i>
+          </div>
+          <div class="form-group col-md-12 nopadding col-sm-2">
+              <label>Location</label>
+              <input/>
+              <i class="fa fa-map-marker" id="map-marker2" aria-hidden="true"></i>
+          </div>
+          <div class="form-group col-md-12 nopadding col-sm-2 up-5">
+              <label>Price</label>
+              <input/>
+              <i class="fa fa-home" id="home2" aria-hidden="true"></i>
+          </div>
+          </form>
+        </div>
+
+
+        <div class="col-md-9 col-xs-12">
+          <div id='results'>
+            <section id='search-results'>
+              <div class='row'>
+                <ul style="margin-left:200px" class="nav nav-pills nav-pills-info">
+                  <li>
+                      <a href="#pill1" data-toggle="tab">By Name</a>
+                  </li>
+                  <li>
+                      <a href="#pill2" data-toggle="tab">By Level</a>
+                  </li>
+                  <li class="active">
+                      <a href="#pill3" data-toggle="tab">By Date<i class="material-icons">arrow_drop_down</i></a>
+                  </li>
+                  <li>
+                      <a href="#pill3" data-toggle="tab">By Location</a>
+                  </li>
+              </ul>
+              </div>
+
+            <div *ngFor="let event of events">
+
+                    <div class='card event-tile row'>
+
+                      <div class="col-md-4 col-sm-6">
+                          <div class="click-enter-event"></div>
+                          <img [src]="event.imageUrl">
+                      </div>
+                      <div>
+                        <div class="col-md-6 col-sm-6">
+                          <div class="click-enter-event"></div>
+                          <h4 class="event-name">{{event.name}}</h4>
+                          <p class='event-location'>{{event.location.district}}</p>
+                          <p style="display:inline" class='No of Players'>Signed Up: 8 | Needed: 2</p>
+                          <div class="row icons">
+                          <br>
+                              <div class='icon col-md-2 col-xs-4'>
+                                <i class="material-icons">terrain</i>
+                                <!-- if indoor use the insert_photo material icon -->
+                                <p>Outdoor</p>
+                              </div>
+
+                              <div class='icon col-md-2 col-xs-4'>
+                                <i class="material-icons">insert_emoticon</i>
+                                <p>Friendly</p>
+                              </div>
+
+                              <div class='icon col-md-2 col-xs-4'>
+                                <i class="material-icons">grade</i>
+                                <p>{{event.level}}</p>
+                              </div>
+
+                          </div>
+                        </div>
+                          <div class="col-md-2">
+                            <div class="click-enter-event"></div>
+                            <div style="margin-top:20px;" class='row'>
+                              <h3 style="margin-left:10px;" class='event-price'>${{event.price}}</h3>
+                              <div id="avatar-placeholder"></div>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+
+              </div>
+
+              <div class='row'>
+                <div class="col-md-12 center-align" id="bottom-paginate">
+                  PAGINATION
+                </div>
+              </div>
+
+            </section>
+
+          </div>
+        </div>
+        
+      </div>
+
+    </div>
+</div>
+
+  <!-- <script>
+
+    var height = $(window).height() * 1;
+
+    $('#search-button1').click(function(){
+      $("html, body").scrollTop(height);
+    })
+
+    $('#search-button').click(function(){
+      $("html, body").scrollTop(height);
+    })
+
+    $('#bottom-paginate').click(function(){
+      $("html, body").animate({ scrollTop: height }, "fast")
+    })
+
+  </script> -->
