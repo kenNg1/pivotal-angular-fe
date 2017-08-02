@@ -3,147 +3,28 @@
     <div class="container-fluid">
         <div class="row hero">
             <img src="/assets/img/events/sport.png">
-            <h1> Find Your Sport </h1>
-            <h3> Championing Sport for HK</h3>
+            <h1> Find Your Sport</h1>
             <form role="search">
-                <div style="margin-left:5%;margin-right:5%" class="form-group is-empty">
+                <div id="search-box" class="form-group is-empty">
                     <input style="text-align:center; font-size: 20px" type="text" class="form-control" placeholder="Search">
                     <span class="material-input"></span>
                 </div>
                 <button style="visibility:hidden" type="submit" class="btn btn-white btn-round btn-just-icon">
                 </button>
-                <i class="material-icons">chevron_left</i>
+                <i style="font-size: 35px; position:relative; top: 10px" class="material-icons">chevron_left</i>
                 <button class="btn btn-info">Rugby</button>
                 <button class="btn btn-info">Football</button>
                 <button class="btn btn-info">Frisbee</button>
                 <button class="btn btn-info">Track</button>
                 <button class="btn btn-info">Lacrosse</button>
-                <i class="material-icons">chevron_right</i>
+                <i style="font-size: 35px; position:relative; top: 10px" class="material-icons">chevron_right</i>
             </form>
         </div>
-        <br>
-        <div class="row">
-           <h3 style="text-align:center"> DISCOVER </h3>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-
-                <div class="card card-product">
-                    <div class="card-image" data-header-animation="false">
-                        <a href="#pablo">
-                            <img class="img" src="../assets/img/events/hockey.png">
-                        </a>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-actions">
-                            <button type="button" class="btn btn-danger btn-simple fix-broken-card">
-                                <i class="material-icons">build</i> Fix Header!
-                            </button>
-                            <button type="button" class="btn btn-default btn-simple" rel="tooltip" data-placement="bottom" title="View">
-                                <i class="material-icons">art_track</i>
-                            </button>
-                            <button type="button" class="btn btn-success btn-simple" rel="tooltip" data-placement="bottom" title="Edit">
-                                <i class="material-icons">edit</i>
-                            </button>
-                            <button type="button" class="btn btn-danger btn-simple" rel="tooltip" data-placement="bottom" title="Remove">
-                                <i class="material-icons">close</i>
-                            </button>
-                        </div>
-                        <h4 class="card-title">
-                            <a href="#pablo">Hockey Training</a>
-                        </h4>
-                        <div class="card-description">
-                            ...
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <div class="price">
-                            <h4>$50</h4>
-                        </div>
-                        <div class="stats pull-right">
-                            <p class="category"><i class="material-icons">place</i> Hung Hom</p>
-                        </div>
-                    </div>
-                </div>
+        <br><br>
+            <h3 style="text-align:center"> DISCOVER SPORTS IN HK</h3>
+            <div *ngFor="let event of events">
+                <event-thumbnail [event]="event"></event-thumbnail> 
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="card card-product">
-                    <div class="card-image" data-header-animation="false">
-                        <a href="#pablo">
-                            <img class="img" src="../assets/img/events/rugby.png">
-                        </a>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-actions">
-                            <button type="button" class="btn btn-danger btn-simple fix-broken-card">
-                                <i class="material-icons">build</i> Fix Header!
-                            </button>
-                            <button type="button" class="btn btn-default btn-simple" rel="tooltip" data-placement="bottom" title="View">
-                                <i class="material-icons">art_track</i>
-                            </button>
-                            <button type="button" class="btn btn-success btn-simple" rel="tooltip" data-placement="bottom" title="Edit">
-                                <i class="material-icons">edit</i>
-                            </button>
-                            <button type="button" class="btn btn-danger btn-simple" rel="tooltip" data-placement="bottom" title="Remove">
-                                <i class="material-icons">close</i>
-                            </button>
-                        </div>
-                        <h4 class="card-title">
-                            <a href="#pablo">Touch Rugby</a>
-                        </h4>
-                        <div class="card-description">
-                          ...
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <div class="price">
-                            <h4>$40</h4>
-                        </div>
-                        <div class="stats pull-right">
-                            <p class="category"><i class="material-icons">place</i> Causeway Bay</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="card card-product">
-                    <div class="card-image" data-header-animation="true">
-                        <a href="#pablo">
-                            <img class="img" src="../assets/img/events/football.png">
-                        </a>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-actions">
-                            <button type="button" class="btn btn-danger btn-simple fix-broken-card">
-                                <i class="material-icons">build</i> Fix Header!
-                            </button>
-                            <button type="button" class="btn btn-default btn-simple" rel="tooltip" data-placement="bottom" title="View">
-                                <i class="material-icons">art_track</i>
-                            </button>
-                            <button type="button" class="btn btn-success btn-simple" rel="tooltip" data-placement="bottom" title="Edit">
-                                <i class="material-icons">edit</i>
-                            </button>
-                            <button type="button" class="btn btn-danger btn-simple" rel="tooltip" data-placement="bottom" title="Remove">
-                                <i class="material-icons">close</i>
-                            </button>
-                        </div>
-                        <h4 class="card-title">
-                            <a href="#pablo">Soccer Practice</a>
-                        </h4>
-                        <div class="card-description">
-                            ...
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <div class="price">
-                            <h4>$30</h4>
-                        </div>
-                        <div class="stats pull-right">
-                            <p class="category"><i class="material-icons">place</i> Quarry Bay</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
 
         <div class="row">
             <div class="col-md-12">

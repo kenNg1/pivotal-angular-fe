@@ -5811,7 +5811,7 @@ h2.title {
   float: right;
   overflow: auto;
   /*DEACTIVATE IF NO SIDEBAR*/
-  /* width: calc(100% - 260px); */ 
+   width: 100%;  
   min-height: 100%;
   -webkit-transform: translate3d(0px, 0, 0);
   -moz-transform: translate3d(0px, 0, 0);

@@ -8,12 +8,15 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from "./app-routing.module";
 import { NavbarComponent } from './navbar/navbar.component';
 import { LandingComponent } from './events/landing.component';
+import { EventThumbnailComponent } from './events/event-thumbnail.component';
+import { EventService } from "./shared/event.service";
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    LandingComponent
+    LandingComponent,
+    EventThumbnailComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +25,7 @@ import { LandingComponent } from './events/landing.component';
     AppRoutingModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [EventService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IEvent } from '../shared/event.model';
+import { EventService } from '../shared/event.service';
 
 @Component({
   selector: 'app-landing',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./landing.component.scss']
 })
 export class LandingComponent implements OnInit {
+  events:IEvent[]
 
-  constructor() { }
+  constructor(private eventService:EventService) { }
 
   ngOnInit() {
+    this.events = this.eventService.getEvents().map(events => events)
+    return this.events
   }
 
 }
