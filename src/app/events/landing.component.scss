@@ -1,0 +1,19 @@
+.hero{
+    text-align:center;
+}
+
+.hero img {
+    position:absolute;
+    z-index: -5;
+    width: 80%;
+    left: 10%;
+    top: 2%;
+}
+
+h1{
+    background-color: rgba(0,0,0,0.6);
+    color: white;
+    width: 30%;
+    margin-left: 35%;
+    top: 2%;
+}
