@@ -33,17 +33,11 @@
             <section id='search-results'>
               <div class='row'>
                 <ul style="margin-left:200px" class="nav nav-pills nav-pills-info">
-                  <li>
-                      <a href="#pill1" data-toggle="tab">By Name</a>
+                  <li (click)="sortDate()" [class.active]="sortBy ==='date'">
+                      <a href="#pill1" data-toggle="tab">By Date<i class="material-icons">arrow_drop_down</i></a>
                   </li>
-                  <li>
-                      <a href="#pill2" data-toggle="tab">By Level</a>
-                  </li>
-                  <li class="active">
-                      <a href="#pill3" data-toggle="tab">By Date<i class="material-icons">arrow_drop_down</i></a>
-                  </li>
-                  <li>
-                      <a href="#pill3" data-toggle="tab">By Location</a>
+                  <li (click)="sortPrice()" [class.active]="sortBy ==='price'">
+                      <a href="#pill2" data-toggle="tab">By Price</a>
                   </li>
               </ul>
               </div>
