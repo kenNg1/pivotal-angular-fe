@@ -8,8 +8,11 @@ export class EventService {
     let events = EVENTS
     return events
   }
-}
 
+  getEvent(id:number){
+    return EVENTS.find(event => event.id === id)
+  }
+}
 
 const EVENTS: IEvent[] = [
   { id: 1,

@@ -52,7 +52,6 @@ export class SearchResultsComponent implements OnInit {
     this.sortDate()
     return this.visibleEvents
   }
-  
 }
 
 function sortByDateAsc(e1:IEvent, e2:IEvent){
