@@ -39,10 +39,25 @@
                   <li (click)="sortPrice()" [class.active]="sortBy ==='price'">
                       <a href="#pill2" data-toggle="tab">By Price</a>
                   </li>
-              </ul>
+                </ul>
+                <br>
+                <ul style="margin-left:200px" class="nav nav-pills nav-pills-primary">
+                  <li (click)="filterAll()" [class.active]="filterBy ==='all'">
+                      <a href="#pill3" data-toggle="tab">All<i class="material-icons">arrow_drop_down</i></a>
+                  </li>
+                  <li (click)="filterBeginner()" [class.active]="filterBy ==='beginner'">
+                      <a href="#pill4" data-toggle="tab">Beginner<i class="material-icons">arrow_drop_down</i></a>
+                  </li>
+                  <li (click)="filterIntermediate()" [class.active]="filterBy ==='intermediate'">
+                      <a href="#pill5" data-toggle="tab">Intermediate</a>
+                  </li>
+                  <li (click)="filterAdvanced()" [class.active]="filterBy ==='advanced'">
+                      <a href="#pill6" data-toggle="tab">Advanced</a>
+                  </li>
+                </ul>
               </div>
 
-            <div *ngFor="let event of events">
+            <div *ngFor="let event of visibleEvents">
 
                     <div class='card event-tile row'>
 
@@ -53,7 +68,7 @@
                       <div>
                         <div class="col-md-6 col-sm-6">
                           <div class="click-enter-event"></div>
-                          <h4 class="event-name">{{event.name}}</h4>
+                          <h4 class="event-name">{{event.name}} ({{event.date | date}})</h4>
                           <p class='event-location'>{{event.location.district}}</p>
                           <p style="display:inline" class='No of Players'>Signed Up: 8 | Needed: 2</p>
                           <div class="row icons">

@@ -9,23 +9,48 @@ import { EventService } from '../shared/event.service';
 })
 export class SearchResultsComponent implements OnInit {
   events:IEvent[]
-  bananas = this.events
   sortBy:string = 'date'
+  filterBy:string = 'all'
+  visibleEvents:IEvent[]=[]
 
-  sortDate(sort:string){
+  sortDate(){
     this.sortBy === 'date'
-    this.events = this.events.sort(sortByDateAsc)
+    this.visibleEvents = this.events.sort(sortByDateAsc)
   }
 
-  sortPrice(sort:string){
-    this.events = this.events.sort(sortByPriceAsc)
+  sortPrice(){
+    this.visibleEvents = this.events.sort(sortByPriceAsc)
+  }
+
+  filterAll(){
+    this.visibleEvents = this.events
+  }
+
+  filterBeginner(){
+    this.visibleEvents = this.events.filter(function(event){
+      return event.level === 'Beginner'
+    })
+  }
+
+  filterIntermediate(){
+    this.visibleEvents = this.events.filter(function(event){
+      return event.level === 'Intermediate'
+    })
+  }
+
+  filterAdvanced(){
+    this.visibleEvents = this.events.filter(function(event){
+      return event.level === 'Advanced'
+    })
   }
 
   constructor(private eventService:EventService) { }
 
   ngOnInit() {
     this.events = this.eventService.getEvents().map(events => events)
-    return this.events
+    this.visibleEvents = this.events
+    this.sortDate()
+    return this.visibleEvents
   }
   
 }

@@ -52,7 +52,7 @@ const EVENTS: IEvent[] = [
         district: 'Quarry Bay',
         address: 'Quarry Bay Park'
     },
-    level: 'Beginners',
+    level: 'Beginner',
     onlineUrl: 'www.football.com',
     userId: 3,
     sportId: 3
