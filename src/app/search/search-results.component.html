@@ -59,7 +59,7 @@
 
             <div *ngFor="let event of visibleEvents">
 
-                    <div class='card event-tile row'>
+                    <div class='card event-tile row' [routerLink]="['/events',event.id]">
 
                       <div class="col-md-4 col-sm-6">
                           <div class="click-enter-event"></div>

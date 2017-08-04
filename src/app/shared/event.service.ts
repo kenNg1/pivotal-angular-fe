@@ -52,7 +52,7 @@ const EVENTS: IEvent[] = [
     terrain: 'Outdoor',
     intensity: 'Competition',
     sportsImageUrl: ['../assets/img/sportsUrls/rugby1.jpg'],
-    userImageUrl: '../assets/img/faces/mp.jpg',
+    userImageUrl: '',
     userName: 'Michelle Pfiefer'
   },
   { id: 3,
@@ -70,7 +70,9 @@ const EVENTS: IEvent[] = [
     userId: 3,
     sportId: 3,
     terrain: 'Indoor',
-    intensity: 'Friendly'
+    intensity: 'Friendly',
+    userImageUrl: '',
+    userName: 'Michelle Pfiefer'
   },
   { id: 4,
     name: "Ultimate Frisbee in the Park",
@@ -87,7 +89,9 @@ const EVENTS: IEvent[] = [
     userId: 3,
     sportId: 3,
     terrain: 'Outdoor',
-    intensity: 'Practice'
+    intensity: 'Practice',
+    userImageUrl: '',
+    userName: 'Michelle Pfiefer'
   },
   { id: 5,
     name: "Hockey game for beginners",
@@ -104,7 +108,9 @@ const EVENTS: IEvent[] = [
     userId: 3,
     sportId: 3,
     terrain: 'Outdoor',
-    intensity: 'Friendly'
+    intensity: 'Friendly',
+    userImageUrl: '',
+    userName: 'Michelle Pfiefer'
   },
   { id: 6,
     name: "Ultimate Frisbee HK Tournament IV",
@@ -121,7 +127,9 @@ const EVENTS: IEvent[] = [
     userId: 3,
     sportId: 3,
     terrain: 'Outdoor',
-    intensity: 'Competitive'
+    intensity: 'Competitive',
+    userImageUrl: '',
+    userName: 'Michelle Pfiefer'
   }
 ]
 
