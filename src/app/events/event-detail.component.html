@@ -8,14 +8,38 @@
             <hr>
             <h3>JUN 16</h3>
         </div>
-        <br><br>
+        <br>
         <div class="card-content text-center">
-          <h2 class="card-title">{{event.name}}</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae voluptas nemo, perferendis doloremque, tempora aperiam dolores quia odio ipsum architecto dolor mollitia reprehenderit itaque ex nihil officia, dolorem repellendus earum eveniet optio saepe praesentium cumque beatae veniam. Eos minus, ad quia similique quam id inventore quo debitis.</p>
+          <h2 class="card-title">{{event.name}}</h2>           
+            <br>
+            <div class='icon col-md-2 col-xs-4'>
+                <i class="material-icons">terrain</i>
+                <!-- if indoor use the insert_photo material icon -->
+                <p>{{event.terrain}}</p>
+            </div>
+
+            <div class='icon col-md-2 col-xs-4'>
+                <i class="material-icons">insert_emoticon</i>
+                <p>{{event.intensity}}</p>
+            </div>
+
+            <div class='icon col-md-2 col-xs-4'>
+                <i class="material-icons">grade</i>
+                <p>{{event.level}}</p>
+            </div> 
+
+            <div class='icon col-md-3 col-xs-4'>
+                <i class="material-icons">face</i>
+                <p>2/6 spaces available</p>
+            </div> 
+
+            <br>
+            <br>
         </div>
         <hr>
         <div class='card-content' style='margin:-20px 18px 0px 18px'>
           <h2 style="display:inline-block; margin:0">{{event.time}}</h2>
+          <h5 style="display:inline-block; margin: 0 0 0 40px; font-size: 17px;">{{event.location.address}}, {{event.location.district}}</h5>
           <button style="float:right; margin-top: 5px" class="btn btn-rose">Register</button>
           <h3 style="float:right; margin:10px 30px 0 0">{{event.price | currency:USD:true}}</h3>
         </div>
@@ -26,12 +50,12 @@
         <div class="card card-profile">
             <div class="card-avatar">
                 <a href="#pablo">
-                    <img class="img" src="../../assets/img/mp.jpg" />
+                    <img class="img" [src]="event.userImageUrl" />
                 </a>
             </div>
             <div class="card-content" style='margin-top:0'>
                 <h5 class="category text-gray">Hockey Lover</h5>
-                <h4 class="card-title">Michelle Pfeiffer</h4>
+                <h4 class="card-title">{{event.userName}}</h4>
                 <p class="description">
                     Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
                 </p>
@@ -40,5 +64,105 @@
         </div>
     </div>
 
+    <div class='container-fluid'>
+        <div class="card">
+            <div style='height:450px' class="card-header card-header-tabs" data-background-color="rose">
+                <div class='col-md-5'>
+                    <div class="card-image" data-header-animation="false">
+                        <a href="#pablo">
+                            <img class="img" [src]="event.sportsImageUrl">
+                        </a>
+                    </div>
+                </div>
+                <div class='col-md-7'>
+                    <div class="nav-tabs-navigation">
+                        <div class="nav-tabs-wrapper">
+                            <ul class="nav nav-tabs" data-tabs="tabs">
+                                <li class="active">
+                                    <a href="#profile" data-toggle="tab">
+                                        <i class="material-icons">info_outline</i> Info
+                                        <div class="ripple-container"></div>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#messages" data-toggle="tab">
+                                        <i class="material-icons">code</i> Organiser
+                                        <div class="ripple-container"></div>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#settings" data-toggle="tab">
+                                        <i class="material-icons">cloud</i> About Sport
+                                        <div class="ripple-container"></div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="profile">
+                                    <h4>General Info:</h4>
+                                    <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates expedita ipsa voluptatem repellendus dolores dignissimos soluta, maxime accusamus hic quos incidunt error voluptatum doloremque dicta.</span></p>
+                                    <hr>
+                                    <h4>What to bring:</h4>
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <i class="material-icons">check_box</i>
+                                                </td>
+                                                <td>Sportswear, hockey stick, shinpads, astroturf footwear</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <i class="material-icons">check_box</i>
+                                                </td>
+                                                <td>Bottle of water and a smile :)</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane" id="messages">
+                                    <h4>Organiser Info:</h4>
+                                    <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates expedita ipsa voluptatem repellendus dolores dignissimos soluta, maxime accusamus hic quos incidunt error voluptatum doloremque dicta.</span></p>
+                                    <hr>
+                                    <h4>Website:</h4>
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <i class="material-icons">language</i>
+                                                </td>
+                                                <td style="color:blue">https://www.hockeyhk.com</td>
+                                            </tr>
+                                       </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane" id="settings">
+                                    <h4>How to play:</h4>
+                                    <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates expedita ipsa voluptatem repellendus dolores dignissimos soluta, maxime accusamus hic quos incidunt error voluptatum doloremque dicta.</span></p>
+                                    <hr>
+                                    <h4>Rules:</h4>
+                                    <ul>
+                                        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, hic!</li>
+                                        <li>Quia excepturi et nam eos cupiditate quae eligendi ab pariatur.</li>
+                                        <li>Atque vel soluta expedita iste, ut et quibusdam illo sed.</li>
+                                        <li>Velit est vel animi laboriosam cupiditate natus tempora repellat omnis.</li>
+                                        <li>Iste id adipisci rem aspernatur soluta cum voluptas vitae, natus.</li>
+                                    </ul>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
   </div>
 </div>
+

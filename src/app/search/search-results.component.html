@@ -76,12 +76,12 @@
                               <div class='icon col-md-2 col-xs-4'>
                                 <i class="material-icons">terrain</i>
                                 <!-- if indoor use the insert_photo material icon -->
-                                <p>Outdoor</p>
+                                <p>{{event.terrain}}</p>
                               </div>
 
                               <div class='icon col-md-2 col-xs-4'>
                                 <i class="material-icons">insert_emoticon</i>
-                                <p>Friendly</p>
+                                <p>{{event.intensity}}</p>
                               </div>
 
                               <div class='icon col-md-2 col-xs-4'>
@@ -95,7 +95,7 @@
                             <div class="click-enter-event"></div>
                             <div style="margin-top:20px;" class='row'>
                               <h3 style="margin-left:10px;" class='event-price'>${{event.price}}</h3>
-                              <div id="avatar-placeholder"></div>
+                              <img id="avatar-placeholder" [src]="event.userImageUrl">
                             </div>
                           </div>
                       </div>

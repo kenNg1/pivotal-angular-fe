@@ -13,4 +13,9 @@ export class IEvent {
     onlineUrl?: string
     userId: number
     sportId: number
+    terrain?: string
+    intensity?: string
+    sportsImageUrl?: string[]
+    userImageUrl?: string
+    userName?: string
 }

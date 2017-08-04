@@ -23,12 +23,17 @@ const EVENTS: IEvent[] = [
     imageUrl: '../assets/img/events/hockey.png',
     location:{
         district: 'Hung Hom',
-        address: 'Granville Road'
+        address: '2-8, Granville Road'
     },
     level: 'Intermediate',
     onlineUrl: 'www.hockey.com',
     userId: 1,
-    sportId: 1
+    sportId: 1,
+    terrain: 'Outdoor',
+    intensity: 'Friendly',
+    sportsImageUrl: ['../assets/img/sportsUrls/hockey1.jpg'],
+    userImageUrl: '../assets/img/faces/mp.jpg',
+    userName: 'Michelle Pfiefer'
   },
   { id: 2,
     name: "Rugby Practice",
@@ -43,7 +48,12 @@ const EVENTS: IEvent[] = [
     level: 'Advanced',
     onlineUrl: 'www.rugby.com',
     userId: 2,
-    sportId: 2
+    sportId: 2,
+    terrain: 'Outdoor',
+    intensity: 'Competition',
+    sportsImageUrl: ['../assets/img/sportsUrls/rugby1.jpg'],
+    userImageUrl: '../assets/img/faces/mp.jpg',
+    userName: 'Michelle Pfiefer'
   },
   { id: 3,
     name: "Football Game",
@@ -55,10 +65,63 @@ const EVENTS: IEvent[] = [
         district: 'Quarry Bay',
         address: 'Quarry Bay Park'
     },
+    level: 'Intermediate',
+    onlineUrl: 'www.football.com',
+    userId: 3,
+    sportId: 3,
+    terrain: 'Indoor',
+    intensity: 'Friendly'
+  },
+  { id: 4,
+    name: "Ultimate Frisbee in the Park",
+    date: new Date('08/02/2017'),
+    time: '11:00',
+    price: 25,
+    imageUrl: '../assets/img/events/f1.png',
+    location:{
+        district: 'Quarry Bay',
+        address: 'Quarry Bay Park'
+    },
     level: 'Beginner',
     onlineUrl: 'www.football.com',
     userId: 3,
-    sportId: 3
+    sportId: 3,
+    terrain: 'Outdoor',
+    intensity: 'Practice'
+  },
+  { id: 5,
+    name: "Hockey game for beginners",
+    date: new Date('08/02/2017'),
+    time: '11:00',
+    price: 25,
+    imageUrl: '../assets/img/events/hockey.png',
+    location:{
+        district: 'Quarry Bay',
+        address: 'Quarry Bay Park'
+    },
+    level: 'Beginner',
+    onlineUrl: 'www.football.com',
+    userId: 3,
+    sportId: 3,
+    terrain: 'Outdoor',
+    intensity: 'Friendly'
+  },
+  { id: 6,
+    name: "Ultimate Frisbee HK Tournament IV",
+    date: new Date('08/02/2017'),
+    time: '11:00',
+    price: 35,
+    imageUrl: '../assets/img/events/f2.png',
+    location:{
+        district: 'Quarry Bay',
+        address: 'Quarry Bay Park'
+    },
+    level: 'Beginner',
+    onlineUrl: 'www.football.com',
+    userId: 3,
+    sportId: 3,
+    terrain: 'Outdoor',
+    intensity: 'Competitive'
   }
 ]
 
