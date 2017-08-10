@@ -11,7 +11,7 @@ import { LandingComponent } from './events/landing.component';
 import { EventThumbnailComponent } from './events/event-thumbnail.component';
 import { EventService } from "./shared/event.service";
 import { SearchResultsComponent } from './search/search-results.component';
-import { EventDetailComponent } from './events/event-detail.component';
+import { EventDetailComponent } from "./events/event-detail.component";
 
 @NgModule({
   declarations: [
