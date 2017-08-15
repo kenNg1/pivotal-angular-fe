@@ -12,6 +12,10 @@ import { EventThumbnailComponent } from './events/event-thumbnail.component';
 import { EventService } from "./shared/event.service";
 import { SearchResultsComponent } from './search/search-results.component';
 import { EventDetailComponent } from './events/event-detail.component';
+import { MappingComponent } from './events/maps/mapping/mapping.component';
+import { SignInComponent } from './user/sign-in.component';
+import { SignUpComponent } from './user/sign-up.component';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +24,10 @@ import { EventDetailComponent } from './events/event-detail.component';
     LandingComponent,
     EventThumbnailComponent,
     SearchResultsComponent,
-    EventDetailComponent
+    EventDetailComponent,
+    MappingComponent,
+    SignInComponent,
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,
