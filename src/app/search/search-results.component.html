@@ -1,6 +1,20 @@
 <div class="main-content">
     <div class="container-fluid">
 
+    <md-slider
+        class="example-margin"
+        [disabled]="disabled"
+        [invert]="invert"
+        [max]="max"
+        [min]="min"
+        [step]="step"
+        [thumb-label]="thumbLabel"
+        [tick-interval]="tickInterval"
+        [value]="value"
+        [vertical]="vertical">
+    </md-slider>
+
+
       <div class='container row' id='search-and-display'>
         <div id="search" class="col-md-3">
           <form role="search">
@@ -24,9 +38,9 @@
               <input/>
               <i class="fa fa-home" id="home2" aria-hidden="true"></i>
           </div>
+          
           </form>
         </div>
-
 
         <div class="col-md-9 col-xs-12">
           <div id='results'>

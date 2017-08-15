@@ -17,4 +17,5 @@ export class EventDetailComponent implements OnInit {
     this.event = this.eventService.getEvent(+this.route.snapshot.params['id'])
   }
 
+
 }

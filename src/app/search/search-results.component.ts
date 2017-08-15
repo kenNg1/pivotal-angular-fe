@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IEvent } from '../shared/event.model';
 import { EventService } from '../shared/event.service';
 
+
 @Component({
   selector: 'app-search-results',
   templateUrl: './search-results.component.html',
@@ -52,6 +53,28 @@ export class SearchResultsComponent implements OnInit {
     this.sortDate()
     return this.visibleEvents
   }
+
+    /// material slider
+    autoTicks = false;
+    disabled = false;
+    invert = false;
+    max = 100;
+    min = 0;
+    showTicks = false;
+    step = 1;
+    thumbLabel = true;
+    value = 0;
+    vertical = false;
+  
+    get tickInterval(): number | 'auto' {
+      return this.showTicks ? (this.autoTicks ? 'auto' : this._tickInterval) : 0;
+    }
+    set tickInterval(v) {
+      this._tickInterval = Number(v);
+    }
+    private _tickInterval = 1;
+    // end material slider
+
 }
 
 function sortByDateAsc(e1:IEvent, e2:IEvent){
