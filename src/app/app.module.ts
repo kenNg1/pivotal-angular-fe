@@ -16,7 +16,6 @@ import { MappingComponent } from './events/maps/mapping/mapping.component';
 import { SignInComponent } from './user/sign-in.component';
 import { SignUpComponent } from './user/sign-up.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
