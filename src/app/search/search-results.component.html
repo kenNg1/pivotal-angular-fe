@@ -1,7 +1,7 @@
 <div class="main-content">
     <div class="container-fluid">
 
-    <md-slider
+    <!-- <md-slider
         class="example-margin"
         [disabled]="disabled"
         [invert]="invert"
@@ -12,41 +12,81 @@
         [tick-interval]="tickInterval"
         [value]="value"
         [vertical]="vertical">
-    </md-slider>
+    </md-slider> -->
 
 
       <div class='container row' id='search-and-display'>
         <div id="search" class="col-md-3">
-          <form role="search">
-          <div class="form-group col-md-12 nopadding col-sm-2">
-              <label>Sport</label>
-              <input/>
-              <i class="fa fa-calendar" id="calendar2" aria-hidden="true" ></i>
+          <div class="container" style='margin-top:77px;'> 
+            <div class="row col-md-3">
+              <form method="#" action="#">
+                  <div class="card card-login card-hidden">
+                    <div class="card-header text-center" data-background-color="rose">
+                      <h4 class="card-title">Refine Search</h4>
+                      <!-- <div class="social-line">
+                          <a href="#btn" class="btn btn-just-icon btn-simple">
+                              <i class="fa fa-facebook-square"></i>
+                          </a>
+                          <a href="#pablo" class="btn btn-just-icon btn-simple">
+                              <i class="fa fa-twitter"></i>
+                          </a>
+                          <a href="#eugen" class="btn btn-just-icon btn-simple">
+                              <i class="fa fa-google-plus"></i>
+                          </a>
+                      </div> -->
+                  </div>
+                  <div class="card-content">
+                      <div class="input-group">
+                          <span class="input-group-addon">
+                              <i class="material-icons">directions_run</i>
+                          </span>
+                          <div class="form-group label-floating">
+                              <label class="control-label">Sport</label>
+                              <input type="text" class="form-control">
+                          </div>
+                      </div>
+                      <div class="input-group">
+                          <span class="input-group-addon">
+                              <i class="material-icons">date_range</i>
+                          </span>
+                          <div class="form-group label-floating">
+                              <label class="control-label">Date</label>
+                              <input type="email" class="form-control">
+                          </div>
+                      </div>
+                      <div class="input-group">
+                          <span class="input-group-addon">
+                              <i class="material-icons">location_on</i>
+                          </span>
+                          <div class="form-group label-floating">
+                              <label class="control-label">Location</label>
+                              <input type="password" class="form-control">
+                          </div>
+                      </div>
+                      <div class="input-group">
+                          <span class="input-group-addon">
+                              <i class="material-icons">attach_money</i>
+                          </span>
+                          <div class="form-group label-floating">
+                              <label class="control-label">Price</label>
+                              <input type="password" class="form-control">
+                          </div>
+                      </div>
+                    </div>
+                    <div class="footer text-center">
+                        <button type="submit" class="btn btn-rose btn-simple btn-wd btn-lg">Let's go</button>
+                    </div>
+                  </div>
+              </form>
+            </div>
           </div>
-          <div class="form-group col-md-12 nopadding col-sm-2">
-              <label>Date</label>
-              <input/>
-              <i class="fa fa-calendar" id="calendar2" aria-hidden="true" ></i>
-          </div>
-          <div class="form-group col-md-12 nopadding col-sm-2">
-              <label>Location</label>
-              <input/>
-              <i class="fa fa-map-marker" id="map-marker2" aria-hidden="true"></i>
-          </div>
-          <div class="form-group col-md-12 nopadding col-sm-2 up-5">
-              <label>Price</label>
-              <input/>
-              <i class="fa fa-home" id="home2" aria-hidden="true"></i>
-          </div>
-          
-          </form>
         </div>
 
         <div class="col-md-9 col-xs-12">
           <div id='results'>
             <section id='search-results'>
               <div class='row'>
-                <ul style="margin-left:200px" class="nav nav-pills nav-pills-info">
+                <ul style="display: inline-block;" class="nav nav-pills nav-pills-info">
                   <li (click)="sortDate()" [class.active]="sortBy ==='date'">
                       <a href="#pill1" data-toggle="tab">By Date<i class="material-icons">arrow_drop_down</i></a>
                   </li>
@@ -54,8 +94,7 @@
                       <a href="#pill2" data-toggle="tab">By Price</a>
                   </li>
                 </ul>
-                <br>
-                <ul style="margin-left:200px" class="nav nav-pills nav-pills-primary">
+                <ul style="display: inline-block;" class="nav nav-pills nav-pills-primary">
                   <li (click)="filterAll()" [class.active]="filterBy ==='all'">
                       <a href="#pill3" data-toggle="tab">All<i class="material-icons">arrow_drop_down</i></a>
                   </li>
