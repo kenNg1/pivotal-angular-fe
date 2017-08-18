@@ -1,12 +1,11 @@
-import { Injectable } from '@angular/core';
-import { IEvent } from './event.model';
+import { Injectable } from '@angular/core'; 
+import { Event } from './event.model';
 
 @Injectable()
 export class EventService {
 
-  getEvents(){
-    let events = EVENTS
-    return events
+  getEvents(): Event[] {
+    return EVENTS
   }
 
   getEvent(id:number){
@@ -14,7 +13,7 @@ export class EventService {
   }
 }
 
-const EVENTS: IEvent[] = [
+const EVENTS: Event[] = [
   { id: 1,
     name: "Hockey Training",
     date: new Date('08/01/2017'),

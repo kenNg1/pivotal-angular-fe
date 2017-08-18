@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IEvent } from '../shared/event.model';
+import { Event } from '../shared/event.model';
 import { EventService } from '../shared/event.service';
 
 
@@ -9,10 +9,10 @@ import { EventService } from '../shared/event.service';
   styleUrls: ['./search-results.component.scss']
 })
 export class SearchResultsComponent implements OnInit {
-  events:IEvent[]
+  events:Event[]
   sortBy:string = 'date'
   filterBy:string = 'all'
-  visibleEvents:IEvent[]=[]
+  visibleEvents:Event[]=[]
 
   sortDate(){
     this.sortBy === 'date'
@@ -77,13 +77,13 @@ export class SearchResultsComponent implements OnInit {
 
 }
 
-function sortByDateAsc(e1:IEvent, e2:IEvent){
+function sortByDateAsc(e1:Event, e2:Event){
   if(e1.date > e2.date) return 1
   else if (e1.date === e2.date) return 0
   else return -1
 }
 
-function sortByPriceAsc(e1:IEvent, e2:IEvent){
+function sortByPriceAsc(e1:Event, e2:Event){
   console.log('ken')
   if(e1.price > e2.price) return 1
   else if (e1.price === e2.price) return 0

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IEvent } from '../shared/event.model';
+import { Event } from '../shared/event.model';
 import { EventService } from '../shared/event.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { EventService } from '../shared/event.service';
   styleUrls: ['./landing.component.scss']
 })
 export class LandingComponent implements OnInit {
-  events:IEvent[]
+  events:Event[]
 
   constructor(private eventService:EventService) { }
 

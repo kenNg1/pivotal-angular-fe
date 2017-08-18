@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IEvent } from '../../../shared/event.model'
+import { Event } from '../../../shared/event.model'
 import { ActivatedRoute} from '@angular/router'
 import { EventService } from '../../../shared/event.service'
 
@@ -17,7 +17,7 @@ declare var google: any;
 })
 export class MappingComponent implements OnInit {
   constructor(private eventService:EventService, private route:ActivatedRoute) { }
-  event:IEvent
+  event:Event
   ngOnInit() {
     this.event = this.eventService.getEvent(+this.route.snapshot.params['id'])
     var location = this.event.location.address;
