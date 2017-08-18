@@ -5,7 +5,8 @@ import { EventService } from '../shared/event.service';
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
-  styleUrls: ['./landing.component.scss']
+  styleUrls: ['./landing.component.scss'],
+  providers: [EventService]
 })
 export class LandingComponent implements OnInit {
   events:Event[]
@@ -13,8 +14,13 @@ export class LandingComponent implements OnInit {
   constructor(private eventService:EventService) { }
 
   getEvents(): void {
-    this.events = this.eventService.getEvents()
+    this.eventService.getEvents().then(events => this.events = events)
   }
+
+  // BELOW IS prior to using promises
+  // getEvents(): void {
+  //   this.events = this.eventService.getEvents()
+  // }
 
   ngOnInit():void {
     this.getEvents()

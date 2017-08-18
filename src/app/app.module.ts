@@ -11,7 +11,6 @@ import { AppRoutingModule } from "./app-routing.module";
 import { NavbarComponent } from './navbar/navbar.component';
 import { LandingComponent } from './events/landing.component';
 import { EventThumbnailComponent } from './events/event-thumbnail.component';
-import { EventService } from "./shared/event.service";
 import { SearchResultsComponent } from './search/search-results.component';
 import { EventDetailComponent } from './events/event-detail.component';
 import { MappingComponent } from './events/maps/mapping/mapping.component';
@@ -38,7 +37,6 @@ import { SignUpComponent } from './user/sign-up.component';
     AppRoutingModule,
     BrowserAnimationsModule
   ],
-  providers: [EventService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { } 

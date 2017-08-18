@@ -4,8 +4,8 @@ import { Event } from './event.model';
 @Injectable()
 export class EventService {
 
-  getEvents(): Event[] {
-    return EVENTS
+  getEvents(): Promise<Event[]> {
+    return Promise.resolve(EVENTS)
   }
 
   getEvent(id:number){

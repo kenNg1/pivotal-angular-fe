@@ -48,11 +48,22 @@ export class SearchResultsComponent implements OnInit {
   constructor(private eventService:EventService) { }
 
   ngOnInit() {
-    this.events = this.eventService.getEvents().map(events => events)
-    this.visibleEvents = this.events
-    this.sortDate()
-    return this.visibleEvents
+    this.eventService.getEvents().then(events => {
+      this.events = events;
+      this.visibleEvents = events;
+      this.sortDate();
+      this.visibleEvents;
+    })
   }
+
+
+  // PRIOR TO promises implementation
+  // ngOnInit() {
+  //   this.events = this.eventService.getEvents().map(events => events)
+  //   this.visibleEvents = this.events
+  //   this.sortDate()
+  //   return this.visibleEvents
+  // }
 
     /// material slider
     autoTicks = false;
