@@ -12,9 +12,18 @@ export class LandingComponent implements OnInit {
 
   constructor(private eventService:EventService) { }
 
-  ngOnInit() {
-    this.events = this.eventService.getEvents().map(events => events)
-    return this.events
+  getEvents(): void {
+    this.events = this.eventService.getEvents()
   }
+
+  ngOnInit():void {
+    this.getEvents()
+  }
+
+  // ABOVE IMPLEMENTATION IS OFFICIAL DOCS
+  // ngOnInit() {
+  //   this.events = this.eventService.getEvents().map(events => events)
+  //   return this.events
+  // }
 
 }
