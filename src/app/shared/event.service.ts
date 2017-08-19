@@ -8,9 +8,17 @@ export class EventService {
     return Promise.resolve(EVENTS)
   }
 
-  getEvent(id:number){
-    return EVENTS.find(event => event.id === id)
+  getEvent(id:number): Promise<Event>{
+    return this.getEvents().then(events => events.find(event => event.id === id));
   }
+
+  // getEvent(id:number): Promise<Event>{
+  //   return Promise.resolve(EVENTS.find(event => event.id === id))
+  // }
+
+  // getEvent(id:number){ 
+  //   return EVENTS.find(event => event.id === id)
+  // }
 }
 
 const EVENTS: Event[] = [

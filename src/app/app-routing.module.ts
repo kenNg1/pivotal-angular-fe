@@ -7,17 +7,17 @@ import { SignInComponent } from "./user/sign-in.component";
 import { SignUpComponent } from "./user/sign-up.component"
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'events' },
+  { path: '', pathMatch: 'full', redirectTo: '/events' },
+  { path: 'events/:id', component: EventDetailComponent},  
   { path: 'events', component: LandingComponent },
   { path: 'search', component: SearchResultsComponent },
-  { path: 'events/:id', component: EventDetailComponent},
   { path: 'signin', component: SignInComponent},
   { path: 'signup', component: SignUpComponent},
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes,{ enableTracing: true } )
   ],
   exports: [
     RouterModule
