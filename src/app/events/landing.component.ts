@@ -5,11 +5,10 @@ import { EventService } from '../shared/event.service';
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
-  styleUrls: ['./landing.component.scss'],
-  providers: [EventService]
-})
+  styleUrls: ['./landing.component.scss']
+}) 
 export class LandingComponent implements OnInit {
-  events:Event[]
+  events:Event[]=[]
 
   constructor(private eventService:EventService) { }
 

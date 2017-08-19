@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core'; 
 import { Routes, RouterModule } from '@angular/router';
 import { LandingComponent } from './events/landing.component';
 import { SearchResultsComponent } from './search/search-results.component'
@@ -7,7 +7,7 @@ import { SignInComponent } from "./user/sign-in.component";
 import { SignUpComponent } from "./user/sign-up.component"
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/events' },
+  { path: '', redirectTo: '/events', pathMatch: 'full' },
   { path: 'events/:id', component: EventDetailComponent},  
   { path: 'events', component: LandingComponent },
   { path: 'search', component: SearchResultsComponent },
@@ -17,7 +17,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes,{ enableTracing: true } )
+    RouterModule.forRoot(routes)
   ],
   exports: [
     RouterModule

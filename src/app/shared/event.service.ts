@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core'; 
 import { Event } from './event.model';
+import { Injectable } from '@angular/core'; 
 
 @Injectable()
 export class EventService {
@@ -9,7 +9,8 @@ export class EventService {
   }
 
   getEvent(id:number): Promise<Event>{
-    return this.getEvents().then(events => events.find(event => event.id === id));
+    return this.getEvents()
+                .then(events => events.find(event => event.id === id));
   }
 
   // getEvent(id:number): Promise<Event>{

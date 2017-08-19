@@ -19,7 +19,7 @@ export class EventDetailComponent implements OnInit {
   ngOnInit():void {
     this.route.paramMap
       .switchMap((params: ParamMap) => this.eventService.getEvent(+params.get('id')))
-      .subscribe(event => this.event = event)
+      .subscribe((event:Event) => this.event = event);
   } 
 
   // v1 implementation of promises - didn't work
