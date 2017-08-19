@@ -54,7 +54,7 @@
                     <input (input)="onFormInput($event)" value={{name}} type="text" class="form-control" placeholder="Search">
                     <span class="material-input"></span>
                 </div>
-                 <button [disabled]="!allowButtonClick" routerLink="/search" class="btn btn-white btn-round btn-just-icon">
+                 <button [disabled]="!allowButtonClick" (click)="gotoResults()" class="btn btn-white btn-round btn-just-icon">
                     
                     <i class="material-icons">search</i>
                     <div class="ripple-container"></div>

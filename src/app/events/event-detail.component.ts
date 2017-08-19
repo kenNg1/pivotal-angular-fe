@@ -22,6 +22,11 @@ export class EventDetailComponent implements OnInit {
       .subscribe((event:Event) => this.event = event);
   } 
 
+
+  goBack():void{
+    this.location.back()
+  }
+
   // v1 implementation of promises - didn't work
   // ngOnInit():void {
   //   this.eventService.getEvent(+this.route.snapshot.params['id']).then(event => this.event = event)

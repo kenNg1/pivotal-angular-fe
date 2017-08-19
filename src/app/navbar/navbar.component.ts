@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     moduleId: module.id,
@@ -10,7 +11,7 @@ import { Component } from '@angular/core';
 export class NavbarComponent {
     allowButtonClick: boolean = false;
     
-    constructor() {
+    constructor(private router: Router) {
         setTimeout(() => this.allowButtonClick = true, 2000);
     }
 
@@ -18,6 +19,10 @@ export class NavbarComponent {
 
     onFormInput(event:any){
         this.name = event.target.value;
+    }
+
+    gotoResults(): void{
+        this.router.navigate(['/search'])
     }
 
 }
