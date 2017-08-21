@@ -6,6 +6,8 @@ import { Location } from '@angular/common'
 import { Event } from '../shared/event.model'
 import { EventService } from '../shared/event.service'
 
+declare var $:any;
+
 @Component({
   selector: 'app-event-detail',
   templateUrl: './event-detail.component.html',
@@ -13,6 +15,7 @@ import { EventService } from '../shared/event.service'
 })
 export class EventDetailComponent implements OnInit {
   event:Event;
+  formShown: boolean = false;
   constructor(private eventService:EventService, private route:ActivatedRoute, private location: Location ) { }
   
   // full blown Angular docs
@@ -22,6 +25,15 @@ export class EventDetailComponent implements OnInit {
       .subscribe((event:Event) => this.event = event);
   } 
 
+  // save(): void{
+  //   this.eventService.update(this.event)
+  //     .then(()=>this.goBack())
+  // }
+
+  showForm(): void{
+    this.formShown = true
+    $('.modal-form').show()
+  }
 
   goBack():void{
     this.location.back()

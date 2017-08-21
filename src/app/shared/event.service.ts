@@ -18,7 +18,7 @@ export class EventService {
                 .catch(this.handleError)
   }
 
-  // http.get returns an RxJs Observable >> this is then converted into a promise
+  // http.get returns an RxJs Observable >> this is then converted into a promise. Parse the resolved json data with the method. as denoted typescript typing
 
   getEvent(id:number): Promise<Event>{
     const url = `${this.eventsUrl}/${id}`;

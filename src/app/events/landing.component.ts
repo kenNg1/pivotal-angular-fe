@@ -16,10 +16,6 @@ export class LandingComponent implements OnInit {
     this.eventService.getEvents().then(events => this.events = events)
   }
 
-
-
-
-
   // BELOW IS prior to using promises
   // getEvents(): void {
   //   this.events = this.eventService.getEvents()

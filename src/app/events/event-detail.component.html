@@ -1,7 +1,109 @@
+<!-- BEGIN FORM -->
 
-<div class="main-content">
+    <div class='modal-form'>
+        <div class="card">
+                <form method="get" action="/" class="form-horizontal">
+                    <div class="card-header card-header-text" data-background-color="rose">
+                        <h4 class="card-title">Form Elements</h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="row">
+                            <label class="col-sm-2 label-on-left">With help</label>
+                            <div class="col-sm-10">
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                    <input type="text" class="form-control" value>
+                                    <span class="help-block">A block of help text that breaks onto a new line.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-2 label-on-left">Password</label>
+                            <div class="col-sm-10">
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                    <input type="password" class="form-control" value>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-2 label-on-left">Placeholder</label>
+                            <div class="col-sm-10">
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                    <input type="text" class="form-control" placeholder="placeholder">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-2 label-on-left">Disabled</label>
+                            <div class="col-sm-10">
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                    <input type="text" placeholder="Disabled input here..." disabled="" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-2 label-on-left">Static control</label>
+                            <div class="col-sm-10">
+                                <div class="form-group">
+                                    <p class="form-control-static">hello@creative-tim.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-2 label-on-left">Checkboxes and radios</label>
+                            <div class="col-sm-10 checkbox-radios">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="optionsCheckboxes"> First Checkbox
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="optionsCheckboxes"> Second Checkbox
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios" checked="true"> First Radio
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios"> Second Radio
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-2 label-on-left">Inline checkboxes</label>
+                            <div class="col-sm-10">
+                                <div class="checkbox checkbox-inline">
+                                    <label>
+                                        <input type="checkbox" name="optionsCheckboxes">a
+                                    </label>
+                                </div>
+                                <div class="checkbox checkbox-inline">
+                                    <label>
+                                        <input type="checkbox" name="optionsCheckboxes">b
+                                    </label>
+                                </div>
+                                <div class="checkbox checkbox-inline">
+                                    <label>
+                                        <input type="checkbox" name="optionsCheckboxes">c
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+    </div>
+
+    <div class="main-content">
     <div class="container-fluid">
-  
       <div class="col-md-8">
         <div class="card">
           <div class="text-center card-header card-header-icon" data-background-color="rose">
@@ -11,7 +113,9 @@
           </div>
           <br>
           <div class="card-content text-center">
-            <h2 class="card-title">{{event?.name}}</h2>           
+            <h2 class="card-title">
+                {{event?.name}} <button style="float:right; margin-top: 5px" class="btn btn-warning">Edit</button>            
+            </h2>
               <br>
               <div class='icon col-md-2 col-xs-4'>
                   <i class="material-icons">terrain</i>
