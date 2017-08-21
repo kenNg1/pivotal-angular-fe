@@ -55,7 +55,7 @@ export class SearchResultsComponent implements OnInit {
       this.visibleEvents;
     })
   }
-
+ 
 
   // PRIOR TO promises implementation
   // ngOnInit() {

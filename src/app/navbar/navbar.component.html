@@ -1,3 +1,10 @@
+
+<!-- Add routerLinkActive="active" later to set active in css - refer to angular docs fundamentals routerLinks part 
+
+RouterLinkActive	The directive for adding/removing classes from an HTML element when an associated routerLink contained on or inside the element becomes active/inactive.
+
+-->
+
 <nav class="navbar navbar-transparent navbar-absolute">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -54,7 +61,7 @@
                     <input (input)="onFormInput($event)" value={{name}} type="text" class="form-control" placeholder="Search">
                     <span class="material-input"></span>
                 </div>
-                 <button [disabled]="!allowButtonClick" routerLink="/search" class="btn btn-white btn-round btn-just-icon">
+                 <button [disabled]="!allowButtonClick" (click)="gotoResults()" class="btn btn-white btn-round btn-just-icon">
                     
                     <i class="material-icons">search</i>
                     <div class="ripple-container"></div>

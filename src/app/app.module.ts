@@ -7,7 +7,10 @@ import 'hammerjs';
 import { MdSliderModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
+import { EventService } from './shared/event.service';
 import { AppRoutingModule } from "./app-routing.module";
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService }  from './in-memory-data.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LandingComponent } from './events/landing.component';
 import { EventThumbnailComponent } from './events/event-thumbnail.component';
@@ -35,8 +38,10 @@ import { SignUpComponent } from './user/sign-up.component';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    InMemoryWebApiModule.forRoot(InMemoryDataService),
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [EventService]
 })
 export class AppModule { } 

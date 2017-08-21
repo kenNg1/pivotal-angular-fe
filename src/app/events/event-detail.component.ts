@@ -7,6 +7,8 @@ import { EventService } from '../shared/event.service'
 import 'rxjs/add/operator/switchMap'
 
 
+declare var $:any;
+
 @Component({
   selector: 'app-event-detail',
   templateUrl: './event-detail.component.html',
@@ -14,6 +16,7 @@ import 'rxjs/add/operator/switchMap'
 })
 export class EventDetailComponent implements OnInit {
   event:Event;
+  formShown: boolean = false;
   constructor(private eventService:EventService, private route:ActivatedRoute, private location: Location ) { }
   
   // full blown Angular docs
@@ -22,6 +25,20 @@ export class EventDetailComponent implements OnInit {
     .switchMap((params: ParamMap) => this.eventService.getEvent(+params.get('id')))
     .subscribe(event => this.event = event)
   } 
+
+  // save(): void{
+  //   this.eventService.update(this.event)
+  //     .then(()=>this.goBack())
+  // }
+
+  showForm(): void{
+    this.formShown = true
+    $('.modal-form').show()
+  }
+
+  goBack():void{
+    this.location.back()
+  }
 
   // v1 implementation of promises - didn't work
   // ngOnInit():void {
