@@ -1,10 +1,11 @@
-import 'rxjs/add/operator/switchMap';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute, ParamMap} from '@angular/router'
 import { Location } from '@angular/common'
 
 import { Event } from '../shared/event.model'
 import { EventService } from '../shared/event.service'
+import 'rxjs/add/operator/switchMap'
+
 
 @Component({
   selector: 'app-event-detail',
@@ -17,9 +18,9 @@ export class EventDetailComponent implements OnInit {
   
   // full blown Angular docs
   ngOnInit():void {
-    this.route.paramMap
-      .switchMap((params: ParamMap) => this.eventService.getEvent(+params.get('id')))
-      .subscribe(event => this.event = event)
+  this.route.paramMap
+    .switchMap((params: ParamMap) => this.eventService.getEvent(+params.get('id')))
+    .subscribe(event => this.event = event)
   } 
 
   // v1 implementation of promises - didn't work
@@ -33,4 +34,3 @@ export class EventDetailComponent implements OnInit {
   // }
 
 } 
-
