@@ -12,10 +12,10 @@ export class Event {
     level: string
     onlineUrl?: string
     userId: number
+    userName?: string    
+    userImageUrl?: string    
     sportId: number
     terrain?: string
     intensity?: string
     sportsImageUrl?: string[]
-    userImageUrl?: string
-    userName?: string
 }

@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
 import { MdSliderModule } from '@angular/material';
+import { MdSelectModule } from '@angular/material';
+
 
 import { AppComponent } from './app.component';
 import { EventService } from './shared/event.service';
@@ -35,6 +37,7 @@ import { SignUpComponent } from './user/sign-up.component';
   imports: [
     BrowserModule,
     MdSliderModule,
+    MdSelectModule,
     FormsModule,
     HttpModule,
     AppRoutingModule,

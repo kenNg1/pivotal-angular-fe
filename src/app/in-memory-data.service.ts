@@ -7,7 +7,7 @@ export class InMemoryDataService implements InMemoryDbService {
           date: new Date('08/01/2017'),
           time: '19:00',
           price: 40,
-          imageUrl: '../assets/img/events/hockey.png',
+          imageUrl: "assets/img/events/hockey.png",
           location:{
               district: 'Hung Hom',
               address: '2-8, Granville Road'
@@ -18,8 +18,8 @@ export class InMemoryDataService implements InMemoryDbService {
           sportId: 1,
           terrain: 'Outdoor',
           intensity: 'Friendly',
-          sportsImageUrl: ['../assets/img/sportsUrls/hockey1.jpg'],
-          userImageUrl: '../assets/img/faces/mp.jpg',
+          sportsImageUrl: "assets/img/sportsUrls/hockey1.jpg",
+          userImageUrl: "assets/img/faces/mp.jpg",
           userName: 'Michelle Pfiefer'
         },
         { id: 2,
@@ -38,7 +38,7 @@ export class InMemoryDataService implements InMemoryDbService {
           sportId: 2,
           terrain: 'Outdoor',
           intensity: 'Competition',
-          sportsImageUrl: ['../assets/img/sportsUrls/rugby1.jpg'],
+          sportsImageUrl: '../assets/img/sportsUrls/rugby1.jpg',
           userImageUrl: '',
           userName: 'Michelle Pfiefer'
         },
