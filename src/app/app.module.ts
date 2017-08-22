@@ -19,6 +19,7 @@ import { EventDetailComponent } from './events/event-detail.component';
 import { MappingComponent } from './events/maps/mapping/mapping.component';
 import { SignInComponent } from './user/sign-in.component';
 import { SignUpComponent } from './user/sign-up.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { SignUpComponent } from './user/sign-up.component';
     MappingComponent,
     SignInComponent,
     SignUpComponent,
+    HomepageComponent,
   ],
   imports: [
     BrowserModule,
