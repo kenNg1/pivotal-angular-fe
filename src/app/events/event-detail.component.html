@@ -3,12 +3,21 @@
 <div class='modal'>
     <div class='modal-form'>
         <div class="card">
-            <form #changeEventForm="ngForm" (ngSubmit)="onSubmit(changeEventForm.value)" class="form-horizontal">
+            <form #changeEventForm="ngForm" (ngSubmit)="saveEvent(changeEventForm.value)" class="form-horizontal">
                 <div class="card-header card-header-text" data-background-color="rose">
                     <h4 class="card-title">Edit Event Details</h4>
                 </div>
                 <div class="card-content">
                     <div class="row">
+                        <label class="col-sm-2 label-on-left">Id</label>
+                        <div class="col-sm-10">
+                            <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                <input name='id' [ngModel]="event?.id">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row"> 
                         <label class="col-sm-2 label-on-left">Name</label>
                         <div class="col-sm-10">
                             <div class="form-group label-floating is-empty">
@@ -23,12 +32,12 @@
                         <div class="form-group col-sm-10 checkbox-radios">
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="radioTerrain" value="indoor" ngModel> Indoor
+                                    <input type="radio" name="terrain" value="indoor" ngModel> Indoor
                                 </label>
                                 </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="radioTerrain" value="outdoor" ngModel> Outdoor
+                                    <input type="radio" name="terrain" value="outdoor" ngModel> Outdoor
                                 </label>
                             </div>
                         </div>
@@ -38,17 +47,17 @@
                         <div class="col-sm-10 checkbox-radios">
                             <div class="radio">
                                 <label>
-                                    <input ngModel type="radio" name="radioIntensity" checked="true" value="high"> High
+                                    <input ngModel type="radio" name="intensity" checked="true" value="high"> High
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input ngModel type="radio" name="radioIntensity" value="medium"> Medium
+                                    <input ngModel type="radio" name="intensity" value="medium"> Medium
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input ngModel type="radio" name="radioIntensity" value="low"> Low
+                                    <input ngModel type="radio" name="intensity" value="low"> Low
                                 </label>
                             </div>
                         </div>
@@ -56,24 +65,44 @@
                     <div class="row">
                         <label class="col-sm-2 label-on-left">Level</label>
                         <div class="col-sm-10 checkbox-radios">
-                            <div class="checkbox">
+                            <div class="radio">
                                 <label>
-                                    <input ngModel type="checkbox" name="checkboxesLevel" value="beginners"> Beginners
+                                    <input ngModel type="radio" name="level" checked="true" value="beginners"> Beginners
                                 </label>
                             </div>
-                            <div class="checkbox">
+                            <div class="radio">
                                 <label>
-                                    <input ngModel type="checkbox" name="checkboxesLevel" value="intermediate"> Intermediate
+                                    <input ngModel type="radio" name="level" value="intermediate"> Intermediate
                                 </label>
                             </div>
-                            <div class="checkbox">
+                            <div class="radio">
                                 <label>
-                                    <input ngModel type="checkbox" name="checkboxesLevel" value="advanced"> Advanced
+                                    <input ngModel type="radio" name="level" value="advanced"> Advanced
                                 </label>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <!-- <div class="row">
+                        <label class="col-sm-2 label-on-left">Level</label>
+                        <div class="col-sm-10 checkbox-radios">
+                            <div class="checkbox">
+                                <label>
+                                    <input ngModel type="checkbox" name="level" value="beginners"> Beginners
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input ngModel type="checkbox" name="level" value="intermediate"> Intermediate
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input ngModel type="checkbox" name="level" value="advanced"> Advanced
+                                </label>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- <div class="row">
                         <label class="col-sm-2 label-on-left">Spaces available</label>
                         <div class="col-sm-10">
                             <div class="form-group label-floating is-empty">
@@ -82,7 +111,7 @@
                                 <span class="help-block">A block of help text that breaks onto a new line.</span>
                             </div>
                         </div>
-                    </div> 
+                    </div>  -->
                     <div class="row">
                         <label class="col-sm-2 label-on-left">Time</label>
                         <div class="col-sm-10">
@@ -148,11 +177,11 @@
                         <div class="col-sm-10">
                             <div class="form-group label-floating is-empty">
                                 <label class="control-label"></label>
-                                <input  [ngModel]="'$'+event?.price" name='price' type="text" class="form-control" placeholder="$" value='$'>
+                                <input  [ngModel]="event?.price" name='price' type="text" class="form-control" placeholder="$" value='$'>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <!-- <div class="row">
                         <label class="col-sm-2 label-on-left">Event Information</label>
                         <div class="col-sm-10">
                             <div class="form-group label-floating is-empty">
@@ -160,182 +189,182 @@
                                 <textarea  [ngModel]="randomInfo" name='eventInfo' type="text" placeholder="Event Information" class="form-control" rows="4"></textarea>
                             </div>
                         </div>
-                    </div>
-                    <button type='submit' class='btn btn-primary' style='float: right;'>Submit</button>
-                    <button class='btn btn-success' style='float: right;'>Cancel</button>                    
+                    </div> -->
+                    <button type='submit' class='btn btn-success' style='float: right;'>Submit</button>
+                    <button class='btn btn-primary' style='float: right;'>Cancel</button>                    
                 </div>
             </form>
         </div>
     </div>
 </div>
 
-    <div class="main-content">
+<div class="main-content">
     <div class="container-fluid">
-      <div class="col-md-8">
-        <div class="card">
-          <div class="text-center card-header card-header-icon" data-background-color="rose">
-              <h1>SUN</h1> 
-              <hr>
-              <h3>JUN 16</h3>
-          </div>
-          <br>
-          <div class="card-content text-center">
-            <h2 class="card-title">
-                {{event?.name}} <button style="float:right; margin-top: 5px" class="btn btn-warning">Edit</button>            
-            </h2>
-              <br>
-              <div class='icon col-md-2 col-xs-4'>
-                  <i class="material-icons">terrain</i>
-                  <!-- if indoor use the insert_photo material icon -->
-                  <p>{{event?.terrain}}</p>
-              </div>
-  
-              <div class='icon col-md-2 col-xs-4'>
-                  <i class="material-icons">insert_emoticon</i>
-                  <p>{{event?.intensity}}</p>
-              </div>
-  
-              <div class='icon col-md-2 col-xs-4'>
-                  <i class="material-icons">grade</i>
-                  <p>{{event?.level}}</p>
-              </div> 
-  
-              <div class='icon col-md-3 col-xs-4'>
-                  <i class="material-icons">face</i>
-                  <p>2/6 spaces available</p>
-              </div> 
-  
-              <br>
-              <br>
-          </div>
-          <hr>
-          <div class='card-content' style='margin:-20px 18px 0px 18px'>
-            <h2 style="display:inline-block; margin:0">{{event?.time}}</h2>
-            <h5 style="display:inline-block; margin: 0 0 0 40px; font-size: 17px;">{{event?.location.address}}, {{event?.location.district}}</h5>
-            <button style="float:right; margin-top: 5px" class="btn btn-rose">Register</button>
-            <h3 style="float:right; margin:10px 30px 0 0">{{event?.price | currency:USD:true}}</h3>
-          </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="text-center card-header card-header-icon" data-background-color="rose">
+                    <h1>SUN</h1> 
+                    <hr>
+                    <h3>JUN 16</h3>
+                </div>
+                <br>
+                <div class="card-content text-center">
+                    <h2 class="card-title">
+                        {{event?.name}} <button style="float:right; margin-top: 5px" class="btn btn-warning" (click)="showForm()">Edit</button>            
+                    </h2>
+                    <br>
+                    <div class='icon col-md-2 col-xs-4'>
+                        <i class="material-icons">terrain</i>
+                        <!-- if indoor use the insert_photo material icon -->
+                        <p>{{event?.terrain}}</p>
+                    </div>
+        
+                    <div class='icon col-md-2 col-xs-4'>
+                        <i class="material-icons">insert_emoticon</i>
+                        <p>{{event?.intensity}}</p>
+                    </div>
+        
+                    <div class='icon col-md-2 col-xs-4'>
+                        <i class="material-icons">grade</i>
+                        <p>{{event?.level}}</p>
+                    </div> 
+        
+                    <div class='icon col-md-3 col-xs-4'>
+                        <i class="material-icons">face</i>
+                        <p>2/6 spaces available</p>
+                    </div> 
+        
+                    <br>
+                    <br>
+                </div>
+                <hr>
+                <div class='card-content' style='margin:-20px 18px 0px 18px'>
+                    <h2 style="display:inline-block; margin:0">{{event?.time}}</h2>
+                    <h5 style="display:inline-block; margin: 0 0 0 40px; font-size: 17px;">{{event?.location.address}}, {{event?.location.district}}</h5>
+                    <button style="float:right; margin-top: 5px" class="btn btn-rose">Register</button>
+                    <h3 style="float:right; margin:10px 30px 0 0">{{event?.price | currency:USD:true}}</h3>
+                </div>
+            </div>
         </div>
-      </div>
-  
-      <div class="col-md-4">
-          <div class="card card-profile">
-              <div class="card-avatar">
-                  <a href="#pablo">
-                      <img class="img" [src]="event?.userImageUrl" />
-                  </a>
-              </div>
-              <div class="card-content" style='margin-top:0'>
-                  <h5 class="category text-gray">Hockey Lover</h5>
-                  <h4 class="card-title">{{event?.userName}}</h4>
-                  <p class="description">
-                      Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-                  </p>
-                  <a href="#pablo" class="btn btn-rose btn-round">View Profile</a>
-                  <a style="display: block;max-width: 70%;margin: 0 auto;" href="#pablo" class="btn btn-rose btn-round">Contact {{event?.userName.substr(0, event.userName.indexOf(" "))}}</a>
-              </div>
-          </div>
-      </div>
-  
-      <div class='container-fluid'>
-          <div class="card">
-              <div style='height:450px' class="card-header card-header-tabs" data-background-color="rose">
-                  <div class='col-md-5'>
-                      <div class="card-image" data-header-animation="false">
-                          <a href="#pablo">
-                              <img class="img" [src]="event?.sportsImageUrl">
-                          </a>
-                      </div>
-                  </div>
-                  <div class='col-md-7'>
-                      <div class="nav-tabs-navigation">
-                          <div class="nav-tabs-wrapper">
-                              <ul class="nav nav-tabs" data-tabs="tabs">
-                                  <li class="active">
-                                      <a href="#profile" data-toggle="tab">
-                                          <i class="material-icons">info_outline</i> Info
-                                          <div class="ripple-container"></div>
-                                      </a>
-                                  </li>
-                                  <li class="">
-                                      <a href="#messages" data-toggle="tab">
-                                          <i class="material-icons">code</i> Organiser
-                                          <div class="ripple-container"></div>
-                                      </a>
-                                  </li>
-                                  <li class="">
-                                      <a href="#settings" data-toggle="tab">
-                                          <i class="material-icons">cloud</i> About Sport
-                                          <div class="ripple-container"></div>
-                                      </a>
-                                  </li>
-                              </ul>
-                          </div>
-                      </div>
-                      <div class="card">
-                          <div class="card-content">
-                              <div class="tab-content">
-                                  <div class="tab-pane active" id="profile">
-                                      <h4>General Info:</h4>
-                                      <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates expedita ipsa voluptatem repellendus dolores dignissimos soluta, maxime accusamus hic quos incidunt error voluptatum doloremque dicta.</span></p>
-                                      <hr>
-                                      <h4>What to bring:</h4>
-                                      <table class="table">
-                                          <tbody>
-                                              <tr>
-                                                  <td>
-                                                      <i class="material-icons">check_box</i>
-                                                  </td>
-                                                  <td>Sportswear, hockey stick, shinpads, astroturf footwear</td>
-                                              </tr>
-                                              <tr>
-                                                  <td>
-                                                      <i class="material-icons">check_box</i>
-                                                  </td>
-                                                  <td>Bottle of water and a smile :)</td>
-                                              </tr>
-                                          </tbody>
-                                      </table>
-                                  </div>
-                                  <div class="tab-pane" id="messages">
-                                      <h4>Organiser Info:</h4>
-                                      <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates expedita ipsa voluptatem repellendus dolores dignissimos soluta, maxime accusamus hic quos incidunt error voluptatum doloremque dicta.</span></p>
-                                      <hr>
-                                      <h4>Website:</h4>
-                                      <table class="table">
-                                          <tbody>
-                                              <tr>
-                                                  <td>
-                                                      <i class="material-icons">language</i>
-                                                  </td>
-                                                  <td style="color:blue">https://www.hockeyhk.com</td>
-                                              </tr>
-                                         </tbody>
-                                      </table>
-                                  </div>
-                                  <div class="tab-pane" id="settings">
-                                      <h4>How to play:</h4>
-                                      <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates expedita ipsa voluptatem repellendus dolores dignissimos soluta, maxime accusamus hic quos incidunt error voluptatum doloremque dicta.</span></p>
-                                      <hr>
-                                      <h4>Rules:</h4>
-                                      <ul>
-                                          <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, hic!</li>
-                                          <li>Quia excepturi et nam eos cupiditate quae eligendi ab pariatur.</li>
-                                          <li>Atque vel soluta expedita iste, ut et quibusdam illo sed.</li>
-                                          <li>Velit est vel animi laboriosam cupiditate natus tempora repellat omnis.</li>
-                                          <li>Iste id adipisci rem aspernatur soluta cum voluptas vitae, natus.</li>
-                                      </ul>
-                                  </div>
-                                  
-                              </div>
-                          </div>
-  
-                      </div>
-                  </div>
-              </div>
-          </div>      
+    
+        <div class="col-md-4">
+            <div class="card card-profile">
+                <div class="card-avatar">
+                    <a href="#pablo">
+                        <img class="img" [src]="event?.userImageUrl" />
+                    </a>
+                </div>
+                <div class="card-content" style='margin-top:0'>
+                    <h5 class="category text-gray">Hockey Lover</h5>
+                    <h4 class="card-title">{{event?.userName}}</h4>
+                    <p class="description">
+                        Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                    </p>
+                    <a href="#pablo" class="btn btn-rose btn-round">View Profile</a>
+                    <a style="display: block;max-width: 70%;margin: 0 auto;" href="#pablo" class="btn btn-rose btn-round">Contact {{event?.userName.substr(0, event.userName.indexOf(" "))}}</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class='container-fluid'>
+            <div class="card">
+                <div style='height:450px' class="card-header card-header-tabs" data-background-color="rose">
+                    <div class='col-md-5'>
+                        <div class="card-image" data-header-animation="false">
+                            <a href="#pablo">
+                                <img class="img" [src]="event?.sportsImageUrl">
+                            </a>
+                        </div>
+                    </div>
+                    <div class='col-md-7'>
+                        <div class="nav-tabs-navigation">
+                            <div class="nav-tabs-wrapper">
+                                <ul class="nav nav-tabs" data-tabs="tabs">
+                                    <li class="active">
+                                        <a href="#profile" data-toggle="tab">
+                                            <i class="material-icons">info_outline</i> Info
+                                            <div class="ripple-container"></div>
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="#messages" data-toggle="tab">
+                                            <i class="material-icons">code</i> Organiser
+                                            <div class="ripple-container"></div>
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="#settings" data-toggle="tab">
+                                            <i class="material-icons">cloud</i> About Sport
+                                            <div class="ripple-container"></div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="profile">
+                                        <h4>General Info:</h4>
+                                        <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates expedita ipsa voluptatem repellendus dolores dignissimos soluta, maxime accusamus hic quos incidunt error voluptatum doloremque dicta.</span></p>
+                                        <hr>
+                                        <h4>What to bring:</h4>
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <i class="material-icons">check_box</i>
+                                                    </td>
+                                                    <td>Sportswear, hockey stick, shinpads, astroturf footwear</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <i class="material-icons">check_box</i>
+                                                    </td>
+                                                    <td>Bottle of water and a smile :)</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="tab-pane" id="messages">
+                                        <h4>Organiser Info:</h4>
+                                        <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates expedita ipsa voluptatem repellendus dolores dignissimos soluta, maxime accusamus hic quos incidunt error voluptatum doloremque dicta.</span></p>
+                                        <hr>
+                                        <h4>Website:</h4>
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <i class="material-icons">language</i>
+                                                    </td>
+                                                    <td style="color:blue">https://www.hockeyhk.com</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="tab-pane" id="settings">
+                                        <h4>How to play:</h4>
+                                        <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates expedita ipsa voluptatem repellendus dolores dignissimos soluta, maxime accusamus hic quos incidunt error voluptatum doloremque dicta.</span></p>
+                                        <hr>
+                                        <h4>Rules:</h4>
+                                        <ul>
+                                            <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, hic!</li>
+                                            <li>Quia excepturi et nam eos cupiditate quae eligendi ab pariatur.</li>
+                                            <li>Atque vel soluta expedita iste, ut et quibusdam illo sed.</li>
+                                            <li>Velit est vel animi laboriosam cupiditate natus tempora repellat omnis.</li>
+                                            <li>Iste id adipisci rem aspernatur soluta cum voluptas vitae, natus.</li>
+                                        </ul>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+    
+                        </div>
+                    </div>
+                </div>
+            </div>      
           <button style="float:right; margin-top: 5px; " class="btn btn-rose" (click)="goBack()">Back</button>
-      </div>
+        </div>
     </div>
   </div>
 

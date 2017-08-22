@@ -15,7 +15,6 @@ declare var $:any;
 })
 export class EventDetailComponent implements OnInit {
   @Input() event: Event;
-  formShown: boolean = false;
   constructor(private eventService:EventService, private route:ActivatedRoute, private location: Location ) { }
   
   // full blown Angular docs
@@ -23,29 +22,35 @@ export class EventDetailComponent implements OnInit {
    this.route.paramMap
     .switchMap((params: ParamMap) => this.eventService.getEvent(+params.get('id')))
     .subscribe(event => this.event = event)
-  } 
+  }
 
   randomAvailability = "9/10"
   randomInfo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates expedita ipsa voluptatem repellendus dolores dignissimos soluta, maxime accusamus hic quos incidunt error voluptatum doloremque dicta."
 
-  onSubmit(value:any){
-    console.log(value)
+  saveEvent(formValues:any):void{
+    console.log(formValues)
+    this.eventService.update(formValues)
+    this.closeForm()
   }
 
-  // save(): void{
-  //   this.eventService.update(this.event)
-  //     .then(()=>this.goBack())
-  // }
+
+  onSubmit(): void{
+    this.eventService.update(this.event)
+      .then(()=>this.closeForm())    
+  }
 
   showForm(): void{
-    this.formShown = true
-    $('.modal-form').show()
+    $('.modal').show()
+  }
+
+  closeForm(): void{
+    $('.modal').hide()
   }
 
   goBack():void{
     this.location.back()
   }
-
+  
   // v1 implementation of promises - didn't work
   // ngOnInit():void {
   //   this.eventService.getEvent(+this.route.snapshot.params['id']).then(event => this.event = event)

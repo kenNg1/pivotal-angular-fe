@@ -8,6 +8,7 @@ import { Event } from './event.model';
 export class EventService {
 
   private eventsUrl = 'api/events'; // URL to web api
+  private headers = new Headers({'Content-Type': 'application/json'})
 
   constructor(private http: Http){}
 
@@ -25,6 +26,15 @@ export class EventService {
     return this.http.get(url)
       .toPromise()
       .then(response => response.json().data as Event)
+      .catch(this.handleError)
+  }
+
+  update(event: Event): Promise<Event>{
+    const url = `${this.eventsUrl}/${event.id}`
+    return this.http
+      .put(url, JSON.stringify(event), {headers:this.headers})
+      .toPromise()
+      .then(()=>event)
       .catch(this.handleError)
   }
 
