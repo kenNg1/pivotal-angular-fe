@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, Input } from '@angular/core'
 import { ActivatedRoute, ParamMap} from '@angular/router'
 import { Location } from '@angular/common'
 
 import { Event } from '../shared/event.model'
 import { EventService } from '../shared/event.service'
 import 'rxjs/add/operator/switchMap'
-
 
 declare var $:any;
 
@@ -15,16 +14,23 @@ declare var $:any;
   styleUrls: ['./event-detail.component.scss']
 })
 export class EventDetailComponent implements OnInit {
-  event:Event;
+  @Input() event: Event;
   formShown: boolean = false;
   constructor(private eventService:EventService, private route:ActivatedRoute, private location: Location ) { }
   
   // full blown Angular docs
   ngOnInit():void {
-  this.route.paramMap
+   this.route.paramMap
     .switchMap((params: ParamMap) => this.eventService.getEvent(+params.get('id')))
     .subscribe(event => this.event = event)
   } 
+
+  randomAvailability = "9/10"
+  randomInfo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates expedita ipsa voluptatem repellendus dolores dignissimos soluta, maxime accusamus hic quos incidunt error voluptatum doloremque dicta."
+
+  onSubmit(value:any){
+    console.log(value)
+  }
 
   // save(): void{
   //   this.eventService.update(this.event)

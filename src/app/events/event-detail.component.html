@@ -1,106 +1,173 @@
 <!-- BEGIN FORM -->
 
+<div class='modal'>
     <div class='modal-form'>
         <div class="card">
-                <form method="get" action="/" class="form-horizontal">
-                    <div class="card-header card-header-text" data-background-color="rose">
-                        <h4 class="card-title">Form Elements</h4>
-                    </div>
-                    <div class="card-content">
-                        <div class="row">
-                            <label class="col-sm-2 label-on-left">With help</label>
-                            <div class="col-sm-10">
-                                <div class="form-group label-floating is-empty">
+            <form #changeEventForm="ngForm" (ngSubmit)="onSubmit(changeEventForm.value)" class="form-horizontal">
+                <div class="card-header card-header-text" data-background-color="rose">
+                    <h4 class="card-title">Edit Event Details</h4>
+                </div>
+                <div class="card-content">
+                    <div class="row">
+                        <label class="col-sm-2 label-on-left">Name</label>
+                        <div class="col-sm-10">
+                            <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                    <input type="text" class="form-control" value>
+                                <input name='name' [ngModel]="event?.name" type="text" class="form-control" placeholder="name">
+                                <span class="help-block">A block of help text that breaks onto a new line.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-2 label-on-left">Terrain</label>
+                        <div class="col-sm-10 checkbox-radios">
+                            <div class="radio">
+                                <label>
+                                    <input ngModel type="radio" name="terrainRadio" checked="true"> Outdoor
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input ngModel type="radio" name="terrainRadio"> Indoor
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-2 label-on-left">Intensity</label>
+                        <div class="col-sm-10 checkbox-radios">
+                            <div class="radio">
+                                <label>
+                                    <input ngModel type="radio" name="intensityRadio" checked="true"> High
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input ngModel type="radio" name="intensityRadio"> Medium
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input ngModel type="radio" name="intensityRadio"> Low
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-2 label-on-left">Level</label>
+                        <div class="col-sm-10 checkbox-radios">
+                            <div class="checkbox">
+                                <label>
+                                    <input ngModel type="checkbox" name="optionsCheckboxes"> Beginners
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input ngModel type="checkbox" name="optionsCheckboxes"> Intermediate
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input ngModel type="checkbox" name="optionsCheckboxes"> Professional
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-2 label-on-left">Spaces available</label>
+                        <div class="col-sm-10">
+                            <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                <input [ngModel]="randomAvailability" name='availability' type="text" class="form-control" placeholder="e.g: 2/10">
+                                <span class="help-block">A block of help text that breaks onto a new line.</span>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="row">
+                        <label class="col-sm-2 label-on-left">Time</label>
+                        <div class="col-sm-10">
+                            <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                <input [ngModel]="event?.time" name='time' type="text" class="form-control" placeholder="e.g: 17:00">
+                                <span class="help-block">A block of help text that breaks onto a new line.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-2 label-on-left">Date</label>
+                        <div class="col-sm-10">
+                            <div class="form-group label-floating is-empty">
+                                <input [ngModel]="event?.date" name='date' type="text" class="form-control datetimepicker" value="10/05/2016" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-2 label-on-left">Address</label>
+                        <div class="col-sm-10">
+                            <div ngModelGroup="address">
+                                <div class="form-group label-floating is-empty">
+                                        <label class="control-label"></label>
+                                    <input [ngModel]="event?.location.address" name='address' type="text" class="form-control" placeholder="e.g. Flat C, 100/F, 2-10 Gough Street, Sheung Wan, Hong Kong">
                                     <span class="help-block">A block of help text that breaks onto a new line.</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <label class="col-sm-2 label-on-left">Password</label>
-                            <div class="col-sm-10">
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-2 label-on-left">District</label>
+                        <div class="col-sm-10">
+                            <div ngModelGroup="address">                                        
                                 <div class="form-group label-floating is-empty">
-                                    <label class="control-label"></label>
-                                    <input type="password" class="form-control" value>
+                                    <select ngModel name='district' class="selectpicker" data-style="select-with-transition" multiple title="Choose City" data-size="7">
+                                        <option disabled> Choose District</option>
+                                        <option value="2">Central </option>
+                                        <option value="3">Causeway Bay</option>
+                                        <option value="4">Kowloon Tong</option>
+                                        <option value="5">Mong Kok</option>
+                                        <option value="6">Wan Chai</option>
+                                        <option value="7">Chai Wan</option>
+                                        <option value="8">Paris </option>
+                                        <option value="9">Bucharest</option>
+                                        <option value="10">Rome</option>
+                                        <option value="11">New York</option>
+                                        <option value="12">Miami </option>
+                                        <option value="13">Piatra Neamt</option>
+                                        <option value="14">Paris </option>
+                                        <option value="15">Bucharest</option>
+                                        <option value="16">Rome</option>
+                                        <option value="17">New York</option>
+                                        <option value="18">Miami </option>
+                                        <option value="19">Piatra Neamt</option>
+                                    </select>                             
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <label class="col-sm-2 label-on-left">Placeholder</label>
-                            <div class="col-sm-10">
-                                <div class="form-group label-floating is-empty">
-                                    <label class="control-label"></label>
-                                    <input type="text" class="form-control" placeholder="placeholder">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <label class="col-sm-2 label-on-left">Disabled</label>
-                            <div class="col-sm-10">
-                                <div class="form-group label-floating is-empty">
-                                    <label class="control-label"></label>
-                                    <input type="text" placeholder="Disabled input here..." disabled="" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <label class="col-sm-2 label-on-left">Static control</label>
-                            <div class="col-sm-10">
-                                <div class="form-group">
-                                    <p class="form-control-static">hello@creative-tim.com</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <label class="col-sm-2 label-on-left">Checkboxes and radios</label>
-                            <div class="col-sm-10 checkbox-radios">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="optionsCheckboxes"> First Checkbox
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="optionsCheckboxes"> Second Checkbox
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="optionsRadios" checked="true"> First Radio
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="optionsRadios"> Second Radio
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <label class="col-sm-2 label-on-left">Inline checkboxes</label>
-                            <div class="col-sm-10">
-                                <div class="checkbox checkbox-inline">
-                                    <label>
-                                        <input type="checkbox" name="optionsCheckboxes">a
-                                    </label>
-                                </div>
-                                <div class="checkbox checkbox-inline">
-                                    <label>
-                                        <input type="checkbox" name="optionsCheckboxes">b
-                                    </label>
-                                </div>
-                                <div class="checkbox checkbox-inline">
-                                    <label>
-                                        <input type="checkbox" name="optionsCheckboxes">c
-                                    </label>
-                                </div>
+                    </div>              
+                    <div class="row">
+                        <label class="col-sm-2 label-on-left">Price</label>
+                        <div class="col-sm-10">
+                            <div class="form-group label-floating is-empty">
+                                <label class="control-label"></label>
+                                <input  [ngModel]="'$'+event?.price" name='price' type="text" class="form-control" placeholder="$" value='$'>
                             </div>
                         </div>
                     </div>
-                </form>
-            </div>
+                    <div class="row">
+                        <label class="col-sm-2 label-on-left">Event Information</label>
+                        <div class="col-sm-10">
+                            <div class="form-group label-floating is-empty">
+                                <label class="control-label"></label>
+                                <input  [ngModel]="randomInfo" name='eventInfo' type="text" placeholder="Event Information" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <button type='submit' class='btn btn-primary' style='float: right;'>Submit</button>
+                    <button class='btn btn-success' style='float: right;'>Cancel</button>                    
+                </div>
+            </form>
+        </div>
     </div>
+</div>
 
     <div class="main-content">
     <div class="container-fluid">

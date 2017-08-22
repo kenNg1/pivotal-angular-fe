@@ -1,12 +1,18 @@
-.modal-form {
+.modal {
+    position: fixed;
+    display: block;
     z-index: 999;
     height: 100%;
     width: 100%;
     left: 0px;
-    right: 0px;
-    top: 100px;
-    bottom: 0px;
-    position: fixed;
+    top: 0px;   
+    overflow: auto; 
     background-color: RGBA(0,0,0,0.5);
+}
+
+.modal-form {
+    width: 80%;
     display: block;
+    margin: 0 auto;
+    margin-top: 80px;    
 }
