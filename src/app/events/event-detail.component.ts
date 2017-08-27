@@ -55,6 +55,14 @@ export class EventDetailComponent implements OnInit {
   goBack():void{
     this.location.back()
   }
+
+  delete(event:Event):void{
+    this.eventService
+      .delete(event.id)
+      .then(()=> {
+        this.goBack()
+      })
+  }
   
   // v1 implementation of promises - didn't work
   // ngOnInit():void {

@@ -262,7 +262,9 @@
                 <br>
                 <div class="card-content text-center">
                     <h2 class="card-title">
-                        {{event?.name}} <button style="float:right; margin-top: 5px" class="btn btn-warning" (click)="showForm()">Edit</button>            
+                        {{event?.name}}
+                        <button style="float:right; margin-top: 5px" class="btn btn-warning" (click)="delete(event)">Delete</button>    
+                        <button style="float:right; margin-top: 5px" class="btn btn-primary" (click)="showForm()">Edit</button>                    
                     </h2>
                     <br>
                     <div class='icon col-md-2 col-xs-4'>
