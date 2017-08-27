@@ -38,6 +38,14 @@ export class EventService {
       .catch(this.handleError)
   }
 
+  create(formValues:any): Promise<Event>{
+    return this.http
+      .post(this.eventsUrl, JSON.stringify(formValues),{headers: this.headers})
+      .toPromise()
+      .then(res => res.json().data as Event)
+      .catch(this.handleError);
+  }
+
   private handleError(error:any): Promise<any> {
     console.log('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error)
