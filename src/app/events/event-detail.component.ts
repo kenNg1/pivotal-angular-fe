@@ -15,7 +15,17 @@ declare var $:any;
 })
 export class EventDetailComponent implements OnInit {
   @Input() event: Event;
-  constructor(private eventService:EventService, private route:ActivatedRoute, private location: Location ) { }
+  // allowButtonClick: boolean = false;
+
+  dists = [
+    {value: '0', viewValue: 'Central'},
+    {value: '1', viewValue: 'Causeway Bay'},
+    {value: '2', viewValue: 'Kowloon Tong'}
+  ];
+
+  constructor(private eventService:EventService, private route:ActivatedRoute, private location: Location ) {
+    // setTimeout(() => this.allowButtonClick = true, 2000);    
+  }
   
   // full blown Angular docs
   ngOnInit():void {
@@ -28,15 +38,10 @@ export class EventDetailComponent implements OnInit {
   randomInfo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates expedita ipsa voluptatem repellendus dolores dignissimos soluta, maxime accusamus hic quos incidunt error voluptatum doloremque dicta."
 
   saveEvent(formValues:any):void{
+    
     console.log(formValues)
-    this.eventService.update(formValues)
-    this.closeForm()
-  }
-
-
-  onSubmit(): void{
-    this.eventService.update(this.event)
-      .then(()=>this.closeForm())    
+    this.closeForm()    
+    this.eventService.update(formValues).then(()=> this.goBack())
   }
 
   showForm(): void{
@@ -49,6 +54,14 @@ export class EventDetailComponent implements OnInit {
 
   goBack():void{
     this.location.back()
+  }
+
+  delete(event:Event):void{
+    this.eventService
+      .delete(event.id)
+      .then(()=> {
+        this.goBack()
+      })
   }
   
   // v1 implementation of promises - didn't work

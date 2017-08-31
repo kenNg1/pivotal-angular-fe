@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
 import { MdSliderModule } from '@angular/material';
+import { MdSelectModule } from '@angular/material';
+
 
 import { AppComponent } from './app.component';
 import { EventService } from './shared/event.service';
@@ -19,7 +21,8 @@ import { EventDetailComponent } from './events/event-detail.component';
 import { MappingComponent } from './events/maps/mapping/mapping.component';
 import { SignInComponent } from './user/sign-in.component';
 import { SignUpComponent } from './user/sign-up.component';
-import { HomepageComponent } from './homepage/homepage.component';
+import { NewEventComponent } from './events/new-event.component';
+import { SportSearchService } from "./search/sport-search.service";
 
 @NgModule({
   declarations: [
@@ -32,11 +35,12 @@ import { HomepageComponent } from './homepage/homepage.component';
     MappingComponent,
     SignInComponent,
     SignUpComponent,
-    HomepageComponent,
+    NewEventComponent,
   ],
   imports: [
     BrowserModule,
     MdSliderModule,
+    MdSelectModule,
     FormsModule,
     HttpModule,
     AppRoutingModule,
@@ -44,6 +48,6 @@ import { HomepageComponent } from './homepage/homepage.component';
     InMemoryWebApiModule.forRoot(InMemoryDataService),
   ],
   bootstrap: [AppComponent],
-  providers: [EventService]
+  providers: [EventService,SportSearchService]
 })
 export class AppModule { } 

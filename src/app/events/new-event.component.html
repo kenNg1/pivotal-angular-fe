@@ -1,0 +1,241 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="card">
+          <form #newEventForm="ngForm" (ngSubmit)="add(newEventForm.value)" class="form-horizontal">
+              <div class="card-header card-header-text" data-background-color="rose">
+                  <h4 class="card-title">Edit Event Details</h4> 
+              </div>
+              <div class="card-content">
+                  <div class="row">
+                      <label class="col-sm-2 label-on-left">Image Url</label>
+                      <div class="col-sm-10">
+                          <div class="form-group label-floating is-empty">
+                                  <label class="control-label"></label>
+                              <input name='imageUrl' [ngModel]="event?.imageUrl">
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <label class="col-sm-2 label-on-left">Online Url</label>
+                      <div class="col-sm-10">
+                          <div class="form-group label-floating is-empty">
+                                  <label class="control-label"></label>
+                              <input name='onlineUrl' [ngModel]="event?.onlineUrl">
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <label class="col-sm-2 label-on-left">User Id</label>
+                      <div class="col-sm-10">
+                          <div class="form-group label-floating is-empty">
+                                  <label class="control-label"></label>
+                              <input name='userId' [ngModel]="event?.userId">
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <label class="col-sm-2 label-on-left">User Name</label>
+                      <div class="col-sm-10">
+                          <div class="form-group label-floating is-empty">
+                                  <label class="control-label"></label>
+                              <input name='userName' [ngModel]="event?.userName">
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <label class="col-sm-2 label-on-left">Sports Image Urls</label>
+                      <div class="col-sm-10">
+                          <div class="form-group label-floating is-empty">
+                                  <label class="control-label"></label>
+                                  <input name="sportsImageUrl" [ngModel]="event?.sportsImageUrl">
+                          </div>
+                      </div>
+                  </div>                  
+
+                  <div class="row">
+                      <label class="col-sm-2 label-on-left">User Image Url</label>
+                      <div class="col-sm-10">
+                          <div class="form-group label-floating is-empty">
+                                  <label class="control-label"></label>
+                              <input name='userImageUrl' [ngModel]="event?.userImageUrl">
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <label class="col-sm-2 label-on-left">Sport Id</label>
+                      <div class="col-sm-10">
+                          <div class="form-group label-floating is-empty">
+                                  <label class="control-label"></label>
+                              <input name='sportId' [ngModel]="event?.sportId">
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row"> 
+                      <label class="col-sm-2 label-on-left">Name</label>
+                      <div class="col-sm-10">
+                          <div class="form-group label-floating is-empty">
+                                  <label class="control-label"></label>
+                              <input name='name' [ngModel]="event?.name" type="text" class="form-control" placeholder="name">
+                              <span class="help-block">A block of help text that breaks onto a new line.</span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <label class="col-sm-2 label-on-left">Terrain</label>
+                      <div class="form-group col-sm-10 checkbox-radios">
+                          <div class="radio">
+                              <label>
+                                  <input type="radio" name="terrain" value="indoor" ngModel> Indoor
+                              </label>
+                              </div>
+                          <div class="radio">
+                              <label>
+                                  <input type="radio" name="terrain" value="outdoor" ngModel> Outdoor
+                              </label>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <label class="col-sm-2 label-on-left">Intensity</label>
+                      <div class="col-sm-10 checkbox-radios">
+                          <div class="radio">
+                              <label>
+                                  <input ngModel type="radio" name="intensity" checked="true" value="high"> High
+                              </label>
+                          </div>
+                          <div class="radio">
+                              <label>
+                                  <input ngModel type="radio" name="intensity" value="medium"> Medium
+                              </label>
+                          </div>
+                          <div class="radio">
+                              <label>
+                                  <input ngModel type="radio" name="intensity" value="low"> Low
+                              </label>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <label class="col-sm-2 label-on-left">Level</label>
+                      <div class="col-sm-10 checkbox-radios">
+                          <div class="radio">
+                              <label>
+                                  <input ngModel type="radio" name="level" checked="true" value="Beginners"> Beginners
+                              </label>
+                          </div>
+                          <div class="radio">
+                              <label>
+                                  <input ngModel type="radio" name="level" value="Intermediate"> Intermediate
+                              </label>
+                          </div>
+                          <div class="radio">
+                              <label>
+                                  <input ngModel type="radio" name="level" value="Advanced"> Advanced
+                              </label>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- <div class="row">
+                      <label class="col-sm-2 label-on-left">Level</label>
+                      <div class="col-sm-10 checkbox-radios">
+                          <div class="checkbox">
+                              <label>
+                                  <input ngModel type="checkbox" name="level" value="beginners"> Beginners
+                              </label>
+                          </div>
+                          <div class="checkbox">
+                              <label>
+                                  <input ngModel type="checkbox" name="level" value="intermediate"> Intermediate
+                              </label>
+                          </div>
+                          <div class="checkbox">
+                              <label>
+                                  <input ngModel type="checkbox" name="level" value="advanced"> Advanced
+                              </label>
+                          </div>
+                      </div>
+                  </div> -->
+                  <!-- <div class="row">
+                      <label class="col-sm-2 label-on-left">Spaces available</label>
+                      <div class="col-sm-10">
+                          <div class="form-group label-floating is-empty">
+                                  <label class="control-label"></label>
+                              <input [ngModel]="randomAvailability" name='availability' type="text" class="form-control" placeholder="e.g: 2/10">
+                              <span class="help-block">A block of help text that breaks onto a new line.</span>
+                          </div>
+                      </div>
+                  </div>  -->
+                  <div class="row">
+                      <label class="col-sm-2 label-on-left">Time</label>
+                      <div class="col-sm-10">
+                          <div class="form-group label-floating is-empty">
+                                  <label class="control-label"></label>
+                              <input [ngModel]="event?.time" name='time' type="text" class="form-control" placeholder="e.g: 17:00">
+                              <span class="help-block">A block of help text that breaks onto a new line.</span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <label class="col-sm-2 label-on-left">Date</label>
+                      <div class="col-sm-10">
+                          <div class="form-group label-floating is-empty">
+                              <input [ngModel]="event?.date" name='date' type="text" class="form-control datetimepicker" value="10/05/2016" />
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <label class="col-sm-2 label-on-left">Address</label>
+                      <div class="col-sm-10">
+                          <div ngModelGroup="location">
+                              <div class="form-group label-floating is-empty">
+                                      <label class="control-label"></label>
+                                  <input [ngModel]="event?.location.address" name='address' type="text" class="form-control" placeholder="e.g. Flat C, 100/F, 2-10 Gough Street, Sheung Wan, Hong Kong">
+                                  <span class="help-block">A block of help text that breaks onto a new line.</span>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row"> 
+                      <label class="col-sm-2 label-on-left">District</label>
+                      <div class="col-sm-10">
+                          <div ngModelGroup="location">                                        
+                              <div class="form-group label-floating is-empty">
+                                  <!-- <select ngModel name='district' class="selectpicker" data-style="select-with-transition" data-size="7">
+                                      <option disabled> Choose District</option>
+                                      <option *ngFor="let dist of dists" [value]="dist">{{dist}}</option>
+                                  </select>          -->
+                                  <md-select class="district-select" [ngModel]="event?.location.district" name="district" placeholder="Choose District" floatPlaceholder="never">
+                                      <md-option class="district-option" *ngFor="let dist of dists" [value]="dist.value">
+                                          {{dist.viewValue}}
+                                      </md-option>
+                                  </md-select>                    
+                              </div>
+                          </div>
+                      </div>
+                  </div>              
+                  <div class="row">
+                      <label class="col-sm-2 label-on-left">Price</label>
+                      <div class="col-sm-10">
+                          <div class="form-group label-floating is-empty">
+                              <label class="control-label"></label>
+                              <input  [ngModel]="event?.price" name='price' type="text" class="form-control" placeholder="$" value='$'>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- <div class="row">
+                      <label class="col-sm-2 label-on-left">Event Information</label>
+                      <div class="col-sm-10">
+                          <div class="form-group label-floating is-empty">
+                              <label class="control-label"></label>
+                              <textarea  [ngModel]="randomInfo" name='eventInfo' type="text" placeholder="Event Information" class="form-control" rows="4"></textarea>
+                          </div>
+                      </div>
+                  </div> -->
+                  <button type='submit' class='btn btn-success' style='float: right;'>Submit</button>
+                  <button type='button' (click)="closeForm()" class='btn btn-primary' style='float: right;'>Cancel</button>                    
+              </div>
+          </form>
+      </div>
+
+  </div>
+</div>

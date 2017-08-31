@@ -3,7 +3,7 @@
           <div style="background: linear-gradient(60deg,#46d1fb,#1ba4d8);" class="card card-product" [routerLink]="['/events',event.id]">  
             <div class="card-image" data-header-animation="false">
                 <a href="#pablo">
-                    <img class="img" [src]="event.imageUrl">
+                    <img class="img" [src]="event?.imageUrl">
                 </a>
             </div>
             <div class="card-content">
@@ -22,19 +22,19 @@
                     </button>
                 </div>
                 <h4 class="card-title">
-                    <a style="color:white;" href="#pablo">{{event.name | uppercase }}</a>
+                    <a style="color:white;" href="#pablo">{{event?.name | uppercase }}</a>
                 </h4>
                 <div class="card-description" style="color:white;">
-                    {{event.date | date:'EE d MMM'}} &nbsp; | <i style="margin-left:5px;font-size: 15px; color: white" class="material-icons">grade</i>{{event.level}}
+                    {{event?.date | date:'EE d MMM'}} &nbsp; | <i style="margin-left:5px;font-size: 15px; color: white" class="material-icons">grade</i>{{event?.level}}
                 </div>
             </div>
             <div class="card-footer">
                 <div class="price">
-                    <h4 style="color:white">{{event.price | currency:"USD":true}}</h4>
+                    <h4 style="color:white">{{event?.price | currency:"USD":true}}</h4>
                 </div>
                 <div class="stats pull-right">
-                    <p style="color:white" class="category"><i class="material-icons">place</i>{{event.location.district}}</p>
+                    <p style="color:white" class="category"><i class="material-icons">place</i>{{event?.location.district}}</p>
                 </div>
             </div>
         </div>
-    </div>
+    </div> 

@@ -17,6 +17,70 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <label class="col-sm-2 label-on-left">Image Url</label>
+                        <div class="col-sm-10">
+                            <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                <input name='imageUrl' [ngModel]="event?.imageUrl">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-2 label-on-left">Online Url</label>
+                        <div class="col-sm-10">
+                            <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                <input name='onlineUrl' [ngModel]="event?.onlineUrl">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-2 label-on-left">User Id</label>
+                        <div class="col-sm-10">
+                            <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                <input name='userId' [ngModel]="event?.userId">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-2 label-on-left">User Name</label>
+                        <div class="col-sm-10">
+                            <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                <input name='userName' [ngModel]="event?.userName">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-2 label-on-left">Sports Image Urls</label>
+                        <div class="col-sm-10">
+                            <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                    <input name="sportsImageUrl" [ngModel]="event?.sportsImageUrl">
+                            </div>
+                        </div>
+                    </div>                  
+
+                    <div class="row">
+                        <label class="col-sm-2 label-on-left">User Image Url</label>
+                        <div class="col-sm-10">
+                            <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                <input name='userImageUrl' [ngModel]="event?.userImageUrl">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-2 label-on-left">Sport Id</label>
+                        <div class="col-sm-10">
+                            <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                <input name='sportId' [ngModel]="event?.sportId">
+                            </div>
+                        </div>
+                    </div>
                     <div class="row"> 
                         <label class="col-sm-2 label-on-left">Name</label>
                         <div class="col-sm-10">
@@ -67,17 +131,17 @@
                         <div class="col-sm-10 checkbox-radios">
                             <div class="radio">
                                 <label>
-                                    <input ngModel type="radio" name="level" checked="true" value="beginners"> Beginners
+                                    <input ngModel type="radio" name="level" checked="true" value="Beginners"> Beginners
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input ngModel type="radio" name="level" value="intermediate"> Intermediate
+                                    <input ngModel type="radio" name="level" value="Intermediate"> Intermediate
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input ngModel type="radio" name="level" value="advanced"> Advanced
+                                    <input ngModel type="radio" name="level" value="Advanced"> Advanced
                                 </label>
                             </div>
                         </div>
@@ -133,7 +197,7 @@
                     <div class="row">
                         <label class="col-sm-2 label-on-left">Address</label>
                         <div class="col-sm-10">
-                            <div ngModelGroup="address">
+                            <div ngModelGroup="location">
                                 <div class="form-group label-floating is-empty">
                                         <label class="control-label"></label>
                                     <input [ngModel]="event?.location.address" name='address' type="text" class="form-control" placeholder="e.g. Flat C, 100/F, 2-10 Gough Street, Sheung Wan, Hong Kong">
@@ -142,32 +206,20 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row"> 
                         <label class="col-sm-2 label-on-left">District</label>
                         <div class="col-sm-10">
-                            <div ngModelGroup="address">                                        
+                            <div ngModelGroup="location">                                        
                                 <div class="form-group label-floating is-empty">
-                                    <select ngModel name='district' class="selectpicker" data-style="select-with-transition" title="Choose City" data-size="7">
+                                    <!-- <select ngModel name='district' class="selectpicker" data-style="select-with-transition" data-size="7">
                                         <option disabled> Choose District</option>
-                                        <option value="2">Central </option>
-                                        <option value="3">Causeway Bay</option>
-                                        <option value="4">Kowloon Tong</option>
-                                        <option value="5">Mong Kok</option>
-                                        <option value="6">Wan Chai</option>
-                                        <option value="7">Chai Wan</option>
-                                        <option value="8">Paris </option>
-                                        <option value="9">Bucharest</option>
-                                        <option value="10">Rome</option>
-                                        <option value="11">New York</option>
-                                        <option value="12">Miami </option>
-                                        <option value="13">Piatra Neamt</option>
-                                        <option value="14">Paris </option>
-                                        <option value="15">Bucharest</option>
-                                        <option value="16">Rome</option>
-                                        <option value="17">New York</option>
-                                        <option value="18">Miami </option>
-                                        <option value="19">Piatra Neamt</option>
-                                    </select>                             
+                                        <option *ngFor="let dist of dists" [value]="dist">{{dist}}</option>
+                                    </select>          -->
+                                    <md-select class="district-select" [ngModel]="event?.location.district" name="district" placeholder="Choose District" floatPlaceholder="never">
+                                        <md-option class="district-option" *ngFor="let dist of dists" [value]="dist.value">
+                                            {{dist.viewValue}}
+                                        </md-option>
+                                    </md-select>                    
                                 </div>
                             </div>
                         </div>
@@ -191,7 +243,7 @@
                         </div>
                     </div> -->
                     <button type='submit' class='btn btn-success' style='float: right;'>Submit</button>
-                    <button class='btn btn-primary' style='float: right;'>Cancel</button>                    
+                    <button type='button' (click)="closeForm()" class='btn btn-primary' style='float: right;'>Cancel</button>                    
                 </div>
             </form>
         </div>
@@ -210,7 +262,9 @@
                 <br>
                 <div class="card-content text-center">
                     <h2 class="card-title">
-                        {{event?.name}} <button style="float:right; margin-top: 5px" class="btn btn-warning" (click)="showForm()">Edit</button>            
+                        {{event?.name}}
+                        <button style="float:right; margin-top: 5px" class="btn btn-warning" (click)="delete(event)">Delete</button>    
+                        <button style="float:right; margin-top: 5px" class="btn btn-primary" (click)="showForm()">Edit</button>                    
                     </h2>
                     <br>
                     <div class='icon col-md-2 col-xs-4'>
