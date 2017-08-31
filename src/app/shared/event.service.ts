@@ -13,6 +13,7 @@ export class EventService {
   constructor(private http: Http){}
 
   getEvents(): Promise<Event[]> {
+    console.log(this.http.get(this.eventsUrl));
     return this.http.get(this.eventsUrl)
                 .toPromise()
                 .then(response => response.json().data as Event[] )

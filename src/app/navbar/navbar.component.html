@@ -67,7 +67,7 @@ RouterLinkActive	The directive for adding/removing classes from an HTML element 
             <form class="navbar-form navbar-right" role="search">
                 <div class="form-group form-search is-empty">
                     <!-- <input (input)="onFormInput($event)" value={{name}} type="text" class="form-control" placeholder="Search"> -->
-                    <input #searchBox id='search-box' (keyup)="search(searchBox.value)" />
+                    <input #searchBox class="form-control" (keyup)="search(searchBox.value)" />
                     <span class="material-input"></span>
                 </div>
                 <div *ngFor='let event of events | async' (click)="gotoDetail(event)" class='search-result'>

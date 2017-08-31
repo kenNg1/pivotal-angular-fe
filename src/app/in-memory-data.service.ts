@@ -39,7 +39,7 @@ export class InMemoryDataService implements InMemoryDbService {
           terrain: 'Outdoor',
           intensity: 'Competition',
           sportsImageUrl: '../assets/img/sportsUrls/rugby1.jpg',
-          userImageUrl: '',
+          userImageUrl: "assets/img/faces/profile02.png",
           userName: 'Michelle Pfiefer'
         },
         { id: 3,
@@ -58,7 +58,7 @@ export class InMemoryDataService implements InMemoryDbService {
           sportId: 3,
           terrain: 'Indoor',
           intensity: 'Friendly',
-          userImageUrl: '',
+          userImageUrl: "assets/img/faces/profile02.png",
           userName: 'Michelle Pfiefer'
         },
         { id: 4,
@@ -77,7 +77,7 @@ export class InMemoryDataService implements InMemoryDbService {
           sportId: 3,
           terrain: 'Outdoor',
           intensity: 'Practice',
-          userImageUrl: '',
+          userImageUrl: "assets/img/faces/profile03.png",
           userName: 'Michelle Pfiefer'
         },
         { id: 5,
@@ -96,7 +96,7 @@ export class InMemoryDataService implements InMemoryDbService {
           sportId: 3,
           terrain: 'Outdoor',
           intensity: 'Friendly',
-          userImageUrl: '',
+          userImageUrl: "assets/img/faces/mp.jpg",
           userName: 'Michelle Pfiefer'
         },
         { id: 6,
@@ -115,7 +115,7 @@ export class InMemoryDataService implements InMemoryDbService {
           sportId: 3,
           terrain: 'Outdoor',
           intensity: 'Competitive',
-          userImageUrl: '',
+          userImageUrl: "assets/img/faces/mp.jpg",
           userName: 'Michelle Pfiefer'
         }
       ];

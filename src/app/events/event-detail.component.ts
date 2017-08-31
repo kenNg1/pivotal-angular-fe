@@ -68,6 +68,8 @@ export class EventDetailComponent implements OnInit {
   // ngOnInit():void {
   //   this.eventService.getEvent(+this.route.snapshot.params['id']).then(event => this.event = event)
   // }
+
+  // http://cms.acceleratedhk.com/angular/08-routing/01-routing.html tells you about downsides of snapshot. snapshot seems to be simpler BUT the main issue is if you are navigating from e.g. DepartmentDetailComponent back to DepartmentListComponent, the value is not going to be updated for this.route.snapshot.params['id']. Therefore, please use the observable way which is safer way to guarantee that the values of the param are already up-to-date.
   
   // original working w/o promises
   // ngOnInit():void {
