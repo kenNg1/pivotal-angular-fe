@@ -13,7 +13,7 @@ export class LandingComponent implements OnInit {
   constructor(private eventService:EventService) { }
 
   getEvents(): void {
-    this.eventService.getEvents().then(events => this.events = events)
+    this.eventService.getEvents().then(events => {this.events = events})
   }
 
   // BELOW IS prior to using promises

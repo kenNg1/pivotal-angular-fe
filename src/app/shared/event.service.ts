@@ -17,9 +17,11 @@ export class EventService {
   getEvents(): Promise<Event[]> {
     console.log(this.http.get(this.eventsUrl));
     return this.http.get(this.eventsUrl)
-                .toPromise()
-                .then(response => response.json().data as Event[] )
-                .catch(this.handleError)
+      .toPromise()
+      .then(response => {
+        return response.json() as Event[]; 
+      })
+      .catch(this.handleError)
   }
 
   // http.get returns an RxJs Observable >> this is then converted into a promise. Parse the resolved json data with the method. as denoted typescript typing
