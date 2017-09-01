@@ -1,12 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
 import { MdSliderModule } from '@angular/material';
 import { MdSelectModule } from '@angular/material';
-
+import { Angular2TokenService } from 'angular2-token';
 
 import { AppComponent } from './app.component';
 import { EventService } from './shared/event.service';
@@ -21,6 +21,8 @@ import { SignInComponent } from './user/sign-in.component';
 import { SignUpComponent } from './user/sign-up.component';
 import { NewEventComponent } from './events/new-event.component';
 import { SportSearchService } from "./search/sport-search.service";
+import { AuthenticationService } from "./user/authentication.service";
+import { ProfileComponent } from './user/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { SportSearchService } from "./search/sport-search.service";
     SignInComponent,
     SignUpComponent,
     NewEventComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,9 +45,10 @@ import { SportSearchService } from "./search/sport-search.service";
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,
-    AppRoutingModule    
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   bootstrap: [AppComponent],
-  providers: [EventService,SportSearchService]
+  providers: [EventService,SportSearchService,Angular2TokenService,AuthenticationService]
 })
 export class AppModule { } 

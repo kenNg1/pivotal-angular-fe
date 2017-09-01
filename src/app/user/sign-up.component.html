@@ -81,41 +81,42 @@
                                         </button>
                                         <h4> or be classical </h4>
                                     </div> -->
-                                    <form class="form" method="" action="">
+                                    <form class="form" #signupForm="ngForm" (ngSubmit)="submit(signupForm.value)">
                                         <div class="card-content">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="material-icons">face</i>
-                                                </span>
-                                                <input type="text" class="form-control" placeholder="Full Name...">
-                                            </div>
                                             <div class="input-group">
                                                 <span class="input-group-addon">
                                                     <i class="material-icons">email</i>
                                                 </span>
-                                                <input type="text" class="form-control" placeholder="Email...">
+                                                <input type="email" name='email' (ngModel)='signupForm.email' class="form-control" placeholder="Email...">
                                             </div>
                                             <div class="input-group">
                                                 <span class="input-group-addon">
                                                     <i class="material-icons">lock_outline</i>
                                                 </span>
-                                                <input type="password" placeholder="Password..." class="form-control" />
+                                                <input type="password" name='password' (ngModel)='signupForm.password' placeholder="Password..." class="form-control" />
+                                            </div>                                              
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="material-icons">lock_outline</i>
+                                                </span>
+                                                <input type="password" name='passwordConfirmation' (ngModel)='signupForm.passwordConfirmation' placeholder="Password Confirmation..." class="form-control" />
                                             </div>                                              
                                             <!-- If you want to add a checkbox to this form, uncomment this code -->
-                                            <div class="checkbox">
+                                            <!-- <div class="checkbox">
                                                 <label>
                                                     <input type="checkbox" name="optionsCheckboxes" checked> I agree to the
                                                     <a href="#something">terms and conditions</a>.
                                                 </label>
-                                            </div>
+                                            </div> -->
                                         </div>
                                         <div class="footer text-center">
-                                            <a href="#pablo" class="btn btn-primary btn-round">Get Started</a>
+                                            <button class="btn btn-primary btn-round" type="submit">Get Started</button>
                                         </div>
                                     </form>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>

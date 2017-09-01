@@ -13,4 +13,6 @@ export class Event {
     date?: Date
     time?: string        
     address?: string
+    // virtual attribute
+    userImgSrc?:string
 }

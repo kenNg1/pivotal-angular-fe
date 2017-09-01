@@ -27,7 +27,7 @@
 
       <div class="row">
           <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
-              <form method="#" action="#">
+              <form #loginForm="ngForm" (ngSubmit)="submit(loginForm.value)">
                   <div class="card card-login card-hidden">
                       <div class="card-header text-center" data-background-color="rose">
                           <h4 class="card-title">Login</h4>
@@ -51,7 +51,7 @@
                               </span>
                               <div class="form-group label-floating">
                                   <label class="control-label">Email address</label>
-                                  <input type="email" class="form-control">
+                                  <input type="email" name='email' (ngModel)='loginForm.email' class="form-control">
                               </div>
                           </div>
                           <div class="input-group">
@@ -60,7 +60,7 @@
                               </span>
                               <div class="form-group label-floating">
                                   <label class="control-label">Password</label>
-                                  <input type="password" class="form-control">
+                                  <input type="password" name='password' (ngModel)='loginForm.password' class="form-control">
                               </div>
                           </div>
                       </div>

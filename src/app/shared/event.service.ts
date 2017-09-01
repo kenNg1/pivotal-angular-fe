@@ -15,7 +15,6 @@ export class EventService {
   }
 
   getEvents(): Promise<Event[]> {
-    console.log(this.http.get(this.eventsUrl));
     return this.http.get(this.eventsUrl)
       .toPromise()
       .then(response => {

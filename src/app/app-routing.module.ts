@@ -6,6 +6,7 @@ import { EventDetailComponent } from "./events/event-detail.component";
 import { SignInComponent } from "./user/sign-in.component";
 import { SignUpComponent } from "./user/sign-up.component"
 import { NewEventComponent } from "./events/new-event.component";
+import { ProfileComponent } from "./user/profile/profile.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/events', pathMatch: 'full' },
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'events', component: LandingComponent },
   { path: 'search', component: SearchResultsComponent },
   { path: 'signin', component: SignInComponent},
-  { path: 'signup', component: SignUpComponent}
+  { path: 'signup', component: SignUpComponent},
+  { path: 'profile', component: ProfileComponent}
 ];
 
 @NgModule({

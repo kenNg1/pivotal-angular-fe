@@ -106,7 +106,7 @@
                   </li>
                   <li (click)="filterAdvanced()" [class.active]="filterBy ==='advanced'">
                       <a href="#pill6" data-toggle="tab">Advanced</a>
-                  </li>
+                  </li> 
                 </ul>
               </div>
 
@@ -116,14 +116,14 @@
 
                       <div class="col-md-4 col-sm-6">
                           <div class="click-enter-event"></div>
-                          <img [src]="event.imageUrl">
+                          <img style='height:150px;margin-left:-15px' [src]="event.imageUpload">
                       </div>
                       <div>
                         <div class="col-md-6 col-sm-6">
                           <div class="click-enter-event"></div>
                           <h4 class="event-name">{{event.name}} ({{event.date | date}})</h4>
-                          <p class='event-location'>{{event.location.district}}</p>
-                          <p style="display:inline" class='No of Players'>Signed Up: 8 | Needed: 2</p>
+                          <p class='event-location'>{{event.district}}</p>
+                          <p style="display:inline" class='No of Players'>Signed Up: 8 | Needed: 2 (ADD LATER)</p>
                           <div class="row icons">
                           <br>
                               <div class='icon col-md-2 col-xs-4'>
@@ -148,7 +148,7 @@
                             <div class="click-enter-event"></div>
                             <div style="margin-top:20px;" class='row'>
                               <h3 style="margin-left:10px;" class='event-price'>${{event.price}}</h3>
-                              <img id="avatar-placeholder" [src]="event.userImageUrl">
+                              <img id="avatar-placeholder" src="{{event.user.image}}">
                             </div>
                           </div>
                       </div>

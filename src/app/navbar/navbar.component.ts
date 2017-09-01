@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../user/authentication.service'
+
 
 // to enable search-as-you-type
 import { Observable }        from 'rxjs/Observable';
@@ -15,11 +17,11 @@ import 'rxjs/add/operator/distinctUntilChanged';
  
 import { SportSearchService } from '../search/sport-search.service';
 import { Event } from '../shared/event.model';
-
+ 
 // end of search-as-you-type
 
 @Component({
-    moduleId: module.id,
+    moduleId: module.id, 
     selector: 'navbar',
     templateUrl: 'navbar.component.html',
     styleUrls: ['./navbar.component.scss']
@@ -32,8 +34,26 @@ export class NavbarComponent implements OnInit {
     events: Observable<Event[]>;
     private searchTerms = new Subject<string>();
 
-    constructor(private router: Router, private sportSearchService: SportSearchService) {
+    constructor(private router: Router, private sportSearchService: SportSearchService, private authService: AuthenticationService) {
         setTimeout(() => this.allowButtonClick = true, 2000);
+    }
+
+    isLoggedIn():boolean{
+        return this.authService.isLoggedIn();
+    }
+
+
+    isLoggedOut():boolean{
+        return !this.authService.isLoggedIn(); 
+    } 
+
+    logOut():void {
+        this.authService.logOut();
+    }
+
+    checking(){
+        // console.log(this.authService.validate())
+        console.log(this.authService.currentUser)
     }
 
     onFormInput(event:any){

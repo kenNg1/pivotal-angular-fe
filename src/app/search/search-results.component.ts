@@ -14,8 +14,18 @@ export class SearchResultsComponent implements OnInit {
   filterBy:string = 'all'
   visibleEvents:Event[]=[]
 
+  constructor(private eventService:EventService) { }
+
+  ngOnInit() {
+    this.eventService.getEvents().then(events => {
+      this.events = events;
+      this.visibleEvents = events;
+      this.sortDate();
+      this.visibleEvents;
+    })
+  }
+ 
   sortDate(){
-    this.sortBy === 'date'
     this.visibleEvents = this.events.sort(sortByDateAsc)
   }
 
@@ -29,33 +39,23 @@ export class SearchResultsComponent implements OnInit {
 
   filterBeginner(){
     this.visibleEvents = this.events.filter(function(event){
-      return event.level === 'Beginner'
+      return event.level.toLowerCase() === 'beginners'
     })
   }
 
   filterIntermediate(){
     this.visibleEvents = this.events.filter(function(event){
-      return event.level === 'Intermediate'
+      return event.level.toLowerCase() === 'intermediate'
     })
   }
 
   filterAdvanced(){
     this.visibleEvents = this.events.filter(function(event){
-      return event.level === 'Advanced'
+      return event.level.toLowerCase() === 'advanced'
     })
   }
 
-  constructor(private eventService:EventService) { }
 
-  ngOnInit() {
-    this.eventService.getEvents().then(events => {
-      this.events = events;
-      this.visibleEvents = events;
-      this.sortDate();
-      this.visibleEvents;
-    })
-  }
- 
 
   // PRIOR TO promises implementation
   // ngOnInit() {
