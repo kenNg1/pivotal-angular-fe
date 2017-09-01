@@ -17,9 +17,7 @@ export class NewEventComponent implements OnInit {
   }
 
   dists = [
-    {value: 'Central', viewValue: 'Central'},
-    {value: 'Causeway Bay', viewValue: 'Causeway Bay'},
-    {value: 'Kowloon Tong', viewValue: 'Kowloon Tong'}
+    {value: 1, viewValue: 'wan chai'},
   ];
 
   add(formValues:any):void{

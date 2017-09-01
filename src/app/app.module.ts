@@ -11,8 +11,6 @@ import { MdSelectModule } from '@angular/material';
 import { AppComponent } from './app.component';
 import { EventService } from './shared/event.service';
 import { AppRoutingModule } from "./app-routing.module";
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LandingComponent } from './events/landing.component';
 import { EventThumbnailComponent } from './events/event-thumbnail.component';
@@ -43,9 +41,8 @@ import { SportSearchService } from "./search/sport-search.service";
     MdSelectModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService),
+    AppRoutingModule    
   ],
   bootstrap: [AppComponent],
   providers: [EventService,SportSearchService]

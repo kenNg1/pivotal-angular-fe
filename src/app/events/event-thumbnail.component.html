@@ -3,7 +3,7 @@
           <div style="background: linear-gradient(60deg,#46d1fb,#1ba4d8);" class="card card-product" [routerLink]="['/events',event.id]">  
             <div class="card-image" data-header-animation="false">
                 <a href="#pablo">
-                    <img class="img" [src]="event?.imageUrl">
+                    <img class="img" [src]="event?.imageUpload">
                 </a>
             </div>
             <div class="card-content">
@@ -33,7 +33,7 @@
                     <h4 style="color:white">{{event?.price | currency:"USD":true}}</h4>
                 </div>
                 <div class="stats pull-right">
-                    <p style="color:white" class="category"><i class="material-icons">place</i>{{event?.location.district}}</p>
+                    <p style="color:white" class="category"><i class="material-icons">place</i>{{event?.district}}</p>
                 </div>
             </div>
         </div>

@@ -21,7 +21,7 @@ export class MappingComponent implements OnInit {
   ngOnInit() {
     this.eventService.getEvent(+this.route.snapshot.params['id']).then(event => {
       this.event = event;
-      var location = this.event.location.address;
+      var location = this.event.address;
       var myLatlng = new google.maps.LatLng(40.748817, -73.985428);
       var mapOptions = {
           zoom: 13,

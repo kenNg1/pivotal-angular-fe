@@ -6,11 +6,13 @@ import { Event } from './event.model';
 
 @Injectable()
 export class EventService {
+  headers: Headers
 
-  private eventsUrl = 'api/events'; // URL to web api
-  private headers = new Headers({'Content-Type': 'application/json'})
+  private eventsUrl = 'http://localhost:3000/events'; // URL to web api
 
-  constructor(private http: Http){}
+  constructor(private http: Http){
+    this.headers = new Headers({'Content-Type': 'application/json'})    
+  }
 
   getEvents(): Promise<Event[]> {
     console.log(this.http.get(this.eventsUrl));
