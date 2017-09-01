@@ -1,21 +1,16 @@
 export class Event {
     id: number
     name: string
-    date: Date
-    time: string
-    price: number
-    imageUrl?: string
-    location:{
-        district: string
-        address: string
-    }
+    description: string
+    sport_id: number
+    district_id: number
+    user_id: number
     level: string
-    onlineUrl?: string
-    userId: number
-    userName?: string    
-    userImageUrl?: string    
-    sportId: number
-    terrain?: string
     intensity?: string
-    sportsImageUrl?: string[]
+    terrain?: string
+    price: number
+    imageUpload?: string
+    date: Date
+    time: string        
+    address: string
 }
