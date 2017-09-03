@@ -33,7 +33,7 @@
             <form class="navbar-form navbar-right" role="search">
                 <div class="form-group form-search is-empty">
                     <!-- <input (input)="onFormInput($event)" value={{name}} type="text" class="form-control" placeholder="Search"> -->
-                    <input #searchBox class="form-control" (keyup)="search(searchBox.value)" />
+                    <input #searchBox class="form-control" (keyup)="search(searchBox.value)" placeholder="Search for a sport"/>
                     <span class="material-input"></span>
                 </div>
                 <div *ngFor='let event of events | async' (click)="gotoDetail(event)" class='search-result'>
