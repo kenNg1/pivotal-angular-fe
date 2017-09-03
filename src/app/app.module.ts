@@ -10,6 +10,7 @@ import { Angular2TokenService } from 'angular2-token';
 
 import { AppComponent } from './app.component';
 import { EventService } from './shared/event.service';
+import { SportService } from './shared/sport.service';
 import { AppRoutingModule } from "./app-routing.module";
 import { NavbarComponent } from './navbar/navbar.component';
 import { LandingComponent } from './events/landing.component';
@@ -49,6 +50,6 @@ import { ProfileComponent } from './user/profile/profile.component';
     ReactiveFormsModule
   ],
   bootstrap: [AppComponent],
-  providers: [EventService,SportSearchService,Angular2TokenService,AuthenticationService]
+  providers: [EventService,SportService,SportSearchService,Angular2TokenService,AuthenticationService]
 })
 export class AppModule { } 

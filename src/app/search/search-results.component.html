@@ -41,8 +41,12 @@
                               <i class="material-icons">directions_run</i>
                           </span>
                           <div class="form-group label-floating">
-                              <label class="control-label">Sport</label>
-                              <input type="text" class="form-control">
+                            <md-select class="district-select" [ngModel]="event?.sport" name="district_id" placeholder="Choose Sport" floatPlaceholder="never">
+                                <md-option class="district-option" *ngFor="let sport of sports" [value]="searchedSport">
+                                    <div (click)='filterSport(sport.name, sport.id)'>{{sport.name}}</div>
+                                </md-option>
+                            </md-select>
+                              <!-- <input type="text" class="form-control"> -->
                           </div>
                       </div>
                       <div class="input-group">

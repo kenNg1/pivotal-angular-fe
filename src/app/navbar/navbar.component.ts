@@ -30,7 +30,7 @@ import { Event } from '../shared/event.model';
 export class NavbarComponent implements OnInit {
     allowButtonClick: boolean = false;
     name: string = '';
-
+ 
     events: Observable<Event[]>;
     private searchTerms = new Subject<string>();
 

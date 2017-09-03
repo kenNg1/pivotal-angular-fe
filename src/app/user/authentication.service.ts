@@ -12,7 +12,7 @@ export class AuthenticationService {
     redirectUrl: string;
     public currentUser: User;
     id: number; 
-    email: string;
+    public email: string;
     output: any
   
     constructor(
@@ -68,6 +68,7 @@ export class AuthenticationService {
     // https://github.com/neroniaky/angular2-token/issues/34
 
     signUp(email:string, password:string, passwordConfirmation:string){
+        this.email = email
         return this.tokenService.registerAccount({
             email: email,
             password: password,

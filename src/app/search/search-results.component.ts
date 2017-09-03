@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Event } from '../shared/event.model';
 import { EventService } from '../shared/event.service';
+import { Sport } from '../shared/sport.model';
+import { SportService } from '../shared/sport.service';
 
+import { Headers, Http } from '@angular/http';
 
 @Component({
   selector: 'app-search-results',
@@ -13,44 +16,56 @@ export class SearchResultsComponent implements OnInit {
   sortBy:string = 'date'
   filterBy:string = 'all'
   visibleEvents:Event[]=[]
+  filteredEvents: Event[]=[]
+  sports = [];
+  searchedSport:string
 
-  constructor(private eventService:EventService) { }
+  constructor(private eventService:EventService, private sportService:SportService) { }
 
   ngOnInit() {
     this.eventService.getEvents().then(events => {
       this.events = events;
       this.visibleEvents = events;
       this.sortDate();
-      this.visibleEvents;
+    })
+    this.sportService.getSports().then(sports => {
+      this.sports = sports
+    })
+  }
+  
+  filterSport(sportName, sportId){
+    this.searchedSport = sportName
+    this.visibleEvents = this.filteredEvents = this.events.filter(function(event){
+      return event.sport_id === sportId
     })
   }
  
   sortDate(){
-    this.visibleEvents = this.events.sort(sortByDateAsc)
+    this.visibleEvents = this.visibleEvents.sort(sortByDateAsc)
   }
 
   sortPrice(){
-    this.visibleEvents = this.events.sort(sortByPriceAsc)
+    this.visibleEvents = this.visibleEvents.sort(sortByPriceAsc)
   }
 
   filterAll(){
-    this.visibleEvents = this.events
+    this.visibleEvents = this.filteredEvents
   }
 
   filterBeginner(){
-    this.visibleEvents = this.events.filter(function(event){
+    this.visibleEvents = this.filteredEvents.filter(function(event){
       return event.level.toLowerCase() === 'beginners'
     })
   }
 
   filterIntermediate(){
-    this.visibleEvents = this.events.filter(function(event){
+    this.visibleEvents = this.filteredEvents.filter(function(event){
       return event.level.toLowerCase() === 'intermediate'
     })
   }
 
   filterAdvanced(){
-    this.visibleEvents = this.events.filter(function(event){
+    this.visibleEvents = this.filteredEvents.filter(function(event){
       return event.level.toLowerCase() === 'advanced'
     })
   }
