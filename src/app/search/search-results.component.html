@@ -116,30 +116,30 @@
 
                       <div class="col-md-4 col-sm-6">
                           <div class="click-enter-event"></div>
-                          <img style='height:150px;margin-left:-15px' [src]="event.imageUpload">
+                          <img style='height:150px;margin-left:-15px' [src]="event?.imageUpload">
                       </div>
                       <div>
                         <div class="col-md-6 col-sm-6">
                           <div class="click-enter-event"></div>
-                          <h4 class="event-name">{{event.name}} ({{event.date | date}})</h4>
-                          <p class='event-location'>{{event.district}}</p>
+                          <h4 class="event-name">{{event?.name}} ({{event?.date | date}})</h4>
+                          <p class='event-location'>{{event?.district}}</p>
                           <p style="display:inline" class='No of Players'>Signed Up: 8 | Needed: 2 (ADD LATER)</p>
                           <div class="row icons">
                           <br>
                               <div class='icon col-md-2 col-xs-4'>
                                 <i class="material-icons">terrain</i>
                                 <!-- if indoor use the insert_photo material icon -->
-                                <p>{{event.terrain}}</p>
+                                <p>{{event?.terrain}}</p>
                               </div>
 
                               <div class='icon col-md-2 col-xs-4'>
                                 <i class="material-icons">insert_emoticon</i>
-                                <p>{{event.intensity}}</p>
+                                <p>{{event?.intensity}}</p>
                               </div>
 
                               <div class='icon col-md-2 col-xs-4'>
                                 <i class="material-icons">grade</i>
-                                <p>{{event.level}}</p>
+                                <p>{{event?.level}}</p>
                               </div>
 
                           </div>
@@ -147,8 +147,8 @@
                           <div class="col-md-2">
                             <div class="click-enter-event"></div>
                             <div style="margin-top:20px;" class='row'>
-                              <h3 style="margin-left:10px;" class='event-price'>${{event.price}}</h3>
-                              <img id="avatar-placeholder" src="{{event.user.image}}">
+                              <h3 style="margin-left:10px;" class='event-price'>${{event?.price}}</h3>
+                              <img id="avatar-placeholder" src="{{event?.user?.image}}">
                             </div>
                           </div>
                       </div>
