@@ -30,35 +30,35 @@
                     <label class="col-sm-2 label-on-left">Sport Id</label>
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
-                                <label class="control-label"></label>
-                            <input name='sport_id' [ngModel]="event?.sport_id">
+                            <md-select class="sport-select" [ngModel]="event?.sport_id" name="sport_id" placeholder="Choose Sport" floatPlaceholder="never">
+                                <md-option class="sport-option" *ngFor="let sport of sports" [value]="sport.id">
+                                    {{sport.name}}
+                                </md-option>
+                            </md-select> 
                         </div>
                     </div>
                 </div>
                 <div class="row"> 
                     <label class="col-sm-2 label-on-left">District</label>
                     <div class="col-sm-10">
-                        <div ngModelGroup="location">                                        
+                        <div ngModelGroup="location">                                         
                             <div class="form-group label-floating is-empty">
-                                <!-- <select ngModel name='district' class="selectpicker" data-style="select-with-transition" data-size="7">
-                                    <option disabled> Choose District</option>
-                                    <option *ngFor="let dist of dists" [value]="dist">{{dist}}</option>
-                                </select>          -->
                                 <md-select class="district-select" [ngModel]="event?.district_id" name="district_id" placeholder="Choose District" floatPlaceholder="never">
-                                    <md-option class="district-option" *ngFor="let dist of dists" [value]="dist.value">
-                                        {{dist.viewValue}}
+                                    <md-option class="district-option" *ngFor="let dist of districts" [value]="dist.id">
+                                        {{dist.name}}
                                     </md-option>
                                 </md-select>                    
-                            </div>
+                            </div> 
                         </div>
                     </div>
                 </div> 
-                <div class="row">
+                <div style='display:none' class="row" >
+                        <!-- style='display:hidden' -->
                     <label class="col-sm-2 label-on-left">User Id</label>
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
-                                <label class="control-label"></label>
-                            <input name='user_id' [ngModel]="event?.user_id">
+                            <label class="control-label"></label>
+                            <input name='user_id' type='hidden' ngModel="{{this.authService.tokenService.currentUserData?.id}}"/>
                         </div>
                     </div>
                 </div>

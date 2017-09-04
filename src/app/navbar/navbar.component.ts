@@ -36,7 +36,7 @@ export class NavbarComponent implements OnInit {
 
     constructor(private router: Router, private sportSearchService: SportSearchService, private authService: AuthenticationService) {
         setTimeout(() => this.allowButtonClick = true, 2000);
-    }
+    } 
 
     isLoggedIn():boolean{
         return this.authService.isLoggedIn();
