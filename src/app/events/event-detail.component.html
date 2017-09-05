@@ -200,7 +200,7 @@
                             <div ngModelGroup="location">
                                 <div class="form-group label-floating is-empty">
                                         <label class="control-label"></label>
-                                    <input [ngModel]="event?.location.address" name='address' type="text" class="form-control" placeholder="e.g. Flat C, 100/F, 2-10 Gough Street, Sheung Wan, Hong Kong">
+                                    <input [ngModel]="event?.address" name='address' type="text" class="form-control" placeholder="e.g. Flat C, 100/F, 2-10 Gough Street, Sheung Wan, Hong Kong">
                                     <span class="help-block">A block of help text that breaks onto a new line.</span>
                                 </div>
                             </div>
@@ -215,7 +215,7 @@
                                         <option disabled> Choose District</option>
                                         <option *ngFor="let dist of dists" [value]="dist">{{dist}}</option>
                                     </select>          -->
-                                    <md-select class="district-select" [ngModel]="event?.location.district" name="district" placeholder="Choose District" floatPlaceholder="never">
+                                    <md-select class="district-select" [ngModel]="event?.district" name="district" placeholder="Choose District" floatPlaceholder="never">
                                         <md-option class="district-option" *ngFor="let dist of dists" [value]="dist.value">
                                             {{dist.viewValue}}
                                         </md-option>
@@ -255,9 +255,9 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="text-center card-header card-header-icon" data-background-color="rose">
-                    <h1>SUN</h1> 
+                    <h1>{{this.event?.date | date:'EEE'| uppercase}}</h1> 
                     <hr>
-                    <h3>JUN 16</h3>
+                    <h3>{{this.event?.date | date:'d MMM'| uppercase}} </h3>
                 </div>
                 <br>
                 <div class="card-content text-center">
@@ -293,8 +293,8 @@
                 </div>
                 <hr>
                 <div class='card-content' style='margin:-20px 18px 0px 18px'>
-                    <h2 style="display:inline-block; margin:0">{{event?.time}}</h2>
-                    <h5 style="display:inline-block; margin: 0 0 0 40px; font-size: 17px;">{{event?.location.address}}, {{event?.location.district}}</h5>
+                    <h2 style="display:inline-block; margin:0">{{event?.time | date:'shortTime'}}</h2>
+                    <h5 style="display:inline-block; margin: 0 0 0 40px; font-size: 17px;">{{event?.address}}, {{event?.district}}</h5>
                     <button style="float:right; margin-top: 5px" class="btn btn-rose">Register</button>
                     <h3 style="float:right; margin:10px 30px 0 0">{{event?.price | currency:USD:true}}</h3>
                 </div>
@@ -315,7 +315,7 @@
                         Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
                     </p>
                     <a href="#pablo" class="btn btn-rose btn-round">View Profile</a>
-                    <a style="display: block;max-width: 70%;margin: 0 auto;" href="#pablo" class="btn btn-rose btn-round">Contact {{event?.userName.substr(0, event.userName.indexOf(" "))}}</a>
+                    <a style="display: block;max-width: 70%;margin: 0 auto;" href="#pablo" class="btn btn-rose btn-round">Contact FirstName</a>
                 </div>
             </div>
         </div>
@@ -342,13 +342,13 @@
                                     </li>
                                     <li class="">
                                         <a href="#messages" data-toggle="tab">
-                                            <i class="material-icons">code</i> Organiser
+                                            <i class="material-icons">supervisor_account</i> Organiser
                                             <div class="ripple-container"></div>
                                         </a>
                                     </li>
                                     <li class="">
                                         <a href="#settings" data-toggle="tab">
-                                            <i class="material-icons">cloud</i> About Sport
+                                            <i class="material-icons">help_outline</i> About Sport
                                             <div class="ripple-container"></div>
                                         </a>
                                     </li>

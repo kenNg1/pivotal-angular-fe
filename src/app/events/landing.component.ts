@@ -30,6 +30,11 @@ export class LandingComponent implements OnInit {
     this.sportService.getSports()
       .then(sports => {
         this.sports = sports;
+        let repeat = 5-sports.length%5;
+        for(let i=0;i<repeat;i++){
+          this.sports.push(this.sports[i])
+        }
+        console.log(this.sports.length)
         this.setRandoms();
       })
   }
@@ -38,20 +43,33 @@ export class LandingComponent implements OnInit {
     // if(this.randomBegin<0){
     //   let modulo = this.sports.length%5
     //   this.randoms = this.sports.slice(this.sports.length+this.randomBegin,this.sports.length+this.randomEnd-modulo)
-    // }else{
-      let current = this.randomBegin-5
+    // }
+    let current = this.randomBegin
+    
+    if(this.randomBegin<0){
+      console.log("less than zero",this.randomBegin);          
+      
+      console.log("current",current)
       let arr = []
-      for (let i=0;i>5;i++){
-        if(current<0){
-          arr.push(this.sports[this.sports.length+current])
-          current += 1
-        }
-        else {
-          arr.push(this.sports[current])
+      
+      if(current<0){
+        console.log("start pushing")
+        
+        for(let i=0;i<5;i++){
+        arr.push(this.sports[this.sports.length+current])
+        current += 1
         }
       }
+      else {
+        arr.push(this.sports[current])
+      }
       this.randoms = arr
-    // }
+    }else{
+      this.randoms = this.sports.slice(this.randomBegin,this.randomBegin+5)
+    }
+
+
+    
   }
 
   // BELOW IS prior to using promises
@@ -62,12 +80,17 @@ export class LandingComponent implements OnInit {
 
   randomLeft(){
     this.randomBegin -= 5;
+    if(this.randomBegin<this.sports.length*-1){
+      this.randomBegin=0;
+    }
     this.setRandoms();
-    console.log(this.randomBegin)
   }
 
   randomRight(){
     this.randomBegin += 5;
+    if(this.randomBegin==this.sports.length){
+      this.randomBegin=0;
+    }
     this.setRandoms();
   }
 

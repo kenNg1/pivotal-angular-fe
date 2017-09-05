@@ -31,7 +31,11 @@ export class EventDetailComponent implements OnInit {
   ngOnInit():void {
    this.route.paramMap
     .switchMap((params: ParamMap) => this.eventService.getEvent(+params.get('id')))
-    .subscribe(event => this.event = event)
+    .subscribe(res => {
+      this.event = res;
+      console.log(this.event.date);
+      window.scrollTo(0, 0)
+    })
   }
 
   randomAvailability = "9/10"
@@ -45,11 +49,13 @@ export class EventDetailComponent implements OnInit {
   }
 
   showForm(): void{
+    window.scrollTo(0, 0);        
     $('.modal').show()
   }
 
   closeForm(): void{
-    $('.modal').hide()
+    window.scrollTo(0, 0);        
+    $('.modal').hide();
   }
 
   goBack():void{
