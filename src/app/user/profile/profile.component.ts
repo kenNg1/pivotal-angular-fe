@@ -1,6 +1,9 @@
 import { Component, OnInit, state, style,animate,transition, trigger, keyframes } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service'
+import { DetailService } from "../detail.service";
+import { Detail } from "../../shared/detail.model";
+
 
 @Component({
   selector: 'app-profile',
@@ -47,13 +50,27 @@ import { AuthenticationService } from '../authentication.service'
             ])
         ])
     ]
-})
+}) 
 export class ProfileComponent implements OnInit {
 
-  constructor(private authService: AuthenticationService) { }
-
+  constructor(private authService: AuthenticationService, private detailService:DetailService) { }
+  id:number
+  userDetail:Detail
   ngOnInit() {
+        this.authService.validate().subscribe(value=>{
+            this.detailService.getDetail(value.id).then(detail => {
+                this.id = detail.json().id
+                this.userDetail = detail.json()
+                console.log(this.userDetail)
+            })
+        })
   }
 
+  submit(formValues){
+      console.log(formValues)
+      this.detailService.updateUserDetail(formValues)
+  }
+
+// Javascript to show placeholder "New Password"
 
 }

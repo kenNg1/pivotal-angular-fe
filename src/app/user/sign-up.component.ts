@@ -11,12 +11,14 @@ import { AuthenticationService } from './authentication.service'
 export class SignUpComponent implements OnInit {
   submitted: boolean;
   signupForm: FormGroup;
+  id:number;
 
   constructor(
       private authService: AuthenticationService,
       private formBuilder: FormBuilder
   ){}
 
+  
   ngOnInit(){
       this.submitted = false;
       // this.signupForm = this.formBuilder.group({
@@ -32,7 +34,7 @@ export class SignUpComponent implements OnInit {
       // if (!this.signupForm.valid){return}
       console.log(value.email, value.password, value.passwordConfirmation)
       this.authService.signUp(value.email, value.password, value.passwordConfirmation).subscribe(
-          this.authService.redirectAfterLogin.bind(this.authService),
+        res => this.authService.redirectAfterLogin.apply(this.authService,[res, value.firstName,value.lastName])
           // response - *bind* makes sure that "this" in "this.redirectUrl" is referring to the type declared in the auth.service.ts file
           // this.afterFailedSignup.bind(this)
           // error - *bind* binding to this current component, not the service 
@@ -50,5 +52,9 @@ export class SignUpComponent implements OnInit {
           }
       }
       this.signupForm.setErrors(parsed_errors);        
+  }
+
+  fetchId(id){
+      this.id = id
   }
 }

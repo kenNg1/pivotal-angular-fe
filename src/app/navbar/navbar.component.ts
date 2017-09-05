@@ -17,7 +17,7 @@ import 'rxjs/add/operator/distinctUntilChanged';
  
 import { SportSearchService } from '../search/sport-search.service';
 import { Event } from '../shared/event.model';
- 
+
 // end of search-as-you-type
 
 @Component({
@@ -79,7 +79,7 @@ export class NavbarComponent implements OnInit {
                 console.log(error);
                 return Observable.of<Event[]>([]);
             })
-    }
+    } 
 
     search(term:string):void{
         this.searchTerms.next(term);

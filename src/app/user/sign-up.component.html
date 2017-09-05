@@ -1,3 +1,4 @@
+<div *ngIf=fetchId(this.authService.tokenService?.currentUserData)></div>
 <body style='background-image: url("../assets/img/football-field.jpg"); height: 100vh; background-size: cover;'>
     
     <div style="position:relative; top: -50px" class="wrapper wrapper-full-page">
@@ -60,6 +61,13 @@
                                     </div> -->
                                     <form class="form" #signupForm="ngForm" (ngSubmit)="submit(signupForm.value)">
                                         <div class="card-content">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="material-icons">perm_identity</i>
+                                                </span>
+                                                <input type="text" name='firstName' ngModel class="form-control" placeholder="First Name...">
+                                                <input type="text" name='lastName' ngModel class="form-control" placeholder="Last Name...">
+                                            </div>
                                             <div class="input-group">
                                                 <span class="input-group-addon">
                                                     <i class="material-icons">email</i>

@@ -2,48 +2,62 @@
     <div class="container-fluid">
             <div class="row">
                     <div class="col-md-8">
-                        <div class="card">
+                        <div class="card"> 
                             <div class="card-header card-header-icon" data-background-color="rose">
                                 <i class="material-icons">perm_identity</i>
                             </div>
-                            <div class="card-content">
+                            <div class="card-content"> 
                                 <h4 class="card-title">Edit Profile -
                                     <small class="category">Complete your profile</small>
                                 </h4>
-                                <form>
-                                    <div class="row">
-                                        <div class="col-md-12">
+                                <form #userDetailsForm="ngForm" (ngSubmit)="submit(userDetailsForm.value)">
+                                     <div class="row">
+                                        <div style='display:hidden'>
+                                                    <input name="user_id" type="hidden" class="form-control" [ngModel]="this.id">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label>First Name:</label>
                                             <div class="form-group label-floating">
-                                                <label class="control-label">Email address</label>
-                                                <input type="email" class="form-control">
+                                                <input name="firstName" type="text" class="form-control" [ngModel]="this.userDetail?.firstName">
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-md-3">
+                                            <label>Last Name:</label>        
                                             <div class="form-group label-floating">
-                                                <label class="control-label">First Name</label>
-                                                <input type="text" class="form-control">
+                                                <input name="lastName" type="text" class="form-control" [ngModel]="this.userDetail?.lastName">
                                             </div>
                                         </div>
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
+                                            <label>Nickname / Club Role:</label>        
                                             <div class="form-group label-floating">
-                                                <label class="control-label">Last Name</label>
-                                                <input type="text" class="form-control">
+                                                <input name="nickname" type="text" class="form-control" [ngModel]="this.userDetail?.nickname">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>About Me</label>
+                                                <label>About Me:</label>
                                                 <div class="form-group label-floating">
-                                                    <label class="control-label"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
-                                                    <textarea class="form-control" rows="5"></textarea>
+                                                    <textarea name="description" class="form-control" rows="5" [ngModel]="this.userDetail?.description"></textarea>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">Change password? :</label>
+                                                <input name="password" type="email" class="form-control" ngModel>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">Confirm Password:</label>
+                                                <input name="passwordConfirmation" type="passwordConfirmation" class="form-control" ngModel>
+                                            </div>
+                                        </div>
+                                    </div> -->
                                     <button type="submit" class="btn btn-rose pull-right">Update Profile</button>
                                     <div class="clearfix"></div>
                                 </form>
@@ -61,8 +75,9 @@
                                 <h6 class="category text-gray">Lacrosse Coach @ LAX-HK</h6>
                                 <h4 class="card-title">Alicia Thompson</h4>
                                 <p class="description">
-                                    Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                                    Don't be scared of the truth because we need to restart the human foundation in truth and I love you like Kanye loves Kanye.
                                 </p>
+                                <button class="btn btn-rose">Change Password</button>
                             </div>
                         </div>
                     </div>

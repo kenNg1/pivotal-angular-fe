@@ -26,6 +26,7 @@ import { SportSearchService } from "./search/sport-search.service";
 import { AuthenticationService } from "./user/authentication.service";
 import { ProfileComponent } from './user/profile/profile.component';
 import { UserApprovalComponent } from './user/admin/user-approval.component';
+import { DetailService } from "./user/detail.service";
 
 @NgModule({
   declarations: [
@@ -53,6 +54,6 @@ import { UserApprovalComponent } from './user/admin/user-approval.component';
     ReactiveFormsModule
   ],
   bootstrap: [AppComponent],
-  providers: [EventService,SportService,DistrictService,SportSearchService,Angular2TokenService,AuthenticationService]
+  providers: [EventService,SportService,DistrictService,SportSearchService,Angular2TokenService,AuthenticationService, DetailService]
 })
 export class AppModule { } 
