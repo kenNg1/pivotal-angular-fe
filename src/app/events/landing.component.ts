@@ -30,6 +30,11 @@ export class LandingComponent implements OnInit {
     this.sportService.getSports()
       .then(sports => {
         this.sports = sports;
+        let repeat = 5-sports.length%5;
+        for(let i=0;i<repeat;i++){
+          this.sports.push(this.sports[i])
+        }
+        console.log(this.sports.length)
         this.setRandoms();
       })
   }
@@ -76,12 +81,17 @@ export class LandingComponent implements OnInit {
 
   randomLeft(){
     this.randomBegin -= 5;
+    if(this.randomBegin<this.sports.length*-1){
+      this.randomBegin=0;
+    }
     this.setRandoms();
-    console.log(this.randomBegin)
   }
 
   randomRight(){
     this.randomBegin += 5;
+    if(this.randomBegin==this.sports.length){
+      this.randomBegin=0;
+    }
     this.setRandoms();
   }
 

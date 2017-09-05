@@ -29,7 +29,7 @@ export class EventService {
     const url = `${this.eventsUrl}/${id}`;
     return this.http.get(url)
       .toPromise()
-      .then(response => response.json().data as Event)
+      .then(response => response.json() as Event)
       .catch(this.handleError)
   }
 

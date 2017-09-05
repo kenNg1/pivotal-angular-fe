@@ -21,6 +21,7 @@ export class SearchResultsComponent implements OnInit {
   sports = [];
   districts = [];
   searchedSport:string
+  searchedSportId:number
   searchedDistrict:string  
   searchedDate:string
   form: any;  
@@ -37,6 +38,8 @@ export class SearchResultsComponent implements OnInit {
         this.sports = sports;
         if(this.sportService.searchedSportId){
           this.filterSport(this.sportService.searchedSportName,this.sportService.searchedSportId)
+          this.searchedSport = this.sportService.searchedSportName
+          this.searchedSportId = this.sportService.searchedSportId
           this.sportService.searchedSportId=null
         }
       })
@@ -52,6 +55,8 @@ export class SearchResultsComponent implements OnInit {
   }
 
   filterSport(sportName, sportId){
+    document.getElementById('clearSearch').click();    
+    this.searchedDistrict = null    
     this.searchedSport = sportName
     console.log(sportId)
     this.visibleEvents = this.filteredEvents.filter(function(event){
@@ -61,6 +66,8 @@ export class SearchResultsComponent implements OnInit {
   }
   
   filterDistrict(districtName, districtId){
+    document.getElementById('clearSearch').click();        
+    this.searchedSport = null    
     this.searchedDistrict = districtName
     console.log(districtId)    
     this.visibleEvents = this.filteredEvents.filter(function(event){

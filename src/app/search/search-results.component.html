@@ -48,6 +48,7 @@
                             </md-select>
                           </div>
                       </div>
+                        <h4 style='text-align:center'>or</h4>
                       <!-- <div class="input-group">
                           <span class="input-group-addon">
                               <i class="material-icons">date_range</i>
@@ -71,7 +72,7 @@
                         </div>
                     </div>
                     <div class="footer text-center">
-                        <button type="submit" class="btn btn-rose btn-simple btn-wd btn-lg">Clear Search</button>
+                        <button type="submit" id='clearSearch' class="btn btn-rose btn-simple btn-wd btn-lg">Clear Search</button>
                     </div>
                   </div>
               </form>
@@ -106,6 +107,9 @@
                         </li> 
                     </ul>  
                 </div>
+
+                <h3 *ngIf="this.searchedSport">Searched Sport: {{this.searchedSport}}</h3>
+                <h3 *ngIf="this.searchedDistrict">Searched District: {{this.searchedDistrict}}</h3>    
 
                 <div *ngFor="let event of visibleEvents">
 
