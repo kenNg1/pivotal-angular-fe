@@ -11,13 +11,9 @@
                 </div>
                 <button style="visibility:hidden" type="submit" class="btn btn-white btn-round btn-just-icon">
                 </button>
-                <i style="font-size: 35px; position:relative; top: 10px" class="material-icons">chevron_left</i>
-                <button class="btn btn-info">Rugby</button>
-                <button class="btn btn-info">Football</button>
-                <button class="btn btn-info">Frisbee</button>
-                <button class="btn btn-info">Track</button>
-                <button class="btn btn-info">Lacrosse</button>
-                <i style="font-size: 35px; " class="material-icons">chevron_right</i>
+                <i style="font-size: 35px; position:relative; top: 10px" class="material-icons" (click)="randomLeft()">chevron_left</i>
+                <button *ngFor="let random of randoms" class="btn btn-info">{{random.name}}</button>
+                <i style="font-size: 35px; " class="material-icons" (click)="randomRight()">chevron_right</i>
             </form>
         </div>
         <!-- <div>Name: {{events[0].name}}</div> -->
