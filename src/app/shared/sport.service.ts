@@ -7,6 +7,9 @@ import { Sport } from './sport.model';
 @Injectable()
 export class SportService {
   headers: Headers
+  public searchedSportId: number
+  public searchedSportName: string
+
 
   private sportsUrl = 'http://localhost:3000/sports'; // URL to web api
  

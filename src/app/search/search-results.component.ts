@@ -33,10 +33,15 @@ export class SearchResultsComponent implements OnInit {
       this.visibleEvents = events;
       this.filteredEvents = events
       this.sortDate();
+      this.sportService.getSports().then(sports => {
+        this.sports = sports;
+        if(this.sportService.searchedSportId){
+          this.filterSport(this.sportService.searchedSportName,this.sportService.searchedSportId)
+          this.sportService.searchedSportId=null
+        }
+      })
     })
-    this.sportService.getSports().then(sports => {
-      this.sports = sports
-    })
+ 
     this.districtService.getDistricts().then(districts => {
       this.districts = districts
     })
@@ -48,9 +53,11 @@ export class SearchResultsComponent implements OnInit {
 
   filterSport(sportName, sportId){
     this.searchedSport = sportName
+    console.log(sportId)
     this.visibleEvents = this.filteredEvents.filter(function(event){
       return event.sport_id === sportId
     })
+    console.log(this.visibleEvents)
   }
   
   filterDistrict(districtName, districtId){
