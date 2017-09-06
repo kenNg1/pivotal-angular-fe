@@ -67,8 +67,11 @@ export class ProfileComponent implements OnInit {
 
   submit(formValues){
       console.log(formValues)
-      this.detailService.updateUserDetail(formValues)
-      this.router.navigate(['/profile'])
+      this.detailService.updateUserDetail(formValues).then(
+          response=> {
+            this.userDetail = response.json()
+          }
+      )
       
   }
 

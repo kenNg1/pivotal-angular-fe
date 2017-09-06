@@ -54,12 +54,12 @@ export class DetailService {
     .catch(this.handleError);
   }
 
-  updateUserDetail(detail:Detail):Promise<Detail>{
+  updateUserDetail(detail:Detail){
      const url = `${this.detailsUrl}/${detail.user_id}`
      return this.http
        .put(url, JSON.stringify(detail), {headers:this.headers})
        .toPromise()
-       .then(response => console.log(response))
+       .then(response => response)
        .catch(this.handleError)
   }
 
