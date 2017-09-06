@@ -63,7 +63,7 @@ export class SearchResultsComponent implements OnInit {
     this.searchedDistrict = null    
     this.searchedSport = sportName
     console.log(sportId)
-    this.visibleEvents = this.filteredEvents.filter(function(event){
+    this.visibleEvents = this.filteredEvents = this.visibleEvents.filter(function(event){
       return event.sport_id === sportId
     })
     console.log(this.visibleEvents)
@@ -74,18 +74,18 @@ export class SearchResultsComponent implements OnInit {
     this.searchedSport = null    
     this.searchedDistrict = districtName
     console.log(districtId)    
-    this.visibleEvents = this.filteredEvents.filter(function(event){
+    this.visibleEvents = this.filteredEvents = this.visibleEvents.filter(function(event){
       return event.district_id === districtId
     })
   }
 
-  filterDate(value){
-    console.log(value)
-    this.searchedDate = value
-    this.visibleEvents = this.filteredEvents = this.events.filter(function(event){
-      return event.date === value
-    })
-  }
+  // filterDate(value){
+  //   console.log(value)
+  //   this.searchedDate = value
+  //   this.visibleEvents = this.filteredEvents = this.events.filter(function(event){
+  //     return event.date === value
+  //   })
+  // }
  
   sortDate(){
     this.visibleEvents = this.visibleEvents.sort(sortByDateAsc)
