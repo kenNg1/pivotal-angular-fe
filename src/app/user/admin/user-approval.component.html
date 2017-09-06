@@ -17,17 +17,17 @@
                                         <th>Nickname</th>
                                         <th>Description</th>
                                         <th class="text-right">Tier</th>
-                                        <th class="text-right">Amount</th>
+                                        <th class="text-right">Click to change tier</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let detail of details">
-                                        <td class="text-center">{{detail.user_id}}</td>
+                                        <td class="text-center">{{detail.id}}</td>
                                         <td>{{detail.firstName}} {{detail.lastName}}</td>
                                         <td>{{detail.nickName}}</td>
                                         <td>{{detail.description}}</td>
-                                        <td class="text-right">{{detail.tier}}</td>
-                                        <td class="text-right">&euro; 1,225</td>
+                                        <td class="text-right" id='{{detail.id}}tier' [innerText]="detail.tier"></td>
+                                        <td class="text-right"><button class='btn btn-outline' (click)="changeTier(detail.id, detail.tier)">Change Tier</button></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -39,3 +39,4 @@
         </div>
     </div>
 </div>
+

@@ -23,7 +23,7 @@ export class LandingComponent implements OnInit {
   }
 
   getEvents(): void {
-    this.eventService.getEvents().then(events => {this.events = events; console.log(this.events)})
+    this.eventService.getEvents().then(events => {this.events = events;})
   }
 
   getSports(): void {
@@ -34,7 +34,6 @@ export class LandingComponent implements OnInit {
         for(let i=0;i<repeat;i++){
           this.sports.push(this.sports[i])
         }
-        console.log(this.sports.length)
         this.setRandoms();
       })
   }
@@ -64,7 +63,6 @@ export class LandingComponent implements OnInit {
     else if (this.randomBegin >this.sports.length-1) {
       this.randomBegin = this.randomBegin - this.sports.length
     }
-    console.log('hello'+this.randomBegin)
     this.randoms = arr
   }
 

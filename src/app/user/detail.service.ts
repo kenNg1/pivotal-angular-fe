@@ -63,6 +63,20 @@ export class DetailService {
        .catch(this.handleError)
   }
 
+  updateUserTier(id,tier){
+    const url = `${this.detailsUrl}/${id}`
+    return this.http
+      .put(url, JSON.stringify(
+        {
+         id:id,
+         tier:tier
+        }
+      ), {headers:this.headers})
+      .toPromise()
+      .then(response => response)
+      .catch(this.handleError)
+  }
+
   private handleError(error:any): Promise<any> {
     console.log('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error)
