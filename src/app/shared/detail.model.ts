@@ -1,5 +1,6 @@
 export class Detail {
-    user_id: number
+    id?: number
+    user_id?: number
     firstName?: string
     lastName?: string
     nickname?: string
