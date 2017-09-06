@@ -12,7 +12,7 @@ export class UserApprovalComponent implements OnInit {
   constructor(private detailService:DetailService) { }
 
   ngOnInit() {
-    this.detailService.getDetails().then(res => this.details = res)
+    this.detailService.getDetails().then(res => {this.details = res;console.log(this.details)})
   }
 
   changeTier(id,tier){
