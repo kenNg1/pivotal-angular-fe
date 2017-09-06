@@ -33,7 +33,7 @@ export class EventDetailComponent implements OnInit {
     .switchMap((params: ParamMap) => this.eventService.getEvent(+params.get('id')))
     .subscribe(res => {
       this.event = res;
-      console.log(this.event.date);
+      console.log(res);
       window.scrollTo(0, 0)
     })
   }

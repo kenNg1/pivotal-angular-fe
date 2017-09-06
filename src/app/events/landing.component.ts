@@ -23,7 +23,7 @@ export class LandingComponent implements OnInit {
   }
 
   getEvents(): void {
-    this.eventService.getEvents().then(events => {this.events = events})
+    this.eventService.getEvents().then(events => {this.events = events; console.log(this.events)})
   }
 
   getSports(): void {

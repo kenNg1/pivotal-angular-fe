@@ -53,7 +53,7 @@ import { Detail } from "../../shared/detail.model";
 }) 
 export class ProfileComponent implements OnInit {
 
-  constructor(private authService: AuthenticationService, private detailService:DetailService) { }
+  constructor(private authService: AuthenticationService, private detailService:DetailService, private router:Router) { }
   id:number
   userDetail:Detail
   ngOnInit() {
@@ -61,7 +61,7 @@ export class ProfileComponent implements OnInit {
             this.detailService.getDetail(value.id).then(detail => {
                 this.id = detail.json().id
                 this.userDetail = detail.json()
-                console.log(this.userDetail)
+                console.log(this.userDetail.image)
             })
         })
   }
@@ -69,6 +69,8 @@ export class ProfileComponent implements OnInit {
   submit(formValues){
       console.log(formValues)
       this.detailService.updateUserDetail(formValues)
+      this.router.navigate(['/profile'])
+      
   }
 
 // Javascript to show placeholder "New Password"
