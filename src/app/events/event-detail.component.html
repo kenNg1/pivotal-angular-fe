@@ -13,7 +13,7 @@
                         <div class="col-sm-10">
                             <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                <input name='id' [ngModel]="event?.id">
+                                <input name='id' [ngModel]="event?.id" class="form-control">
                             </div>
                         </div>
                     </div>
@@ -22,7 +22,7 @@
                         <div class="col-sm-10">
                             <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                <input name='imageUrl' [ngModel]="event?.imageUrl">
+                                <input name='imageUrl' [ngModel]="event?.imageUpload" class="form-control">
                             </div>
                         </div>
                     </div>
@@ -31,16 +31,8 @@
                         <div class="col-sm-10">
                             <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                <input name='onlineUrl' [ngModel]="event?.onlineUrl">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label class="col-sm-2 label-on-left">User Id</label>
-                        <div class="col-sm-10">
-                            <div class="form-group label-floating is-empty">
-                                    <label class="control-label"></label>
-                                <input name='userId' [ngModel]="event?.userId">
+                                <input name='onlineUrl' [ngModel]="event?.onlineUrl" class="form-control">
+                                <input type="hidden" name='user_id' [ngModel]="event?.user_id" class="form-control">                               
                             </div>
                         </div>
                     </div>
@@ -49,7 +41,7 @@
                         <div class="col-sm-10">
                             <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                <input name='userName' [ngModel]="event?.userName">
+                                <input name='userName' [ngModel]="event?.userName" class="form-control">
                             </div>
                         </div>
                     </div>
@@ -58,7 +50,7 @@
                         <div class="col-sm-10">
                             <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                    <input name="sportsImageUrl" [ngModel]="event?.sportsImageUrl">
+                                    <input name="sportsImageUrl" [ngModel]="event?.sportsImageUrl" class="form-control">
                             </div>
                         </div>
                     </div>                  
@@ -73,13 +65,16 @@
                         </div>
                     </div>
                     <div class="row">
-                        <label class="col-sm-2 label-on-left">Sport Id</label>
-                        <div class="col-sm-10">
-                            <div class="form-group label-floating is-empty">
-                                    <label class="control-label"></label>
-                                <input name='sportId' [ngModel]="event?.sportId">
+                            <label class="col-sm-2 label-on-left">Sport</label>
+                            <div class="col-sm-10">
+                                <div class="form-group label-floating is-empty">
+                                    <md-select class="sport-select" [ngModel]="event?.sport_id" name="sport_id" placeholder="Choose Sport" floatPlaceholder="never">
+                                        <md-option class="sport-option" *ngFor="let sport of sports" [value]="sport.id">
+                                            {{sport.name}}
+                                        </md-option>
+                                    </md-select> 
+                                </div>
                             </div>
-                        </div>
                     </div>
                     <div class="row"> 
                         <label class="col-sm-2 label-on-left">Name</label>
@@ -108,45 +103,21 @@
                     </div>
                     <div class="row">
                         <label class="col-sm-2 label-on-left">Intensity</label>
-                        <div class="col-sm-10 checkbox-radios">
+                        <div class="form-group col-sm-10 checkbox-radios">
+                                
                             <div class="radio">
                                 <label>
-                                    <input ngModel type="radio" name="intensity" checked="true" value="competitive"> Competitive
+                                    <input checked="checkIntensity(friendly)" type="radio" name="intensity" value="friendly"> Friendly
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input ngModel type="radio" name="intensity" value="friendly"> Friendly
-                                </label>
-                            </div>
-                            <div class="radio">
-                                <label>
-                                    <input ngModel type="radio" name="intensity" value="casual"> Casual
+                                    <input checked="checkIntensity(high)" type="radio" name="intensity" value="casual"> Casual
                                 </label>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <label class="col-sm-2 label-on-left">Level</label>
-                        <div class="col-sm-10 checkbox-radios">
-                            <div class="radio">
-                                <label>
-                                    <input ngModel type="radio" name="level" checked="true" value="Beginners"> Beginners
-                                </label>
-                            </div>
-                            <div class="radio">
-                                <label>
-                                    <input ngModel type="radio" name="level" value="Intermediate"> Intermediate
-                                </label>
-                            </div>
-                            <div class="radio">
-                                <label>
-                                    <input ngModel type="radio" name="level" value="Advanced"> Advanced
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="row">
                         <label class="col-sm-2 label-on-left">Level</label>
                         <div class="col-sm-10 checkbox-radios">
                             <div class="checkbox">
@@ -165,8 +136,8 @@
                                 </label>
                             </div>
                         </div>
-                    </div> -->
-                    <!-- <div class="row">
+                    </div>
+                    <div class="row">
                         <label class="col-sm-2 label-on-left">Spaces available</label>
                         <div class="col-sm-10">
                             <div class="form-group label-floating is-empty">
@@ -175,7 +146,7 @@
                                 <span class="help-block">A block of help text that breaks onto a new line.</span>
                             </div>
                         </div>
-                    </div>  -->
+                    </div>
                     <div class="row">
                         <label class="col-sm-2 label-on-left">Time</label>
                         <div class="col-sm-10">
@@ -207,23 +178,19 @@
                         </div>
                     </div>
                     <div class="row"> 
-                        <label class="col-sm-2 label-on-left">District</label>
-                        <div class="col-sm-10">
-                            <div ngModelGroup="location">                                        
-                                <div class="form-group label-floating is-empty">
-                                    <!-- <select ngModel name='district' class="selectpicker" data-style="select-with-transition" data-size="7">
-                                        <option disabled> Choose District</option>
-                                        <option *ngFor="let dist of dists" [value]="dist">{{dist}}</option>
-                                    </select>          -->
-                                    <md-select class="district-select" [ngModel]="event?.district" name="district" placeholder="Choose District" floatPlaceholder="never">
-                                        <md-option class="district-option" *ngFor="let dist of dists" [value]="dist.value">
-                                            {{dist.viewValue}}
-                                        </md-option>
-                                    </md-select>                    
+                            <label class="col-sm-2 label-on-left">District</label>
+                            <div class="col-sm-10">
+                                <div ngModelGroup="location">                                         
+                                    <div class="form-group label-floating is-empty">
+                                        <md-select class="district-select" [ngModel]="event?.district_id" name="district_id" placeholder="Choose District" floatPlaceholder="never">
+                                            <md-option class="district-option" *ngFor="let dist of districts" [value]="dist.id">
+                                                {{dist.name}}
+                                            </md-option>
+                                        </md-select>                    
+                                    </div> 
                                 </div>
                             </div>
-                        </div>
-                    </div>              
+                    </div>           
                     <div class="row">
                         <label class="col-sm-2 label-on-left">Price</label>
                         <div class="col-sm-10">

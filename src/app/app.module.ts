@@ -4,8 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
-import { MdSliderModule } from '@angular/material';
-import { MdSelectModule } from '@angular/material';
+import { MdSliderModule, MdSelectModule , MdAutocompleteModule} from '@angular/material';
+
 import { Angular2TokenService } from 'angular2-token';
 
 import { AppComponent } from './app.component';
@@ -47,6 +47,7 @@ import { DetailService } from "./user/detail.service";
     BrowserModule,
     MdSliderModule,
     MdSelectModule,
+    MdAutocompleteModule,
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,

@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core'
 import { ActivatedRoute, ParamMap} from '@angular/router'
 import { Location } from '@angular/common'
+import { SportService } from '../shared/sport.service';
+import { DistrictService } from '../shared/district.service';
 
 import { Event } from '../shared/event.model'
 import { EventService } from '../shared/event.service'
@@ -16,15 +18,20 @@ declare var $:any;
 export class EventDetailComponent implements OnInit {
   @Input() event: Event;
   // allowButtonClick: boolean = false;
+  intensity:string
+  
+  sports = [];  
 
-  dists = [
-    {value: '0', viewValue: 'Central'},
-    {value: '1', viewValue: 'Causeway Bay'},
-    {value: '2', viewValue: 'Kowloon Tong'}
-  ];
+  districts = [];
 
-  constructor(private eventService:EventService, private route:ActivatedRoute, private location: Location ) {
-    // setTimeout(() => this.allowButtonClick = true, 2000);    
+  public ints = [
+    {name:'competitive', value:'competitive', display:'Competitive'},
+    {name:'friendly', value:'friendly', display:'Friendly'},
+    {name:'casual', value:'casual' , display:'Casual'}
+  ]
+
+  constructor(private eventService:EventService, private route:ActivatedRoute, private location: Location, private sportService: SportService,  private districtService:DistrictService) {
+     
   }
   
   // full blown Angular docs
@@ -35,17 +42,23 @@ export class EventDetailComponent implements OnInit {
       this.event = res;
       console.log(res);
       window.scrollTo(0, 0)
+      this.intensity = this.event.intensity
     })
+    this.sportService.getSports().then(sports => {
+      this.sports = sports})
+    this.districtService.getDistricts().then(districts => {
+      this.districts = districts})
   }
+
 
   randomAvailability = "9/10"
   randomInfo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates expedita ipsa voluptatem repellendus dolores dignissimos soluta, maxime accusamus hic quos incidunt error voluptatum doloremque dicta."
 
   saveEvent(formValues:any):void{
-    
+    // console.log(document.querySelectorAll('[data-name="intensity"]'))
     console.log(formValues)
     this.closeForm()    
-    this.eventService.update(formValues).then(()=> this.goBack())
+    // this.eventService.update(formValues).then(()=> this.goBack())
   }
 
   showForm(): void{
@@ -68,6 +81,10 @@ export class EventDetailComponent implements OnInit {
       .then(()=> {
         this.goBack()
       })
+  }
+
+  checkIntensity(intensity){
+    this.event.intensity == intensity ? true : false
   }
   
   // v1 implementation of promises - didn't work
