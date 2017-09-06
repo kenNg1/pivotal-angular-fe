@@ -14,7 +14,7 @@ export class LandingComponent implements OnInit {
   sports:Sport[]=[]
   randoms:Sport[]=[]
   randomBegin: number = 0
-  
+
   constructor(private eventService:EventService, private sportService:SportService) { }
 
   ngOnInit():void {
@@ -40,42 +40,43 @@ export class LandingComponent implements OnInit {
   }
 
   setRandoms():void{
-    // if(this.randomBegin<0){
-    //   let modulo = this.sports.length%5
-    //   this.randoms = this.sports.slice(this.sports.length+this.randomBegin,this.sports.length+this.randomEnd-modulo)
-    // }
-    let current = this.randomBegin
-    
-    if(this.randomBegin<0){
-      console.log("less than zero",this.randomBegin);          
-      
-      console.log("current",current)
-      let arr = []
-      
-      if(current<0){
-        console.log("start pushing")
-        
-        for(let i=0;i<5;i++){
-        arr.push(this.sports[this.sports.length+current])
-        current += 1
-        }
+    let arr = []
+    let beg = this.randomBegin
+    for (let i=0;i<5;i++){
+      if (beg>=0 && beg<this.sports.length){
+        arr.push(this.sports[beg])
+        beg+=1
       }
-      else {
-        arr.push(this.sports[current])
+      else if (beg>=this.sports.length-1){
+        beg = beg-this.sports.length
+        arr.push(this.sports[beg])
+        beg+=1
       }
-      this.randoms = arr
-    }else{
-      this.randoms = this.sports.slice(this.randomBegin,this.randomBegin+5)
+      else if (beg<0){
+        beg = this.sports.length+beg
+        arr.push(this.sports[beg])
+        beg+=1
+      }
     }
-
-
-    
+    if (this.randomBegin < 0) {
+      this.randomBegin = this.sports.length+this.randomBegin     
+    }
+    else if (this.randomBegin >this.sports.length-1) {
+      this.randomBegin = this.randomBegin - this.sports.length
+    }
+    console.log('hello'+this.randomBegin)
+    this.randoms = arr
   }
 
   // BELOW IS prior to using promises
   // getEvents(): void {
   //   this.events = this.eventService.getEvents()
   // }
+
+  sendSport(id,name){
+    this.sportService.searchedSportId = id
+    this.sportService.searchedSportName = name
+  }
 
 
   randomLeft(){

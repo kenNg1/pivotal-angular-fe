@@ -12,7 +12,7 @@
                 <button style="visibility:hidden" type="submit" class="btn btn-white btn-round btn-just-icon">
                 </button>
                 <i style="font-size: 35px; position:relative; top: 10px" class="material-icons" (click)="randomLeft()">chevron_left</i>
-                <button *ngFor="let random of randoms" class="btn btn-info">{{random?.name}}</button>
+                <button *ngFor="let random of randoms" (click)="sendSport(random.id,random.name)" routerLink="/search" class="btn btn-info">{{random.name}}</button>
                 <i style="font-size: 35px; " class="material-icons" (click)="randomRight()">chevron_right</i>
             </form>
         </div>
