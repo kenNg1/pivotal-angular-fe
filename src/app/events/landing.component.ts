@@ -23,7 +23,9 @@ export class LandingComponent implements OnInit {
   }
 
   getEvents(): void {
-    this.eventService.getEvents().then(events => {this.events = events; console.log(this.events)})
+    this.eventService.getEvents().then(events => {
+      this.events = events.sort(sortByDateAsc) 
+      console.log(this.events)})
   }
 
   getSports(): void {
@@ -102,4 +104,10 @@ export class LandingComponent implements OnInit {
   //   return this.events
   // }
 
+}
+
+function sortByDateAsc(e1:Event, e2:Event){
+  if(e1.date > e2.date) return 1
+  else if (e1.date === e2.date) return 0
+  else return -1
 }

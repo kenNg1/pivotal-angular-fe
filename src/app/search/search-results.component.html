@@ -128,7 +128,8 @@
                           <div class="row icons">
                           <br>
                               <div class='icon col-md-2 col-xs-4'>
-                                <i class="material-icons">terrain</i>
+                                <img style="width:24px" *ngIf="event.terrain=='indoor'" src="../../assets/img/playground.png">
+                                <i *ngIf="event.terrain=='outdoor'" class="material-icons">terrain</i>
                                 <!-- if indoor use the insert_photo material icon -->
                                 <p>{{event?.terrain}}</p>
                               </div>

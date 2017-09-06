@@ -96,7 +96,7 @@
                         <div class="form-group col-sm-10 checkbox-radios">
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="terrain" value="indoor" ngModel> Indoor
+                                    <input type="radio" name="terrain" value="indoor" checked="true" ngModel> Indoor
                                 </label>
                                 </div>
                             <div class="radio">
@@ -111,17 +111,17 @@
                         <div class="col-sm-10 checkbox-radios">
                             <div class="radio">
                                 <label>
-                                    <input ngModel type="radio" name="intensity" checked="true" value="high"> High
+                                    <input ngModel type="radio" name="intensity" checked="true" value="competitive"> Competitive
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input ngModel type="radio" name="intensity" value="medium"> Medium
+                                    <input ngModel type="radio" name="intensity" value="friendly"> Friendly
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input ngModel type="radio" name="intensity" value="low"> Low
+                                    <input ngModel type="radio" name="intensity" value="casual"> Casual
                                 </label>
                             </div>
                         </div>
@@ -181,7 +181,7 @@
                         <div class="col-sm-10">
                             <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                <input [ngModel]="event?.time" name='time' type="text" class="form-control" placeholder="e.g: 17:00">
+                                <input [ngModel]="event?.time | date:'shortTime'" name='time' type="text" class="form-control" placeholder="e.g: 17:00">
                                 <span class="help-block">A block of help text that breaks onto a new line.</span>
                             </div>
                         </div>
@@ -190,7 +190,7 @@
                         <label class="col-sm-2 label-on-left">Date</label>
                         <div class="col-sm-10">
                             <div class="form-group label-floating is-empty">
-                                <input [ngModel]="event?.date" name='date' type="text" class="form-control datetimepicker" value="10/05/2016" />
+                                <input [ngModel]="event?.date | date" name='date' type="text" class="form-control datetimepicker" value="10/05/2016" />
                             </div>
                         </div>
                     </div>
@@ -268,7 +268,8 @@
                     </h2>
                     <br>
                     <div class='icon col-md-2 col-xs-4'>
-                        <i class="material-icons">terrain</i>
+                        <img style="width:24px" *ngIf="event?.terrain=='indoor'" src="../../assets/img/playground.png">
+                        <i *ngIf="event?.terrain=='outdoor'" class="material-icons">terrain</i>
                         <!-- if indoor use the insert_photo material icon -->
                         <p>{{event?.terrain}}</p>
                     </div>
@@ -314,7 +315,7 @@
                     <p class="description">
                         Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
                     </p>
-                    <a style="display: block;max-width: 70%;margin: 0 auto;" href="#pablo" class="btn btn-rose btn-round">Contact FirstName</a>
+                    <a style="display: block;max-width: 70%;margin: 0 auto;" class="btn btn-rose btn-simple">Contact FirstName</a>
                 </div>
             </div>
         </div>
