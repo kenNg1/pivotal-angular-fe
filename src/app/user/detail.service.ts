@@ -19,7 +19,16 @@ export class DetailService {
     private router: Router,
     private http:Http
   ) { this.headers = new Headers({'Content-Type': 'application/json'})    
-}
+  }
+
+  getDetails(){
+    return this.http.get(this.detailsUrl)
+    .toPromise()
+    .then(response => {
+      return response.json(); 
+    })
+    .catch(this.handleError)
+  }
 
   getDetail(id:number){
     const url = `${this.detailsUrl}/${id}`;
@@ -31,13 +40,14 @@ export class DetailService {
     console.log(res.json().data.id);
     console.log(firstName);
     console.log(lastName);
-
     return this.http
     .post(this.detailsUrl, JSON.stringify(
       {
         user_id: res.json().data.id,
         firstName: firstName,
-        lastName: lastName
+        lastName: lastName,
+        tier: 1,
+        image: "https://lovelace-media.imgix.net/uploads/999/87d36be0-39a4-0133-8e8d-0e17bac22e39.gif?w=740&h=539&fit=max&auto=format"
       }),{headers: this.headers})
     .toPromise()
     .then(res => res.json().data)

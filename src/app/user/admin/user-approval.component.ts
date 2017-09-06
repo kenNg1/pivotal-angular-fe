@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DetailService } from "../detail.service";
+import { Detail } from "../../shared/detail.model";
 
 @Component({
   selector: 'app-user-approval',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-approval.component.scss']
 })
 export class UserApprovalComponent implements OnInit {
-
-  constructor() { }
+  details:Detail[]
+  constructor(private detailService:DetailService) { }
 
   ngOnInit() {
+    this.detailService.getDetails().then(res => this.details = res)
   }
 
 }
