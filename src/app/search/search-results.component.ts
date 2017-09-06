@@ -6,6 +6,7 @@ import { SportService } from '../shared/sport.service';
 import { District } from '../shared/district.model';
 import { DistrictService } from '../shared/district.service';
 import { Headers, Http } from '@angular/http';
+import { I18nPluralPipe } from '@angular/common';
 
 @Component({
   selector: 'app-search-results',
@@ -24,7 +25,9 @@ export class SearchResultsComponent implements OnInit {
   searchedSportId:number
   searchedDistrict:string  
   searchedDate:string
-  form: any;  
+  form: any;
+  eventMapping:
+  {[k: string]: string} = {'=0': 'No results', '=1': '1 result', 'other': '# results'};
 
   constructor(private eventService:EventService, private sportService:SportService, private districtService:DistrictService) { }
 
@@ -51,6 +54,7 @@ export class SearchResultsComponent implements OnInit {
   }
 
   resetSearch(){
+      this.searchedSport=null          
       this.visibleEvents = this.events
   }
 

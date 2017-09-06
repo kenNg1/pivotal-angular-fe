@@ -4,7 +4,6 @@ import { AuthenticationService } from '../authentication.service'
 import { DetailService } from "../detail.service";
 import { Detail } from "../../shared/detail.model";
 
-
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',

@@ -108,7 +108,7 @@
                     </ul>  
                 </div>
 
-                <h3 *ngIf="this.searchedSport">Searched Sport: {{this.searchedSport}}</h3>
+                <h3 *ngIf="this.searchedSport">Searched Sport: {{this.searchedSport}} <em>({{this.visibleEvents.length | i18nPlural: eventMapping}})</em></h3>
                 <h3 *ngIf="this.searchedDistrict">Searched District: {{this.searchedDistrict}}</h3>    
 
                 <div *ngFor="let event of visibleEvents">
@@ -149,7 +149,7 @@
                             <div class="click-enter-event"></div>
                             <div style="margin-top:20px;" class='row'>
                               <h3 style="margin-left:10px;" class='event-price'>${{event?.price}}</h3>
-                              <img id="avatar-placeholder" src="{{event?.user?.image}}">
+                              <img id="avatar-placeholder" src="{{event?.user?.detail?.image}}">
                             </div>
                           </div>
                       </div>
