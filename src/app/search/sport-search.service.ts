@@ -11,7 +11,7 @@ export class SportSearchService {
  
   constructor(private http: Http) {}
 
-  search(term:string):Observable<Event[]>{
+  search(term:string):Observable<any>{
     return this.http
       .get(`http://localhost:3000/events/?name=${term}`)
       .map(response => response.json())

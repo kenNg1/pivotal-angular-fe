@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild  } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../user/authentication.service'
 
@@ -28,10 +28,14 @@ import { Event } from '../shared/event.model';
 })
 
 export class NavbarComponent implements OnInit {
+
+    @ViewChild('searchBox') target;
+
     allowButtonClick: boolean = false;
     name: string = '';
  
     events: Observable<Event[]>;
+    sports = [];
     private searchTerms = new Subject<string>();
 
     constructor(private router: Router, private sportSearchService: SportSearchService, private authService: AuthenticationService) {
@@ -61,7 +65,7 @@ export class NavbarComponent implements OnInit {
     }
 
     gotoResults(): void{
-        this.router.navigate(['/search'])
+        this.router.navigate(['/search']);
     }
 
 // to enable search-as-you-type
@@ -69,11 +73,13 @@ export class NavbarComponent implements OnInit {
         this.events = this.searchTerms
             .debounceTime(300) // wait 300ms after each keystroke before considering the term
             .distinctUntilChanged()   // ignore if next search term is same as previous
-            .switchMap(term => term   // switch to new observable each time the term changes
+            .switchMap(term => 
+                term   // switch to new observable each time the term changes
                 // return the http search observable
-                ? this.sportSearchService.search(term)
+                ? this.sportSearchService.search(term).toPromise().then(res=>{this.sports = res.sports;console.log(this.sports);return res.events})
                 // or the observable of empty events if there was no search term
-                : Observable.of<Event[]>([]))
+                : Observable.of<Event[]>([])
+            )
             .catch(error => {
                 // TODO: add real error handling
                 console.log(error);
@@ -83,11 +89,20 @@ export class NavbarComponent implements OnInit {
 
     search(term:string):void{
         this.searchTerms.next(term);
+        this.sports=[];
     }
 
     gotoDetail(event:Event): void {
         let link = ['/events',event.id];
-        this.router.navigate(link)
+        // this.events = Observable.of<Event[]>([]);
+        // this.sports=[];        
+        this.router.navigate(link);
+        this.target.nativeElement.value = "";
+        const ev = new KeyboardEvent("keyup",{
+            "key": "Enter"
+        });
+        this.target.nativeElement.dispatchEvent(ev);
+        console.log(this.target)
     }
 
 //

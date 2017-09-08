@@ -16,10 +16,10 @@ declare var $:any;
   styleUrls: ['./event-detail.component.scss']
 })
 export class EventDetailComponent implements OnInit {
-  @Input() event: Event;
+  @Input() event;
   // allowButtonClick: boolean = false;
   intensity:string
-  
+  emailHyperlink:any
   sports = [];  
 
   districts = [];
@@ -42,12 +42,18 @@ export class EventDetailComponent implements OnInit {
       this.event = res;
       console.log(res);
       window.scrollTo(0, 0)
-      this.intensity = this.event.intensity
+      this.intensity = this.event.intensity;
+      let str1 = "mailto:"
+      let str2 = this.event.user.email
+      let str3 = "?subject=The%20subject%20of%20the%20email&body=Yes%20I%20wanna%20go%20dude"
+      this.emailHyperlink = str1.concat(str2,str3)     
+      console.log(this.emailHyperlink) 
     })
     this.sportService.getSports().then(sports => {
       this.sports = sports})
     this.districtService.getDistricts().then(districts => {
       this.districts = districts})
+    
   }
 
 

@@ -30,25 +30,41 @@
 
                 <li class="separator hidden-lg hidden-md"></li>
             </ul> 
-            <form class="navbar-form navbar-right" role="search">
+            <form style="position:absolute;left:40%" class="navbar-form navbar-right" role="search">
                 <div class="form-group form-search is-empty">
                     <!-- <input (input)="onFormInput($event)" value={{name}} type="text" class="form-control" placeholder="Search"> -->
                     <input #searchBox class="form-control" (keyup)="search(searchBox.value)" placeholder="Search for a sport"/>
                     <span class="material-input"></span>
-                </div>
-                <div *ngFor='let event of events | async' (click)="gotoDetail(event)" class='search-result'>
-                    <div class='container row' style='background-color: grey'>
-                        <div class='col-md-8'>{{event?.name}}</div>
-                        <div class='col-md-4'>{{event?.date}}</div>
+                    <button [disabled]="!allowButtonClick" (click)="gotoResults()" class="btn btn-white btn-round btn-just-icon">   
+                        <i class="material-icons">search</i>
+                        <div class="ripple-container"></div>
+                    </button> 
+                    <div style="width:500px" *ngFor='let event of events | async' (click)="gotoDetail(event)" class='search-result'>
+                        <div class="row" style='background-color: rgba(0,0,0,0.95)'>
+                            <div style="color:white" class='col-md-4'>{{event?.name}}</div>
+                            <div style="color:white" class='col-md-4'>{{event?.sport?.name}}</div>
+                            <div style="color:white" class='col-md-4'>{{event?.date | date:'EE d MMM'}}</div>
+                        </div>
                     </div>
+                    <div style="width:500px" *ngFor='let sport of sports' class='search-result'>
+                            <div class="row" style='background-color: rgba(0,0,0,0.95)'>
+                                <div style="color:white" class='col-md-4'>{{sport}}</div>
+                            </div>
+                     </div>
                 </div>
-                
-                <button [disabled]="!allowButtonClick" (click)="gotoResults()" class="btn btn-white btn-round btn-just-icon">
-                    
-                    <i class="material-icons">search</i>
-                    <div class="ripple-container"></div>
-                </button> 
             </form> 
+            <!-- <form class="example-form">
+                    <md-form-field class="example-full-width">
+                      <input mdInput placeholder="State" aria-label="State" [mdAutocomplete]="auto" [formControl]="stateCtrl">
+                      <md-autocomplete #auto="mdAutocomplete">
+                        <md-option *ngFor="let state of filteredStates | async" [value]="state.name">
+                          <img style="vertical-align:middle;" aria-hidden src="{{state.flag}}" height="25" />
+                          <span>{{ state.name }}</span> |
+                          <small>Population: {{state.population}}</small>
+                        </md-option>
+                      </md-autocomplete>
+                    </md-form-field>               
+            </form> -->
 
         </div>
     </div>
