@@ -1,6 +1,6 @@
 <!-- BEGIN FORM -->
 
-<div class='modal'>
+<div #changeEventModal class='modal'>
     <div class='modal-form'>
         <div class="card">
             <form #changeEventForm="ngForm" (ngSubmit)="saveEvent(changeEventForm.value)" class="form-horizontal">
@@ -22,7 +22,7 @@
                         <div class="col-sm-10">
                             <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                <input name='imageUrl' [ngModel]="event?.imageUpload" class="form-control">
+                                <input name='imageUpload' [ngModel]="event?.imageUpload" class="form-control">
                             </div>
                         </div>
                     </div>
@@ -91,28 +91,37 @@
                         <div class="form-group col-sm-10 checkbox-radios">
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="terrain" value="indoor" checked="true" ngModel> Indoor
+                                    <input type="radio" name="terrain" value="indoor" [ngModel]="event?.terrain"> Indoor
                                 </label>
                                 </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="terrain" value="outdoor" ngModel> Outdoor
+                                    <input type="radio" name="terrain" value="outdoor" [ngModel]="event?.terrain"> Outdoor
                                 </label>
                             </div>
                         </div>
+                        <!-- <md-radio-group class="example-radio-group" [(ngModel)]="event_terrain">
+                                <md-radio-button class="example-radio-button" *ngFor="let terrain of terrains" [value]="terrain">
+                                  {{terrain}}
+                                </md-radio-button>
+                        </md-radio-group> -->
                     </div>
                     <div class="row">
                         <label class="col-sm-2 label-on-left">Intensity</label>
                         <div class="form-group col-sm-10 checkbox-radios">
-                                
                             <div class="radio">
                                 <label>
-                                    <input checked="checkIntensity(friendly)" type="radio" name="intensity" value="friendly"> Friendly
+                                    <input type="radio" name="intensity" value="competitive" [ngModel]="event?.intensity"> Competitive
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input checked="checkIntensity(high)" type="radio" name="intensity" value="casual"> Casual
+                                    <input type="radio" name="intensity" value="friendly" [ngModel]="event?.intensity"> Friendly
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="intensity" value="casual" [ngModel]="event?.intensity"> Casual
                                 </label>
                             </div>
                         </div>
@@ -168,19 +177,16 @@
                     <div class="row">
                         <label class="col-sm-2 label-on-left">Address</label>
                         <div class="col-sm-10">
-                            <div ngModelGroup="location">
                                 <div class="form-group label-floating is-empty">
                                         <label class="control-label"></label>
                                     <input [ngModel]="event?.address" name='address' type="text" class="form-control" placeholder="e.g. Flat C, 100/F, 2-10 Gough Street, Sheung Wan, Hong Kong">
                                     <span class="help-block">A block of help text that breaks onto a new line.</span>
                                 </div>
-                            </div>
                         </div>
                     </div>
                     <div class="row"> 
                             <label class="col-sm-2 label-on-left">District</label>
                             <div class="col-sm-10">
-                                <div ngModelGroup="location">                                         
                                     <div class="form-group label-floating is-empty">
                                         <md-select class="district-select" [ngModel]="event?.district_id" name="district_id" placeholder="Choose District" floatPlaceholder="never">
                                             <md-option class="district-option" *ngFor="let dist of districts" [value]="dist.id">
@@ -188,7 +194,6 @@
                                             </md-option>
                                         </md-select>                    
                                     </div> 
-                                </div>
                             </div>
                     </div>           
                     <div class="row">
@@ -235,7 +240,7 @@
                     </h2>
                     <br>
                     <div class='icon col-md-2 col-xs-4'>
-                        <img style="width:24px" *ngIf="event?.terrain=='indoor'" src="../../assets/img/playground.png">
+                        <img style="width:24px" *ngIf="event?.terrain=='indoor'" src="../assets/img/playground.png">
                         <i *ngIf="event?.terrain=='outdoor'" class="material-icons">terrain</i>
                         <!-- if indoor use the insert_photo material icon -->
                         <p>{{event?.terrain}}</p>
@@ -274,7 +279,7 @@
         <div class="col-md-4">
             <div class="card card-profile">
                 <div class="card-avatar">
-                    <a href="#pablo">
+                    <a>
                         <img class="img" [src]="event?.user?.detail?.image" />
                     </a>
                 </div>
@@ -294,7 +299,7 @@
                 <div style='height:450px' class="card-header card-header-tabs" data-background-color="rose">
                     <div class='col-md-5'>
                         <div class="card-image" data-header-animation="false">
-                            <a href="#pablo">
+                            <a>
                                 <img class="img" [src]="event?.imageUpload">
                             </a>
                         </div>

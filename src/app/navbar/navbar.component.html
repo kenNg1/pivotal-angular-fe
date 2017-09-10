@@ -33,7 +33,7 @@
             <form style="position:absolute;left:40%" class="navbar-form navbar-right" role="search">
                 <div class="form-group form-search is-empty">
                     <!-- <input (input)="onFormInput($event)" value={{name}} type="text" class="form-control" placeholder="Search"> -->
-                    <input #searchBox class="form-control" (keyup)="search(searchBox.value)" placeholder="Search for a sport"/>
+                    <input #searchBox class="form-control" (keyup)="search(searchBox.value)" (blur)="onBlurMethod()" placeholder="Search for a sport"/>
                     <span class="material-input"></span>
                     <button [disabled]="!allowButtonClick" (click)="gotoResults()" class="btn btn-white btn-round btn-just-icon">   
                         <i class="material-icons">search</i>
@@ -48,7 +48,7 @@
                     </div>
                     <div style="width:500px" *ngFor='let sport of sports' class='search-result'>
                             <div class="row" style='background-color: rgba(0,0,0,0.95)'>
-                                <div style="color:white" class='col-md-4'>{{sport}}</div>
+                                <div style="color:white" class='col-md-4'>See all {{sport}} events</div>
                             </div>
                      </div>
                 </div>

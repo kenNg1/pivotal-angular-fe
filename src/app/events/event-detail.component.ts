@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core'
+import { Component, OnInit, Input, ViewChild } from '@angular/core'
 import { ActivatedRoute, ParamMap} from '@angular/router'
 import { Location } from '@angular/common'
 import { SportService } from '../shared/sport.service';
@@ -17,11 +17,14 @@ declare var $:any;
 })
 export class EventDetailComponent implements OnInit {
   @Input() event;
+  @ViewChild('changeEventModal') target2;
+  
   // allowButtonClick: boolean = false;
   intensity:string
   emailHyperlink:any
   sports = [];  
-
+  private subscription: any;
+  
   districts = [];
 
   public ints = [
@@ -36,10 +39,10 @@ export class EventDetailComponent implements OnInit {
   
   // full blown Angular docs
   ngOnInit():void {
-   this.route.paramMap
+   this.subscription = this.route.paramMap
     .switchMap((params: ParamMap) => this.eventService.getEvent(+params.get('id')))
     .subscribe(res => {
-      this.event = res;
+      this.event = res;      
       console.log(res);
       window.scrollTo(0, 0)
       this.intensity = this.event.intensity;
@@ -50,12 +53,14 @@ export class EventDetailComponent implements OnInit {
       console.log(this.emailHyperlink) 
     })
     this.sportService.getSports().then(sports => {
-      this.sports = sports})
+      this.sports = sports});
     this.districtService.getDistricts().then(districts => {
-      this.districts = districts})
-    
+      this.districts = districts});
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 
   randomAvailability = "9/10"
   randomInfo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates expedita ipsa voluptatem repellendus dolores dignissimos soluta, maxime accusamus hic quos incidunt error voluptatum doloremque dicta."
@@ -64,12 +69,13 @@ export class EventDetailComponent implements OnInit {
     // console.log(document.querySelectorAll('[data-name="intensity"]'))
     console.log(formValues)
     this.closeForm()    
-    // this.eventService.update(formValues).then(()=> this.goBack())
+    this.eventService.update(formValues).then(event=> {console.log(event);this.event = event})
   }
 
   showForm(): void{
-    window.scrollTo(0, 0);        
-    $('.modal').show()
+    window.scrollTo(0, 0);
+    $('.modal').show();
+    this.target2.nativeElement.scrollTop=0;
   }
 
   closeForm(): void{
@@ -78,6 +84,7 @@ export class EventDetailComponent implements OnInit {
   }
 
   goBack():void{
+    window.scrollTo(0, 0);            
     this.location.back()
   }
 

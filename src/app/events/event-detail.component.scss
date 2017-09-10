@@ -1,7 +1,6 @@
 .modal {
     position: fixed;
     display: hidden;
-    z-index: 999;
     height: 100%;
     width: 100%;
     left: 0px;
@@ -15,6 +14,10 @@
     display: block;
     margin: 0 auto;
     margin-top: 80px;    
+}
+
+.card {
+    z-index: 999;    
 }
 
 .district-select{

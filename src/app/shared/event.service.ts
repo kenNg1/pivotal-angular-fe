@@ -38,7 +38,7 @@ export class EventService {
     return this.http
       .put(url, JSON.stringify(event), {headers:this.headers})
       .toPromise()
-      .then(()=>event)
+      .then(response=> response.json() as Event)
       .catch(this.handleError)
   }
 

@@ -92,17 +92,19 @@ export class NavbarComponent implements OnInit {
         this.sports=[];
     }
 
-    gotoDetail(event:Event): void {
-        let link = ['/events',event.id];
-        // this.events = Observable.of<Event[]>([]);
-        // this.sports=[];        
-        this.router.navigate(link);
+    onBlurMethod(): void {
         this.target.nativeElement.value = "";
         const ev = new KeyboardEvent("keyup",{
             "key": "Enter"
         });
         this.target.nativeElement.dispatchEvent(ev);
-        console.log(this.target)
+    }
+
+    gotoDetail(event:Event): void {
+        let link = ['/events',event.id];
+        // this.events = Observable.of<Event[]>([]);
+        // this.sports=[];        
+        this.router.navigate(link);
     }
 
 //

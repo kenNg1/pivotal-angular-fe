@@ -2,7 +2,7 @@
 
           <div style="background: linear-gradient(60deg,#46d1fb,#1ba4d8);" class="card card-product" [routerLink]="['/events',event.id]">  
             <div class="card-image" data-header-animation="false">
-                <a href="#pablo">
+                <a href="">
                     <img class="img" [src]="event?.imageUpload">
                 </a>
             </div>
@@ -22,7 +22,7 @@
                     </button>
                 </div>
                 <h4 class="card-title">
-                    <a style="color:white;" href="#pablo">{{event?.name | uppercase }}</a>
+                    <a style="color:white;" href="">{{event?.name | uppercase }}</a>
                 </h4>
                 <div class="card-description" style="color:white;">
                     {{event?.date | date:'EE d MMM'}} &nbsp; | <i style="margin-left:5px;font-size: 15px; color: white" class="material-icons">grade</i>{{event?.level}}
