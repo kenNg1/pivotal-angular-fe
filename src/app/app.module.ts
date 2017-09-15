@@ -23,7 +23,8 @@ import { SignInComponent } from './user/sign-in.component';
 import { SignUpComponent } from './user/sign-up.component';
 import { NewEventComponent } from './events/new-event.component';
 import { SportSearchService } from "./search/sport-search.service";
-import { AuthenticationService } from "./user/authentication.service";
+// import { AuthenticationService } from "./user/authentication.service";
+import { AuthService } from "./user/auth.service";
 import { ProfileComponent } from './user/profile/profile.component';
 import { UserApprovalComponent } from './user/admin/user-approval.component';
 import { DetailService } from "./user/detail.service";
@@ -55,6 +56,6 @@ import { DetailService } from "./user/detail.service";
     ReactiveFormsModule
   ],
   bootstrap: [AppComponent],
-  providers: [EventService,SportService,DistrictService,SportSearchService,Angular2TokenService,AuthenticationService, DetailService]
+  providers: [EventService,SportService,DistrictService,SportSearchService,Angular2TokenService,AuthService, DetailService]
 })
 export class AppModule { } 

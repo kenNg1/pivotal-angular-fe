@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { AuthenticationService } from './authentication.service'
+// import { AuthenticationService } from './authentication.service'
+import { AuthService } from './auth.service'
 
 @Component({
   selector: 'app-sign-in',
@@ -12,7 +13,7 @@ export class SignInComponent implements OnInit {
   loginForm: FormGroup;
 
   constructor(
-      private authService: AuthenticationService,
+      private authService: AuthService,
       private formBuilder: FormBuilder
   ){}
 
@@ -28,7 +29,10 @@ export class SignInComponent implements OnInit {
       console.log(value)
       this.submitted = true
       // if (!this.loginForm.valid){return}
-      this.authService.logIn(value.email, value.password)
+      // REFACTOR LATER
+    //   this.authService.logIn(value.email, value.password)
+
+    // FORGET THE BELOW
       // .subscribe(
       //     this.authService.redirectAfterLogin.bind(this.authService),
           // response - *bind* makes sure that "this" in "this.redirectUrl" is referring to the type declared in the auth.service.ts file

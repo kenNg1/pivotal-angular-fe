@@ -6,7 +6,8 @@ import { Sport } from '../shared/sport.model';
 import { SportService } from '../shared/sport.service';
 import { District } from '../shared/district.model';
 import { DistrictService } from '../shared/district.service';
-import { AuthenticationService } from "../user/authentication.service";
+// import { AuthenticationService } from "../user/authentication.service";
+import { AuthService } from "../user/auth.service";
 
 @Component({
   selector: 'app-new-event',
@@ -19,7 +20,7 @@ export class NewEventComponent implements OnInit {
   userId
   currentUser
 
-  constructor(private eventService:EventService, private router:Router, private sportService:SportService, private districtService:DistrictService, private authService: AuthenticationService) { }
+  constructor(private eventService:EventService, private router:Router, private sportService:SportService, private districtService:DistrictService, private authService: AuthService) { }
 
   ngOnInit() {
     this.sportService.getSports().then(sports => {

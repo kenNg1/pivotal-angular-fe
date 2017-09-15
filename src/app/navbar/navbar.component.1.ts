@@ -2,8 +2,7 @@ import { Component, OnInit, ViewChild  } from '@angular/core';
 import { Router } from '@angular/router';
 // import { AuthenticationService } from '../user/authentication.service'
 import { AuthService } from '../user/auth.service'
-import { Subscription } from 'rxjs/Subscription'
-import { User } from '../user/user';
+
 
 // to enable search-as-you-type
 import { Observable }        from 'rxjs/Observable';
@@ -35,25 +34,43 @@ export class NavbarComponent implements OnInit {
 
     allowButtonClick: boolean = false;
     name: string = '';
-    subscription: Subscription;
-    message: String;
-    user: User;
+ 
     events: Observable<Event[]>;
     sports = [];
     private searchTerms = new Subject<string>();
 
     constructor(private router: Router, private sportSearchService: SportSearchService, private authService: AuthService) {
-        setTimeout(() => this.allowButtonClick = true, 500);
-
-        this.subscription = authService.user$.subscribe((user)=> this.user=user )
+        setTimeout(() => this.allowButtonClick = true, 2000);
     } 
 
-    // to enable search-as-you-type
-    ngOnInit():void{
-        this.user = JSON.parse(localStorage.getItem('currentUser'))
-        //example of verification
-        this.authService.verify().subscribe((res)=>this.message = res['message'])
+    isLoggedIn():boolean{
+        return this.authService.isLoggedIn();
+    }
 
+
+    isLoggedOut():boolean{
+        return !this.authService.isLoggedIn(); 
+    } 
+
+    logOut():void {
+        this.authService.logOut();
+    }
+
+    checking(){
+        // console.log(this.authService.validate())
+        console.log(this.authService.currentUser)
+    }
+
+    onFormInput(event:any){
+        this.name = event.target.value;
+    }
+
+    gotoResults(): void{
+        this.router.navigate(['/search']);
+    }
+
+// to enable search-as-you-type
+    ngOnInit():void{
         this.events = this.searchTerms
             .debounceTime(300) // wait 300ms after each keystroke before considering the term
             .distinctUntilChanged()   // ignore if next search term is same as previous
@@ -69,38 +86,7 @@ export class NavbarComponent implements OnInit {
                 console.log(error);
                 return Observable.of<Event[]>([]);
             })
-    }
-
-    ngOnDestroy(){
-        // prevent memory leak when component is destroyed
-        this.subscription.unsubscribe();
-    }
-
-    logOut():void {
-        this.authService.logout();
-        this.user = null;
-        this.message = "Logged out"
-    }
-
-    // VERSION 1 Authentication
-    // isLoggedIn():boolean{
-    //     return this.authService.isLoggedIn();
-    // }
-    // isLoggedOut():boolean{
-    //     return !this.authService.isLoggedIn(); 
-    // } 
-    // checking(){
-    //     // console.log(this.authService.validate())
-    //     console.log(this.authService.currentUser)
-    // }
-
-    onFormInput(event:any){
-        this.name = event.target.value;
-    }
-
-    gotoResults(): void{
-        this.router.navigate(['/search']);
-    }
+    } 
 
     search(term:string):void{
         this.searchTerms.next(term);
@@ -121,5 +107,7 @@ export class NavbarComponent implements OnInit {
         // this.sports=[];        
         this.router.navigate(link);
     }
+
+//
 
 }

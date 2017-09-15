@@ -1,6 +1,6 @@
 import { Component, OnInit, state, style,animate,transition, trigger, keyframes } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../authentication.service'
+import { AuthService } from '../auth.service'
 import { DetailService } from "../detail.service";
 import { Detail } from "../../shared/detail.model";
 
@@ -52,17 +52,18 @@ import { Detail } from "../../shared/detail.model";
 }) 
 export class ProfileComponent implements OnInit {
 
-  constructor(private authService: AuthenticationService, private detailService:DetailService, private router:Router) { }
+  constructor(private authService: AuthService, private detailService:DetailService, private router:Router) { }
   id:number
   userDetail:Detail
   ngOnInit() {
-        this.authService.validate().subscribe(value=>{
-            this.detailService.getDetail(value.id).then(detail => {
-                this.id = detail.json().id
-                this.userDetail = detail.json()
-                console.log(this.userDetail.image)
-            })
-        })
+          // REFACTOR later
+        // this.authService.validate().subscribe(value=>{
+        //     this.detailService.getDetail(value.id).then(detail => {
+        //         this.id = detail.json().id
+        //         this.userDetail = detail.json()
+        //         console.log(this.userDetail.image)
+        //     })
+        // })
   }
 
   submit(formValues){

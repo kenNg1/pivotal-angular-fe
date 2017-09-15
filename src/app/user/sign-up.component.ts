@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { AuthenticationService } from './authentication.service'
+// import { AuthenticationService } from './authentication.service'
+import { AuthService } from './auth.service'
 
 @Component({
   selector: 'app-sign-up',
@@ -14,7 +15,7 @@ export class SignUpComponent implements OnInit {
   id:number;
 
   constructor(
-      private authService: AuthenticationService,
+      private authService: AuthService,
       private formBuilder: FormBuilder
   ){}
 
@@ -33,12 +34,17 @@ export class SignUpComponent implements OnInit {
       this.submitted = true
       // if (!this.signupForm.valid){return}
       console.log(value.email, value.password, value.passwordConfirmation)
-      this.authService.signUp(value.email, value.password, value.passwordConfirmation).subscribe(
-        res => this.authService.redirectAfterLogin.apply(this.authService,[res, value.firstName,value.lastName])
+      
+        // REFACTOR LATER
+        //   this.authService.signUp(value.email, value.password, value.passwordConfirmation).subscribe(
+        //     res => this.authService.redirectAfterLogin.apply(this.authService,[res, value.firstName,value.lastName])
+        //)
+
+        // FORGET THE BELOW
           // response - *bind* makes sure that "this" in "this.redirectUrl" is referring to the type declared in the auth.service.ts file
           // this.afterFailedSignup.bind(this)
           // error - *bind* binding to this current component, not the service 
-      )
+    
   }
 
   afterFailedSignup(errors:any){
