@@ -8,18 +8,21 @@
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
+                 <!-- first two buttons, final list had this directive *ngIf="isLoggedIn()"  -->
                 <li>
-                    <button class='btn btn-outline-success my-2 my-sm-0' *ngIf="isLoggedIn()" routerLink='/profile'>{{this.authService.email || this.authService.tokenService.currentUserData?.email}}</button>
+                    <button *ngIf="user" class='btn btn-outline-success my-2 my-sm-0' routerLink='/profile'>{{this.user?.email}}</button>
                 </li> 
                 <li>
-                    <button class='btn btn-outline-success my-2 my-sm-0' type='submit' routerLink='/logout' *ngIf="isLoggedIn()" (click)='logOut()'>Log Out </button>
+                    <button *ngIf="user" class='btn btn-outline-success my-2 my-sm-0' type='submit' (click)='logOut()'>Log Out </button>
                 </li> 
                 
-                <li *ngIf="isLoggedIn()"> 
+                <li *ngIf="user"> 
                     <button routerLink="events/new-event" style='margin-top:5px;' class="btn btn-primary btn-round">
                         <i class="material-icons">add</i>Add an Event
                     <div class="ripple-container"></div></button>
                 </li>
+                <!-- end of above comment  -->
+
                 
                 <li>
                     <a routerLink="/signin" class="dropdown-toggle" data-toggle="dropdown">
@@ -69,3 +72,5 @@
         </div>
     </div>
 </nav>
+
+

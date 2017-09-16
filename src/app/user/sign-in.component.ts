@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 // import { AuthenticationService } from './authentication.service'
-import { AuthService } from './auth.service'
+import { AuthService } from './auth.service';
+import { User } from './user'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -10,27 +12,44 @@ import { AuthService } from './auth.service'
 })
 export class SignInComponent implements OnInit {
   submitted: boolean;
-  loginForm: FormGroup;
 
-  constructor(
-      private authService: AuthService,
-      private formBuilder: FormBuilder
-  ){}
+  loginForm: FormGroup;  
+  message: String;
+  user: User;
+  user_status: boolean;
+
+  constructor( private router: Router, private authService: AuthService, private formBuilder: FormBuilder){
+      this.user = new User;
+  }
 
   ngOnInit(){
       this.submitted = false;
       this.loginForm = this.formBuilder.group({
-          email: ['', Validators.required],
+          username: ['', Validators.required],
           password: ['', Validators.required]
       })
   }
 
   submit(value:any){
-      console.log(value)
+      console.log('form values',value)
       this.submitted = true
       // if (!this.loginForm.valid){return}
       // REFACTOR LATER
-    //   this.authService.logIn(value.email, value.password)
+      this.user.username = value.username;
+      this.user.password = value.password;
+
+      this.authService.loginUser(this.user).subscribe(res=> {
+          console.log('response',res);
+          this.user_status = res['success'];
+          if(res['ok'] == false){
+            this.message = res['message'];
+            console.log('message',this.message);
+          } else {
+            // this.authService.setUser(res['user']);
+            this.router.navigate(['/events'])
+          }
+          
+      })
 
     // FORGET THE BELOW
       // .subscribe(
@@ -41,17 +60,17 @@ export class SignInComponent implements OnInit {
       // )
   }
 
-  afterFailedLogin(errors:any){
-      let parsed_errors = JSON.parse(errors._body).errors;
-      // create a parsed errors variables and looks at the errors bod\y
-      for (let attribute in this.loginForm.controls){
-          if(parsed_errors[attribute]){
-              // if this attribute is inside the parsed errors
-              this.loginForm.controls[attribute].setErrors(parsed_errors)
-              // then set the rror and display it in the browser
-          }
-      }
-      this.loginForm.setErrors(parsed_errors);        
-  }
+//   afterFailedLogin(errors:any){
+//       let parsed_errors = JSON.parse(errors._body).errors;
+//       // create a parsed errors variables and looks at the errors bod\y
+//       for (let attribute in this.loginForm.controls){
+//           if(parsed_errors[attribute]){
+//               // if this attribute is inside the parsed errors
+//               this.loginForm.controls[attribute].setErrors(parsed_errors)
+//               // then set the rror and display it in the browser
+//           }
+//       }
+//       this.loginForm.setErrors(parsed_errors);        
+//   }
   
 }

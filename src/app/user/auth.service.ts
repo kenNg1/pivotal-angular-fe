@@ -4,19 +4,21 @@ import { Observable }     from 'rxjs/observable';
 import { User } from './user';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/of';
 
 @Injectable()
 export class AuthService {
 
   private base_url = 'http://127.0.0.1:8000';
   token: string;
-  private userSource = new Subject<User>();
-  user$ = this.userSource.asObservable();
+//   private userSource = new Subject<User>();
+//   user$ = this.userSource.asObservable();
 
   constructor(public http: Http) { }
 
   setUser(user: User) {
-    this.userSource.next(user);
+    // this.userSource.next(user);
+
   }
 
   registerUser(user: User): Observable<boolean> {
@@ -47,19 +49,21 @@ export class AuthService {
     let token = ( currUser && 'token' in currUser) ? currUser.token : this.token;
     let headers = new Headers({ 'x-access-token': token });
     let options = new RequestOptions({ headers: headers });
-    return this.http.get(`${this.base_url}/check-state`, options).map( res => this.parseRes(res) );
+    return this.http.get(`${this.base_url}/check-state`, options).map( res => {console.log('verify res',res);return this.parseRes(res)} );
     
   }
 
   setToken(res){
     let body = JSON.parse(res['_body']);
-    if( body['success'] == true ){
+    console.log('body!',body)
+    if( body['username'] != null ){
       this.token = body['token'];
       localStorage.setItem('currentUser', JSON.stringify({ 
-        email: body['user']['email'], 
+        username: body['username'],
+        email: body['email'], 
         token: this.token 
       }));
-    }
+    } 
     return body;
   }
 

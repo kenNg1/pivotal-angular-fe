@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild  } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 // import { AuthenticationService } from '../user/authentication.service'
 import { AuthService } from '../user/auth.service'
-import { Subscription } from 'rxjs/Subscription'
 import { User } from '../user/user';
+import { Subscription } from 'rxjs/Subscription'
+
+import { Router } from '@angular/router';
 
 // to enable search-as-you-type
 import { Observable }        from 'rxjs/Observable';
@@ -29,7 +30,7 @@ import { Event } from '../shared/event.model';
     styleUrls: ['./navbar.component.scss']
 })
 
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
 
     @ViewChild('searchBox') target;
 
@@ -45,12 +46,14 @@ export class NavbarComponent implements OnInit {
     constructor(private router: Router, private sportSearchService: SportSearchService, private authService: AuthService) {
         setTimeout(() => this.allowButtonClick = true, 500);
 
-        this.subscription = authService.user$.subscribe((user)=> this.user=user )
+        // this.subscription = authService.user$.subscribe((user)=> {return this.user=user} )
+        // this.authService.verify().subscribe((res)=>this.message = res['message'])
+        
     } 
 
     // to enable search-as-you-type
     ngOnInit():void{
-        this.user = JSON.parse(localStorage.getItem('currentUser'))
+        this.user = JSON.parse(localStorage.getItem('currentUser'));
         //example of verification
         this.authService.verify().subscribe((res)=>this.message = res['message'])
 
@@ -73,6 +76,7 @@ export class NavbarComponent implements OnInit {
 
     ngOnDestroy(){
         // prevent memory leak when component is destroyed
+        console.log('destroy');
         this.subscription.unsubscribe();
     }
 
@@ -83,9 +87,10 @@ export class NavbarComponent implements OnInit {
     }
 
     // VERSION 1 Authentication
-    // isLoggedIn():boolean{
-    //     return this.authService.isLoggedIn();
-    // }
+    isLoggedIn(){
+        console.log(this.subscription)
+        console.log('is logged',this.user)
+    }
     // isLoggedOut():boolean{
     //     return !this.authService.isLoggedIn(); 
     // } 
