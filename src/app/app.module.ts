@@ -29,6 +29,8 @@ import { AuthService } from "./user/auth.service";
 import { ProfileComponent } from './user/profile/profile.component';
 import { UserApprovalComponent } from './user/admin/user-approval.component';
 import { DetailService } from "./user/detail.service";
+import { AgmCoreModule } from '@agm/core';
+
 
 @NgModule({
   declarations: [
@@ -55,7 +57,10 @@ import { DetailService } from "./user/detail.service";
     HttpModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCc8a_sf1Y_1OBBTZJqn1H7w_oKduaHutY'
+    })
   ],
   bootstrap: [AppComponent],
   providers: [EventService,SportService,DistrictService,SportSearchService,Angular2TokenService,AuthService, DetailService]

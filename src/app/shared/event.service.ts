@@ -33,6 +33,14 @@ export class EventService {
       .catch(this.handleError)
   }
 
+  getLatLong(address) {
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyDShUCLIVGmRpvGiyEIQOdpDo54gD6tQBw`
+    return this.http.get(url)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError)
+  }
+
   update(event: Event): Promise<Event>{
     const url = `${this.eventsUrl}/${event.id}`
     return this.http
