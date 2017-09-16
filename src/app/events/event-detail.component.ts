@@ -7,6 +7,8 @@ import { DistrictService } from '../shared/district.service';
 import { Event } from '../shared/event.model'
 import { EventService } from '../shared/event.service'
 import 'rxjs/add/operator/switchMap'
+import { CloudinaryOptions, CloudinaryUploader } from 'ng2-cloudinary';
+
 
 declare var $:any;
 
@@ -18,14 +20,14 @@ declare var $:any;
 export class EventDetailComponent implements OnInit {
   @Input() event;
   @ViewChild('changeEventModal') target2;
-  
+  imageId: string;  
   // allowButtonClick: boolean = false;
   intensity:string
   emailHyperlink:any
   sports = [];  
   private subscription: any;
-  
   districts = [];
+  cloudinaryImage:string
 
   public ints = [
     {name:'competitive', value:'competitive', display:'Competitive'},
@@ -33,8 +35,22 @@ export class EventDetailComponent implements OnInit {
     {name:'casual', value:'casual' , display:'Casual'}
   ]
 
+  uploader: CloudinaryUploader = new CloudinaryUploader(
+    new CloudinaryOptions({ cloudName: 'dfk2numni', uploadPreset: 'aiehynsk' })
+  );
+
   constructor(private eventService:EventService, private route:ActivatedRoute, private location: Location, private sportService: SportService,  private districtService:DistrictService) {
-     
+    this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any): any => {
+      let res: any = JSON.parse(response);
+      this.imageId = res.public_id;
+      this.cloudinaryImage = JSON.parse(response).url
+      console.log(this.cloudinaryImage)
+      return { item, response, status, headers };
+    };
+  }
+
+  upload() {
+    this.uploader.uploadAll();
   }
   
   // full blown Angular docs

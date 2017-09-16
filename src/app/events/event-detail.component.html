@@ -1,4 +1,15 @@
 <!-- BEGIN FORM -->
+<br><br><br>
+<br><br><br>
+
+<div class='container'>
+    <div class='card'>
+        <h1>hi</h1>
+        <input type="file" ng2FileSelect [uploader]="uploader" accept="image/*;capture=camera">
+        <button (click)="upload()">Upload</button>
+        <cl-image [public-id]="imageId" [cloud-name]="uploader.cloudName"></cl-image>
+    </div>
+</div>
 
 <div #changeEventModal class='modal'>
     <div class='modal-form'>

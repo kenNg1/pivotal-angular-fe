@@ -29,7 +29,8 @@ import { ProfileComponent } from './user/profile/profile.component';
 import { UserApprovalComponent } from './user/admin/user-approval.component';
 import { DetailService } from "./user/detail.service";
 import { AgmCoreModule } from '@agm/core';
-
+import { Ng2CloudinaryModule } from 'ng2-cloudinary';
+import { FileUploadModule } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,8 @@ import { AgmCoreModule } from '@agm/core';
     BrowserAnimationsModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    Ng2CloudinaryModule,
+    FileUploadModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCc8a_sf1Y_1OBBTZJqn1H7w_oKduaHutY'
     })
