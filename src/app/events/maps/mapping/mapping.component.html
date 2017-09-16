@@ -1,4 +1,4 @@
-<div class="main-content">
+<div class="main-content" style='margin-top: -5px !important'>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -7,11 +7,14 @@
                         <i class="material-icons">room</i>
                     </div>
                     <div class="card-content">
-                        <h4 class="card-title">Custom Skin & Settings Map</h4>
-                        <div id="customSkinMap" class="map"></div>
+                        <h3>{{ title }}</h3>
+                        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom"> 
+                          <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                        </agm-map>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+ 
