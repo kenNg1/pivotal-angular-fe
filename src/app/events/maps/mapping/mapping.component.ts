@@ -19,6 +19,7 @@ export class MappingComponent implements OnInit {
   lat: number;
   lng: number;
   zoom: number = 18;
+  scrollwheel: boolean = false;
 
   constructor(private eventService:EventService, private route:ActivatedRoute) { }
   event:Event
@@ -29,7 +30,12 @@ export class MappingComponent implements OnInit {
         this.lat = result.results[0].geometry.location.lat
         this.lng = result.results[0].geometry.location.lng
       })
-    })
-    
+    }) 
   }
+
+  goToGoogleMaps(){
+    console.log('hi')
+    window.open(`http://maps.google.com/maps?q=${this.lat},${this.lng}&ll=${this.lat},${this.lng}&z=17`, "_blank");
+  }
+
 }
