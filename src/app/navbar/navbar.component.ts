@@ -4,6 +4,8 @@ import { AuthService } from '../user/auth.service'
 import { User } from '../user/user';
 import { Subscription } from 'rxjs/Subscription'
 
+import { AsyncLocalStorage } from 'angular-async-local-storage';
+
 import { Router } from '@angular/router';
 
 // to enable search-as-you-type
@@ -88,8 +90,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
     // VERSION 1 Authentication
     isLoggedIn(){
-        console.log(this.subscription)
-        console.log('is logged',this.user)
+        return !!this.user || this.authService.loggedIn; 
     }
     // isLoggedOut():boolean{
     //     return !this.authService.isLoggedIn(); 
