@@ -3,12 +3,16 @@ export class User {
     // is this going to cause security issues?
     password?: string;
     email?: string;
+    firstName?: string;
+    lastName?: string;
   
     constructor()
     {
       this.username = '';
       this.password = '';
       this.email = '';
+      this.firstName = '';
+      this.lastName = '';
     }
   
 }

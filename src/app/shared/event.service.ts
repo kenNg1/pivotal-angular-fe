@@ -18,7 +18,6 @@ export class EventService {
     return this.http.get(this.eventsUrl)
       .toPromise()
       .then(response => {
-        console.log(response.json());
         return response.json() as Event[]; 
       })
       .catch(this.handleError)
@@ -30,7 +29,9 @@ export class EventService {
     const url = `${this.eventsUrl}/${id}`;
     return this.http.get(url)
       .toPromise()
-      .then(response => response.json() as Event)
+      .then(response => {
+        return response.json() as Event
+      })
       .catch(this.handleError)
   }
 

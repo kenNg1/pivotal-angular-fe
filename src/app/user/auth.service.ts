@@ -56,7 +56,7 @@ export class AuthService {
     let token = ( currUser && 'token' in currUser) ? currUser.token : this.token;
     let headers = new Headers({ 'x-access-token': token });
     let options = new RequestOptions({ headers: headers });
-    return this.http.get(`${this.base_url}/check-state`, options).map( res => {console.log('verify res',res);return this.parseRes(res)} );
+    return this.http.get(`${this.base_url}/check-state`, options).map( res => {return this.parseRes(res)} );
     
   }
 

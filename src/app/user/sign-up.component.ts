@@ -40,6 +40,8 @@ export class SignUpComponent implements OnInit {
       this.user.email = value.email;
       this.user.username = value.username;
       this.user.password = value.password;
+      this.user.firstName = value.firstName;
+      this.user.lastName = value.lastName;
     //   if (!this.signupForm.valid){return}
       
         // REFACTOR LATER

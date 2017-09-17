@@ -42,8 +42,8 @@ export class EventDetailComponent implements OnInit {
    this.subscription = this.route.paramMap
     .switchMap((params: ParamMap) => this.eventService.getEvent(+params.get('id')))
     .subscribe(res => {
+      console.log(res);      
       this.event = res;      
-      console.log(res);
       window.scrollTo(0, 0)
       this.intensity = this.event.intensity;
       let str1 = "mailto:"
@@ -52,7 +52,7 @@ export class EventDetailComponent implements OnInit {
       this.emailHyperlink = str1.concat(str2,str3)     
       console.log(this.emailHyperlink) 
     })
-    this.sportService.getSports().then(sports => {
+      this.sportService.getSports().then(sports => {
       this.sports = sports});
     this.districtService.getDistricts().then(districts => {
       this.districts = districts});
