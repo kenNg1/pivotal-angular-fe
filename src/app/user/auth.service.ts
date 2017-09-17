@@ -68,6 +68,7 @@ export class AuthService {
       localStorage.setItem('currentUser', JSON.stringify({ 
         username: body['username'],
         email: body['email'], 
+        id: body['id'],
         token: this.token 
       }));
     }

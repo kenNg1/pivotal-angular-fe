@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { Sport } from '../shared/sport.model';
 import { SportService } from '../shared/sport.service';
 import { District } from '../shared/district.model';
+import { User } from '../user/user';
+
 import { DistrictService } from '../shared/district.service';
 // import { AuthenticationService } from "../user/authentication.service";
 import { AuthService } from "../user/auth.service";
@@ -18,11 +20,13 @@ export class NewEventComponent implements OnInit {
   sports = [];
   districts = [];
   userId
-  currentUser
+  user: User;
 
   constructor(private eventService:EventService, private router:Router, private sportService:SportService, private districtService:DistrictService, private authService: AuthService) { }
 
   ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem('currentUser'));
+    
     this.sportService.getSports().then(sports => {
       this.sports = sports
     })
