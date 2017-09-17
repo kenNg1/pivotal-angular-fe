@@ -16,7 +16,8 @@ declare var $:any;
   styleUrls: ['./event-detail.component.scss']
 })
 export class EventDetailComponent implements OnInit {
-  @Input() event;
+  // @Input() event;
+  event;
   @ViewChild('changeEventModal') target2;
   
   // allowButtonClick: boolean = false;
@@ -69,7 +70,10 @@ export class EventDetailComponent implements OnInit {
     // console.log(document.querySelectorAll('[data-name="intensity"]'))
     console.log(formValues)
     this.closeForm()    
-    this.eventService.update(formValues).then(event=> {console.log(event);this.event = event})
+    this.eventService.update(formValues).then(event=> {
+      console.log('response',event);
+      this.event = event
+    })
   }
 
   showForm(): void{
