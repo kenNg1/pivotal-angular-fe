@@ -47,7 +47,7 @@ export class EventDetailComponent implements OnInit {
       window.scrollTo(0, 0)
       this.intensity = this.event.intensity;
       let str1 = "mailto:"
-      let str2 = this.event.user.email
+      let str2 = this.event.User.email
       let str3 = "?subject=The%20subject%20of%20the%20email&body=Yes%20I%20wanna%20go%20dude"
       this.emailHyperlink = str1.concat(str2,str3)     
       console.log(this.emailHyperlink) 
