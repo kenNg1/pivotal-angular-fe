@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { AsyncLocalStorageModule } from 'angular-async-local-storage';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -49,6 +50,7 @@ import { FileUploadModule } from 'ng2-file-upload';
   ],
   imports: [
     BrowserModule,
+    AsyncLocalStorageModule,
     MdSliderModule,
     MdSelectModule,
     MdAutocompleteModule,

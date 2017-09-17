@@ -18,7 +18,8 @@ declare var $:any;
   styleUrls: ['./event-detail.component.scss']
 })
 export class EventDetailComponent implements OnInit {
-  @Input() event;
+  // @Input() event;
+  event;
   @ViewChild('changeEventModal') target2;
   imageId: string;  
   // allowButtonClick: boolean = false;
@@ -58,17 +59,17 @@ export class EventDetailComponent implements OnInit {
    this.subscription = this.route.paramMap
     .switchMap((params: ParamMap) => this.eventService.getEvent(+params.get('id')))
     .subscribe(res => {
+      console.log(res);      
       this.event = res;      
-      console.log(res);
       window.scrollTo(0, 0)
       this.intensity = this.event.intensity;
       let str1 = "mailto:"
-      let str2 = this.event.user.email
+      let str2 = this.event.User.email
       let str3 = "?subject=The%20subject%20of%20the%20email&body=Yes%20I%20wanna%20go%20dude"
       this.emailHyperlink = str1.concat(str2,str3)     
       console.log(this.emailHyperlink) 
     })
-    this.sportService.getSports().then(sports => {
+      this.sportService.getSports().then(sports => {
       this.sports = sports});
     this.districtService.getDistricts().then(districts => {
       this.districts = districts});
@@ -85,7 +86,10 @@ export class EventDetailComponent implements OnInit {
     // console.log(document.querySelectorAll('[data-name="intensity"]'))
     console.log(formValues)
     this.closeForm()    
-    this.eventService.update(formValues).then(event=> {console.log(event);this.event = event})
+    this.eventService.update(formValues).then(event=> {
+      console.log('response',event);
+      this.event = event
+    })
   }
 
   showForm(): void{

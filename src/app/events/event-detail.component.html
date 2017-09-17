@@ -172,7 +172,7 @@
                         <div class="col-sm-10">
                             <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                <input [ngModel]="event?.time | date:'shortTime'" name='time' type="text" class="form-control" placeholder="e.g: 17:00">
+                                <input [ngModel]="event?.time" name='time' type="text" class="form-control" placeholder="e.g: 17:00">
                                 <span class="help-block">A block of help text that breaks onto a new line.</span>
                             </div>
                         </div>
@@ -277,7 +277,7 @@
                 </div>
                 <hr>
                 <div class='card-content' style='margin:-20px 18px 0px 18px'>
-                    <h2 style="display:inline-block; margin:0">{{event?.time | date:'shortTime'}}</h2>
+                    <h2 style="display:inline-block; margin:0">{{event?.time }}</h2>
                     <h5 style="display:inline-block; margin: 0 0 0 40px; font-size: 17px;">{{event?.address}}, {{event?.district}}</h5>
                     <a class="btn btn-rose pull-right"
                     [href]="this.emailHyperlink">             
@@ -291,7 +291,7 @@
             <div class="card card-profile">
                 <div class="card-avatar">
                     <a>
-                        <img class="img" [src]="event?.user?.detail?.image" />
+                        <img class="img" [src]="event?.User?.Detail?.image" />
                     </a>
                 </div>
                 <div class="card-content" style='margin-top:0'>
@@ -300,7 +300,7 @@
                     <p class="description">
                         Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
                     </p>
-                    <a style="display: block;max-width: 70%;margin: 0 auto;" class="btn btn-rose btn-simple">Contact FirstName</a>
+                    <a style="display: block;max-width: 70%;margin: 0 auto;" class="btn btn-rose btn-simple">Contact {{event?.User?.Detail?.firstName}}</a>
                 </div>
             </div>
         </div>

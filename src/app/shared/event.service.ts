@@ -8,7 +8,7 @@ import { Event } from './event.model';
 export class EventService {
   headers: Headers
 
-  private eventsUrl = 'http://localhost:3000/events'; // URL to web api
+  private eventsUrl = 'http://localhost:8000/api/events'; // URL to web api
 
   constructor(private http: Http){
     this.headers = new Headers({'Content-Type': 'application/json'})    
@@ -18,7 +18,7 @@ export class EventService {
     return this.http.get(this.eventsUrl)
       .toPromise()
       .then(response => {
-        return response.json().events as Event[]; 
+        return response.json() as Event[]; 
       })
       .catch(this.handleError)
   }
@@ -29,7 +29,9 @@ export class EventService {
     const url = `${this.eventsUrl}/${id}`;
     return this.http.get(url)
       .toPromise()
-      .then(response => response.json() as Event)
+      .then(response => {
+        return response.json() as Event
+      })
       .catch(this.handleError)
   }
 

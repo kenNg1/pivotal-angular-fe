@@ -13,7 +13,13 @@ export class AuthService {
   token: string;
 //   private userSource = new Subject<User>();
 //   user$ = this.userSource.asObservable();
-
+  public currentUser: User;
+  public currentUserId: number; 
+  public firstName: string;
+  public lastName: string;
+  public email: string;
+  public loggedIn: boolean = false;
+  
   constructor(public http: Http) { }
 
   setUser(user: User) {
@@ -22,7 +28,7 @@ export class AuthService {
   }
 
   registerUser(user: User): Observable<boolean> {
-    let body = JSON.stringify(user);
+    let body = JSON.stringify(user); 
     let headers = new Headers();
 		headers.append('Content-Type', 'application/json');
     let options = new RequestOptions({ headers: headers });
@@ -41,6 +47,7 @@ export class AuthService {
   logout() {
     this.token = null;
     localStorage.removeItem('currentUser');
+    this.loggedIn = false;    
   }
 
   verify(): Observable<Object> {
@@ -49,7 +56,7 @@ export class AuthService {
     let token = ( currUser && 'token' in currUser) ? currUser.token : this.token;
     let headers = new Headers({ 'x-access-token': token });
     let options = new RequestOptions({ headers: headers });
-    return this.http.get(`${this.base_url}/check-state`, options).map( res => {console.log('verify res',res);return this.parseRes(res)} );
+    return this.http.get(`${this.base_url}/check-state`, options).map( res => {return this.parseRes(res)} );
     
   }
 
@@ -63,7 +70,9 @@ export class AuthService {
         email: body['email'], 
         token: this.token 
       }));
-    } 
+    }
+    this.email = JSON.parse(localStorage.getItem('currentUser')).email;
+    this.loggedIn = true;
     return body;
   }
 
