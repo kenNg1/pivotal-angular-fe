@@ -11,7 +11,7 @@ export class SportService {
   public searchedSportName: string
 
 
-  private sportsUrl = 'http://localhost:3000/sports'; // URL to web api
+  private sportsUrl = 'http://localhost:8000/api/sports'; // URL to web api
  
   constructor(private http: Http){
     this.headers = new Headers({'Content-Type': 'application/json'})    
@@ -21,6 +21,7 @@ export class SportService {
     return this.http.get(this.sportsUrl)
       .toPromise()
       .then(response => {
+        console.log(response);
         return response.json(); 
       })
       .catch(this.handleError)
