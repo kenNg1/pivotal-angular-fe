@@ -12,7 +12,9 @@ export class UserApprovalComponent implements OnInit {
   constructor(private detailService:DetailService) { }
 
   ngOnInit() {
-    this.detailService.getDetails().then(res => {this.details = res;console.log(this.details)})
+    this.detailService.getDetails().then(res => {
+      this.details = res;
+    })
   }
 
   changeTier(id,tier){
@@ -22,13 +24,14 @@ export class UserApprovalComponent implements OnInit {
         // find the index of the array to be replaced
         let index = this.details.findIndex(x => x.id==id);
         // replace that element of array with response.json()
-        this.details[index]=response.json()
+        return this.details[index] = response.json()
         // save the new array as this.details
       }
     )
   }
 
   belowThree(tier){
+    tier = parseInt(tier);
     if (tier < 3){
       return tier+=1
     }

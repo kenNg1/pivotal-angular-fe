@@ -22,11 +22,11 @@
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let detail of details">
-                                        <td class="text-center">{{detail.id}}</td>
-                                        <td>{{detail.firstName}} {{detail.lastName}}</td>
-                                        <td>{{detail.nickName}}</td>
-                                        <td>{{detail.user.email}}</td>
-                                        <td class="text-center" id='{{detail.id}}tier' [innerText]="detail.tier"></td>
+                                        <td class="text-center">{{detail?.id}}</td>
+                                        <td>{{detail?.firstName}} {{detail?.lastName}}</td>
+                                        <td>{{detail?.nickName}}</td>
+                                        <td>{{detail?.user?.email}}</td>
+                                        <td class="text-center" id='{{detail?.id}} tier' [innerText]="detail.tier"></td>
                                         <td class="text-center"><button class='btn btn-outline' (click)="changeTier(detail.id, detail.tier)">Change Tier</button></td>
                                     </tr>
                                 </tbody>

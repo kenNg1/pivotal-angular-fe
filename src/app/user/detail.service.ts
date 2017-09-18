@@ -68,12 +68,14 @@ export class DetailService {
     return this.http
       .put(url, JSON.stringify(
         {
-         id:id,
+         user_id:id,
          tier:tier
         }
       ), {headers:this.headers})
       .toPromise()
-      .then(response => response)
+      .then(response =>{
+        return response
+      })
       .catch(this.handleError)
   }
 
