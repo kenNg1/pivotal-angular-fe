@@ -8,7 +8,7 @@ import { District } from './district.model';
 export class DistrictService {
   headers: Headers
 
-  private districtUrl = 'http://localhost:3000/districts'; // URL to web api
+  private districtUrl = 'http://localhost:8000/api/districts'; // URL to web api
  
   constructor(private http: Http){
     this.headers = new Headers({'Content-Type': 'application/json'})    
