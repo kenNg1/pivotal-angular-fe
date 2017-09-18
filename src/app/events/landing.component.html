@@ -14,7 +14,7 @@
                 <i style="font-size: 35px; position:relative; top: 10px" class="material-icons" (click)="randomLeft()">chevron_left</i>
                 <button *ngFor="let random of randoms" (click)="sendSport(random.id,random.name)" routerLink="/search" class="btn btn-info">{{random.name}}</button>
                 <i style="font-size: 35px; " class="material-icons" (click)="randomRight()">chevron_right</i>
-            </form>
+            </form> 
         </div>
         <!-- <div>Name: {{events[0].name}}</div> -->
         

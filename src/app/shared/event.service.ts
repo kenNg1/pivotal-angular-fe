@@ -53,6 +53,7 @@ export class EventService {
   }
 
   create(formValues:any): Promise<Event>{
+    console.log(formValues)
     return this.http
       .post(this.eventsUrl, JSON.stringify(formValues),{headers: this.headers})
       .toPromise()

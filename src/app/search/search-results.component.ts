@@ -33,11 +33,13 @@ export class SearchResultsComponent implements OnInit {
 
   ngOnInit() {
     this.eventService.getEvents().then(events => {
+      console.log(events);
       this.events = events;
       this.visibleEvents = events;
       this.filteredEvents = events
       this.sortDate();
       this.sportService.getSports().then(sports => {
+        console.log('sports',sports)
         this.sports = sports;
         if(this.sportService.searchedSportId){
           this.filterSport(this.sportService.searchedSportName,this.sportService.searchedSportId)

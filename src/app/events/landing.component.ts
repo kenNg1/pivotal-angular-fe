@@ -76,7 +76,7 @@ export class LandingComponent implements OnInit {
   sendSport(id,name){
     this.sportService.searchedSportId = id
     this.sportService.searchedSportName = name
-  }
+  } 
 
 
   randomLeft(){
