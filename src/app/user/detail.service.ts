@@ -11,7 +11,7 @@ import { Detail } from "../shared/detail.model";
 export class DetailService {
   headers: Headers
   
-  private detailsUrl = 'http://localhost:3000/details'; // URL to web api
+  private detailsUrl = 'http://localhost:8000/api/details'; // URL to web api
   
   constructor(
     // public firstName:string,
