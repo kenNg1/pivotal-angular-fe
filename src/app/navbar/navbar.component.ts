@@ -65,7 +65,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
             .switchMap(term => 
                 term   // switch to new observable each time the term changes
                 // return the http search observable
-                ? this.sportSearchService.search(term).toPromise().then(res=>{this.sports = res.sports;console.log(this.sports);return res.events})
+                ? this.sportSearchService.search(term).toPromise().then(res=>{
+                    console.log(res);
+                    this.sports = res.sports;
+                    console.log(this.sports);
+                    return res.events})
                 // or the observable of empty events if there was no search term
                 : Observable.of<Event[]>([])
             )

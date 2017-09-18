@@ -13,7 +13,7 @@ export class SportSearchService {
 
   search(term:string):Observable<any>{
     return this.http
-      .get(`http://localhost:3000/events/?name=${term}`)
+      .get(`http://localhost:8000/api/events/?name=${term}`)
       .map(response => response.json())
   }
 
