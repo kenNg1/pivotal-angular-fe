@@ -8,6 +8,8 @@ import { SignUpComponent } from './user/sign-up.component';
 import { NewEventComponent } from './events/new-event.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { UserApprovalComponent } from './user/admin/user-approval.component';
+import { LoginRouteGuard } from './login-route-guard';
+import { AdminRouteGuard } from './admin-route-guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/events', pathMatch: 'full' },
@@ -15,10 +17,10 @@ const routes: Routes = [
   { path: 'events/:id', component: EventDetailComponent},
   { path: 'events', component: LandingComponent },
   { path: 'search', component: SearchResultsComponent },
-  { path: 'signin', component: SignInComponent},
-  { path: 'signup', component: SignUpComponent},
+  { path: 'signin', component: SignInComponent, canActivate: [LoginRouteGuard]},
+  { path: 'signup', component: SignUpComponent, canActivate: [LoginRouteGuard]},
   { path: 'profile', component: ProfileComponent},
-  { path: 'admin/user-approval', component: UserApprovalComponent }
+  { path: 'admin/user-approval', component: UserApprovalComponent, canActivate: [AdminRouteGuard] }
 ];
 
 @NgModule({

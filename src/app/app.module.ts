@@ -32,6 +32,8 @@ import { DetailService } from './user/detail.service';
 import { AgmCoreModule } from '@agm/core';
 import { Ng2CloudinaryModule } from 'ng2-cloudinary';
 import { FileUploadModule } from 'ng2-file-upload';
+import { LoginRouteGuard } from './login-route-guard';
+import { AdminRouteGuard } from './admin-route-guard';
 
 @NgModule({
   declarations: [
@@ -66,7 +68,7 @@ import { FileUploadModule } from 'ng2-file-upload';
     })
   ],
   bootstrap: [AppComponent],
-  providers: [EventService,SportService,DistrictService,SportSearchService,Angular2TokenService,AuthService, DetailService]
+  providers: [EventService,SportService,DistrictService,SportSearchService,Angular2TokenService,AuthService, DetailService, LoginRouteGuard, AdminRouteGuard]
 })
 export class AppModule {}
 
