@@ -63,19 +63,19 @@
                 <div class="row">
                     <label class="col-sm-2 label-on-left">Level</label>
                     <div class="col-sm-10 checkbox-radios">
-                        <div class="radio">
+                        <div class="checkbox">
                             <label>
-                                <input ngModel type="radio" name="level" checked="true" value="Beginners"> Beginners
+                                <input ngModel type="checkbox" name="level" value="beginners" (click)="toggleBeginner()"> Beginners
                             </label>
                         </div>
-                        <div class="radio">
+                        <div class="checkbox">
                             <label>
-                                <input ngModel type="radio" name="level" value="Intermediate"> Intermediate
+                                <input ngModel type="checkbox" name="level" value="intermediate" (click)="toggleIntermediate()"> Intermediate
                             </label>
                         </div>
-                        <div class="radio">
+                        <div class="checkbox">
                             <label>
-                                <input ngModel type="radio" name="level" value="Advanced"> Advanced
+                                <input ngModel type="checkbox" name="level" value="advanced" (click)="toggleAdvanced()"> Advanced
                             </label>
                         </div>
                     </div>

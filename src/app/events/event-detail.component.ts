@@ -3,9 +3,10 @@ import { ActivatedRoute, ParamMap} from '@angular/router';
 import { Location } from '@angular/common';
 import { SportService } from '../shared/sport.service';
 import { DistrictService } from '../shared/district.service';
-import { Event } from '../shared/event.model';
-import { EventService } from '../shared/event.service';
-import 'rxjs/add/operator/switchMap';
+import { Event } from '../shared/event.model'
+import { EventService } from '../shared/event.service'
+import 'rxjs/add/operator/switchMap'
+import { CloudinaryOptions, CloudinaryUploader } from 'ng2-cloudinary';
 
 declare var $:any;
 
@@ -16,17 +17,17 @@ declare var $:any;
 })
 export class EventDetailComponent implements OnInit, OnDestroy {
   // @Input() event;
-  event:any;
+  event;
   @ViewChild('changeEventModal') target2:any;
-  
+  imageId: string;  
   // allowButtonClick: boolean = false;
   intensity:string;
   emailHyperlink:any;
   sports:any[] = [];  
+  address: string;
   private subscription: any;
-  
+  cloudinaryImage:string
   districts:any[] = [];
-
   randomAvailability = '9/10';
   // tslint:disable-next-line:max-line-length
   randomInfo = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates expedita ipsa voluptatem repellendus dolores dignissimos soluta, maxime accusamus hic quos incidunt error voluptatum doloremque dicta.';
@@ -37,10 +38,27 @@ export class EventDetailComponent implements OnInit, OnDestroy {
     {name:'casual', value:'casual' , display:'Casual'}
   ];
 
+  uploader: CloudinaryUploader = new CloudinaryUploader(
+    new CloudinaryOptions({ cloudName: 'dfk2numni', uploadPreset: 'aiehynsk' })
+  );
+
   constructor(
-    private eventService:EventService, private route:ActivatedRoute,
-    private location: Location, private sportService: SportService,
-    private districtService:DistrictService) {    
+    private eventService:EventService, 
+    private route:ActivatedRoute,
+    private location: Location, 
+    private sportService: SportService,
+    private districtService:DistrictService) {
+      this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any): any => {
+        let res: any = JSON.parse(response);
+        this.imageId = res.public_id;
+        this.cloudinaryImage = JSON.parse(response).url
+        console.log(this.cloudinaryImage)
+        return { item, response, status, headers };
+      }
+  }
+
+  upload() {
+    this.uploader.uploadAll();
   }
   
   // full blown Angular docs
@@ -75,6 +93,7 @@ export class EventDetailComponent implements OnInit, OnDestroy {
     this.eventService.update(formValues).then(event=> {
       console.log('response',event);
       this.event = event;
+      this.address = this.event.address
     });
   }
 

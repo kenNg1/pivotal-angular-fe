@@ -31,7 +31,10 @@ import { ProfileComponent } from './user/profile/profile.component';
 import { UserApprovalComponent } from './user/admin/user-approval.component';
 import { DetailService } from './user/detail.service';
 import { AgmCoreModule } from '@agm/core';
-
+import { Ng2CloudinaryModule } from 'ng2-cloudinary';
+import { FileUploadModule } from 'ng2-file-upload';
+import { LoginRouteGuard } from './login-route-guard';
+import { AdminRouteGuard } from './admin-route-guard';
 
 @NgModule({
   declarations: [
@@ -59,13 +62,15 @@ import { AgmCoreModule } from '@agm/core';
     BrowserAnimationsModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    Ng2CloudinaryModule,
+    FileUploadModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCc8a_sf1Y_1OBBTZJqn1H7w_oKduaHutY'
     })
   ],
   bootstrap: [AppComponent],
   providers: [EventService,SportService,DistrictService,SportSearchService,Angular2TokenService,
-    AuthService, DetailService, {provide: LocationStrategy, useClass: HashLocationStrategy}]
+    AuthService, DetailService, {provide: LocationStrategy, useClass: HashLocationStrategy},LoginRouteGuard, AdminRouteGuard]
 })
 export class AppModule {}
 

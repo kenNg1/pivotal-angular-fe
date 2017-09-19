@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { DetailService } from '../detail.service';
 import { Detail } from '../../shared/detail.model';
+import { CloudinaryOptions, CloudinaryUploader } from 'ng2-cloudinary';
 
 @Component({
   selector: 'app-profile',
@@ -52,9 +53,24 @@ import { Detail } from '../../shared/detail.model';
 }) 
 export class ProfileComponent implements OnInit {
 
-  constructor(private authService: AuthService, private detailService:DetailService, private router:Router) { }
+  constructor(private authService: AuthService, private detailService:DetailService, private router:Router) {
+    this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any): any => {
+        let res: any = JSON.parse(response);
+        this.imageId = res.public_id;
+        this.cloudinaryImage = JSON.parse(response).url
+        console.log(this.cloudinaryImage)
+        return { item, response, status, headers };
+      }
+  }
   id:number;
   userDetail:Detail;
+  cloudinaryImage:string;
+  imageId: string;    
+
+  upload() {
+    this.uploader.uploadAll();
+  }
+    
   ngOnInit() {
           // REFACTOR later
         this.id = JSON.parse(localStorage.getItem('currentUser')).id;
@@ -71,6 +87,11 @@ export class ProfileComponent implements OnInit {
         //     })
         // })
   }
+
+
+  uploader: CloudinaryUploader = new CloudinaryUploader(
+    new CloudinaryOptions({ cloudName: 'dfk2numni', uploadPreset: 'aiehynsk' })
+  );
 
   submit(formValues:any) {
       console.log(formValues);
