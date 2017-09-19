@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Observable }  from 'rxjs/observable';
+import { Observable } from 'rxjs/observable';
 import { User } from './user';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/map';
@@ -18,7 +18,7 @@ export class AuthService {
   public firstName: string;
   public lastName: string;
   public email: string;
-  public loggedIn: boolean = false;
+  public loggedIn = false;
   
   constructor(public http: Http) { }
 
@@ -28,18 +28,18 @@ export class AuthService {
   }
 
   registerUser(user: User): Observable<boolean> {
-    let body = JSON.stringify(user); 
-    let headers = new Headers();
-		headers.append('Content-Type', 'application/json');
-    let options = new RequestOptions({ headers: headers });
+    const body = JSON.stringify(user); 
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    const options = new RequestOptions({ headers: headers });
     return this.http.post(`${this.base_url}/register`, body, options).map( (res) => this.setToken(res) );
   }
 
   loginUser(user:User): Observable<Object> {
-    let body = JSON.stringify(user);
-    let headers = new Headers();
-		headers.append('Content-Type', 'application/json');
-    let options = new RequestOptions({ headers: headers });
+    const body = JSON.stringify(user);
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    const options = new RequestOptions({ headers: headers });
 
     return this.http.post(`${this.base_url}/login`, body, options).map( (res) => this.setToken(res) );
   }
@@ -52,18 +52,18 @@ export class AuthService {
 
   verify(): Observable<Object> {
 
-    let currUser = JSON.parse(localStorage.getItem('currentUser')); 
-    let token = ( currUser && 'token' in currUser) ? currUser.token : this.token;
-    let headers = new Headers({ 'x-access-token': token });
-    let options = new RequestOptions({ headers: headers });
-    return this.http.get(`${this.base_url}/check-state`, options).map( res => {return this.parseRes(res)} );
+    const currUser = JSON.parse(localStorage.getItem('currentUser')); 
+    const token = ( currUser && 'token' in currUser) ? currUser.token : this.token;
+    const headers = new Headers({ 'x-access-token': token });
+    const options = new RequestOptions({ headers: headers });
+    return this.http.get(`${this.base_url}/check-state`, options).map( res => this.parseRes(res));
     
   }
 
-  setToken(res:any){
-    let body = JSON.parse(res['_body']);
-    console.log('body!',body)
-    if( body['username'] != null ){
+  setToken(res:any) {
+    const body = JSON.parse(res['_body']);
+    console.log('body!',body);
+    if( body['username'] != null ) {
       this.token = body['token'];
       localStorage.setItem('currentUser', JSON.stringify({ 
         username: body['username'],
@@ -77,9 +77,10 @@ export class AuthService {
     return body;
   }
 
-  parseRes(res:any){
-    let body = JSON.parse(res['_body']);
+  parseRes(res:any) {
+    const body = JSON.parse(res['_body']);
     return body;
   }
 
 }
+

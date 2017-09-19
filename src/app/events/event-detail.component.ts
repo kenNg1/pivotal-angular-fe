@@ -3,7 +3,6 @@ import { ActivatedRoute, ParamMap} from '@angular/router';
 import { Location } from '@angular/common';
 import { SportService } from '../shared/sport.service';
 import { DistrictService } from '../shared/district.service';
-
 import { Event } from '../shared/event.model';
 import { EventService } from '../shared/event.service';
 import 'rxjs/add/operator/switchMap';

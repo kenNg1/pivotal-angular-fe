@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core'; 
 import { Headers, Http } from '@angular/http';
 
-import 'rxjs/add/operator/toPromise'
+import 'rxjs/add/operator/toPromise';
 import { Sport } from './sport.model';
 
 @Injectable()
 export class SportService {
-  headers: Headers
-  public searchedSportId: number
-  public searchedSportName: string
+  headers: Headers;
+  public searchedSportId: number;
+  public searchedSportName: string;
 
 
   private sportsUrl = 'http://localhost:8000/api/sports'; // URL to web api
  
-  constructor(private http: Http){
-    this.headers = new Headers({'Content-Type': 'application/json'})    
+  constructor(private http: Http) {
+    this.headers = new Headers({'Content-Type': 'application/json'});  
   }
 
   getSports(): Promise<Sport[]> {
@@ -24,29 +24,30 @@ export class SportService {
         console.log(response);
         return response.json(); 
       })
-      .catch(this.handleError)
+      .catch(this.handleError);
   }
 
-  // http.get returns an RxJs Observable >> this is then converted into a promise. Parse the resolved json data with the method. as denoted typescript typing
+  // http.get returns an RxJs Observable >> this is then converted into a promise.
+  // Parse the resolved json data with the method. as denoted typescript typing
 
-  getSport(id:number): Promise<Sport>{
+  getSport(id:number): Promise<Sport> {
     const url = `${this.sportsUrl}/${id}`;
     return this.http.get(url)
       .toPromise()
       .then(response => response.json().data as Sport)
-      .catch(this.handleError)
+      .catch(this.handleError);
   }
 
-  update(sport: Sport): Promise<Sport>{
-    const url = `${this.sportsUrl}/${sport.id}`
+  update(sport: Sport): Promise<Sport> {
+    const url = `${this.sportsUrl}/${sport.id}`;
     return this.http
       .put(url, JSON.stringify(sport), {headers:this.headers})
       .toPromise()
       .then(()=>sport)
-      .catch(this.handleError)
+      .catch(this.handleError);
   }
 
-  create(formValues:any): Promise<Sport>{
+  create(formValues:any): Promise<Sport> {
     return this.http
       .post(this.sportsUrl, JSON.stringify(formValues),{headers: this.headers})
       .toPromise()
@@ -54,7 +55,7 @@ export class SportService {
       .catch(this.handleError);
   }
 
-  delete(id:number):Promise<void>{
+  delete(id:number):Promise<void> {
     const url = `${this.sportsUrl}/${id}`;
     return this.http.delete(url, {headers:this.headers})
       .toPromise()
@@ -64,7 +65,7 @@ export class SportService {
 
   private handleError(error:any): Promise<any> {
     console.log('An error occurred', error); // for demo purposes only
-    return Promise.reject(error.message || error)
+    return Promise.reject(error.message || error);
   }
 
 }
