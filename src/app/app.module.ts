@@ -13,7 +13,7 @@ import { AppComponent } from './app.component';
 import { EventService } from './shared/event.service';
 import { SportService } from './shared/sport.service';
 import { DistrictService } from './shared/district.service';
-import { AppRoutingModule } from "./app-routing.module";
+import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LandingComponent } from './events/landing.component';
 import { EventThumbnailComponent } from './events/event-thumbnail.component';
@@ -23,12 +23,12 @@ import { MappingComponent } from './events/maps/mapping/mapping.component';
 import { SignInComponent } from './user/sign-in.component';
 import { SignUpComponent } from './user/sign-up.component';
 import { NewEventComponent } from './events/new-event.component';
-import { SportSearchService } from "./search/sport-search.service";
+import { SportSearchService } from './search/sport-search.service';
 // import { AuthenticationService } from "./user/authentication.service";
-import { AuthService } from "./user/auth.service";
+import { AuthService } from './user/auth.service';
 import { ProfileComponent } from './user/profile/profile.component';
 import { UserApprovalComponent } from './user/admin/user-approval.component';
-import { DetailService } from "./user/detail.service";
+import { DetailService } from './user/detail.service';
 import { AgmCoreModule } from '@agm/core';
 import { Ng2CloudinaryModule } from 'ng2-cloudinary';
 import { FileUploadModule } from 'ng2-file-upload';
@@ -68,4 +68,5 @@ import { FileUploadModule } from 'ng2-file-upload';
   bootstrap: [AppComponent],
   providers: [EventService,SportService,DistrictService,SportSearchService,Angular2TokenService,AuthService, DetailService]
 })
-export class AppModule { } 
+export class AppModule {}
+

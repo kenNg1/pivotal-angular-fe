@@ -1,8 +1,8 @@
 import { Component, OnInit, state, style,animate,transition, trigger, keyframes } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service'
-import { DetailService } from "../detail.service";
-import { Detail } from "../../shared/detail.model";
+import { AuthService } from '../auth.service';
+import { DetailService } from '../detail.service';
+import { Detail } from '../../shared/detail.model';
 
 @Component({
   selector: 'app-profile',
@@ -53,10 +53,16 @@ import { Detail } from "../../shared/detail.model";
 export class ProfileComponent implements OnInit {
 
   constructor(private authService: AuthService, private detailService:DetailService, private router:Router) { }
-  id:number
-  userDetail:Detail
+  id:number;
+  userDetail:Detail;
   ngOnInit() {
           // REFACTOR later
+        this.id = JSON.parse(localStorage.getItem('currentUser')).id;
+        this.detailService.getDetail(this.id).then(detail => {
+                    //  this.id = detail.json().id
+                     this.userDetail = detail.json();
+                    //  console.log(this.userDetail.image)
+                 });
         // this.authService.validate().subscribe(value=>{
         //     this.detailService.getDetail(value.id).then(detail => {
         //         this.id = detail.json().id
@@ -66,14 +72,12 @@ export class ProfileComponent implements OnInit {
         // })
   }
 
-  submit(formValues){
-      console.log(formValues)
+  submit(formValues:any) {
+      console.log(formValues);
       this.detailService.updateUserDetail(formValues).then(
           response=> {
-            this.userDetail = response.json()
-          }
-      )
-      
+            this.userDetail = response.json();
+          });
   }
 
 // Javascript to show placeholder "New Password"

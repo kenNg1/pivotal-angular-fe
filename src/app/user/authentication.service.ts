@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Response, Http } from '@angular/http';
 import { Angular2TokenService } from 'angular2-token';
 import { Observable } from 'rxjs/Observable'; 
-import { User } from './user'
+import { User } from './user';
 import { DetailService } from './detail.service';
 
 @Injectable()
@@ -18,14 +18,13 @@ export class AuthenticationService {
     public firstName: string;
     public lastName: string;
     public email: string;
-    output: any
+    output: any;
   
     constructor(
         private tokenService: Angular2TokenService,
         private router: Router,
         private http:Http,
-        private detailService: DetailService
-    ){
+        private detailService: DetailService) {
         this.tokenService.init({
             registerAccountPath: 'http://localhost:3000/auth',
             signInPath: 'http://localhost:3000/auth/sign_in',
@@ -41,33 +40,31 @@ export class AuthenticationService {
         }).subscribe(
             res => {
                 // this.currentUser = <User>res.json().data
-                console.log(res)
-                this.currentUser = <User>res.json()
+                console.log(res);
+                this.currentUser = <User>res.json();
                 // this.resetPasswordToken      
-                console.log(this.currentUser)
-                this.router.navigate(['/events'])
+                console.log(this.currentUser);
+                this.router.navigate(['/events']);
             },
             error => { 
                 console.log(error);
-                return Observable.of(false)
-            }
-        )
+                return Observable.of(false);
+            });
     }
 
-    validate(){
+    validate() {
         return this.tokenService.validateToken()
         .map(
             res => {
-                this.currentUserId = res.json().data.id
+                this.currentUserId = res.json().data.id;
                 // console.log(res.json().success)
                 // console.log(res.json().data)
-                return res.json().data
+                return res.json().data;
             },
             error => {
-                this.output = error
-                return this.output
-            }
-        )
+                this.output = error;
+                return this.output;
+            });
     }
 
     // currentuser(){
@@ -75,8 +72,8 @@ export class AuthenticationService {
     // }
     // https://github.com/neroniaky/angular2-token/issues/34
 
-    signUp(email:string, password:string, passwordConfirmation:string){
-        this.email = email
+    signUp(email:string, password:string, passwordConfirmation:string) {
+        this.email = email;
         return this.tokenService.registerAccount({
             email: email,
             password: password,
@@ -84,10 +81,10 @@ export class AuthenticationService {
         });
     }
  
-    logOut():void{
+    logOut():void {
         this.redirectUrl = undefined;
         this.tokenService.signOut();
-        this.router.navigate(['/'])
+        this.router.navigate(['/']);
     }
 
     isLoggedIn(): boolean {
@@ -96,12 +93,12 @@ export class AuthenticationService {
    
     redirectAfterLogin(res,firstName,lastName):void {
         this.detailService.createUserDetail(res, firstName,lastName);
-        let redirectTo = this.redirectUrl ? this.redirectUrl: '/'
+        const redirectTo = this.redirectUrl ? this.redirectUrl: '/';
         this.redirectUrl = undefined;
-        this.router.navigate([redirectTo])
+        this.router.navigate([redirectTo]);
     }
 
-    updatePassword(newPassword,newPasswordConfirmation){
+    updatePassword(newPassword,newPasswordConfirmation) {
         this.tokenService.updatePassword({
             password:             newPassword,
             passwordConfirmation: newPasswordConfirmation,
@@ -113,3 +110,4 @@ export class AuthenticationService {
         );
     }
 }
+

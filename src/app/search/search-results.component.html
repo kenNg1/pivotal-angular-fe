@@ -41,7 +41,7 @@
                               <i class="material-icons">directions_run</i>
                           </span>
                           <div class="form-group label-floating">
-                            <md-select class="district-select" [ngModel]="event?.sport" name="district_id" placeholder="Choose Sport" floatPlaceholder="never">
+                            <md-select class="district-select" name="district_id" placeholder="Choose Sport" floatPlaceholder="never">
                                 <md-option class="district-option" *ngFor="let sport of sports" [value]="searchedSport">
                                     <div (click)='filterSport(sport.name, sport.id)'>{{sport.name}}</div>
                                 </md-option>
@@ -63,7 +63,7 @@
                                 <i class="material-icons">location_on</i>
                             </span>
                             <div class="form-group label-floating">
-                              <md-select class="district-select" [ngModel]="event?.district" name="district_id" placeholder="Choose District" floatPlaceholder="never">
+                              <md-select class="district-select" name="district_id" placeholder="Choose District" floatPlaceholder="never">
                                   <md-option class="district-option" *ngFor="let district of districts" [value]="searchedDistrict">
                                       <div (click)='filterDistrict(district.name, district.id)'>{{district.name}}</div>
                                   </md-option>

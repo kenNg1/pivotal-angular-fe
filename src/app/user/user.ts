@@ -5,9 +5,9 @@ export class User {
     email?: string;
     firstName?: string;
     lastName?: string;
+    id?: number;
   
-    constructor()
-    {
+    constructor() {
       this.username = '';
       this.password = '';
       this.email = '';

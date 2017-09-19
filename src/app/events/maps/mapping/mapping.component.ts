@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Event } from '../../../shared/event.model'
-import { ActivatedRoute} from '@angular/router'
-import { EventService } from '../../../shared/event.service'
+import { Event } from '../../../shared/event.model';
+import { ActivatedRoute} from '@angular/router';
+import { EventService } from '../../../shared/event.service';
 
 declare var google: any;
 
@@ -18,24 +18,23 @@ export class MappingComponent implements OnInit {
   title: string;
   lat: number;
   lng: number;
-  zoom: number = 18;
-  scrollwheel: boolean = false;
+  zoom = 18;
+  scrollwheel = false;
 
   constructor(private eventService:EventService, private route:ActivatedRoute) { }
-  event:Event
+  event:Event;
   ngOnInit() {
     this.eventService.getEvent(+this.route.snapshot.params['id']).then(event => {
       this.title = event.address;
       this.eventService.getLatLong(event.address).then(result => {
-        this.lat = result.results[0].geometry.location.lat
-        this.lng = result.results[0].geometry.location.lng
-      })
-    }) 
+        this.lat = result.results[0].geometry.location.lat;
+        this.lng = result.results[0].geometry.location.lng;
+      });
+    });
   }
 
-  goToGoogleMaps(){
-    console.log('hi')
-    window.open(`http://maps.google.com/maps?q=${this.lat},${this.lng}&ll=${this.lat},${this.lng}&z=17`, "_blank");
+  goToGoogleMaps() {
+    window.open(`http://maps.google.com/maps?q=${this.lat},${this.lng}&ll=${this.lat},${this.lng}&z=17`, '_blank');
   }
-
 }
+

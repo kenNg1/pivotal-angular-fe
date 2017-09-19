@@ -11,7 +11,7 @@
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
                                 <label class="control-label"></label>
-                            <input name='name' [ngModel]="event?.name" type="text" class="form-control" placeholder="e.g. Football training session...">
+                            <input name='name' ngModel type="text" class="form-control" placeholder="e.g. Football training session...">
                             <span class="help-block">A block of help text that breaks onto a new line.</span>
                         </div>
                     </div>
@@ -21,7 +21,7 @@
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
                                 <label class="control-label"></label>
-                            <input name='description' [ngModel]="event?.description" type="text" class="form-control" placeholder="More details about the event...">
+                            <input name='description' ngModel type="text" class="form-control" placeholder="More details about the event...">
                             <span class="help-block">A block of help text that breaks onto a new line.</span>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                     <label class="col-sm-2 label-on-left">Sport</label>
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
-                            <md-select class="sport-select" [ngModel]="event?.sport_id" name="sport_id" placeholder="Choose Sport" floatPlaceholder="never">
+                            <md-select class="sport-select" ngModel name="sport_id" placeholder="Choose Sport" floatPlaceholder="never">
                                 <md-option class="sport-option" *ngFor="let sport of sports" [value]="sport.id">
                                     {{sport.name}}
                                 </md-option>
@@ -42,7 +42,7 @@
                     <label class="col-sm-2 label-on-left">District</label>
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
-                            <md-select class="district-select" [ngModel]="event?.district_id" name="district_id" placeholder="Choose District" floatPlaceholder="never">
+                            <md-select class="district-select" ngModel name="district_id" placeholder="Choose District" floatPlaceholder="never">
                                 <md-option class="district-option" *ngFor="let dist of districts" [value]="dist.id">
                                     {{dist.name}}
                                 </md-option>
@@ -56,7 +56,7 @@
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <input name='user_id' type='hidden' ngModel="{{this.authService.tokenService.currentUserData?.id}}"/>
+                            <input name='user_id' type='hidden' ngModel="{{this.user?.id}}"/>
                         </div>
                     </div>
                 </div>
@@ -120,7 +120,7 @@
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <input  [ngModel]="event?.price" name='price' type="text" class="form-control" placeholder="$" value='$'>
+                            <input ngModel name='price' type="text" class="form-control" placeholder="$" value='$'>
                         </div>
                     </div>
                 </div>
@@ -129,7 +129,7 @@
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
                                 <label class="control-label"></label>
-                            <input name='imageUpload' [ngModel]="event?.imageUpload" type="text" class="form-control" placeholder="Copy and paste url or Select file to upload">
+                            <input name='imageUpload' ngModel type="text" class="form-control" placeholder="Copy and paste url or Select file to upload">
                         </div>
                         <button class='btn btn-info btn-sm'>Select File to Upload</button>
                     </div>
@@ -138,7 +138,7 @@
                     <label class="col-sm-2 label-on-left">Date</label>
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
-                            <input style="max-width:250px" [ngModel]="event?.date" name='date' type="date" class="form-control datetimepicker" value="10/05/2016" />
+                            <input style="max-width:250px" ngModel name='date' type="date" class="form-control datetimepicker" value="10/05/2016" />
                         </div>
                     </div>
                 </div>
@@ -147,7 +147,7 @@
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
                                 <label class="control-label"></label>
-                            <input [ngModel]="event?.time" name='time' type="text" class="form-control" placeholder="e.g: 17:00">
+                            <input ngModel name='time' type="text" class="form-control" placeholder="e.g: 17:00">
                             <span class="help-block">A block of help text that breaks onto a new line.</span>
                         </div>
                     </div>
@@ -158,7 +158,7 @@
                         <div ngModelGroup="location">
                             <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                <input [ngModel]="event?.address" name='address' type="text" class="form-control" placeholder="e.g. Flat C, 100/F, 2-10 Gough Street, Sheung Wan, Hong Kong">
+                                <input ngModel name='address' type="text" class="form-control" placeholder="e.g. Flat C, 100/F, 2-10 Gough Street, Sheung Wan, Hong Kong">
                                 <span class="help-block">A block of help text that breaks onto a new line.</span>
                             </div>
                         </div>

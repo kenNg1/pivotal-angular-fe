@@ -1,6 +1,24 @@
 <div class="main-content">
     <div class="container-fluid">
             <div class="row">
+                    <div class="col-md-4">
+                            <div class="card card-profile">
+                                <div class="card-avatar">
+                                    <a href="">
+                                        <img class="img" [src]="this.userDetail?.image" />
+                                    </a>
+                                </div>
+                                <div class="card-content">
+                                    <h6 class="category text-gray">{{this.userDetail?.nickname}}</h6>
+                                    <h4 class="card-title">{{this.userDetail?.firstName}} {{this.userDetail?.lastName}}</h4>
+                                    <p class="description">
+                                        {{this.userDetail?.description}}
+                                    </p>
+                                    <button *ngIf="this.userDetail?.tier==3" routerLink="/admin/user-approval" class="btn btn-rose">Admin Panel</button>
+                                    <button class="btn btn-rose">Change Password</button>
+                                </div>
+                            </div>
+                        </div>
                     <div class="col-md-8">
                         <div class="card"> 
                             <div class="card-header card-header-icon" data-background-color="rose">
@@ -79,23 +97,6 @@
                                     <button type="submit" class="btn btn-rose pull-right">Update Profile</button>
                                     <div class="clearfix"></div>
                                 </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card card-profile">
-                            <div class="card-avatar">
-                                <a href="">
-                                    <img class="img" [src]="this.userDetail?.image" />
-                                </a>
-                            </div>
-                            <div class="card-content">
-                                <h6 class="category text-gray">{{this.userDetail?.nickname}}</h6>
-                                <h4 class="card-title">{{this.userDetail?.firstName}} {{this.userDetail?.lastName}}</h4>
-                                <p class="description">
-                                    {{this.userDetail?.description}}
-                                </p>
-                                <button class="btn btn-rose">Change Password</button>
                             </div>
                         </div>
                     </div>
