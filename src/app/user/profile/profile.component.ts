@@ -60,9 +60,9 @@ export class ProfileComponent implements OnInit {
         this.id = JSON.parse(localStorage.getItem('currentUser')).id;
         this.detailService.getDetail(this.id).then(detail => {
                     //  this.id = detail.json().id
-                     this.userDetail = detail.json()
+                     this.userDetail = detail.json();
                     //  console.log(this.userDetail.image)
-                 })
+                 });
         // this.authService.validate().subscribe(value=>{
         //     this.detailService.getDetail(value.id).then(detail => {
         //         this.id = detail.json().id
