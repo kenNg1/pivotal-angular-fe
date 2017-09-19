@@ -20,11 +20,11 @@ export class EventDetailComponent implements OnInit, OnDestroy {
   event;
   @ViewChild('changeEventModal') target2:any;
   imageId: string;  
-
   // allowButtonClick: boolean = false;
   intensity:string;
   emailHyperlink:any;
   sports:any[] = [];  
+  address: string;
   private subscription: any;
   cloudinaryImage:string
   districts:any[] = [];
@@ -93,6 +93,7 @@ export class EventDetailComponent implements OnInit, OnDestroy {
     this.eventService.update(formValues).then(event=> {
       console.log('response',event);
       this.event = event;
+      this.address = this.event.address
     });
   }
 
