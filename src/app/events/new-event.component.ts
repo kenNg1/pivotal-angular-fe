@@ -17,9 +17,9 @@ import { AuthService } from "../user/auth.service";
   styleUrls: ['./new-event.component.scss']
 })
 export class NewEventComponent implements OnInit {
-  sports = [];
-  districts = [];
-  userId
+  sports:any[] = [];
+  districts:any[] = [];
+  userId:number;
   user: User;
 
   constructor(private eventService:EventService, private router:Router, private sportService:SportService, private districtService:DistrictService, private authService: AuthService) { }

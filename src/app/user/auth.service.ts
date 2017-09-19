@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Observable }     from 'rxjs/observable';
+import { Observable }  from 'rxjs/observable';
 import { User } from './user';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/map';
@@ -35,7 +35,7 @@ export class AuthService {
     return this.http.post(`${this.base_url}/register`, body, options).map( (res) => this.setToken(res) );
   }
 
-  loginUser(user): Observable<Object> {
+  loginUser(user:User): Observable<Object> {
     let body = JSON.stringify(user);
     let headers = new Headers();
 		headers.append('Content-Type', 'application/json');
@@ -60,7 +60,7 @@ export class AuthService {
     
   }
 
-  setToken(res){
+  setToken(res:any){
     let body = JSON.parse(res['_body']);
     console.log('body!',body)
     if( body['username'] != null ){
@@ -77,7 +77,7 @@ export class AuthService {
     return body;
   }
 
-  parseRes(res){
+  parseRes(res:any){
     let body = JSON.parse(res['_body']);
     return body;
   }

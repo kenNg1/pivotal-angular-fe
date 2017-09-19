@@ -17,7 +17,7 @@ export class UserApprovalComponent implements OnInit {
     })
   }
 
-  changeTier(id,tier){
+  changeTier(id:number,tier:string){
     this.detailService.updateUserTier(id,this.belowThree(tier))
     .then(
       response => {
@@ -30,10 +30,10 @@ export class UserApprovalComponent implements OnInit {
     )
   }
 
-  belowThree(tier){
-    tier = parseInt(tier);
-    if (tier < 3){
-      return tier+=1
+  belowThree(tier:string){
+    let newTier = parseInt(tier);
+    if (newTier < 3){
+      return newTier+=1
     }
     else {
       return 0

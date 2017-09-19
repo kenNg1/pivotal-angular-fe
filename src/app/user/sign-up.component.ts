@@ -78,7 +78,7 @@ export class SignUpComponent implements OnInit {
       this.signupForm.setErrors(parsed_errors);        
   }
 
-  fetchId(id){
+  fetchId(id:number){
       this.id = id
   }
 }

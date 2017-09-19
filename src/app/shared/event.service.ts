@@ -35,7 +35,7 @@ export class EventService {
       .catch(this.handleError)
   }
 
-  getLatLong(address) {
+  getLatLong(address:string) {
     const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyDShUCLIVGmRpvGiyEIQOdpDo54gD6tQBw`
     return this.http.get(url)
       .toPromise()

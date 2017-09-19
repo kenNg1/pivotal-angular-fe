@@ -36,7 +36,7 @@ export class DetailService {
       .toPromise()
   }
 
-  createUserDetail(res,firstName,lastName){
+  createUserDetail(res:any,firstName:string,lastName:string){
     console.log(res.json().data.id);
     console.log(firstName);
     console.log(lastName);
@@ -63,7 +63,7 @@ export class DetailService {
        .catch(this.handleError)
   }
 
-  updateUserTier(id,tier){
+  updateUserTier(id:number,tier:number){
     const url = `${this.detailsUrl}/${id}`
     return this.http
       .put(url, JSON.stringify(

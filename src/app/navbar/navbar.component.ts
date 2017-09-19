@@ -34,7 +34,7 @@ import { Event } from '../shared/event.model';
 
 export class NavbarComponent implements OnInit, OnDestroy {
 
-    @ViewChild('searchBox') target;
+    @ViewChild('searchBox') target:any;
 
     allowButtonClick: boolean = false;
     name: string = '';
@@ -42,7 +42,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     message: String;
     user: User;
     events: Observable<Event[]>;
-    sports = [];
+    sports:any[] = [];
     private searchTerms = new Subject<string>();
 
     constructor(private router: Router, private sportSearchService: SportSearchService, private authService: AuthService) {

@@ -72,7 +72,7 @@ export class ProfileComponent implements OnInit {
         // })
   }
 
-  submit(formValues){
+  submit(formValues:any){
       console.log(formValues)
       this.detailService.updateUserDetail(formValues).then(
           response=> {
