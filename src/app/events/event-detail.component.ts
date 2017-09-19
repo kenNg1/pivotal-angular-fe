@@ -7,7 +7,6 @@ import { Event } from '../shared/event.model'
 import { EventService } from '../shared/event.service'
 import 'rxjs/add/operator/switchMap'
 import { CloudinaryOptions, CloudinaryUploader } from 'ng2-cloudinary';
-import 'rxjs/add/operator/switchMap';
 
 declare var $:any;
 
@@ -56,7 +55,7 @@ export class EventDetailComponent implements OnInit, OnDestroy {
         console.log(this.cloudinaryImage)
         return { item, response, status, headers };
       }
-  } 
+  }
 
   upload() {
     this.uploader.uploadAll();
@@ -81,6 +80,15 @@ export class EventDetailComponent implements OnInit, OnDestroy {
       this.sports = sports;});
     this.districtService.getDistricts().then(districts => {
       this.districts = districts;});
+  }
+
+  chooseImage(){
+    if (this.cloudinaryImage) {
+      return this.cloudinaryImage
+    }
+    else {
+        return this.event.imageUpload
+    }
   }
 
   ngOnDestroy() {

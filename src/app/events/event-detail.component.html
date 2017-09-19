@@ -1,16 +1,3 @@
-<!-- BEGIN FORM -->
-<br><br><br>
-<br><br><br>
-
-<div class='container'>
-    <div class='card'>
-        <h1>hi</h1>
-        <input type="file" ng2FileSelect [uploader]="uploader" accept="image/*;capture=camera">
-        <button (click)="upload()">Upload</button>
-        <cl-image [public-id]="imageId" [cloud-name]="uploader.cloudName"></cl-image>
-    </div>
-</div>
-
 <div #changeEventModal class='modal'>
     <div class='modal-form'>
         <div class="card">
@@ -31,9 +18,12 @@
                     <div class="row">
                         <label class="col-sm-2 label-on-left">Image Url</label>
                         <div class="col-sm-10">
+                            <input type="file" ng2FileSelect [uploader]="uploader" accept="image/*;capture=camera" class='btn btn-outline'>
+                            <div class='btn btn-primary' (click)="upload()">Upload</div>
+                            <!-- <cl-image [public-id]="imageId" [cloud-name]="uploader.cloudName" class="img-container"></cl-image> -->
                             <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                <input name='imageUpload' [ngModel]="event?.imageUpload" class="form-control">
+                                <input name='imageUpload' [ngModel]="chooseImage()" class="form-control">
                             </div>
                         </div>
                     </div>
