@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // import { AuthenticationService } from './authentication.service'
-import { User } from './user'
-import { AuthService } from './auth.service'
+import { User } from './user';
+import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -21,12 +21,12 @@ export class SignUpComponent implements OnInit {
   message: String;
   
 
-  constructor(private router: Router,private authService: AuthService, private formBuilder: FormBuilder){
+  constructor(private router: Router,private authService: AuthService, private formBuilder: FormBuilder) {
       this.user = new User;
     }
 
   
-  ngOnInit(){
+  ngOnInit() {
       this.submitted = false;
       // this.signupForm = this.formBuilder.group({
       //     email: ['', Validators.required],
@@ -35,8 +35,8 @@ export class SignUpComponent implements OnInit {
       // })
   }
 
-  submit(value:any){
-      this.submitted = true
+  submit(value:any) {
+      this.submitted = true;
       this.user.email = value.email;
       this.user.username = value.username;
       this.user.password = value.password;
@@ -48,15 +48,15 @@ export class SignUpComponent implements OnInit {
           this.authService.registerUser(this.user).subscribe(res=> {
             console.log('response',res);
             this.user_status = res['success'];
-            if(res['ok'] == false){
+            if(res['ok'] === false) {
               this.message = res['message'];
               console.log('message',this.message);
             } else {
               // this.authService.setUser(res['user']);
-              this.router.navigate(['/events'])
+              this.router.navigate(['/events']);
             }
             
-        })
+        });
 
         // FORGET THE BELOW
           // response - *bind* makes sure that "this" in "this.redirectUrl" is referring to the type declared in the auth.service.ts file
@@ -65,20 +65,21 @@ export class SignUpComponent implements OnInit {
     
   }
 
-  afterFailedSignup(errors:any){
-      let parsed_errors = JSON.parse(errors._body).errors;
+  afterFailedSignup(errors:any) {
+      const parsed_errors = JSON.parse(errors._body).errors;
       // create a parsed errors variables and looks at the errors body
-      for (let attribute in this.signupForm.controls){
-          if(parsed_errors[attribute]){
+      for (const attribute in this.signupForm.controls) {
+          if(parsed_errors[attribute]) {
               // if this attribute is inside the parsed errors
-              this.signupForm.controls[attribute].setErrors(parsed_errors)
+              this.signupForm.controls[attribute].setErrors(parsed_errors);
               // then set the rror and display it in the browser
           }
       }
       this.signupForm.setErrors(parsed_errors);        
   }
 
-  fetchId(id:number){
-      this.id = id
+  fetchId(id:number) {
+      this.id = id;
   }
 }
+

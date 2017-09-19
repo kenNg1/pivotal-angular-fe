@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // import { AuthenticationService } from './authentication.service'
 import { AuthService } from './auth.service';
-import { User } from './user'
+import { User } from './user';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,21 +18,22 @@ export class SignInComponent implements OnInit {
   user: User;
   user_status: boolean;
 
-  constructor( private router: Router, private authService: AuthService, private formBuilder: FormBuilder){
+  constructor( private router: Router, 
+    private authService: AuthService, private formBuilder: FormBuilder) {
       this.user = new User;
   }
 
-  ngOnInit(){
+  ngOnInit() {
       this.submitted = false;
       this.loginForm = this.formBuilder.group({
           username: ['', Validators.required],
           password: ['', Validators.required]
-      })
+      });
   }
 
-  submit(value:any){
-      console.log('form values',value)
-      this.submitted = true
+  submit(value:any) {
+      console.log('form values',value);
+      this.submitted = true;
       // if (!this.loginForm.valid){return}
       // REFACTOR LATER
       this.user.username = value.username;
@@ -41,15 +42,14 @@ export class SignInComponent implements OnInit {
       this.authService.loginUser(this.user).subscribe(res=> {
           console.log('response',res);
           this.user_status = res['success'];
-          if(res['ok'] == false){
+          if(res['ok'] === false) {
             this.message = res['message'];
             console.log('message',this.message);
           } else {
             // this.authService.setUser(res['user']);
-            this.router.navigate(['/events'])
+            this.router.navigate(['/events']);
           }
-          
-      })
+      });
 
     // FORGET THE BELOW
       // .subscribe(
