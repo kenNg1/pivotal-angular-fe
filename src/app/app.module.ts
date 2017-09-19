@@ -8,6 +8,7 @@ import 'hammerjs';
 import { MdSliderModule, MdSelectModule , MdAutocompleteModule} from '@angular/material';
 
 import { Angular2TokenService } from 'angular2-token';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { EventService } from './shared/event.service';
@@ -63,7 +64,8 @@ import { AgmCoreModule } from '@agm/core';
     })
   ],
   bootstrap: [AppComponent],
-  providers: [EventService,SportService,DistrictService,SportSearchService,Angular2TokenService,AuthService, DetailService]
+  providers: [EventService,SportService,DistrictService,SportSearchService,Angular2TokenService,
+    AuthService, DetailService, {provide: LocationStrategy, useClass: HashLocationStrategy}]
 })
 export class AppModule {}
 

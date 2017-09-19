@@ -21,7 +21,7 @@ export class SignUpComponent implements OnInit {
   message: String;
   
 
-  constructor(private router: Router,private authService: AuthService, private formBuilder: FormBuilder) {
+  constructor(private router: Router,public authService: AuthService, private formBuilder: FormBuilder) {
       this.user = new User;
     }
 
