@@ -70,15 +70,6 @@ export class ProfileComponent implements OnInit {
   upload() {
     this.uploader.uploadAll();
   }
-
-  chooseImage(){
-      if (this.cloudinaryImage) {
-        return this.cloudinaryImage
-      }
-      else {
-          return this.userDetail.image
-      }
-  }
     
   ngOnInit() {
           // REFACTOR later

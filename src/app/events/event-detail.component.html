@@ -23,7 +23,8 @@
                             <!-- <cl-image [public-id]="imageId" [cloud-name]="uploader.cloudName" class="img-container"></cl-image> -->
                             <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                <input name='imageUpload' [ngModel]="chooseImage()" class="form-control">
+                                <input name='imageUpload' *ngIf="this.cloudinaryImage" [ngModel]="this.cloudinaryImage" class="form-control">
+                                <input name='imageUpload' *ngIf="!this.cloudinaryImage" [ngModel]="this.event?.imageUpload" class="form-control">
                             </div>
                         </div>
                     </div>

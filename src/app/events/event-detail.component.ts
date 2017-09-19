@@ -82,15 +82,6 @@ export class EventDetailComponent implements OnInit, OnDestroy {
       this.districts = districts;});
   }
 
-  chooseImage(){
-    if (this.cloudinaryImage) {
-      return this.cloudinaryImage
-    }
-    else {
-        return this.event.imageUpload
-    }
-  }
-
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }

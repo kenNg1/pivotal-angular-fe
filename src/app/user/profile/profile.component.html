@@ -5,7 +5,8 @@
                             <div class="card card-profile">
                                 <div class="card-avatar">
                                     <a href="">
-                                        <img class="img" [src]="chooseImage()" />
+                                        <img class="img" *ngIf="this.cloudinaryImage" [src]="this.cloudinaryImage" />
+                                        <img class="img" *ngIf="!this.cloudinaryImage" [src]="this.userDetail?.image" />
                                     </a>
                                 </div>
                                 <div class="card-content">
