@@ -21,6 +21,21 @@ export class NewEventComponent implements OnInit {
   districts:any[] = [];
   userId:number;
   user: User;
+  beginner: boolean = false;
+  intermediate: boolean = false;  
+  advanced: boolean = false;
+
+  toggleBeginner(){
+    this.beginner = !this.beginner
+  }
+
+  toggleIntermediate(){
+    this.intermediate = !this.intermediate
+  }
+
+  toggleAdvanced(){
+    this.advanced = !this.advanced
+  }
 
   constructor(private eventService:EventService, private router:Router,
     private sportService:SportService, private districtService:DistrictService,
@@ -37,11 +52,25 @@ export class NewEventComponent implements OnInit {
     });
   }
 
-  add(formValues:any):void {
-    console.log(formValues);
-    this.eventService.create(formValues)
+  levelArray(){
+    let arr = []
+    if (this.beginner == true) {
+      arr.push('beginner')
+    }
+    if (this.intermediate == true) {
+      arr.push('intermediate')
+    }
+    if (this.advanced == true) {
+      arr.push('advanced')
+    }
+    return arr
+  }
+
+  add(formValues:any) {
+    let newForm = formValues;
+    newForm.level = this.levelArray()
+    this.eventService.create(newForm)
       .then((event) => {
-        console.log(event);
         this.router.navigate(['/events']);
       });
   }
