@@ -1,6 +1,6 @@
-<div class="col-lg-3 col-md-3 col-sm-6">
 
-          <div style="background: linear-gradient(60deg,#46d1fb,#1ba4d8);" class="card card-product" [routerLink]="['/events',event.id]">  
+<div class="col-lg-3 col-md-3 col-sm-6">
+          <div style="background: RGBA(255,255,255,0);" class="card card-product" [routerLink]="['/events',event.id]">  
             <div class="card-image" data-header-animation="false">
                 <a href="">
                     <img class="img" [src]="event?.imageUpload">
@@ -22,18 +22,26 @@
                     </button>
                 </div>
                 <h4 class="card-title">
-                    <a style="color:white;" href="">{{event?.name | uppercase }}</a>
+                    <a style="color:#505050;" href="">{{event?.name | uppercase }}</a>
                 </h4>
-                <div class="card-description" style="color:white;">
-                    {{event?.date | date:'EE d MMM'}} &nbsp; | <i style="margin-left:5px;font-size: 15px; color: white" class="material-icons">grade</i>{{event?.level}}
+                <div class="card-description" style="color:#505050;">
+                    {{event?.date | date:'EE d MMM'}} &nbsp;  <i style="margin-left:5px;font-size: 15px; color: #505050" class="material-icons">grade</i>
+                    <span *ngIf="event?.level">
+                        <span *ngIf="event?.level.length!=3">
+                            <span *ngFor="let level of event?.level">{{level}} | </span>
+                        </span>
+                        <span *ngIf="event?.level.length==3">
+                            <span>All levels</span>
+                        </span>
+                    </span>
                 </div>
             </div>
             <div class="card-footer">
                 <div class="price">
-                    <h4 style="color:white">HKD {{event?.price | currency:"USD":true}}</h4>
+                    <h4 style="color:#505050">HKD {{event?.price | currency:"USD":true}}</h4>
                 </div>
                 <div class="stats pull-right">
-                    <p style="color:white" class="category"><i class="material-icons">place</i>{{event?.District?.name}}</p>
+                    <p style="color:#505050" class="category"><i class="material-icons">place</i>{{event?.District?.name}}</p>
                 </div>
             </div>
         </div>
