@@ -100,6 +100,7 @@ export class EventDetailComponent implements OnInit, OnDestroy {
       console.log('response',event);
       this.event = event;
       this.address = this.event.address 
+      window.location.reload();
     });
   }
 
