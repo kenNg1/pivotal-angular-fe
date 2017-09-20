@@ -101,6 +101,7 @@ export class NewEventComponent implements OnInit {
   add(formValues:any) {
     let newForm = formValues;
     newForm.level = this.levelArray()
+    console.log(formValues)
     this.eventService.create(newForm)
       .then((event) => {
         this.router.navigate(['/events']);
