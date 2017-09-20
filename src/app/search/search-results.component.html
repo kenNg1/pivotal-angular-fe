@@ -36,18 +36,18 @@
                       </div> -->
                   </div>
                   <div class="card-content">
-                      <div class="input-group">
-                          <span class="input-group-addon">
-                              <i class="material-icons">directions_run</i>
-                          </span>
-                          <div class="form-group label-floating">
-                            <md-select class="district-select" name="district_id" placeholder="Choose Sport" floatPlaceholder="never">
-                                <md-option class="district-option" *ngFor="let sport of sports" [value]="searchedSport">
-                                    <div (click)='filterSport(sport.name, sport.id)'>{{sport.name}}</div>
-                                </md-option>
-                            </md-select>
-                          </div>
-                      </div>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="material-icons">directions_run</i>
+                            </span>
+                            <div class="form-group label-floating">
+                                <md-select [(ngModel)]="selectedValue" class="district-select" name="district_id" placeholder="Sport" floatPlaceholder="never">
+                                    <md-option class="district-option" *ngFor="let sport of sports" [value]="searchedSport">
+                                        <div (click)='filterSport(sport.name, sport.id)' (click)="unselectDistrict()" >{{sport.name}}</div>
+                                    </md-option>
+                                </md-select>
+                            </div>
+                        </div>
                         <h4 style='text-align:center'>or</h4>
                       <!-- <div class="input-group">
                           <span class="input-group-addon">
@@ -63,9 +63,9 @@
                                 <i class="material-icons">location_on</i>
                             </span>
                             <div class="form-group label-floating">
-                              <md-select class="district-select" name="district_id" placeholder="Choose District" floatPlaceholder="never">
+                              <md-select [(ngModel)]="selectedValueLocation" class="district-select" name="district_id" placeholder="District" floatPlaceholder="never">
                                   <md-option class="district-option" *ngFor="let district of districts" [value]="searchedDistrict">
-                                      <div (click)='filterDistrict(district.name, district.id)'>{{district.name}}</div>
+                                      <div (click)='filterDistrict(district.name, district.id)' (click)="unselect()">{{district.name}}</div>
                                   </md-option>
                               </md-select>
                             </div>
@@ -92,7 +92,7 @@
                             <a href="#pill2" data-toggle="tab">By Price</a>
                         </li>
                     </ul>
-                    <ul style="display: inline-block;" class="nav nav-pills nav-pills-primary">
+                    <!-- <ul style="display: inline-block;" class="nav nav-pills nav-pills-primary">
                         <li (click)="filterAll()" [class.active]="filterBy ==='all'">
                             <a href="#pill3" data-toggle="tab">All</a>
                         </li>
@@ -105,7 +105,7 @@
                         <li (click)="filterAdvanced()" [class.active]="filterBy ==='advanced'">
                             <a href="#pill6" data-toggle="tab">Advanced</a>
                         </li> 
-                    </ul>  
+                    </ul>   -->
                 </div>
 
                 <h3 *ngIf="this.searchedSport">Searched Sport: {{this.searchedSport}} <em>({{this.visibleEvents.length | i18nPlural: eventMapping}})</em></h3>
@@ -127,21 +127,28 @@
                           <p style="display:inline" class='No of Players'>Signed Up: 8 | Needed: 2 (ADD LATER)</p>
                           <div class="row icons">
                           <br>
-                              <div class='icon col-md-2 col-xs-4'>
+                              <div class='icon col-md-3 col-xs-4'>
                                 <img style="width:24px" *ngIf="event.terrain=='indoor'" src="../assets/img/playground.png">
                                 <i *ngIf="event.terrain=='outdoor'" class="material-icons">terrain</i>
                                 <!-- if indoor use the insert_photo material icon -->
                                 <p>{{event?.terrain}}</p>
                               </div>
 
-                              <div class='icon col-md-2 col-xs-4'>
+                              <div class='icon col-md-3 col-xs-4'>
                                 <i class="material-icons">insert_emoticon</i>
                                 <p>{{event?.intensity}}</p>
                               </div>
 
-                              <div class='icon col-md-2 col-xs-4'>
+                              <div class='icon col-md-3 col-xs-4'>
                                 <i class="material-icons">grade</i>
-                                <p>{{event?.level}}</p>
+                                <div *ngIf="event?.level">
+                                    <div *ngIf="event?.level.length!=3">
+                                        <span *ngFor="let level of event?.level">{{level}} </span>
+                                    </div>
+                                    <div *ngIf="event?.level.length==3">
+                                        <span>All </span><span>levels</span>
+                                    </div>
+                                </div>
                               </div>
 
                           </div>
@@ -150,19 +157,18 @@
                             <div class="click-enter-event"></div>
                             <div style="margin-top:20px;" class='row'>
                               <h3 style="margin-left:10px;" class='event-price'>${{event?.price}}</h3>
-                              <img id="avatar-placeholder" src="{{event?.user?.detail?.image}}">
-                            </div>
+                              <img id="avatar-placeholder" src="{{event?.User?.Detail?.image}}">
+                            </div> 
                           </div>
                       </div>
-                    </div>
-
+                </div>  
               </div>
 
-              <div class='row'>
+              <!-- <div class='row'>
                 <div class="col-md-12 center-align" id="bottom-paginate">
                   PAGINATION
                 </div>
-              </div>
+              </div> -->
 
             </section>
 

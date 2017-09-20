@@ -87,7 +87,7 @@ export class EventDetailComponent implements OnInit, OnDestroy {
       this.districts = districts;});
   }
 
-  ngOnDestroy() {
+  ngOnDestroy() { 
     this.subscription.unsubscribe();
   }
 
