@@ -26,6 +26,7 @@ export class EventDetailComponent implements OnInit, OnDestroy {
   sports:any[] = [];  
   address: string;
   levels:any
+  beginners: true
   beginner: boolean = false;
   intermediate: boolean = false;  
   advanced: boolean = false;
@@ -61,7 +62,7 @@ export class EventDetailComponent implements OnInit, OnDestroy {
       }
   }
 
-  upload() {
+  upload() { 
     this.uploader.uploadAll();
   }
   
@@ -79,7 +80,6 @@ export class EventDetailComponent implements OnInit, OnDestroy {
       const str2 = this.event.User.email;
       const str3 = '?subject=The%20subject%20of%20the%20email&body=Yes%20I%20wanna%20go%20dude';
       this.emailHyperlink = str1.concat(str2,str3);     
-      console.log(res)
     });
       this.sportService.getSports().then(sports => {
       this.sports = sports;});

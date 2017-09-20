@@ -4,7 +4,7 @@
                     <div class="col-md-4">
                             <div class="card card-profile">
                                 <div class="card-avatar">
-                                    <a href="">
+                                    <a>
                                         <img class="img" *ngIf="this.cloudinaryImage" [src]="this.cloudinaryImage" />
                                         <img class="img" *ngIf="!this.cloudinaryImage" [src]="this.userDetail?.image" />
                                     </a>
@@ -60,7 +60,7 @@
                                             <button class='btn btn-primary' (click)="upload()">Upload</button>
                                             <cl-image [public-id]="imageId" [cloud-name]="uploader.cloudName" class="img"></cl-image>
                                             <div class="form-group">
-                                                <input name="image" class="form-control hidden" [ngModel]="this.cloudinaryImage">
+                                                <input name="image" class="form-control" [ngModel]="this.cloudinaryImage">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
