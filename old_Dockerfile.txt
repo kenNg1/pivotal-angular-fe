@@ -1,0 +1,7 @@
+Remove old_ and .txt extension to bring back!
+
+FROM nginx:latest
+
+COPY ./dist /usr/share/nginx/html
+
+EXPOSE 80
