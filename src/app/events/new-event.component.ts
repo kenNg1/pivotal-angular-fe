@@ -6,10 +6,11 @@ import { Sport } from '../shared/sport.model';
 import { SportService } from '../shared/sport.service';
 import { District } from '../shared/district.model';
 import { User } from '../user/user';
-
 import { DistrictService } from '../shared/district.service';
 // import { AuthenticationService } from "../user/authentication.service";
 import { AuthService } from '../user/auth.service';
+import { CloudinaryOptions, CloudinaryUploader } from 'ng2-cloudinary';
+
 
 @Component({
   selector: 'app-new-event',
@@ -24,26 +25,49 @@ export class NewEventComponent implements OnInit {
   beginner: boolean = false;
   intermediate: boolean = false;  
   advanced: boolean = false;
+  selectedSport: boolean = false;
+  selectedDistrict: boolean = false;
+  submitButtonClicked: boolean = false
+  
+  cloudinaryImage:string;
+  imageId: string;    
 
   toggleBeginner(){
     this.beginner = !this.beginner
   }
-
   toggleIntermediate(){
     this.intermediate = !this.intermediate
   }
-
   toggleAdvanced(){
     this.advanced = !this.advanced
   }
+  selectSport(){
+    this.selectedSport = true 
+  }
+  selectDistrict(){
+    this.selectedDistrict = true
+  }
+  selectSubmit(){
+    this.submitButtonClicked = true
+  }
 
-  constructor(private eventService:EventService, private router:Router,
-    private sportService:SportService, private districtService:DistrictService,
-    private authService: AuthService) { }
+  constructor(private eventService:EventService, 
+    private router:Router,
+    private sportService:SportService, 
+    private districtService:DistrictService,
+    private authService: AuthService,
+  ) {
+    this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any): any => {
+      let res: any = JSON.parse(response);
+      this.imageId = res.public_id;
+      this.cloudinaryImage = JSON.parse(response).url
+      console.log(this.cloudinaryImage)
+      return { item, response, status, headers };
+    }
+  }
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
-    
     this.sportService.getSports().then(sports => {
       this.sports = sports;
     });
@@ -51,6 +75,14 @@ export class NewEventComponent implements OnInit {
       this.districts = districts;
     });
   }
+
+  upload() {
+    this.uploader.uploadAll();
+  }
+
+  uploader: CloudinaryUploader = new CloudinaryUploader(
+    new CloudinaryOptions({ cloudName: 'dfk2numni', uploadPreset: 'aiehynsk' })
+  );
 
   levelArray(){
     let arr = []
@@ -69,6 +101,7 @@ export class NewEventComponent implements OnInit {
   add(formValues:any) {
     let newForm = formValues;
     newForm.level = this.levelArray()
+    console.log(formValues)
     this.eventService.create(newForm)
       .then((event) => {
         this.router.navigate(['/events']);

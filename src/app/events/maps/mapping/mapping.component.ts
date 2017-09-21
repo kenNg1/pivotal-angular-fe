@@ -27,8 +27,6 @@ export class MappingComponent implements OnInit, OnChanges{
   ngOnInit() {
     this.eventService.getEvent(+this.route.snapshot.params['id']).then(event => {
       this.title = event.address;
-      console.log('hihihi')
-      console.log(this.title)
       this.eventService.getLatLong(event.address).then(result => {
         this.lat = result.results[0].geometry.location.lat;
         this.lng = result.results[0].geometry.location.lng;
@@ -39,8 +37,6 @@ export class MappingComponent implements OnInit, OnChanges{
   ngOnChanges(changes: {[ propName: string]: SimpleChange}) {
 		this.eventService.getEvent(+this.route.snapshot.params['id']).then(event => {
       this.title = event.address;
-      console.log('hihihi')
-      console.log(this.title)
       this.eventService.getLatLong(event.address).then(result => {
         this.lat = result.results[0].geometry.location.lat;
         this.lng = result.results[0].geometry.location.lng;

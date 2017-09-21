@@ -11,8 +11,12 @@
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
                                 <label class="control-label"></label>
-                            <input name='name' ngModel type="text" class="form-control" placeholder="e.g. Football training session...">
-                            <span class="help-block">A block of help text that breaks onto a new line.</span>
+                            <input name='name' ngModel type="text" #name="ngModel" class="form-control" placeholder="e.g. Football training session..." required >
+                            <div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger">
+                                <div>
+                                    Name is required and must be at least 5 characters long!
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -21,8 +25,63 @@
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
                                 <label class="control-label"></label>
-                            <input name='description' ngModel type="text" class="form-control" placeholder="More details about the event...">
-                            <span class="help-block">A block of help text that breaks onto a new line.</span>
+                            <input name='description' ngModel #description="ngModel" type="text" class="form-control" placeholder="More details about the event..." required >
+                            <div *ngIf="description.errors && (description.dirty || description.touched)" class="alert alert-danger">
+                                <div>
+                                    Description is required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row"> 
+                    <label class="col-sm-2 label-on-left">Organizer Information</label>
+                    <div class="col-sm-10">
+                        <div class="form-group label-floating is-empty">
+                                <label class="control-label"></label>
+                            <input name='org_description' ngModel #orgInfo="ngModel" type="text" class="form-control" placeholder="More information about the organizer" required >
+                            <div *ngIf="orgInfo.errors && (orgInfo.dirty || orgInfo.touched)" class="alert alert-danger">
+                                <div>
+                                    Organizer description is required 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <div class="row"> 
+                    <label class="col-sm-2 label-on-left">Organizer Website</label>
+                    <div class="col-sm-10">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input name='org_website' ngModel type="text" class="form-control" placeholder="Organizer Website" >
+                        </div>
+                    </div>
+                </div>
+                <div class="row"> 
+                    <label class="col-sm-2 label-on-left">What should players bring?</label>
+                    <div class="col-sm-10">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input name='sportswear' ngModel #sportswear="ngModel" type="text" class="form-control" placeholder="e.g. Hockey racket, gloves, water" >
+                            <div *ngIf="sportswear.errors && (sportswear.dirty || sportswear.touched)" class="alert alert-danger">
+                                <div>
+                                    Organizer description is required 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row"> 
+                    <label class="col-sm-2 label-on-left">Spaces Available</label>
+                    <div class="col-sm-10">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input name='max_ppl' #spaces="ngModel" ngModel type="text" class="form-control" placeholder="number of spaces available" >
+                            <div *ngIf="spaces.errors && (spaces.dirty || spaces.touched)" class="alert alert-danger">
+                                <div>
+                                    Spaces Available is required 
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -30,11 +89,16 @@
                     <label class="col-sm-2 label-on-left">Sport</label>
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
-                            <md-select class="sport-select" ngModel name="sport_id" placeholder="Choose Sport" floatPlaceholder="never">
-                                <md-option class="sport-option" *ngFor="let sport of sports" [value]="sport.id">
-                                    {{sport.name}}
+                            <md-select class="sport-select" ngModel name="sport_id" #sport="ngModel" placeholder="Choose Sport" floatPlaceholder="never">
+                                <md-option class="sport-option" *ngFor="let sport of sports" [value]="sport.id" (click)="selectSport()">
+                                    <span class='testesstes'>{{sport.name}}</span>
                                 </md-option>
                             </md-select> 
+                            <div *ngIf="!this.selectedSport && sport.touched" class="alert alert-danger">
+                                <div>
+                                    Please select Sport
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -42,11 +106,16 @@
                     <label class="col-sm-2 label-on-left">District</label>
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
-                            <md-select class="district-select" ngModel name="district_id" placeholder="Choose District" floatPlaceholder="never">
-                                <md-option class="district-option" *ngFor="let dist of districts" [value]="dist.id">
+                            <md-select class="district-select" ngModel name="district_id" #district="ngModel" placeholder="Choose District" floatPlaceholder="never">
+                                <md-option class="district-option" *ngFor="let dist of districts" [value]="dist.id" (click)="selectDistrict()">
                                     {{dist.name}}
                                 </md-option>
-                            </md-select>                    
+                            </md-select>
+                            <div *ngIf="!this.selectedDistrict && district.touched" class="alert alert-danger">
+                                <div>
+                                    Please select District
+                                </div>
+                            </div>                    
                         </div> 
                     </div>
                 </div> 
@@ -65,38 +134,48 @@
                     <div class="col-sm-10 checkbox-radios">
                         <div class="checkbox">
                             <label>
-                                <input ngModel type="checkbox" name="level" value="beginners" (click)="toggleBeginner()"> Beginners
+                                <input #level1="ngModel" ngModel type="checkbox" name="level" value="beginners" (click)="toggleBeginner()"> Beginners
                             </label>
                         </div>
                         <div class="checkbox">
                             <label>
-                                <input ngModel type="checkbox" name="level" value="intermediate" (click)="toggleIntermediate()"> Intermediate
+                                <input #level2="ngModel" ngModel type="checkbox" name="level" value="intermediate" (click)="toggleIntermediate()"> Intermediate
                             </label>
                         </div>
                         <div class="checkbox">
                             <label>
-                                <input ngModel type="checkbox" name="level" value="advanced" (click)="toggleAdvanced()"> Advanced
+                                <input #level3="ngModel" ngModel type="checkbox" name="level" value="advanced" (click)="toggleAdvanced()"> Advanced
                             </label>
+                        </div>
+                        <div *ngIf="levelArray().length === 0 && (level1.touched || level2.touched || level3.touched)" class="alert alert-danger">
+                            <div>
+                                Please select Level
+                            </div>
                         </div>
                     </div>
-                </div>
+                </div> 
                 <div class="row">
                     <label class="col-sm-2 label-on-left">Intensity</label>
                     <div class="col-sm-10 checkbox-radios">
                         <div class="radio">
                             <label>
-                                <input ngModel type="radio" name="intensity" checked="true" value="competitive"> Competitive
+                                <input #intensity1="ngModel" ngModel type="radio" name="intensity" checked="true" value="competitive"> Competitive
                             </label>
                         </div>
                         <div class="radio">
                             <label>
-                                <input ngModel type="radio" name="intensity" value="friendly"> Friendly
+                                <input #intensity2="ngModel" ngModel type="radio" name="intensity" value="friendly"> Friendly
                             </label>
                         </div>
                         <div class="radio">
                             <label>
-                                <input ngModel type="radio" name="intensity" value="casual"> Casual
+                                <input #intensity3="ngModel" ngModel type="radio" name="intensity" value="casual"> Casual
                             </label>
+                        </div>
+                        <div *ngIf="(intensity1.untouched && intensity2.untouched && intensity3.untouched && submitButtonClicked)" class="alert alert-danger">
+                            <div>
+                                Please select Intensity
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -105,13 +184,18 @@
                     <div class="form-group col-sm-10 checkbox-radios">
                         <div class="radio">
                             <label>
-                                <input type="radio" name="terrain" value="indoor" ngModel> Indoor
+                                <input #terrain1="ngModel" type="radio" name="terrain" value="indoor" ngModel> Indoor
                             </label>
                             </div>
                         <div class="radio">
                             <label>
-                                <input type="radio" name="terrain" value="outdoor" ngModel> Outdoor
+                                <input #terrain2="ngModel" type="radio" name="terrain" value="outdoor" ngModel> Outdoor
                             </label>
+                        </div>
+                        <div *ngIf="(terrain1.untouched && terrain2.untouched && submitButtonClicked)" class="alert alert-danger">
+                            <div>
+                                Please select Terrain
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -120,25 +204,43 @@
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <input ngModel name='price' type="text" class="form-control" placeholder="$" value='$'>
+                            <input ngModel #price="ngModel" name='price' type="text" class="form-control" placeholder="please put down 0 if free" value='$' required>
+                        </div>
+                        <div *ngIf="price.errors && (price.dirty || price.touched)" class="alert alert-danger">
+                            <div [hidden]="!name.errors.required">
+                                Price is required!
+                            </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <label class="col-sm-2 label-on-left">Image Upload</label>
                     <div class="col-sm-10">
+                        <input type="file" ng2FileSelect [uploader]="uploader" accept="image/*;capture=camera" >
+                        <button class='btn btn-primary' (click)="upload()">Upload</button>
+                        <!-- <cl-image [public-id]="imageId" [cloud-name]="uploader.cloudName" class="img"></cl-image>         -->
                         <div class="form-group label-floating is-empty">
-                                <label class="control-label"></label>
-                            <input name='imageUpload' ngModel type="text" class="form-control" placeholder="Copy and paste url or Select file to upload">
+                            <label class="control-label"></label>
+                            <input #imageUpload="ngModel" name='imageUpload' [ngModel]="this.cloudinaryImage" type="text" class="form-control" placeholder="choose file and upload image above, or paste in URL" required>
                         </div>
-                        <button class='btn btn-info btn-sm'>Select File to Upload</button>
+                        <div *ngIf="imageUpload.errors && (imageUpload.dirty || imageUpload.touched)" class="alert alert-danger">
+                            <div [hidden]="!name.errors.required">
+                                Image is required!
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
                     <label class="col-sm-2 label-on-left">Date</label>
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
-                            <input style="max-width:250px" ngModel name='date' type="date" class="form-control datetimepicker" value="10/05/2016" />
+                            <input style="max-width:250px" #date="ngModel" ngModel name='date' type="date" class="form-control datetimepicker" required/>
+                        </div>
+                        <div *ngIf="date.errors && (date.dirty || date.touched)" class="alert alert-danger">
+                            <div [hidden]="!name.errors.required">
+                                Date is required!
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -146,20 +248,26 @@
                     <label class="col-sm-2 label-on-left">Time</label>
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
-                                <label class="control-label"></label>
-                            <input ngModel name='time' type="text" class="form-control" placeholder="e.g: 17:00">
-                            <span class="help-block">A block of help text that breaks onto a new line.</span>
+                            <label class="control-label"></label>
+                            <input ngModel name='time' type="text" class="form-control" placeholder="e.g: 17:00" required #time="ngModel">
+                            <div *ngIf="time.errors && (time.dirty || time.touched)" class="alert alert-danger">
+                                <div [hidden]="!name.errors.required">
+                                    Time is required!
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <label class="col-sm-2 label-on-left">Address</label>
                     <div class="col-sm-10">
-                        <div ngModelGroup="location">
-                            <div class="form-group label-floating is-empty">
-                                    <label class="control-label"></label>
-                                <input ngModel name='address' type="text" class="form-control" placeholder="e.g. Flat C, 100/F, 2-10 Gough Street, Sheung Wan, Hong Kong">
-                                <span class="help-block">A block of help text that breaks onto a new line.</span>
+                        <div class="form-group label-floating is-empty">
+                                <label class="control-label"></label>
+                            <input ngModel name='address' type="text" class="form-control" placeholder="e.g. Flat C, 100/F, 2-10 Gough Street, Sheung Wan, Hong Kong" required #address="ngModel">
+                        </div>
+                        <div *ngIf="address.errors && (address.dirty || address.touched)" class="alert alert-danger">
+                            <div [hidden]="!name.errors.required">
+                                Address is required!
                             </div>
                         </div>
                     </div>
@@ -207,7 +315,7 @@
                           </div>
                       </div>
                   </div> -->
-                  <button type='submit' class='btn btn-success' style='float: right;'>Submit</button>
+                  <button type='submit' [disabled]="!newEventForm.valid" class='btn btn-success' style='float: right;'>Submit</button>
                   <button type='button' (click)="closeForm()" class='btn btn-primary' style='float: right;'>Cancel</button>                    
               </div>
           </form>

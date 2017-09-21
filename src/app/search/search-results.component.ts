@@ -25,6 +25,8 @@ export class SearchResultsComponent implements OnInit {
   searchedSportId:number;
   searchedDistrict:string;
   searchedDate:string;
+  selectedValue: null
+  selectedValueLocation: null
   form: any;
   eventMapping:
   {[k: string]: string} = {'=0': 'No results', '=1': '1 result', 'other': '# results'};
@@ -48,6 +50,10 @@ export class SearchResultsComponent implements OnInit {
     this.eventService.getEvents().then(events => {
       console.log(events);
       this.events = events;
+      for (let i=0;i<this.events.length;i++){
+        this.events[i].level = JSON.parse(JSON.stringify(this.events[i].level).replace(/"{/g,'["').replace(/}"/g,'"]').replace(/,/g,'","'))
+      }
+      console.log(this.events)
       this.visibleEvents = events;
       this.filteredEvents = events;
       this.sortDate();
@@ -66,6 +72,14 @@ export class SearchResultsComponent implements OnInit {
     this.districtService.getDistricts().then(districts => {
       this.districts = districts;
     });
+  }
+  
+  unselect(): void {
+    this.selectedValue = undefined;
+  }
+  
+  unselectDistrict(): void {
+    this.selectedValueLocation = undefined;
   }
 
   resetSearch() {

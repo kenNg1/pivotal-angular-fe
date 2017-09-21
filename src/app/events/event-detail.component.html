@@ -6,91 +6,89 @@
                     <h4 class="card-title">Edit Event Details</h4>
                 </div>
                 <div class="card-content">
-                    <div class="row">
+                    <div class="row hidden">
                         <label class="col-sm-2 label-on-left">Id</label>
                         <div class="col-sm-10">
-                            <div class="form-group label-floating is-empty">
+                            <div class="form-group label-floating is-empty ">
                                     <label class="control-label"></label>
                                 <input name='id' [ngModel]="event?.id" class="form-control">
                             </div>
                         </div>
                     </div>
+                    <div class="row"> 
+                        <label class="col-sm-2 label-on-left">Event Name</label>
+                        <div class="col-sm-10">
+                            <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                <input name='name' [ngModel]="event?.name" type="text" class="form-control" placeholder="name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row"> 
+                        <label class="col-sm-2 label-on-left">Organizer Information</label>
+                        <div class="col-sm-10">
+                            <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                <input name='org_description' [ngModel]="event?.org_description" #orgInfo="ngModel" type="text" class="form-control" placeholder="More information about the organizer" required >
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="row"> 
+                        <label class="col-sm-2 label-on-left">Organizer Website</label>
+                        <div class="col-sm-10">
+                            <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                <input name='org_website' [ngModel]="event?.org_website" type="text" class="form-control" placeholder="Organizer Website" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row"> 
+                        <label class="col-sm-2 label-on-left">What should players bring?</label>
+                        <div class="col-sm-10">
+                            <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                <input name='sportswear' [ngModel]="event?.sportswear" type="text" class="form-control" placeholder="e.g. Hockey racket, gloves, water" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row"> 
+                        <label class="col-sm-2 label-on-left">Available Spaces</label>
+                        <div class="col-sm-10">
+                            <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                <input name='sportswear' [ngModel]="event?.max_ppl" type="text" class="form-control" placeholder="number of spaces available" >
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
-                        <label class="col-sm-2 label-on-left">Image Url</label>
+                        <label class="col-sm-2 label-on-left">Event Image Upload / URL</label>
                         <div class="col-sm-10">
                             <input type="file" ng2FileSelect [uploader]="uploader" accept="image/*;capture=camera" class='btn btn-outline'>
                             <div class='btn btn-primary' (click)="upload()">Upload</div>
                             <!-- <cl-image [public-id]="imageId" [cloud-name]="uploader.cloudName" class="img-container"></cl-image> -->
                             <div class="form-group label-floating is-empty">
-                                    <label class="control-label"></label>
+                                <label class="control-label"></label>
                                 <input name='imageUpload' *ngIf="this.cloudinaryImage" [ngModel]="this.cloudinaryImage" class="form-control">
                                 <input name='imageUpload' *ngIf="!this.cloudinaryImage" [ngModel]="this.event?.imageUpload" class="form-control">
+                                <input type="hidden" name='user_id' [ngModel]="event?.user_id">
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <label class="col-sm-2 label-on-left">Online Url</label>
+                    <!-- <div class="row">
+                        <label class="col-sm-2 label-on-left">Sport</label>
                         <div class="col-sm-10">
                             <div class="form-group label-floating is-empty">
-                                    <label class="control-label"></label>
-                                <input name='onlineUrl' [ngModel]="event?.onlineUrl" class="form-control">
-                                <input type="hidden" name='user_id' [ngModel]="event?.user_id" class="form-control">                               
+                                <md-select class="sport-select" [ngModel]="event?.sport_id" name="sport_id" placeholder="Choose Sport" floatPlaceholder="never">
+                                    <md-option class="sport-option" *ngFor="let sport of sports" [value]="sport.id">
+                                        {{sport.name}}
+                                    </md-option>
+                                </md-select> 
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <label class="col-sm-2 label-on-left">User Name</label>
-                        <div class="col-sm-10">
-                            <div class="form-group label-floating is-empty">
-                                    <label class="control-label"></label>
-                                <input name='userName' [ngModel]="event?.userName" class="form-control">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label class="col-sm-2 label-on-left">Sports Image Urls</label>
-                        <div class="col-sm-10">
-                            <div class="form-group label-floating is-empty">
-                                    <label class="control-label"></label>
-                                    <input name="sportsImageUrl" [ngModel]="event?.sportsImageUrl" class="form-control">
-                            </div>
-                        </div>
-                    </div>                  
-
-                    <div class="row">
-                        <label class="col-sm-2 label-on-left">User Image Url</label>
-                        <div class="col-sm-10">
-                            <div class="form-group label-floating is-empty">
-                                    <label class="control-label"></label>
-                                <input name='userImageUrl' [ngModel]="event?.userImageUrl">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                            <label class="col-sm-2 label-on-left">Sport</label>
-                            <div class="col-sm-10">
-                                <div class="form-group label-floating is-empty">
-                                    <md-select class="sport-select" [ngModel]="event?.sport_id" name="sport_id" placeholder="Choose Sport" floatPlaceholder="never">
-                                        <md-option class="sport-option" *ngFor="let sport of sports" [value]="sport.id">
-                                            {{sport.name}}
-                                        </md-option>
-                                    </md-select> 
-                                </div>
-                            </div>
-                    </div>
-                    <div class="row"> 
-                        <label class="col-sm-2 label-on-left">Name</label>
-                        <div class="col-sm-10">
-                            <div class="form-group label-floating is-empty">
-                                    <label class="control-label"></label>
-                                <input name='name' [ngModel]="event?.name" type="text" class="form-control" placeholder="name">
-                                <span class="help-block">A block of help text that breaks onto a new line.</span>
-                            </div>
-                        </div>
-                    </div>
+                    </div> -->
                     <div class="row">
                         <label class="col-sm-2 label-on-left">Terrain</label>
-                        <div class="form-group col-sm-10 checkbox-radios">
+                        <div class="col-sm-10 checkbox-radios">
                             <div class="radio">
                                 <label>
                                     <input type="radio" name="terrain" value="indoor" [ngModel]="event?.terrain"> Indoor
@@ -110,7 +108,7 @@
                     </div>
                     <div class="row">
                         <label class="col-sm-2 label-on-left">Intensity</label>
-                        <div class="form-group col-sm-10 checkbox-radios">
+                        <div class="col-sm-10 checkbox-radios">
                             <div class="radio">
                                 <label>
                                     <input type="radio" name="intensity" value="competitive" [ngModel]="event?.intensity"> Competitive
@@ -128,26 +126,28 @@
                             </div>
                         </div>
                     </div>
+                    
                     <div class="row">
                         <label class="col-sm-2 label-on-left">Level</label>
                         <div class="col-sm-10 checkbox-radios">
                             <div class="checkbox">
                                 <label>
-                                    <input ngModel type="checkbox" name="level" value="beginners"> Beginners
+                                    <input #level1="ngModel" [ngModel]="beginners" type="checkbox" name="level" value="beginners" (click)="toggleBeginner()"> Beginners
                                 </label>
                             </div>
                             <div class="checkbox">
                                 <label>
-                                    <input ngModel type="checkbox" name="level" value="intermediate"> Intermediate
+                                    <input #level2="ngModel" ngModel type="checkbox" name="level" value="intermediate" (click)="toggleIntermediate()"> Intermediate
                                 </label>
                             </div>
                             <div class="checkbox">
                                 <label>
-                                    <input ngModel type="checkbox" name="level" value="advanced"> Advanced
+                                    <input #level3="ngModel" ngModel type="checkbox" name="level" value="advanced" (click)="toggleAdvanced()"> Advanced
                                 </label>
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
                         <label class="col-sm-2 label-on-left">Spaces available</label>
                         <div class="col-sm-10">
@@ -186,18 +186,18 @@
                                 </div>
                         </div>
                     </div>
-                    <div class="row"> 
-                            <label class="col-sm-2 label-on-left">District</label>
-                            <div class="col-sm-10">
-                                    <div class="form-group label-floating is-empty">
-                                        <md-select class="district-select" [ngModel]="event?.district_id" name="district_id" placeholder="Choose District" floatPlaceholder="never">
-                                            <md-option class="district-option" *ngFor="let dist of districts" [value]="dist.id">
-                                                {{dist.name}}
-                                            </md-option>
-                                        </md-select>                    
-                                    </div> 
-                            </div>
-                    </div>           
+                    <!-- <div class="row"> 
+                        <label class="col-sm-2 label-on-left">District</label>
+                        <div class="col-sm-10">
+                                <div class="form-group label-floating is-empty">
+                                    <md-select class="district-select" [ngModel]="event?.district_id" name="district_id" placeholder="Choose District" floatPlaceholder="never">
+                                        <md-option class="district-option" *ngFor="let dist of districts" [value]="dist.id">
+                                            {{dist.name}}
+                                        </md-option>
+                                    </md-select>                    
+                                </div> 
+                        </div>
+                    </div> -->
                     <div class="row">
                         <label class="col-sm-2 label-on-left">Price</label>
                         <div class="col-sm-10">
@@ -255,21 +255,20 @@
         
                     <div class='icon col-md-2 col-xs-4'>
                         <i class="material-icons">grade</i>
-                        <p>{{event?.level}}</p>
+                        <p *ngFor="let level of levels">{{level}}</p>
                     </div> 
         
                     <div class='icon col-md-3 col-xs-4'>
                         <i class="material-icons">face</i>
-                        <p>2/6 spaces available</p>
+                        <p>{{event?.max_ppl}} spaces available</p>
                     </div> 
         
-                    <br>
-                    <br>
+                    <br><br><br><br><br>
                 </div>
                 <hr>
                 <div class='card-content' style='margin:-20px 18px 0px 18px'>
-                    <h2 style="display:inline-block; margin:0">{{event?.time }}</h2>
-                    <h5 style="display:inline-block; margin: 0 0 0 40px; font-size: 17px;">{{event?.address}}, {{event?.district}}</h5>
+                    <h2 style="display:inline-block; margin:0">{{event?.time}}</h2>
+                    <h5 style="display:inline-block; margin: 0 0 0 40px; font-size: 17px;">{{event?.address}}</h5>
                     <a class="btn btn-rose pull-right"
                     [href]="this.emailHyperlink">             
                     Register</a>
@@ -277,25 +276,26 @@
                 </div>
             </div>
         </div>
-    
-        <div class="col-md-4">
+        <div class="col-md-4"> 
             <div class="card card-profile">
                 <div class="card-avatar">
                     <a>
                         <img class="img" [src]="event?.User?.Detail?.image" />
                     </a>
                 </div>
-                <div class="card-content" style='margin-top:0'>
-                    <h5 class="category text-gray">Hockey Lover</h5>
-                    <h4 class="card-title">{{event?.userName}}</h4>
+
+                <div *ngIf="event" class="card-content" style='margin-top:0'>
+                    <h3 class="card-title">{{event?.User?.Detail?.firstName}} {{event?.User?.Detail?.lastName}}</h3>                        
+                    <h6 class="category text-gray">{{this.event.User.Detail.nickname}}</h6>
+                    <h4 class="btn btn-rose btn-simple">{{this.event.User.email}} | {{this.event.User.Detail.contact}}</h4>
                     <p class="description">
-                        Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                        {{event?.User?.Detail?.description}}
                     </p>
-                    <a style="display: block;max-width: 70%;margin: 0 auto;" class="btn btn-rose btn-simple">Contact {{event?.User?.Detail?.firstName}}</a>
+                    <!-- <a style="display: block;max-width: 70%;margin: 0 auto;" class="btn btn-rose btn-simple">Contact {{event?.User?.Detail?.firstName}}</a> -->
                 </div>
             </div>
         </div>
-    
+        
         <div class='container-fluid'>
             <div class="card">
                 <div style='height:450px' class="card-header card-header-tabs" data-background-color="rose">
@@ -336,41 +336,43 @@
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="profile">
                                         <h4>General Info:</h4>
-                                        <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates expedita ipsa voluptatem repellendus dolores dignissimos soluta, maxime accusamus hic quos incidunt error voluptatum doloremque dicta.</span></p>
+                                        <p><span>{{this.event?.description}}</span></p>
                                         <hr>
                                         <h4>What to bring:</h4>
                                         <table class="table">
                                             <tbody>
                                                 <tr>
-                                                    <td>
+                                                    <td> 
                                                         <i class="material-icons">check_box</i>
                                                     </td>
-                                                    <td>Sportswear, hockey stick, shinpads, astroturf footwear</td>
+                                                    <td>{{this.event?.sportswear}}</td>
                                                 </tr>
-                                                <tr>
+                                                <!-- <tr>
                                                     <td>
                                                         <i class="material-icons">check_box</i>
                                                     </td>
                                                     <td>Bottle of water and a smile :)</td>
-                                                </tr>
+                                                </tr> -->
                                             </tbody>
                                         </table>
                                     </div>
                                     <div class="tab-pane" id="messages">
                                         <h4>Organiser Info:</h4>
-                                        <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates expedita ipsa voluptatem repellendus dolores dignissimos soluta, maxime accusamus hic quos incidunt error voluptatum doloremque dicta.</span></p>
+                                        <p><span>{{this.event?.org_description}}</span></p>
                                         <hr>
-                                        <h4>Website:</h4>
-                                        <table class="table">
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <i class="material-icons">language</i>
-                                                    </td>
-                                                    <td style="color:blue">https://www.hockeyhk.com</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                        <div *ngIf=this.event?.org_website>
+                                            <h4>Website:</h4>
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <i class="material-icons">language</i>
+                                                        </td>
+                                                        <td style="color:blue">{{this.event?.org_website}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                     <div class="tab-pane" id="settings">
                                         <h4>How to play:</h4>
@@ -384,18 +386,18 @@
                                             <li>Velit est vel animi laboriosam cupiditate natus tempora repellat omnis.</li>
                                             <li>Iste id adipisci rem aspernatur soluta cum voluptas vitae, natus.</li>
                                         </ul>
-                                    </div>
-                                    
+                                    </div>  
                                 </div>
                             </div>
-    
                         </div>
                     </div>
                 </div>
-            </div>      
-          <button style="float:right; margin-top: 5px; " class="btn btn-rose" (click)="goBack()">Back</button>
+            </div>    
         </div>
     </div>
+    <app-mapping [address]="this.address"></app-mapping>
   </div>
 
-  <app-mapping [address]="this.address"></app-mapping>
+  
+  <!-- <button style="float:right;" class="btn btn-rose" (click)="goBack()">Back</button> -->
+  

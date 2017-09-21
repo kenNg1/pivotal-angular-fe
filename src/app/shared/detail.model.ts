@@ -6,7 +6,7 @@ export class Detail {
     nickname?: string;
     image?: string;
     tier?: number;
-    description?: number;
+    description?: string;
     contact?:string;
 }
 

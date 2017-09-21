@@ -46,6 +46,8 @@ export class EventService {
 
   update(event: Event): Promise<Event> {
     const url = `${this.eventsUrl}/${event.id}`;
+    console.log('hihihi')
+    console.log(event)
     return this.http
       .put(url, JSON.stringify(event), {headers:this.headers})
       .toPromise()

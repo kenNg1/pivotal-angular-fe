@@ -25,6 +25,11 @@ export class EventDetailComponent implements OnInit, OnDestroy {
   emailHyperlink:any;
   sports:any[] = [];  
   address: string;
+  levels:any
+  beginners: true
+  beginner: boolean = false;
+  intermediate: boolean = false;  
+  advanced: boolean = false;
   private subscription: any;
   cloudinaryImage:string
   districts:any[] = [];
@@ -57,7 +62,7 @@ export class EventDetailComponent implements OnInit, OnDestroy {
       }
   }
 
-  upload() {
+  upload() { 
     this.uploader.uploadAll();
   }
   
@@ -70,11 +75,11 @@ export class EventDetailComponent implements OnInit, OnDestroy {
       this.event = res;      
       window.scrollTo(0, 0);
       this.intensity = this.event.intensity;
+      this.levels = JSON.parse(JSON.stringify(res.level).replace(/"{/g,'["').replace(/}"/g,'"]').replace(/,/g,'","'))
       const str1 = 'mailto:';
       const str2 = this.event.User.email;
       const str3 = '?subject=The%20subject%20of%20the%20email&body=Yes%20I%20wanna%20go%20dude';
       this.emailHyperlink = str1.concat(str2,str3);     
-      console.log(this.emailHyperlink); 
     });
       this.sportService.getSports().then(sports => {
       this.sports = sports;});
@@ -82,20 +87,47 @@ export class EventDetailComponent implements OnInit, OnDestroy {
       this.districts = districts;});
   }
 
-  ngOnDestroy() {
+  ngOnDestroy() { 
     this.subscription.unsubscribe();
   }
 
   saveEvent(formValues:any):void {
     // console.log(document.querySelectorAll('[data-name="intensity"]'))
-    console.log(formValues);
+    let newForm = formValues;
+    newForm.level = this.levelArray()
     this.closeForm();    
-    this.eventService.update(formValues).then(event=> {
+    this.eventService.update(newForm).then(event=> {
       console.log('response',event);
       this.event = event;
-      this.address = this.event.address
+      this.address = this.event.address 
+      window.location.reload();
     });
   }
+
+  toggleBeginner(){
+    this.beginner = !this.beginner
+  }
+  toggleIntermediate(){
+    this.intermediate = !this.intermediate
+  }
+  toggleAdvanced(){
+    this.advanced = !this.advanced
+  }
+
+  levelArray(){
+    let arr = []
+    if (this.beginner == true) {
+      arr.push('beginner')
+    }
+    if (this.intermediate == true) {
+      arr.push('intermediate')
+    }
+    if (this.advanced == true) {
+      arr.push('advanced')
+    }
+    return arr
+  }
+
 
   showForm(): void {
     window.scrollTo(0, 0);

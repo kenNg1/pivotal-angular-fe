@@ -8,6 +8,10 @@
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
+                <li *ngIf="isLoggedIn()"> 
+                    <button routerLink="events/new-event" class="btn btn-primary btn-round">
+                        <i class="material-icons">add</i>Add an Event</button>
+                </li>
                  <!-- first two buttons, final list had this directive *ngIf="isLoggedIn()"  -->
                 <li *ngIf="isLoggedIn()">
                     <button class='btn btn-outline-success my-2 my-sm-0' routerLink='/profile'>
@@ -16,12 +20,6 @@
                 <li *ngIf="isLoggedIn()">
                     <button class='btn btn-outline-success my-2 my-sm-0' type='submit' (click)='logOut()'>Log Out </button>
                 </li> 
-                
-                <li *ngIf="isLoggedIn()"> 
-                    <button routerLink="events/new-event" style='margin-top:5px;' class="btn btn-primary btn-round">
-                        <i class="material-icons">add</i>Add an Event
-                    <div class="ripple-container"></div></button>
-                </li>
                 <!-- end of above comment  -->
 
                 
@@ -34,10 +32,10 @@
 
                 <li class="separator hidden-lg hidden-md"></li>
             </ul> 
-            <form style="position:absolute;left:40%" class="navbar-form navbar-right" role="search">
+            <form style="position:absolute;left:20%;top:7px;" class="navbar-form navbar-right" role="search">
                 <div class="form-group form-search is-empty">
                     <!-- <input (input)="onFormInput($event)" value={{name}} type="text" class="form-control" placeholder="Search"> -->
-                    <input #searchBox class="form-control" (keyup)="search(searchBox.value)" (blur)="onBlurMethod()" placeholder="Search for a sport"/>
+                    <input style='width:300px !important' #searchBox class="form-control" (keyup)="search(searchBox.value)" (blur)="onBlurMethod()" placeholder="Search for a sport"/>
                     <span class="material-input"></span>
                     <button [disabled]="!allowButtonClick" (click)="gotoResults()" class="btn btn-white btn-round btn-just-icon">   
                         <i class="material-icons">search</i>
