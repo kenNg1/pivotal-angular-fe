@@ -224,7 +224,7 @@
     </div>
 </div>
 
-<div class="main-content">
+<div style="margin-top:0px" class="main-content">
     <div class="container-fluid">
         <div class="col-md-8">
             <div class="card">
@@ -232,6 +232,7 @@
                     <h1>{{this.event?.date | date:'EEE'| uppercase}}</h1> 
                     <hr>
                     <h3>{{this.event?.date | date:'d MMM'| uppercase}} </h3>
+                    <h3 style="display:inline-block; margin:0">{{event?.time}}</h3>                 
                 </div>
                 <br>
                 <div class="card-content text-center">
@@ -262,13 +263,11 @@
                         <i class="material-icons">face</i>
                         <p>{{event?.max_ppl}} spaces available</p>
                     </div> 
-        
                     <br><br><br><br><br>
                 </div>
                 <hr>
                 <div class='card-content' style='margin:-20px 18px 0px 18px'>
-                    <h2 style="display:inline-block; margin:0">{{event?.time}}</h2>
-                    <h5 style="display:inline-block; margin: 0 0 0 40px; font-size: 17px;">{{event?.address}}</h5>
+                    <h5 style="display:inline-block; margin: 10px 0 0 40px; font-size: 17px;">{{event?.address}}</h5>
                     <a class="btn btn-rose pull-right"
                     [href]="this.emailHyperlink">             
                     Register</a>

@@ -50,10 +50,13 @@ export class SearchResultsComponent implements OnInit {
     this.eventService.getEvents().then(events => {
       console.log(events);
       this.events = events;
-      for (let i=0;i<this.events.length;i++){
-        this.events[i].level = JSON.parse(JSON.stringify(this.events[i].level).replace(/"{/g,'["').replace(/}"/g,'"]').replace(/,/g,'","'))
-      }
-      console.log(this.events)
+      if(!Array.isArray(this.events[0].level)) {        
+        for (let i=0;i<this.events.length;i++){
+          this.events[i].level = JSON.parse(JSON.stringify(this.events[i].level)
+          .replace(/"{/g,'["').replace(/}"/g,'"]').replace(/,/g,'","'))
+        }
+      };
+      console.log(this.events);
       this.visibleEvents = events;
       this.filteredEvents = events;
       this.sortDate();

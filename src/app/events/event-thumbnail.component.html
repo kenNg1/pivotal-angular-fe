@@ -25,15 +25,16 @@
                     <a style="color:#505050;" href="">{{event?.name | uppercase }}</a>
                 </h4>
                 <div class="card-description" style="color:#505050;">
-                    {{event?.date | date:'EE d MMM'}} &nbsp;  <i style="margin-left:5px;font-size: 15px; color: #505050" class="material-icons">grade</i>
-                    <span *ngIf="event?.level">
+                    <div *ngIf="event?.level">
+                        |
                         <span *ngIf="event?.level.length!=3">
                             <span *ngFor="let level of event?.level">{{level}} | </span>
                         </span>
                         <span *ngIf="event?.level.length==3">
-                            <span>All levels</span>
+                            <span>All levels |</span>
                         </span>
-                    </span>
+                    </div>
+                    <strong>{{event?.date | date:'EE d MMM'}}</strong>
                 </div>
             </div>
             <div class="card-footer">

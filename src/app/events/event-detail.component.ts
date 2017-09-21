@@ -75,7 +75,11 @@ export class EventDetailComponent implements OnInit, OnDestroy {
       this.event = res;      
       window.scrollTo(0, 0);
       this.intensity = this.event.intensity;
-      this.levels = JSON.parse(JSON.stringify(res.level).replace(/"{/g,'["').replace(/}"/g,'"]').replace(/,/g,'","'))
+      if(Array.isArray(this.event.level)) {
+        this.levels = this.event.level;
+      }else {
+        this.levels = JSON.parse(JSON.stringify(res.level).replace(/"{/g,'["').replace(/}"/g,'"]').replace(/,/g,'","'));
+      }
       const str1 = 'mailto:';
       const str2 = this.event.User.email;
       const str3 = '?subject=The%20subject%20of%20the%20email&body=Yes%20I%20wanna%20go%20dude';
@@ -93,25 +97,27 @@ export class EventDetailComponent implements OnInit, OnDestroy {
 
   saveEvent(formValues:any):void {
     // console.log(document.querySelectorAll('[data-name="intensity"]'))
-    let newForm = formValues;
-    newForm.level = this.levelArray()
+    const newForm = formValues;
+    newForm.level = this.levelArray();
+    console.log('newform');
+    console.log(newForm);
     this.closeForm();    
     this.eventService.update(newForm).then(event=> {
       console.log('response',event);
       this.event = event;
-      this.address = this.event.address 
-      window.location.reload();
+      this.address = this.event.address; 
+      this.levels = event.level;
     });
   }
 
-  toggleBeginner(){
-    this.beginner = !this.beginner
+  toggleBeginner() {
+    this.beginner = !this.beginner;
   }
-  toggleIntermediate(){
-    this.intermediate = !this.intermediate
+  toggleIntermediate() {
+    this.intermediate = !this.intermediate;
   }
-  toggleAdvanced(){
-    this.advanced = !this.advanced
+  toggleAdvanced() {
+    this.advanced = !this.advanced;
   }
 
   levelArray(){
@@ -125,6 +131,8 @@ export class EventDetailComponent implements OnInit, OnDestroy {
     if (this.advanced == true) {
       arr.push('advanced')
     }
+    console.log('levelarray test')
+    console.log(arr)
     return arr
   }
 

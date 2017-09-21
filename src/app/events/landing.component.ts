@@ -25,9 +25,17 @@ export class LandingComponent implements OnInit {
   getEvents(): void {
     this.eventService.getEvents().then(events => {
       this.events = events.sort(sortByDateAsc);
-      for (let i=0;i<this.events.length;i++){
-        this.events[i].level = JSON.parse(JSON.stringify(this.events[i].level).replace(/"{/g,'["').replace(/}"/g,'"]').replace(/,/g,'","'))
+      console.log(this.events);    
+      if(Array.isArray(this.events[0].level)) {
+        return null;
+      } else {
+        for (let i=0;i<this.events.length;i++) {
+          this.events[i].level = JSON.parse(JSON.stringify(this.events[i].level)
+          .replace(/"{/g,'["').replace(/}"/g,'"]').replace(/,/g,'","'));
+        }
       }
+
+      console.log(this.events);
     });
   }
 

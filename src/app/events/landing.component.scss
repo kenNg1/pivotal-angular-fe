@@ -13,8 +13,8 @@
 h1{
     background-color: rgba(0,0,0,0.4);
     color: white;
-    width: 30%;
-    margin-left: 35%;
+    width: 50%;
+    margin-left: 26%;
     top: 2%;
     border-radius: 5px;
 }
@@ -37,4 +37,16 @@ h3{
 #search-box input::placeholder {
     font-size: 25px;
     color: white;
+}
+
+.card-product {
+    height: 350px !important;
+}
+
+.hero[_ngcontent-c2] img[_ngcontent-c2] {
+    position: absolute;
+    z-index: -5;
+    width: 100%;
+    left: 0%;
+    top: 2%;
 }
