@@ -22,33 +22,37 @@ export class NewEventComponent implements OnInit {
   districts:any[] = [];
   userId:number;
   user: User;
-  beginner: boolean = false;
-  intermediate: boolean = false;  
-  advanced: boolean = false;
-  selectedSport: boolean = false;
-  selectedDistrict: boolean = false;
-  submitButtonClicked: boolean = false
+  beginner = false;
+  intermediate = false;  
+  advanced = false;
+  selectedSport = false;
+  selectedDistrict = false;
+  submitButtonClicked = false;
   
   cloudinaryImage:string;
   imageId: string;    
 
-  toggleBeginner(){
-    this.beginner = !this.beginner
+  uploader: CloudinaryUploader = new CloudinaryUploader(
+    new CloudinaryOptions({ cloudName: 'dfk2numni', uploadPreset: 'aiehynsk' })
+  );
+
+  toggleBeginner() {
+    this.beginner = !this.beginner;
   }
-  toggleIntermediate(){
-    this.intermediate = !this.intermediate
+  toggleIntermediate() {
+    this.intermediate = !this.intermediate;
   }
-  toggleAdvanced(){
-    this.advanced = !this.advanced
+  toggleAdvanced() {
+    this.advanced = !this.advanced;
   }
-  selectSport(){
-    this.selectedSport = true 
+  selectSport() {
+    this.selectedSport = true ;
   }
-  selectDistrict(){
-    this.selectedDistrict = true
+  selectDistrict() {
+    this.selectedDistrict = true;
   }
-  selectSubmit(){
-    this.submitButtonClicked = true
+  selectSubmit() {
+    this.submitButtonClicked = true;
   }
 
   constructor(private eventService:EventService, 
@@ -58,12 +62,11 @@ export class NewEventComponent implements OnInit {
     private authService: AuthService,
   ) {
     this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any): any => {
-      let res: any = JSON.parse(response);
+      const res: any = JSON.parse(response);
       this.imageId = res.public_id;
-      this.cloudinaryImage = JSON.parse(response).url
-      console.log(this.cloudinaryImage)
+      this.cloudinaryImage = JSON.parse(response).url;
       return { item, response, status, headers };
-    }
+    };
   }
 
   ngOnInit() {
@@ -80,28 +83,23 @@ export class NewEventComponent implements OnInit {
     this.uploader.uploadAll();
   }
 
-  uploader: CloudinaryUploader = new CloudinaryUploader(
-    new CloudinaryOptions({ cloudName: 'dfk2numni', uploadPreset: 'aiehynsk' })
-  );
-
-  levelArray(){
-    let arr = []
-    if (this.beginner == true) {
-      arr.push('beginner')
+  levelArray() {
+    const arr = [];
+    if (this.beginner === true) {
+      arr.push('beginner');
     }
-    if (this.intermediate == true) {
-      arr.push('intermediate')
+    if (this.intermediate === true) {
+      arr.push('intermediate');
     }
-    if (this.advanced == true) {
-      arr.push('advanced')
+    if (this.advanced === true) {
+      arr.push('advanced');
     }
-    return arr
+    return arr;
   }
 
   add(formValues:any) {
-    let newForm = formValues;
-    newForm.level = this.levelArray()
-    console.log(formValues)
+    const newForm = formValues;
+    newForm.level = this.levelArray();
     this.eventService.create(newForm)
       .then((event) => {
         this.router.navigate(['/events']);

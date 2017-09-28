@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 // import { AuthenticationService } from '../user/authentication.service'
 import { AuthService } from '../user/auth.service';
+import { SportService } from '../shared/sport.service';
+
 import { User } from '../user/user';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -46,7 +48,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     sports:any[] = [];
     private searchTerms = new Subject<string>();
 
-    constructor(private router: Router, private sportSearchService: SportSearchService, private authService: AuthService) {
+    constructor(private router: Router, private sportSearchService: SportSearchService, 
+        private authService: AuthService, private sportService: SportService) {
         setTimeout(() => this.allowButtonClick = true, 500);
 
         // this.subscription = authService.user$.subscribe((user)=> {return this.user=user} )
@@ -67,16 +70,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 term   // switch to new observable each time the term changes
                 // return the http search observable
                 ? this.sportSearchService.search(term).toPromise().then(res=> {
-                    console.log(res);
                     this.sports = res.sports;
-                    console.log(this.sports);
                     return res.events;})
                 // or the observable of empty events if there was no search term
                 : Observable.of<Event[]>([])
             )
             .catch(error => {
                 // TODO: add real error handling
-                console.log(error);
                 return Observable.of<Event[]>([]);
             });
     }
@@ -114,24 +114,32 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.router.navigate(['/search']);
     }
 
+    sendSports(id:number,name:string) {
+        this.sportService.searchedSportId = id;
+        this.sportService.searchedSportName = name;
+        this.router.navigate(['/search']); 
+      } 
+
     search(term:string):void {
         this.searchTerms.next(term);
         this.sports=[];
     }
 
-    onBlurMethod(): void {
-        this.target.nativeElement.value = '';
-        const ev = new KeyboardEvent('keyup',{
-            'key': 'Enter'
-        });
-        this.target.nativeElement.dispatchEvent(ev);
-    }
-
     gotoDetail(event:Event): void {
-        const link = ['/events',event.id];
         // this.events = Observable.of<Event[]>([]);
         // this.sports=[];        
-        this.router.navigate(link);
+        this.router.navigate(['/events',event.id]);
+    }
+
+    onFocusMethod(): void {
+        console.log(this.sportService.searchedSportId);
+        console.log(this.sportService.searchedSportName);
+    }
+
+    onBlurMethod(): void {
+            const ev = new KeyboardEvent('keyup',{ 'key': 'Enter'});
+            this.target.nativeElement.value = '';            
+            this.target.nativeElement.dispatchEvent(ev);
     }
 
 }

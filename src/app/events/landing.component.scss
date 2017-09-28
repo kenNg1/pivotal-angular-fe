@@ -3,10 +3,10 @@
 }
 
 .hero img {
-    position:absolute;
+    position: absolute;
     z-index: -5;
-    width: 80%;
-    left: 10%;
+    width: 100%;
+    left: 0%;
     top: 2%;
 }
 
@@ -41,12 +41,4 @@ h3{
 
 .card-product {
     height: 350px !important;
-}
-
-.hero[_ngcontent-c2] img[_ngcontent-c2] {
-    position: absolute;
-    z-index: -5;
-    width: 100%;
-    left: 0%;
-    top: 2%;
 }

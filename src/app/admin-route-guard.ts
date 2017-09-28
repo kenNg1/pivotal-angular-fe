@@ -10,16 +10,14 @@ export class AdminRouteGuard implements CanActivate {
   constructor(private authService: AuthService, private detailService: DetailService, private _location: Location) {}
 
     canActivate() {
-        const id=JSON.parse(localStorage.getItem('currentUser')).id
+        const id=JSON.parse(localStorage.getItem('currentUser')).id;
         return this.detailService.getDetail(id).then(detail => {
             const userDetail = detail.json();
-            console.log(userDetail.tier)
-            if (userDetail.tier == 3) {
-                return true
-            }
-            else {
+            if (userDetail.tier === 3) {
+                return true;
+            } else {
                 this._location.back();
-                return false
+                return false;
             }
         });
     }

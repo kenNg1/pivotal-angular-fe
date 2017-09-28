@@ -24,7 +24,6 @@ export class AuthService {
 
   setUser(user: User) {
     // this.userSource.next(user);
-
   }
 
   registerUser(user: User): Observable<boolean> {
@@ -62,7 +61,6 @@ export class AuthService {
 
   setToken(res:any) {
     const body = JSON.parse(res['_body']);
-    console.log('body!',body);
     if( body['username'] != null ) {
       this.token = body['token'];
       localStorage.setItem('currentUser', JSON.stringify({ 

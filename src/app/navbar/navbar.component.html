@@ -21,8 +21,6 @@
                     <button class='btn btn-outline-success my-2 my-sm-0' type='submit' (click)='logOut()'>Log Out </button>
                 </li> 
                 <!-- end of above comment  -->
-
-                
                 <li>
                     <a routerLink="/signin" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="material-icons">person</i>
@@ -35,24 +33,25 @@
             <form style="position:absolute;left:20%;top:7px;" class="navbar-form navbar-right" role="search">
                 <div class="form-group form-search is-empty">
                     <!-- <input (input)="onFormInput($event)" value={{name}} type="text" class="form-control" placeholder="Search"> -->
-                    <input style='width:300px !important' #searchBox class="form-control" (keyup)="search(searchBox.value)" (blur)="onBlurMethod()" placeholder="Search for a sport"/>
+                    <input style='width:300px !important' #searchBox class="form-control" (keyup)="search(searchBox.value)" placeholder="Search for a sport" (focus)="onFocusMethod()" (blur)="onBlurMethod()"/>
                     <span class="material-input"></span>
+                    <!-- use mousedown instead of click https://stackoverflow.com/questions/10652852/jquery-fire-click-before-blur-event -->
                     <button [disabled]="!allowButtonClick" (click)="gotoResults()" class="btn btn-white btn-round btn-just-icon">   
                         <i class="material-icons">search</i>
                         <div class="ripple-container"></div>
                     </button> 
-                    <div style="width:500px" *ngFor='let event of events | async' (click)="gotoDetail(event)" class='search-result'>
+                    <div style="width:500px" *ngFor='let sport of sports' (mousedown)="sendSports(sport.id,sport.name)" class='search-result'>
                         <div class="row" style='background-color: rgba(0,0,0,0.95)'>
-                            <div style="color:white" class='col-md-4'>{{event?.name}}</div>
-                            <div style="color:white" class='col-md-4'>{{event?.sport?.name}}</div>
-                            <div style="color:white" class='col-md-4'>{{event?.date | date:'EE d MMM'}}</div>
+                            <div style="margin:2px 0 !important; color:white; font-size:110%" class='col-md-12' >See all {{sport?.name}} events</div>
+                        </div>
+                 </div>
+                    <div style="width:500px" *ngFor='let event of events | async' (mousedown)="gotoDetail(event)" class='search-result'>
+                        <div class="row" style='background-color: rgba(0,0,0,0.95)'>
+                            <div style="margin:2px 0 !important; color:white;  font-size:110%" class='col-md-4'>{{event?.name}}</div>
+                            <div style="margin:2px 0 !important; color:white" class='col-md-4'>{{event?.sport?.name}}</div>
+                            <div style="margin:2px 0 !important; color:white" class='col-md-4'>{{event?.date | date:'EE d MMM'}}</div>
                         </div>
                     </div>
-                    <div style="width:500px" *ngFor='let sport of sports' class='search-result'>
-                            <div class="row" style='background-color: rgba(0,0,0,0.95)'>
-                                <div style="color:white" class='col-md-4'>See all {{sport.name}} events</div>
-                            </div>
-                     </div>
                 </div>
             </form> 
             <!-- <form class="example-form">

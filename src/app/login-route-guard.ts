@@ -9,15 +9,13 @@ export class LoginRouteGuard implements CanActivate {
   constructor(private authService: AuthService, private _location: Location) {}
 
   canActivate() {
-    var a = !!JSON.parse(localStorage.getItem('currentUser'))
-    console.log(JSON.parse(localStorage.getItem('currentUser')))
+    const a = !!JSON.parse(localStorage.getItem('currentUser'));
     if (!a) {
-      return true
-    }
-    else {
+      return true;
+    } else {
       this._location.back();
-      return false
+      return false;
     }
   }
-
 }
+

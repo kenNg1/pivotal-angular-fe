@@ -40,14 +40,11 @@ export class AuthenticationService {
         }).subscribe(
             res => {
                 // this.currentUser = <User>res.json().data
-                console.log(res);
                 this.currentUser = <User>res.json();
                 // this.resetPasswordToken      
-                console.log(this.currentUser);
                 this.router.navigate(['/events']);
             },
             error => { 
-                console.log(error);
                 return Observable.of(false);
             });
     }

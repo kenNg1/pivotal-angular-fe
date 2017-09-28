@@ -21,7 +21,6 @@ export class SportService {
     return this.http.get(this.sportsUrl)
       .toPromise()
       .then(response => {
-        console.log(response);
         return response.json(); 
       })
       .catch(this.handleError);
@@ -64,7 +63,6 @@ export class SportService {
   }
 
   private handleError(error:any): Promise<any> {
-    console.log('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
 

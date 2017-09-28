@@ -54,12 +54,11 @@ export class EventDetailComponent implements OnInit, OnDestroy {
     private sportService: SportService,
     private districtService:DistrictService) {
       this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any): any => {
-        let res: any = JSON.parse(response);
+        const res: any = JSON.parse(response);
         this.imageId = res.public_id;
-        this.cloudinaryImage = JSON.parse(response).url
-        console.log(this.cloudinaryImage)
+        this.cloudinaryImage = JSON.parse(response).url;
         return { item, response, status, headers };
-      }
+      };
   }
 
   upload() { 
@@ -71,7 +70,6 @@ export class EventDetailComponent implements OnInit, OnDestroy {
    this.subscription = this.route.paramMap
     .switchMap((params: ParamMap) => this.eventService.getEvent(+params.get('id')))
     .subscribe(res => {
-      console.log(res);      
       this.event = res;      
       window.scrollTo(0, 0);
       this.intensity = this.event.intensity;
@@ -91,19 +89,15 @@ export class EventDetailComponent implements OnInit, OnDestroy {
       this.districts = districts;});
   }
 
-  ngOnDestroy() { 
+  ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
   saveEvent(formValues:any):void {
-    // console.log(document.querySelectorAll('[data-name="intensity"]'))
     const newForm = formValues;
     newForm.level = this.levelArray();
-    console.log('newform');
-    console.log(newForm);
     this.closeForm();    
     this.eventService.update(newForm).then(event=> {
-      console.log('response',event);
       this.event = event;
       this.address = this.event.address; 
       this.levels = event.level;
@@ -120,20 +114,18 @@ export class EventDetailComponent implements OnInit, OnDestroy {
     this.advanced = !this.advanced;
   }
 
-  levelArray(){
-    let arr = []
-    if (this.beginner == true) {
-      arr.push('beginner')
+  levelArray() {
+    const arr = [];
+    if (this.beginner === true) {
+      arr.push('beginner');
     }
-    if (this.intermediate == true) {
-      arr.push('intermediate')
+    if (this.intermediate === true) {
+      arr.push('intermediate');
     }
-    if (this.advanced == true) {
-      arr.push('advanced')
+    if (this.advanced === true) {
+      arr.push('advanced');
     }
-    console.log('levelarray test')
-    console.log(arr)
-    return arr
+    return arr;
   }
 
 

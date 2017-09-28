@@ -46,8 +46,6 @@ export class EventService {
 
   update(event: Event): Promise<Event> {
     const url = `${this.eventsUrl}/${event.id}`;
-    console.log('hihihi')
-    console.log(event)
     return this.http
       .put(url, JSON.stringify(event), {headers:this.headers})
       .toPromise()
@@ -56,7 +54,6 @@ export class EventService {
   }
 
   create(formValues:any): Promise<Event> {
-    console.log(formValues);
     return this.http
       .post(this.eventsUrl, JSON.stringify(formValues),{headers: this.headers})
       .toPromise()
@@ -73,7 +70,6 @@ export class EventService {
   }
 
   private handleError(error:any): Promise<any> {
-    console.log('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
 

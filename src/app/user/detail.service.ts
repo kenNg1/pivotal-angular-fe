@@ -37,9 +37,6 @@ export class DetailService {
   }
 
   createUserDetail(res:any,firstName:string,lastName:string) {
-    console.log(res.json().data.id);
-    console.log(firstName);
-    console.log(lastName);
     return this.http
     .post(this.detailsUrl, JSON.stringify(
       {
@@ -81,7 +78,6 @@ export class DetailService {
   }
 
   private handleError(error:any): Promise<any> {
-    console.log('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
 

@@ -32,7 +32,6 @@ export class SignInComponent implements OnInit {
   }
 
   submit(value:any) {
-      console.log('form values',value);
       this.submitted = true;
       // if (!this.loginForm.valid){return}
       // REFACTOR LATER

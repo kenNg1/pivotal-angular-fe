@@ -25,8 +25,8 @@ export class SearchResultsComponent implements OnInit {
   searchedSportId:number;
   searchedDistrict:string;
   searchedDate:string;
-  selectedValue: null
-  selectedValueLocation: null
+  selectedValue: null;
+  selectedValueLocation: null;
   form: any;
   eventMapping:
   {[k: string]: string} = {'=0': 'No results', '=1': '1 result', 'other': '# results'};
@@ -48,20 +48,17 @@ export class SearchResultsComponent implements OnInit {
 
   ngOnInit() {
     this.eventService.getEvents().then(events => {
-      console.log(events);
       this.events = events;
       if(!Array.isArray(this.events[0].level)) {        
-        for (let i=0;i<this.events.length;i++){
+        for (let i=0;i<this.events.length;i++) {
           this.events[i].level = JSON.parse(JSON.stringify(this.events[i].level)
-          .replace(/"{/g,'["').replace(/}"/g,'"]').replace(/,/g,'","'))
+          .replace(/"{/g,'["').replace(/}"/g,'"]').replace(/,/g,'","'));
         }
-      };
-      console.log(this.events);
+      }
       this.visibleEvents = events;
       this.filteredEvents = events;
       this.sortDate();
       this.sportService.getSports().then(sports => {
-        console.log('sports',sports);
         this.sports = sports;
         if(this.sportService.searchedSportId) {
           this.filterSport(this.sportService.searchedSportName,this.sportService.searchedSportId);
@@ -94,18 +91,15 @@ export class SearchResultsComponent implements OnInit {
     document.getElementById('clearSearch').click();    
     this.searchedDistrict = null;
     this.searchedSport = sportName;
-    console.log(sportId);
     this.visibleEvents = this.filteredEvents = this.visibleEvents.filter(function(event){
       return event.sport_id === sportId;
     });
-    console.log(this.visibleEvents);
   }
   
   filterDistrict(districtName:string, districtId:number) {
     document.getElementById('clearSearch').click();        
     this.searchedSport = null;  
     this.searchedDistrict = districtName;
-    console.log(districtId);
     this.visibleEvents = this.filteredEvents = this.visibleEvents.filter(function(event){
       return event.district_id === districtId;
     });
@@ -149,8 +143,6 @@ export class SearchResultsComponent implements OnInit {
     });
   }
 
-
-
   // PRIOR TO promises implementation
   // ngOnInit() {
   //   this.events = this.eventService.getEvents().map(events => events)
@@ -180,7 +172,6 @@ function sortByDateAsc(e1:Event, e2:Event) {
 }
 
 function sortByPriceAsc(e1:Event, e2:Event) {
-  console.log('ken');
   if(e1.price > e2.price) {
     return 1;
   } else if (e1.price === e2.price) {
