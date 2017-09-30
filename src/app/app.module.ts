@@ -2,7 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AsyncLocalStorageModule } from 'angular-async-local-storage';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+
+import { HttpModule, RequestOptions, XHRBackend } from '@angular/http';
+import { HttpService } from './shared/http.service';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
 import { MdSliderModule, MdSelectModule , MdAutocompleteModule} from '@angular/material';
@@ -35,6 +38,8 @@ import { Ng2CloudinaryModule } from 'ng2-cloudinary';
 import { FileUploadModule } from 'ng2-file-upload';
 import { LoginRouteGuard } from './login-route-guard';
 import { AdminRouteGuard } from './admin-route-guard';
+
+
 
 @NgModule({
   declarations: [
@@ -69,7 +74,15 @@ import { AdminRouteGuard } from './admin-route-guard';
     })
   ],
   bootstrap: [AppComponent],
-  providers: [EventService,SportService,DistrictService,SportSearchService,Angular2TokenService,
+  providers: [
+    {
+      provide: HttpService,
+      useFactory: (backend: XHRBackend, options: RequestOptions) => {
+        return new HttpService(backend, options);
+      },
+      deps: [XHRBackend, RequestOptions]
+    },
+  EventService,SportService,DistrictService,SportSearchService,Angular2TokenService,
     AuthService, DetailService, {provide: LocationStrategy, useClass: HashLocationStrategy},LoginRouteGuard, AdminRouteGuard]
 })
 export class AppModule {}

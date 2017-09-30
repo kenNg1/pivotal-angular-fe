@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core'; 
 import { Headers, Http } from '@angular/http';
+import {HttpService} from './http.service';
 
 import 'rxjs/add/operator/toPromise';
 import { Event } from './event.model';
@@ -10,7 +11,7 @@ export class EventService {
 
   private eventsUrl = 'http://localhost:8000/api/events'; // URL to web api
 
-  constructor(private http: Http) {
+  constructor(private http: HttpService) {
     this.headers = new Headers({'Content-Type': 'application/json'});  
   }
 
@@ -70,6 +71,10 @@ export class EventService {
   }
 
   private handleError(error:any): Promise<any> {
+    console.log('Please login');
+    // if error 403 ..
+    // if error 404 ... 
+    // etc etc.
     return Promise.reject(error.message || error);
   }
 
