@@ -77,9 +77,7 @@ import { AdminRouteGuard } from './admin-route-guard';
   providers: [
     {
       provide: HttpService,
-      useFactory: (backend: XHRBackend, options: RequestOptions) => {
-        return new HttpService(backend, options);
-      },
+      useFactory: httpFactory,
       deps: [XHRBackend, RequestOptions]
     },
   EventService,SportService,DistrictService,SportSearchService,Angular2TokenService,
@@ -87,3 +85,6 @@ import { AdminRouteGuard } from './admin-route-guard';
 })
 export class AppModule {}
 
+export function httpFactory(backend: XHRBackend, options: RequestOptions) {
+    return new HttpService(backend, options);
+}
