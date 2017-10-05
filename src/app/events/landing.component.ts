@@ -8,7 +8,7 @@ import { SportService } from '../shared/sport.service';
   selector: 'app-landing',
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss']
-}) 
+})
 export class LandingComponent implements OnInit {
   events:Event[]=[];
   sports:Sport[]=[];
@@ -81,7 +81,7 @@ export class LandingComponent implements OnInit {
   sendSport(id:number,name:string) {
     this.sportService.searchedSportId = id;
     this.sportService.searchedSportName = name;
-  } 
+  }
 
 
   randomLeft() {
@@ -111,7 +111,7 @@ export class LandingComponent implements OnInit {
 
 function sortByDateAsc(e1:Event, e2:Event) {
   if(e1.date > e2.date) {
-    return 1; 
+    return 1;
   } else if(e1.date === e2.date) {
     return 0;
   } else {return -1;}
