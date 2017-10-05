@@ -9,23 +9,22 @@ import { Router } from '@angular/router';
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss']
-}) 
+})
 
 export class SignUpComponent implements OnInit {
   submitted: boolean;
   signupForm: FormGroup;
-  user: User;  
+  user: User;
   id:number;
   
   user_status: boolean;
   message: String;
-  
 
   constructor(private router: Router,public authService: AuthService, private formBuilder: FormBuilder) {
       this.user = new User;
     }
 
-  
+
   ngOnInit() {
       this.submitted = false;
       // this.signupForm = this.formBuilder.group({
@@ -43,7 +42,7 @@ export class SignUpComponent implements OnInit {
       this.user.firstName = value.firstName;
       this.user.lastName = value.lastName;
     //   if (!this.signupForm.valid){return}
-      
+
         // REFACTOR LATER
           this.authService.registerUser(this.user).subscribe(res=> {
             console.log('response',res);
@@ -55,14 +54,14 @@ export class SignUpComponent implements OnInit {
               // this.authService.setUser(res['user']);
               this.router.navigate(['/events']);
             }
-            
+
         });
 
         // FORGET THE BELOW
           // response - *bind* makes sure that "this" in "this.redirectUrl" is referring to the type declared in the auth.service.ts file
           // this.afterFailedSignup.bind(this)
-          // error - *bind* binding to this current component, not the service 
-    
+          // error - *bind* binding to this current component, not the service
+
   }
 
   afterFailedSignup(errors:any) {
@@ -75,11 +74,10 @@ export class SignUpComponent implements OnInit {
               // then set the rror and display it in the browser
           }
       }
-      this.signupForm.setErrors(parsed_errors);        
+      this.signupForm.setErrors(parsed_errors);
   }
 
   fetchId(id:number) {
       this.id = id;
   }
 }
-

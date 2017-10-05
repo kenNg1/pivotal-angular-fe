@@ -3,16 +3,16 @@
       <div class="card">
           <form #newEventForm="ngForm" (ngSubmit)="add(newEventForm.value)" class="form-horizontal">
               <div class="card-header card-header-text" data-background-color="rose">
-                  <h4 class="card-title">Create New Event</h4> 
+                  <h4 class="card-title">Create New Event</h4>
               </div>
               <div class="card-content">
-                <div class="row"> 
+                <div class="row">
                     <label class="col-sm-2 label-on-left">Name</label>
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
                                 <label class="control-label"></label>
                             <input name='name' ngModel type="text" #name="ngModel" class="form-control" placeholder="e.g. Football training session..." required >
-                            <div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger">
+                            <div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger" style='padding:5px; width: 500px;'>
                                 <div>
                                     Name is required and must be at least 5 characters long!
                                 </div>
@@ -20,13 +20,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="row"> 
+                <div class="row">
                     <label class="col-sm-2 label-on-left">Description</label>
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
                                 <label class="control-label"></label>
                             <input name='description' ngModel #description="ngModel" type="text" class="form-control" placeholder="More details about the event..." required >
-                            <div *ngIf="description.errors && (description.dirty || description.touched)" class="alert alert-danger">
+                            <div *ngIf="description.errors && (description.dirty || description.touched)" class="alert alert-danger" style='padding:5px; width: 500px;'>
                                 <div>
                                     Description is required
                                 </div>
@@ -34,52 +34,52 @@
                         </div>
                     </div>
                 </div>
-                <div class="row"> 
+                <div class="row">
                     <label class="col-sm-2 label-on-left">Organizer Information</label>
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
                                 <label class="control-label"></label>
                             <input name='org_description' ngModel #orgInfo="ngModel" type="text" class="form-control" placeholder="More information about the organizer" required >
-                            <div *ngIf="orgInfo.errors && (orgInfo.dirty || orgInfo.touched)" class="alert alert-danger">
+                            <div *ngIf="orgInfo.errors && (orgInfo.dirty || orgInfo.touched)" class="alert alert-danger" style='padding:5px; width: 500px;'>
                                 <div>
-                                    Organizer description is required 
+                                    Organizer description is required
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div> 
-                <div class="row"> 
+                </div>
+                <div class="row">
                     <label class="col-sm-2 label-on-left">Organizer Website</label>
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <input name='org_website' ngModel type="text" class="form-control" placeholder="Organizer Website" >
+                            <input name='org_website' ngModel #orgWeb="ngModel" type="text" class="form-control" placeholder="Organizer Website">
                         </div>
                     </div>
                 </div>
-                <div class="row"> 
+                <div class="row">
                     <label class="col-sm-2 label-on-left">What should players bring?</label>
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <input name='sportswear' ngModel #sportswear="ngModel" type="text" class="form-control" placeholder="e.g. Hockey racket, gloves, water" >
-                            <div *ngIf="sportswear.errors && (sportswear.dirty || sportswear.touched)" class="alert alert-danger">
+                            <input name='sportswear' ngModel #sportswear="ngModel" type="text" class="form-control" placeholder="e.g. Hockey racket, gloves, water" required>
+                            <div *ngIf="sportswear.errors && (sportswear.dirty || sportswear.touched)" class="alert alert-danger" style='padding:5px; width: 500px;'>
                                 <div>
-                                    Organizer description is required 
+                                    Sports gear is required
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row"> 
+                <div class="row">
                     <label class="col-sm-2 label-on-left">Spaces Available</label>
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <input name='max_ppl' #spaces="ngModel" ngModel type="text" class="form-control" placeholder="number of spaces available" >
-                            <div *ngIf="spaces.errors && (spaces.dirty || spaces.touched)" class="alert alert-danger">
+                            <input name='max_ppl' #spaces="ngModel" ngModel type="text" class="form-control" placeholder="number of spaces available" required>
+                            <div *ngIf="spaces.errors && (spaces.dirty || spaces.touched)" class="alert alert-danger" style='padding:5px; width: 500px;'>
                                 <div>
-                                    Spaces Available is required 
+                                    Spaces Available is required
                                 </div>
                             </div>
                         </div>
@@ -93,7 +93,7 @@
                                 <md-option class="sport-option" *ngFor="let sport of sports" [value]="sport.id" (click)="selectSport()">
                                     <span class='testesstes'>{{sport.name}}</span>
                                 </md-option>
-                            </md-select> 
+                            </md-select>
                             <div *ngIf="!this.selectedSport && sport.touched" class="alert alert-danger">
                                 <div>
                                     Please select Sport
@@ -102,7 +102,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row"> 
+                <div class="row">
                     <label class="col-sm-2 label-on-left">District</label>
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
@@ -115,10 +115,10 @@
                                 <div>
                                     Please select District
                                 </div>
-                            </div>                    
-                        </div> 
+                            </div>
+                        </div>
                     </div>
-                </div> 
+                </div>
                 <div style='display:none' class="row" >
                         <!-- style='display:hidden' -->
                     <label class="col-sm-2 label-on-left">User Id</label>
@@ -153,7 +153,7 @@
                             </div>
                         </div>
                     </div>
-                </div> 
+                </div>
                 <div class="row">
                     <label class="col-sm-2 label-on-left">Intensity</label>
                     <div class="col-sm-10 checkbox-radios">
@@ -206,7 +206,7 @@
                             <label class="control-label"></label>
                             <input ngModel #price="ngModel" name='price' type="text" class="form-control" placeholder="please put down 0 if free" value='$' required>
                         </div>
-                        <div *ngIf="price.errors && (price.dirty || price.touched)" class="alert alert-danger">
+                        <div *ngIf="price.errors && (price.dirty || price.touched)" class="alert alert-danger" style='padding:5px; width: 500px;'>
                             <div [hidden]="!name.errors.required">
                                 Price is required!
                             </div>
@@ -224,7 +224,7 @@
                             <label class="control-label"></label>
                             <input #imageUpload="ngModel" name='imageUpload' [ngModel]="this.cloudinaryImage" type="text" class="form-control" placeholder="choose file and upload image above, or paste in URL" required>
                         </div>
-                        <div *ngIf="imageUpload.errors && (imageUpload.dirty || imageUpload.touched)" class="alert alert-danger">
+                        <div *ngIf="imageUpload.errors && (imageUpload.dirty || imageUpload.touched)" class="alert alert-danger" style='padding:5px; width: 500px;'>
                             <div [hidden]="!name.errors.required">
                                 Image is required!
                             </div>
@@ -237,7 +237,7 @@
                         <div class="form-group label-floating is-empty">
                             <input style="max-width:250px" #date="ngModel" ngModel name='date' type="date" class="form-control datetimepicker" required/>
                         </div>
-                        <div *ngIf="date.errors && (date.dirty || date.touched)" class="alert alert-danger">
+                        <div *ngIf="date.errors && (date.dirty || date.touched)" class="alert alert-danger" style='padding:5px; width: 500px;'>
                             <div [hidden]="!name.errors.required">
                                 Date is required!
                             </div>
@@ -250,7 +250,7 @@
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
                             <input ngModel name='time' type="text" class="form-control" placeholder="e.g: 17:00" required #time="ngModel">
-                            <div *ngIf="time.errors && (time.dirty || time.touched)" class="alert alert-danger">
+                            <div *ngIf="time.errors && (time.dirty || time.touched)" class="alert alert-danger" style='padding:5px; width: 500px;'>
                                 <div [hidden]="!name.errors.required">
                                     Time is required!
                                 </div>
@@ -265,7 +265,7 @@
                                 <label class="control-label"></label>
                             <input ngModel name='address' type="text" class="form-control" placeholder="e.g. Flat C, 100/F, 2-10 Gough Street, Sheung Wan, Hong Kong" required #address="ngModel">
                         </div>
-                        <div *ngIf="address.errors && (address.dirty || address.touched)" class="alert alert-danger">
+                        <div *ngIf="address.errors && (address.dirty || address.touched)" class="alert alert-danger" style='padding:5px; width: 500px;'>
                             <div [hidden]="!name.errors.required">
                                 Address is required!
                             </div>
@@ -273,7 +273,7 @@
                     </div>
                 </div>
 
-                  
+
 
 
                   <!-- <div class="row">
@@ -316,7 +316,7 @@
                       </div>
                   </div> -->
                   <button type='submit' [disabled]="!newEventForm.valid" class='btn btn-success' style='float: right;'>Submit</button>
-                  <button type='button' (click)="closeForm()" class='btn btn-primary' style='float: right;'>Cancel</button>                    
+                  <button type='button' (click)="closeForm()" class='btn btn-primary' style='float: right;'>Cancel</button>
               </div>
           </form>
       </div>

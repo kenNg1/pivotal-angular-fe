@@ -1,5 +1,5 @@
 <body style='background-image: url("../assets/img/football-field.jpg"); height: 100vh; background-size: cover;'>
-     
+
     <div style="position:relative; top: -50px" class="wrapper wrapper-full-page">
         <div class="full-page register-page" filter-color="black" data-image="../assets/img/register.jpeg">
             <div class="container">
@@ -64,34 +64,64 @@
                                                 <span class="input-group-addon">
                                                     <i class="material-icons">perm_identity</i>
                                                 </span>
-                                                <input type="text" name='firstName' ngModel class="form-control" placeholder="First Name...">
+                                                <input type="text" name='firstName' #firstName="ngModel" ngModel class="form-control" placeholder="First Name..." required>
+                                                <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)" class="alert alert-danger" style='padding:5px;'>
+                                                    <div>
+                                                      First name is required
+                                                    </div>
+                                                </div>
                                                 <span class="input-group-addon"></span>
-                                                <input type="text" name='lastName' ngModel class="form-control" placeholder="Last Name...">
+                                                <input type="text" name='lastName' ngModel  #lastName="ngModel" class="form-control" placeholder="Last Name..." required>
+                                                <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)" class="alert alert-danger" style='padding:5px;'>
+                                                    <div>
+                                                      Last name is required
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="material-icons">face</i>
+                                                </span>
+                                                <input type="text" name='username' #username="ngModel" (ngModel)='signupForm.username' class="form-control" placeholder="Username..." required>
+                                                <div *ngIf="username.errors && (username.dirty || username.touched)" class="alert alert-danger" style='padding:5px;'>
+                                                    <div>
+                                                      Username is required
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="input-group">
                                                 <span class="input-group-addon">
                                                     <i class="material-icons">email</i>
                                                 </span>
-                                                <input type="text" name='username' (ngModel)='signupForm.username' class="form-control" placeholder="Username...">
-                                            </div>
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="material-icons">email</i>
-                                                </span>
-                                                <input type="email" name='email' (ngModel)='signupForm.email' class="form-control" placeholder="Email...">
+                                                <input type="email" name='email' #email="ngModel" (ngModel)='signupForm.email' class="form-control" placeholder="Email..." required>
+                                                <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger" style='padding:5px;'>
+                                                    <div>
+                                                      Email is required
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="input-group">
                                                 <span class="input-group-addon">
                                                     <i class="material-icons">lock_outline</i>
                                                 </span>
-                                                <input type="password" name='password' (ngModel)='signupForm.password' placeholder="Password..." class="form-control" />
-                                            </div>                                              
+                                                <input type="password" name='password'  #password="ngModel" (ngModel)='signupForm.password' placeholder="Password..." class="form-control" required/>
+                                                <div *ngIf="password.errors && (password.dirty || password.touched)" class="alert alert-danger" style='padding:5px;'>
+                                                    <div>
+                                                      Password is required
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="input-group">
                                                 <span class="input-group-addon">
                                                     <i class="material-icons">lock_outline</i>
                                                 </span>
-                                                <input type="password" name='passwordConfirmation' (ngModel)='signupForm.passwordConfirmation' placeholder="Password Confirmation..." class="form-control" />
-                                            </div>                                              
+                                                <input type="password" name='passwordConfirmation'  #password2="ngModel" (ngModel)='signupForm.passwordConfirmation' placeholder="Password Confirmation..." class="form-control" required/>
+                                                <div *ngIf="password2.errors && (password2.dirty || password2.touched)" class="alert alert-danger" style='padding:5px;'>
+                                                    <div>
+                                                      Password Confirmation is required
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <!-- If you want to add a checkbox to this form, uncomment this code -->
                                             <!-- <div class="checkbox">
                                                 <label>
@@ -111,7 +141,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </div>
 

@@ -1,10 +1,10 @@
+
 #landing-section-top{
   height: 30vh;
 }
 
 #landing-section-bottom{
-  position: relative;
-  top:10vh;
+  margin-top: 10vh;
 }
 
 .hero{
@@ -35,6 +35,7 @@ h3{
 }
 
 #search-box{
+    margin-top: -40px;
     margin-left:32%;
     margin-right:32%;
     border: 1px solid rgba(255,255,255,0.5);
