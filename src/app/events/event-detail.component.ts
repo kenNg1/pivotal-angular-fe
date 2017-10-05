@@ -107,6 +107,7 @@ export class EventDetailComponent implements OnInit, OnDestroy {
   }
 
   saveEvent(formValues:any):void {
+    console.log(formValues);
     const newForm = formValues;
     newForm.level = this.levelArray();
     this.closeForm();
