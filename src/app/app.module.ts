@@ -38,7 +38,7 @@ import { Ng2CloudinaryModule } from 'ng2-cloudinary';
 import { FileUploadModule } from 'ng2-file-upload';
 import { LoginRouteGuard } from './login-route-guard';
 import { AdminRouteGuard } from './admin-route-guard';
-
+import { DummyComponent } from './navbar/dummy.component';
 
 
 @NgModule({
@@ -55,6 +55,7 @@ import { AdminRouteGuard } from './admin-route-guard';
     NewEventComponent,
     ProfileComponent,
     UserApprovalComponent,
+    DummyComponent
   ],
   imports: [
     BrowserModule,

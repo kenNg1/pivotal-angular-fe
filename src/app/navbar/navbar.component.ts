@@ -115,9 +115,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
 
     sendSports(id:number,name:string) {
+        // console.log(id,name);    
         this.sportService.searchedSportId = id;
         this.sportService.searchedSportName = name;
-        this.router.navigate(['/search']); 
+        // this.router.navigate(['/search']); 
+        this.router.navigateByUrl('/dummy',{skipLocationChange:true});
+        setTimeout(()=>this.router.navigate(['/search']));
+        
       } 
 
     search(term:string):void {

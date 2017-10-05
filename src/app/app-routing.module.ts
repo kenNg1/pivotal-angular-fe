@@ -10,6 +10,7 @@ import { ProfileComponent } from './user/profile/profile.component';
 import { UserApprovalComponent } from './user/admin/user-approval.component';
 import { LoginRouteGuard } from './login-route-guard';
 import { AdminRouteGuard } from './admin-route-guard';
+import { DummyComponent } from './navbar/dummy.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/events', pathMatch: 'full' },
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'signin', component: SignInComponent, canActivate: [LoginRouteGuard]},
   { path: 'signup', component: SignUpComponent, canActivate: [LoginRouteGuard]},
   { path: 'profile', component: ProfileComponent},
-  { path: 'admin/user-approval', component: UserApprovalComponent, canActivate: [AdminRouteGuard] }
+  { path: 'admin/user-approval', component: UserApprovalComponent, canActivate: [AdminRouteGuard] },
+  { path: 'dummy', component: DummyComponent }  
 ];
 
 @NgModule({

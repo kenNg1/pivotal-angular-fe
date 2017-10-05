@@ -44,7 +44,7 @@
                         <div class="row" style='background-color: rgba(0,0,0,0.95)'>
                             <div style="margin:2px 0 !important; color:white; font-size:110%" class='col-md-12' >See all {{sport?.name}} events</div>
                         </div>
-                 </div>
+                    </div>
                     <div style="width:500px" *ngFor='let event of events | async' (mousedown)="gotoDetail(event)" class='search-result'>
                         <div class="row" style='background-color: rgba(0,0,0,0.95)'>
                             <div style="margin:2px 0 !important; color:white;  font-size:110%" class='col-md-4'>{{event?.name}}</div>
