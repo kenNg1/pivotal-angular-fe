@@ -6,6 +6,7 @@ export class User {
     firstName?: string;
     lastName?: string;
     id?: number;
+    tier?: string;    
   
     constructor() {
       this.username = '';
@@ -13,6 +14,7 @@ export class User {
       this.email = '';
       this.firstName = '';
       this.lastName = '';
+      this.tier = '';
     }
   
 }
