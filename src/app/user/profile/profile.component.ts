@@ -1,3 +1,5 @@
+
+
 import { Component, OnInit, state, style,animate,transition, trigger, keyframes } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
@@ -50,7 +52,7 @@ import { CloudinaryOptions, CloudinaryUploader } from 'ng2-cloudinary';
             ])
         ])
     ]
-}) 
+})
 export class ProfileComponent implements OnInit {
 
   constructor(private authService: AuthService, private detailService:DetailService, private router:Router) {
@@ -65,12 +67,12 @@ export class ProfileComponent implements OnInit {
   id:number;
   userDetail:Detail;
   cloudinaryImage:string;
-  imageId: string;    
+  imageId: string;
 
   upload() {
     this.uploader.uploadAll();
   }
-    
+
   ngOnInit() {
           // REFACTOR later
         this.id = JSON.parse(localStorage.getItem('currentUser')).id;

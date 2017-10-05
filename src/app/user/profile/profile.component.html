@@ -1,6 +1,6 @@
 <div class="main-content">
     <div class="container-fluid">
-            <div class="row"> 
+            <div class="row">
                     <div class="col-md-4">
                             <div class="card card-profile">
                                 <div class="card-avatar">
@@ -21,11 +21,11 @@
                             </div>
                         </div>
                     <div class="col-md-8">
-                        <div class="card"> 
+                        <div class="card">
                             <div class="card-header card-header-icon" data-background-color="rose">
                                 <i class="material-icons">perm_identity</i>
                             </div>
-                            <div class="card-content"> 
+                            <div class="card-content">
                                 <h4 class="card-title">Edit Profile -
                                     <small class="category">Complete your profile</small>
                                 </h4>
@@ -41,13 +41,13 @@
                                             </div>
                                         </div>
                                         <div class="col-md-3">
-                                            <label>Last Name:</label>        
+                                            <label>Last Name:</label>
                                             <div class="form-group label-floating">
                                                 <input name="lastName" type="text" class="form-control" [ngModel]="this.userDetail?.lastName">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <label>Nickname / Club Role:</label>        
+                                            <label>Nickname / Club Role:</label>
                                             <div class="form-group label-floating">
                                                 <input name="nickname" type="text" class="form-control" [ngModel]="this.userDetail?.nickname">
                                             </div>
@@ -55,9 +55,10 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <label>Image:</label>                                                
-                                            <input type="file" ng2FileSelect [uploader]="uploader" accept="image/*;capture=camera" >
-                                            <button class='btn btn-primary' (click)="upload()">Upload</button>
+                                          <br>
+                                            <label>Image: <span style='color:#e91e64'>(Choose file then press upload)</span></label>
+                                            <input type="file" ng2FileSelect [uploader]="uploader" accept="image/*;capture=camera">
+                                            <button class='btn btn-primary btn-xs' (click)="upload()">Upload</button>
                                             <cl-image [public-id]="imageId" [cloud-name]="uploader.cloudName" class="img"></cl-image>
                                             <div class="form-group">
                                                 <input name="image" class="form-control" [ngModel]="this.cloudinaryImage">
@@ -65,9 +66,9 @@
                                         </div>
                                         <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label>Phone number:</label>
+                                                    <label>Phone number: <span style='color:#e91e64'>(Please provide if you'd like to be contactable by phone)</span></label>
                                                     <div class="form-group label-floating">
-                                                        <i style="color:red" class="material-icons">info</i>      <input name="contact" class="form-control" [ngModel]="this.userDetail?.contact" placeholder="Please provide if you'd like to be contactable by phone">
+                                                        <input name="contact" class="form-control" [ngModel]="this.userDetail?.contact">
                                                     </div>
                                                 </div>
                                             </div>
