@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss']
 })
+
 export class SignInComponent implements OnInit {
   submitted: boolean;
 
@@ -47,13 +48,14 @@ export class SignInComponent implements OnInit {
           if(res['ok'] === false) {
             this.message = res['message'];
             console.log('message',this.message);
-            this.err = "Email or Password does not match"
-            console.log(this.err)
           } else {
             // this.authService.setUser(res['user']);
             this.router.navigate(['/events']);
           }
-      });
+      }, error => {
+        this.err = 'Email or password does not match'
+      }
+    );
 
     // FORGET THE BELOW
       // .subscribe(
