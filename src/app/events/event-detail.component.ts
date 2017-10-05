@@ -20,18 +20,18 @@ export class EventDetailComponent implements OnInit, OnDestroy {
   // @Input() event;
   event;
   enableButtons = false;
-  user: User;  
+  user: User;
   @ViewChild('changeEventModal') target2:any;
-  imageId: string;  
+  imageId: string;
   // allowButtonClick: boolean = false;
   intensity:string;
   emailHyperlink:any;
-  sports:any[] = [];  
+  sports:any[] = [];
   address: string;
   levels:any;
   beginners: true;
   beginner = false;
-  intermediate = false;  
+  intermediate = false;
   advanced = false;
   private subscription: any;
   cloudinaryImage:string;
@@ -51,9 +51,9 @@ export class EventDetailComponent implements OnInit, OnDestroy {
   );
 
   constructor(
-    private eventService:EventService, 
+    private eventService:EventService,
     private route:ActivatedRoute,
-    private location: Location, 
+    private location: Location,
     private sportService: SportService,
     private districtService:DistrictService) {
       this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any): any => {
@@ -64,26 +64,26 @@ export class EventDetailComponent implements OnInit, OnDestroy {
       };
   }
 
-  upload() { 
+  upload() {
     this.uploader.uploadAll();
   }
-  
+
   // full blown Angular docs
   ngOnInit():void {
 
    this.user = JSON.parse(localStorage.getItem('currentUser'));
-    
+
    this.subscription = this.route.paramMap
     .switchMap((params: ParamMap) => this.eventService.getEvent(+params.get('id')))
     .subscribe(res => {
-      this.event = res;    
+      this.event = res;
       if(this.user) {
         if(this.user.email===this.event.User.email) {
           this.enableButtons = true;
         } else if(this.user.tier==='admin') {
           this.enableButtons = true;
         }
-      }       
+      }
       window.scrollTo(0, 0);
       this.intensity = this.event.intensity;
       if(Array.isArray(this.event.level)) {
@@ -94,7 +94,7 @@ export class EventDetailComponent implements OnInit, OnDestroy {
       const str1 = 'mailto:';
       const str2 = this.event.User.email;
       const str3 = '?subject=The%20subject%20of%20the%20email&body=Yes%20I%20wanna%20go%20dude';
-      this.emailHyperlink = str1.concat(str2,str3);     
+      this.emailHyperlink = str1.concat(str2,str3);
     });
       this.sportService.getSports().then(sports => {
       this.sports = sports;});
@@ -109,10 +109,10 @@ export class EventDetailComponent implements OnInit, OnDestroy {
   saveEvent(formValues:any):void {
     const newForm = formValues;
     newForm.level = this.levelArray();
-    this.closeForm();    
+    this.closeForm();
     this.eventService.update(newForm).then(event=> {
       this.event = event;
-      this.address = this.event.address; 
+      this.address = this.event.address;
       this.levels = event.level;
     });
   }
@@ -148,12 +148,12 @@ export class EventDetailComponent implements OnInit, OnDestroy {
   }
 
   closeForm(): void {
-    window.scrollTo(0, 0);        
+    window.scrollTo(0, 0);
     $('.modal').hide();
   }
 
   goBack():void {
-    window.scrollTo(0, 0);            
+    window.scrollTo(0, 0);
     this.location.back();
   }
 
@@ -167,7 +167,7 @@ export class EventDetailComponent implements OnInit, OnDestroy {
   // checkIntensity(intensity:string){
   //   this.event.intensity == intensity ? true : false;
   // }
-  
+
   // v1 implementation of promises - didn't work
   // ngOnInit():void {
   //   this.eventService.getEvent(+this.route.snapshot.params['id']).then(event => this.event = event)
@@ -175,11 +175,10 @@ export class EventDetailComponent implements OnInit, OnDestroy {
 
   // tslint:disable-next-line:max-line-length
   // http://cms.acceleratedhk.com/angular/08-routing/01-routing.html tells you about downsides of snapshot. snapshot seems to be simpler BUT the main issue is if you are navigating from e.g. DepartmentDetailComponent back to DepartmentListComponent, the value is not going to be updated for this.route.snapshot.params['id']. Therefore, please use the observable way which is safer way to guarantee that the values of the param are already up-to-date.
-  
+
   // original working w/o promises
   // ngOnInit():void {
   //   this.event = this.eventService.getEvent(+this.route.snapshot.params['id'])
   // }
 
 }
-
