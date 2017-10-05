@@ -238,8 +238,8 @@
                 <div class="card-content text-center">
                     <h2 class="card-title">
                         {{event?.name}}
-                        <button style="float:right; margin-top: 5px" class="btn btn-warning" (click)="delete(event)">Delete</button>    
-                        <button style="float:right; margin-top: 5px" class="btn btn-primary" (click)="showForm()">Edit</button>                    
+                        <button *ngIf="enableButtons" style="float:right; margin-top: 5px" class="btn btn-warning" (click)="delete(event)">Delete</button>    
+                        <button *ngIf="enableButtons" style="float:right; margin-top: 5px" class="btn btn-primary" (click)="showForm()">Edit</button>                    
                     </h2>
                     <br>
                     <div class='icon col-md-2 col-xs-4'>
@@ -285,8 +285,8 @@
 
                 <div *ngIf="event" class="card-content" style='margin-top:0'>
                     <h3 class="card-title">{{event?.User?.Detail?.firstName}} {{event?.User?.Detail?.lastName}}</h3>                        
-                    <h6 class="category text-gray">{{this.event.User.Detail.nickname}}</h6>
-                    <h4 class="btn btn-rose btn-simple">{{this.event.User.email}} | {{this.event.User.Detail.contact}}</h4>
+                    <h6 class="category text-gray">{{this.event?.User?.Detail.nickname}}</h6>
+                    <h4 class="btn btn-rose btn-simple">{{this.event?.User?.email}} | {{this.event?.User?.Detail?.contact}}</h4>
                     <p class="description">
                         {{event?.User?.Detail?.description}}
                     </p>

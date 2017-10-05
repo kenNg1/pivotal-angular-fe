@@ -61,13 +61,16 @@ export class AuthService {
 
   setToken(res:any) {
     const body = JSON.parse(res['_body']);
+    console.log(body);
+    
     if( body['username'] != null ) {
       this.token = body['token'];
       localStorage.setItem('currentUser', JSON.stringify({ 
         username: body['username'],
         email: body['email'], 
         id: body['id'],
-        token: this.token 
+        tier: body['tier'],
+        token: this.token
       }));
     }
     this.email = JSON.parse(localStorage.getItem('currentUser')).email;

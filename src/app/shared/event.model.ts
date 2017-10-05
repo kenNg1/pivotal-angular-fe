@@ -16,4 +16,5 @@ export class Event {
     // virtual attribute
     userImgSrc?:string;
     District?:any;
+    User?:any;
 }

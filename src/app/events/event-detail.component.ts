@@ -3,10 +3,11 @@ import { ActivatedRoute, ParamMap} from '@angular/router';
 import { Location } from '@angular/common';
 import { SportService } from '../shared/sport.service';
 import { DistrictService } from '../shared/district.service';
-import { Event } from '../shared/event.model'
-import { EventService } from '../shared/event.service'
-import 'rxjs/add/operator/switchMap'
+import { Event } from '../shared/event.model';
+import { EventService } from '../shared/event.service';
+import 'rxjs/add/operator/switchMap';
 import { CloudinaryOptions, CloudinaryUploader } from 'ng2-cloudinary';
+import { User } from '../user/user';
 
 declare var $:any;
 
@@ -18,6 +19,8 @@ declare var $:any;
 export class EventDetailComponent implements OnInit, OnDestroy {
   // @Input() event;
   event;
+  enableButtons = false;
+  user: User;  
   @ViewChild('changeEventModal') target2:any;
   imageId: string;  
   // allowButtonClick: boolean = false;
@@ -25,13 +28,13 @@ export class EventDetailComponent implements OnInit, OnDestroy {
   emailHyperlink:any;
   sports:any[] = [];  
   address: string;
-  levels:any
-  beginners: true
-  beginner: boolean = false;
-  intermediate: boolean = false;  
-  advanced: boolean = false;
+  levels:any;
+  beginners: true;
+  beginner = false;
+  intermediate = false;  
+  advanced = false;
   private subscription: any;
-  cloudinaryImage:string
+  cloudinaryImage:string;
   districts:any[] = [];
   randomAvailability = '9/10';
   // tslint:disable-next-line:max-line-length
@@ -67,10 +70,20 @@ export class EventDetailComponent implements OnInit, OnDestroy {
   
   // full blown Angular docs
   ngOnInit():void {
+
+   this.user = JSON.parse(localStorage.getItem('currentUser'));
+    
    this.subscription = this.route.paramMap
     .switchMap((params: ParamMap) => this.eventService.getEvent(+params.get('id')))
     .subscribe(res => {
-      this.event = res;      
+      this.event = res;    
+      if(this.user) {
+        if(this.user.email===this.event.User.email) {
+          this.enableButtons = true;
+        } else if(this.user.tier==='admin') {
+          this.enableButtons = true;
+        }
+      }       
       window.scrollTo(0, 0);
       this.intensity = this.event.intensity;
       if(Array.isArray(this.event.level)) {
@@ -127,7 +140,6 @@ export class EventDetailComponent implements OnInit, OnDestroy {
     }
     return arr;
   }
-
 
   showForm(): void {
     window.scrollTo(0, 0);
