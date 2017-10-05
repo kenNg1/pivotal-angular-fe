@@ -1,3 +1,12 @@
+#landing-section-top{
+  height: 30vh;
+}
+
+#landing-section-bottom{
+  position: absolute;
+  top: 50vh;
+}
+
 .hero{
     text-align:center;
 }
@@ -8,6 +17,7 @@
     width: 100%;
     left: 0%;
     top: 2%;
+    height: 45vh;
 }
 
 h1{
