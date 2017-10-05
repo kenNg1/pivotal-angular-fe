@@ -13,12 +13,13 @@ import { Router } from '@angular/router';
 export class SignInComponent implements OnInit {
   submitted: boolean;
 
-  loginForm: FormGroup;  
+  loginForm: FormGroup;
   message: String;
   user: User;
   user_status: boolean;
+  err: String = "";
 
-  constructor( private router: Router, 
+  constructor( private router: Router,
     private authService: AuthService, private formBuilder: FormBuilder) {
       this.user = new User;
   }
@@ -41,9 +42,13 @@ export class SignInComponent implements OnInit {
       this.authService.loginUser(this.user).subscribe(res=> {
           console.log('response',res);
           this.user_status = res['success'];
+          console.log('hihihi')
+          console.log(res)
           if(res['ok'] === false) {
             this.message = res['message'];
             console.log('message',this.message);
+            this.err = "Email or Password does not match"
+            console.log(this.err)
           } else {
             // this.authService.setUser(res['user']);
             this.router.navigate(['/events']);
@@ -55,7 +60,7 @@ export class SignInComponent implements OnInit {
       //     this.authService.redirectAfterLogin.bind(this.authService),
           // response - *bind* makes sure that "this" in "this.redirectUrl" is referring to the type declared in the auth.service.ts file
           // this.afterFailedLogin.bind(this)
-          // error - *bind* binding to this current component, not the service 
+          // error - *bind* binding to this current component, not the service
       // )
   }
 
@@ -69,7 +74,7 @@ export class SignInComponent implements OnInit {
 //               // then set the rror and display it in the browser
 //           }
 //       }
-//       this.loginForm.setErrors(parsed_errors);        
+//       this.loginForm.setErrors(parsed_errors);
 //   }
-  
+
 }
