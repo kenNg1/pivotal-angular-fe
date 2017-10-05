@@ -1,3 +1,5 @@
+<br>
+
 <div #changeEventModal class='modal'>
     <div class='modal-form'>
         <div class="card">
@@ -15,7 +17,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row"> 
+                    <div class="row">
                         <label class="col-sm-2 label-on-left">Event Name</label>
                         <div class="col-sm-10">
                             <div class="form-group label-floating is-empty">
@@ -24,7 +26,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row"> 
+                    <div class="row">
+                        <label class="col-sm-2 label-on-left">Event Description</label>
+                        <div class="col-sm-10">
+                            <div class="form-group label-floating is-empty">
+                                <label class="control-label"></label>
+                                <textarea name='description' [ngModel]="event?.description" rows="3" type="text-area" class="form-control" placeholder="description"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <label class="col-sm-2 label-on-left">Organizer Information</label>
                         <div class="col-sm-10">
                             <div class="form-group label-floating is-empty">
@@ -32,8 +43,8 @@
                                 <input name='org_description' [ngModel]="event?.org_description" #orgInfo="ngModel" type="text" class="form-control" placeholder="More information about the organizer" required >
                             </div>
                         </div>
-                    </div> 
-                    <div class="row"> 
+                    </div>
+                    <div class="row">
                         <label class="col-sm-2 label-on-left">Organizer Website</label>
                         <div class="col-sm-10">
                             <div class="form-group label-floating is-empty">
@@ -42,7 +53,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row"> 
+                    <div class="row">
                         <label class="col-sm-2 label-on-left">What should players bring?</label>
                         <div class="col-sm-10">
                             <div class="form-group label-floating is-empty">
@@ -51,12 +62,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row"> 
+                    <div class="row">
                         <label class="col-sm-2 label-on-left">Available Spaces</label>
                         <div class="col-sm-10">
                             <div class="form-group label-floating is-empty">
                                     <label class="control-label"></label>
-                                <input name='sportswear' [ngModel]="event?.max_ppl" type="text" class="form-control" placeholder="number of spaces available" >
+                                <input name='max_ppl' [ngModel]="event?.max_ppl" type="text" class="form-control" placeholder="number of spaces available" >
                             </div>
                         </div>
                     </div>
@@ -82,7 +93,7 @@
                                     <md-option class="sport-option" *ngFor="let sport of sports" [value]="sport.id">
                                         {{sport.name}}
                                     </md-option>
-                                </md-select> 
+                                </md-select>
                             </div>
                         </div>
                     </div> -->
@@ -126,7 +137,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="row">
                         <label class="col-sm-2 label-on-left">Level</label>
                         <div class="col-sm-10 checkbox-radios">
@@ -186,7 +197,7 @@
                                 </div>
                         </div>
                     </div>
-                    <!-- <div class="row"> 
+                    <!-- <div class="row">
                         <label class="col-sm-2 label-on-left">District</label>
                         <div class="col-sm-10">
                                 <div class="form-group label-floating is-empty">
@@ -194,8 +205,8 @@
                                         <md-option class="district-option" *ngFor="let dist of districts" [value]="dist.id">
                                             {{dist.name}}
                                         </md-option>
-                                    </md-select>                    
-                                </div> 
+                                    </md-select>
+                                </div>
                         </div>
                     </div> -->
                     <div class="row">
@@ -217,7 +228,7 @@
                         </div>
                     </div> -->
                     <button type='submit' class='btn btn-success' style='float: right;'>Submit</button>
-                    <button type='button' (click)="closeForm()" class='btn btn-primary' style='float: right;'>Cancel</button>                    
+                    <button type='button' (click)="closeForm()" class='btn btn-primary' style='float: right;'>Cancel</button>
                 </div>
             </form>
         </div>
@@ -229,17 +240,17 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="text-center card-header card-header-icon" data-background-color="rose">
-                    <h1>{{this.event?.date | date:'EEE'| uppercase}}</h1> 
+                    <h1>{{this.event?.date | date:'EEE'| uppercase}}</h1>
                     <hr>
                     <h3>{{this.event?.date | date:'d MMM'| uppercase}} </h3>
-                    <h3 style="display:inline-block; margin:0">{{event?.time}}</h3>                 
+                    <h3 style="display:inline-block; margin:0">{{event?.time}}</h3>
                 </div>
                 <br>
                 <div class="card-content text-center">
                     <h2 class="card-title">
                         {{event?.name}}
-                        <button *ngIf="enableButtons" style="float:right; margin-top: 5px" class="btn btn-warning" (click)="delete(event)">Delete</button>    
-                        <button *ngIf="enableButtons" style="float:right; margin-top: 5px" class="btn btn-primary" (click)="showForm()">Edit</button>                    
+                        <button *ngIf="enableButtons" style="float:right; margin-top: 5px" class="btn btn-warning" (click)="delete(event)">Delete</button>
+                        <button *ngIf="enableButtons" style="float:right; margin-top: 5px" class="btn btn-primary" (click)="showForm()">Edit</button>
                     </h2>
                     <br>
                     <div class='icon col-md-2 col-xs-4'>
@@ -248,34 +259,34 @@
                         <!-- if indoor use the insert_photo material icon -->
                         <p>{{event?.terrain}}</p>
                     </div>
-        
+
                     <div class='icon col-md-2 col-xs-4'>
                         <i class="material-icons">insert_emoticon</i>
                         <p>{{event?.intensity}}</p>
                     </div>
-        
+
                     <div class='icon col-md-2 col-xs-4'>
                         <i class="material-icons">grade</i>
                         <p *ngFor="let level of levels">{{level}}</p>
-                    </div> 
-        
+                    </div>
+
                     <div class='icon col-md-3 col-xs-4'>
                         <i class="material-icons">face</i>
                         <p>{{event?.max_ppl}} spaces available</p>
-                    </div> 
+                    </div>
                     <br><br><br><br><br>
                 </div>
                 <hr>
                 <div class='card-content' style='margin:-20px 18px 0px 18px'>
                     <h5 style="display:inline-block; margin: 10px 0 0 40px; font-size: 17px;">{{event?.address}}</h5>
                     <a class="btn btn-rose pull-right"
-                    [href]="this.emailHyperlink">             
+                    [href]="this.emailHyperlink">
                     Register</a>
                     <h4 style="float:right; margin:10px 30px 0 0">{{event?.price | currency:'USD':true}} per session</h4>
                 </div>
             </div>
         </div>
-        <div class="col-md-4"> 
+        <div class="col-md-4">
             <div class="card card-profile">
                 <div class="card-avatar">
                     <a>
@@ -284,7 +295,7 @@
                 </div>
 
                 <div *ngIf="event" class="card-content" style='margin-top:0'>
-                    <h3 class="card-title">{{event?.User?.Detail?.firstName}} {{event?.User?.Detail?.lastName}}</h3>                        
+                    <h3 class="card-title">{{event?.User?.Detail?.firstName}} {{event?.User?.Detail?.lastName}}</h3>
                     <h6 class="category text-gray">{{this.event?.User?.Detail.nickname}}</h6>
                     <h4 class="btn btn-rose btn-simple">{{this.event?.User?.email}} | {{this.event?.User?.Detail?.contact}}</h4>
                     <p class="description">
@@ -294,7 +305,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class='container-fluid'>
             <div class="card">
                 <div style='height:450px' class="card-header card-header-tabs" data-background-color="rose">
@@ -330,7 +341,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" style='margin-top:50px;'>
                             <div class="card-content">
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="profile">
@@ -341,7 +352,7 @@
                                         <table class="table">
                                             <tbody>
                                                 <tr>
-                                                    <td> 
+                                                    <td>
                                                         <i class="material-icons">check_box</i>
                                                     </td>
                                                     <td>{{this.event?.sportswear}}</td>
@@ -391,12 +402,11 @@
                         </div>
                     </div>
                 </div>
-            </div>    
+            </div>
         </div>
     </div>
     <app-mapping [address]="this.address"></app-mapping>
   </div>
 
-  
+
   <!-- <button style="float:right;" class="btn btn-rose" (click)="goBack()">Back</button> -->
-  
