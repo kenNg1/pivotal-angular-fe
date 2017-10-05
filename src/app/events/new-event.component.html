@@ -25,7 +25,7 @@
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
                                 <label class="control-label"></label>
-                            <input name='description' ngModel #description="ngModel" type="text" class="form-control" placeholder="More details about the event..." required >
+                            <textarea name='description' ngModel rows="3" #description="ngModel" type="text" class="form-control" placeholder="More details about the event..." required ></textarea>
                             <div *ngIf="description.errors && (description.dirty || description.touched)" class="alert alert-danger" style='padding:5px; width: 500px;'>
                                 <div>
                                     Description is required
@@ -39,7 +39,7 @@
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
                                 <label class="control-label"></label>
-                            <input name='org_description' ngModel #orgInfo="ngModel" type="text" class="form-control" placeholder="More information about the organizer" required >
+                            <textarea name='org_description' ngModel  rows="3" #orgInfo="ngModel" type="text" class="form-control" placeholder="More information about the organizer" required ></textarea>
                             <div *ngIf="orgInfo.errors && (orgInfo.dirty || orgInfo.touched)" class="alert alert-danger" style='padding:5px; width: 500px;'>
                                 <div>
                                     Organizer description is required
