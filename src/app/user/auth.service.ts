@@ -5,11 +5,12 @@ import { User } from './user';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/of';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AuthService {
 
-  private base_url = 'http://127.0.0.1:8000';
+  private base_url = environment.apiUrl;
   token: string;
 //   private userSource = new Subject<User>();
 //   user$ = this.userSource.asObservable();

@@ -5,13 +5,14 @@ import { Angular2TokenService } from 'angular2-token';
 import { Observable } from 'rxjs/Observable'; 
 import { User } from './user';
 import { Detail } from '../shared/detail.model';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 
 export class DetailService {
   headers: Headers;
   
-  private detailsUrl = 'http://localhost:8000/api/details'; // URL to web api
+  private detailsUrl = environment.apiUrl + 'api/details'; // URL to web api
   
   constructor(
     // public firstName:string,

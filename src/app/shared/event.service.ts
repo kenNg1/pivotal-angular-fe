@@ -4,12 +4,13 @@ import {HttpService} from './http.service';
 
 import 'rxjs/add/operator/toPromise';
 import { Event } from './event.model';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class EventService {
   headers: Headers;
 
-  private eventsUrl = 'http://localhost:8000/api/events'; // URL to web api
+  private eventsUrl = environment.apiUrl + 'api/events'; // URL to web api
 
   constructor(private http: HttpService) {
     this.headers = new Headers({'Content-Type': 'application/json'});  

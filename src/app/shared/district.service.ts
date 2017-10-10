@@ -3,12 +3,14 @@ import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 import { District } from './district.model';
+import { environment } from '../../environments/environment';
+
 
 @Injectable()
 export class DistrictService {
   headers: Headers;
 
-  private districtUrl = 'http://localhost:8000/api/districts'; // URL to web api
+  private districtUrl = environment.apiUrl + 'api/districts'; // URL to web api
  
   constructor(private http: Http) {
     this.headers = new Headers({'Content-Type': 'application/json'});

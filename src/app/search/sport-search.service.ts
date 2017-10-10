@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { Event } from '../shared/event.model';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class SportSearchService {
@@ -13,7 +14,7 @@ export class SportSearchService {
 
   search(term:string):Observable<any> {
     return this.http
-      .get(`http://localhost:8000/api/events/?name=${term}`)
+      .get(`${environment.apiUrl}/api/events/?name=${term}`)
       .map(response => response.json());
   }
 }
