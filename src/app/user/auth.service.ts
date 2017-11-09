@@ -32,7 +32,7 @@ export class AuthService {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     const options = new RequestOptions({ headers: headers });
-    return this.http.post(`${this.base_url}/register`, body, options).map( (res) => this.setToken(res) );
+    return this.http.post(`${this.base_url}register`, body, options).map( (res) => this.setToken(res) );
   }
 
   loginUser(user:User): Observable<Object> {
@@ -41,7 +41,7 @@ export class AuthService {
     headers.append('Content-Type', 'application/json');
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.post(`${this.base_url}/login`, body, options).map( (res) => this.setToken(res) );
+    return this.http.post(`${this.base_url}login`, body, options).map( (res) => this.setToken(res) );
   }
 
   logout() {
@@ -56,7 +56,7 @@ export class AuthService {
     const token = ( currUser && 'token' in currUser) ? currUser.token : this.token;
     const headers = new Headers({ 'x-access-token': token });
     const options = new RequestOptions({ headers: headers });
-    return this.http.get(`${this.base_url}/check-state`, options).map( res => this.parseRes(res));
+    return this.http.get(`${this.base_url}check-state`, options).map( res => this.parseRes(res));
     
   }
 

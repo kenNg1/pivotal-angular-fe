@@ -6,6 +6,7 @@ import { AuthService } from '../auth.service';
 import { DetailService } from '../detail.service';
 import { Detail } from '../../shared/detail.model';
 import { CloudinaryOptions, CloudinaryUploader } from 'ng2-cloudinary';
+import { User } from '../user';
 
 @Component({
   selector: 'app-profile',
@@ -57,18 +58,19 @@ export class ProfileComponent implements OnInit {
 
   constructor(private authService: AuthService, private detailService:DetailService, private router:Router) {
     this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any): any => {
-        let res: any = JSON.parse(response);
+        const res: any = JSON.parse(response);
         this.imageId = res.public_id;
-        this.cloudinaryImage = JSON.parse(response).url
-        console.log(this.cloudinaryImage)
+        this.cloudinaryImage = JSON.parse(response).url;
+        console.log(this.cloudinaryImage);
         return { item, response, status, headers };
-      }
+      };
   }
+  enableButtons = false;  
   id:number;
   userDetail:Detail;
   cloudinaryImage:string;
   imageId: string;
-
+  user: User;
   upload() {
     this.uploader.uploadAll();
   }
@@ -76,10 +78,19 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
           // REFACTOR later
         this.id = JSON.parse(localStorage.getItem('currentUser')).id;
+        this.user = JSON.parse(localStorage.getItem('currentUser'));
+        
         this.detailService.getDetail(this.id).then(detail => {
                     //  this.id = detail.json().id
                      this.userDetail = detail.json();
                     //  console.log(this.userDetail.image)
+                    if(this.user) {
+                        if(this.user.email === 'alicia@pivotalsport.com') {
+                          this.enableButtons = true;
+                        } else if(this.user.tier ==='2' || this.user.tier === '3') {
+                          this.enableButtons = true;
+                        }
+                      }
                  });
         // this.authService.validate().subscribe(value=>{
         //     this.detailService.getDetail(value.id).then(detail => {
@@ -102,6 +113,10 @@ export class ProfileComponent implements OnInit {
             this.userDetail = response.json();
           });
   }
+
+  gotoUsers(): void {
+    this.router.navigate(['/admin/user-approval']);
+    }
 
 // Javascript to show placeholder "New Password"
 

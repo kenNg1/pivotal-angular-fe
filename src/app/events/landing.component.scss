@@ -4,8 +4,33 @@
 }
 
 #landing-section-bottom{
-  margin-top: 20vh;
+  margin-top: 30vh;
 }
+
+#more {
+    display:none;
+}
+
+#left {
+    color:white;
+    font-size: 40px;
+    font-weight:900;
+    position:relative;
+    top: 10px;
+    user-select: none;
+    cursor: pointer;
+}
+
+#right {
+    color:white;
+    font-size: 40px;
+    font-weight:900;
+    top: 10px;
+    position:relative;
+    user-select: none;
+    cursor: pointer;
+}
+
 
 .hero{
     text-align:center;
@@ -14,24 +39,26 @@
 .hero img {
     position: absolute;
     z-index: -5;
-    width: 100%;
-    left: 0%;
+    width: 95%;
+    left: 2.5%;
     top: 2%;
-    height: 55vh;
 }
 
 h1{
-    background-color: rgba(0,0,0,0.4);
-    color: white;
-    width: 50%;
-    margin-left: 26%;
-    top: 2%;
+    // background-color: rgba(0,0,0,0.4);
+    font-size: 5rem;
+    color: #ffffff;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 5%;
     border-radius: 5px;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight:bold
 }
 
 h3{
-    color: teal;
-    font-weight: bolder
+    color:#3366CC;
+    font-family: 'Noto Sans', sans-serif;    
 }
 
 #search-box{
@@ -52,3 +79,84 @@ h3{
 .card-product {
     height: 350px !important;
 }
+
+.btn-info {
+    background-color: #3366CC;
+    padding: 10px 15px;
+}
+
+@media (max-width:750px) {
+    #left {
+        display:none;
+    }
+
+    #right {
+        display:none;
+    }
+
+    #more {
+        display:inline;
+        color: #ffffff;
+        background-color: rgba(58, 182, 58, 0.8);
+
+    }
+
+    #more:hover {
+        display:inline;
+        background-color: rgba(58, 182, 58, 1);
+    }
+
+    .container-fluid {
+        padding: 0px;
+    }
+
+    button.btn.btn-info{
+        min-width:105px !important;
+        font:3px !important;
+        padding: 10px 15px;
+    }
+
+    h1{
+        font-size: 4rem;
+    }
+
+    #landing-section-bottom{
+        margin-top: 25vh;
+      }
+
+      .hero img {
+        width: auto;
+        height: 350px;
+    }
+}
+
+@media (max-width:650px) {
+    h1{
+        font-size: 3.5rem;
+        width: 90%;   
+        margin-left: 5%; 
+        margin-top: 20%;
+        background-color:rgba(58, 182, 58, 0.61);
+        padding: 0px;       
+    }
+
+    .btn-info {
+        background-color: #ffffff;
+        color: #3366CC;
+        padding: 10px 20px;
+        font:3px !important; 
+        min-width: 110px;       
+    }
+}
+
+@media (max-width:1270px) {
+    .hero img {
+        position: absolute;
+        z-index: -5;
+        width: auto;
+        left: 0%;
+        top: 2%;
+        max-height: 420px;
+    }
+}
+

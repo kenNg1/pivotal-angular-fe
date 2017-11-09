@@ -27,3 +27,52 @@
 .district-option{
     font-size: 14px;
 }
+
+
+
+h4 {
+    float:right;
+    margin:10px 30px 0 0
+}
+
+#time {
+    display:inline-block;
+    margin:0
+}
+
+p#small {
+    display:none;
+}
+
+
+@media (max-width:750px) {
+    h4 {
+        float: none;
+        margin:0
+    }
+
+
+
+}
+
+@media (max-width:650px) {
+    div.text-center.card-header.card-header-icon {
+        float: none !important;
+        padding: 0 15px;
+        font-size: 1rem;
+        margin: 0 10px;
+    }
+
+    div.text-center.card-header.card-header-icon h1, hr, #time, h3 {
+        display:none
+    }
+
+    p#small {
+        display:inline-block;
+        font-size: 2rem;
+        padding: 20px 15px;
+        font-weight: 700;
+    }
+
+}
+

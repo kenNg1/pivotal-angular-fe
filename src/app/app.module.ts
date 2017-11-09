@@ -39,6 +39,9 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { LoginRouteGuard } from './login-route-guard';
 import { AdminRouteGuard } from './admin-route-guard';
 import { DummyComponent } from './navbar/dummy.component';
+import { CompatibilityModule } from '@angular/material';
+import {NoConflictStyleCompatibilityMode} from '@angular/material';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 @NgModule({
@@ -55,7 +58,7 @@ import { DummyComponent } from './navbar/dummy.component';
     NewEventComponent,
     ProfileComponent,
     UserApprovalComponent,
-    DummyComponent
+    DummyComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +66,9 @@ import { DummyComponent } from './navbar/dummy.component';
     MdSliderModule,
     MdSelectModule,
     MdAutocompleteModule,
+    CompatibilityModule,
+    NoConflictStyleCompatibilityMode,
+    MatMenuModule,
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,

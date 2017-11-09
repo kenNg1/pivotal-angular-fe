@@ -22,6 +22,15 @@ import { Event } from '../shared/event.model';
       bottom: 10px;
       right: 15px
     }
+
+    div.card-image{
+      text-align: center;
+    }
+
+    img.img{
+      max-height:100% !important;
+      width:auto !important
+    }
   `]
 })
 export class EventThumbnailComponent implements OnInit {

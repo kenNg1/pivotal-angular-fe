@@ -17,4 +17,5 @@ export class Event {
     userImgSrc?:string;
     District?:any;
     User?:any;
+    Sport?:any;
 }

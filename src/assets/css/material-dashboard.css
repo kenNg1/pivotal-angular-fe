@@ -5829,6 +5829,22 @@ h2.title {
   padding: 30px 15px;
   min-height: calc(100vh - 123px);
 }
+
+@media (max-width:400px) {
+  .main-panel .main-content{
+      padding: 30px 0px !important;
+  }
+
+  div.container-fluid {
+    padding-left:5px;
+    padding-right:5px;
+  }
+
+  #pivotal-logo {
+    margin-left:15px;
+  }
+}
+
 .main-panel .main-content .container-fluid h3:first-child {
   margin-top: 0;
 }
@@ -6461,7 +6477,7 @@ h2.title {
 }
 .btn.btn-rose,
 .navbar .navbar-nav > li > a.btn.btn-rose {
-  box-shadow: 0 2px 2px 0 rgba(233, 30, 99, 0.14), 0 3px 1px -2px rgba(233, 30, 99, 0.2), 0 1px 5px 0 rgba(233, 30, 99, 0.12);
+  box-shadow: 0 2px 2px 0 rgba(59, 102, 218, 0.699), 0 3px 1px -2px rgba(59, 102, 218, 0.699), 0 1px 5px 0 rgba(59, 102, 218, 0.699);
 }
 .btn.btn-rose, .btn.btn-rose:hover, .btn.btn-rose:focus, .btn.btn-rose:active, .btn.btn-rose.active, .btn.btn-rose:active:focus, .btn.btn-rose:active:hover, .btn.btn-rose.active:focus, .btn.btn-rose.active:hover, .open > .btn.btn-rose.dropdown-toggle, .open > .btn.btn-rose.dropdown-toggle:focus, .open > .btn.btn-rose.dropdown-toggle:hover,
 .navbar .navbar-nav > li > a.btn.btn-rose,
@@ -6476,14 +6492,14 @@ h2.title {
 .navbar .navbar-nav > li > a.btn.btn-rose.dropdown-toggle, .open >
 .navbar .navbar-nav > li > a.btn.btn-rose.dropdown-toggle:focus, .open >
 .navbar .navbar-nav > li > a.btn.btn-rose.dropdown-toggle:hover {
-  background-color: #e91e63;
+  background-color: #3366cc;
   color: #FFFFFF;
 }
 .btn.btn-rose:focus, .btn.btn-rose:active, .btn.btn-rose:hover,
 .navbar .navbar-nav > li > a.btn.btn-rose:focus,
 .navbar .navbar-nav > li > a.btn.btn-rose:active,
 .navbar .navbar-nav > li > a.btn.btn-rose:hover {
-  box-shadow: 0 14px 26px -12px rgba(233, 30, 99, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(233, 30, 99, 0.2);
+  box-shadow: 0 14px 26px -12px rgba(40, 78, 250, 0.541), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(40, 78, 250, 0.541);
 }
 .btn.btn-rose.disabled, .btn.btn-rose.disabled:hover, .btn.btn-rose.disabled:focus, .btn.btn-rose.disabled.focus, .btn.btn-rose.disabled:active, .btn.btn-rose.disabled.active, .btn.btn-rose:disabled, .btn.btn-rose:disabled:hover, .btn.btn-rose:disabled:focus, .btn.btn-rose:disabled.focus, .btn.btn-rose:disabled:active, .btn.btn-rose:disabled.active, .btn.btn-rose[disabled], .btn.btn-rose[disabled]:hover, .btn.btn-rose[disabled]:focus, .btn.btn-rose[disabled].focus, .btn.btn-rose[disabled]:active, .btn.btn-rose[disabled].active, fieldset[disabled] .btn.btn-rose, fieldset[disabled] .btn.btn-rose:hover, fieldset[disabled] .btn.btn-rose:focus, fieldset[disabled] .btn.btn-rose.focus, fieldset[disabled] .btn.btn-rose:active, fieldset[disabled] .btn.btn-rose.active,
 .navbar .navbar-nav > li > a.btn.btn-rose.disabled,
@@ -9802,7 +9818,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 .navbar, .navbar.navbar-default {
   background-color: #FFFFFF;
-  color: #555555;
+  /* color: #555555; */
 }
 .navbar .navbar-form .form-group input.form-control::-moz-placeholder,
 .navbar .navbar-form input.form-control::-moz-placeholder, .navbar.navbar-default .navbar-form .form-group input.form-control::-moz-placeholder,
@@ -10392,7 +10408,7 @@ footer .btn {
   margin-top: -30px;
   border-radius: 6px;
   z-index: 3;
-  box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2); */
 }
 .card .card-image img {
   width: 100%;
@@ -10651,8 +10667,8 @@ footer .btn {
   color: #f44336;
 }
 .card [data-background-color="rose"] {
-  background: linear-gradient(60deg, #ec407a, #d81b60);
-  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(233, 30, 99, 0.4);
+  background: linear-gradient(60deg, #99cc33, #33cc33);
+  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(51, 204, 51, 0.4);
 }
 .card [data-icon-bg-color="rose"] i {
   color: #e91e63;
@@ -10954,7 +10970,7 @@ footer .btn {
 .card-product .card-image {
   height: 200px;
   background-size: cover;
-  background-image: url("../img/image_placeholder.jpg");
+  /* background-image: url("../img/image_placeholder.jpg"); */
   background-position: center center;
 }
 

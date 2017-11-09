@@ -1,9 +1,30 @@
-<nav class="navbar navbar-transparent navbar-absolute">
+
+<nav style="height:60px;" class="navbar navbar-transparent navbar-absolute">
+
+        <div mat-icon-button [matMenuTriggerFor]="menu" class="elipsis" style="position:absolute;right:0px; top:60px">
+        </div>
+        <mat-menu #menu="matMenu">
+        <button *ngIf="isLoggedIn()" routerLink="events/new-event" mat-menu-item >
+            <span>Add an Event</span>
+        </button>
+        <button *ngIf="isLoggedIn()" routerLink='/profile' mat-menu-item >
+            <span>Profile</span>
+        </button>
+        <button *ngIf="isLoggedIn()" (click)='logOut()' mat-menu-item >
+            <span>Log Out</span>
+        </button>
+        <button *ngIf="!isLoggedIn()" routerLink="/signin" mat-menu-item>
+            <span>Login / Register</span>
+        </button>
+        </mat-menu>
     <div class="container-fluid">
+
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle elipsis" data-toggle="collapse">
+                
+            <!-- <button style="z-index:9999" (click)="gotoResults()" type="button" class="navbar-toggle" data-toggle="collapse">
                 <span class="sr-only">Toggle navigation</span>
-            </button>
+            </button> -->
+            <img id="pivotal-logo" style="height:50px;float:left" src="../assets/img/logo.png" alt="">            
             <a class="navbar-brand" routerLink="/"> PIVOTAL SPORT </a>
         </div>
         <div class="collapse navbar-collapse">
@@ -22,7 +43,7 @@
                 </li>
                 <!-- end of above comment  -->
                 <li *ngIf="!isLoggedIn()">
-                  <button routerLink="/signin" class='btn btn-primary my-2 my-sm-0'>Log In</button>
+                  <button routerLink="/signin" class='btn btn-primary my-2 my-sm-0'>Log In / Register</button>
                     <!-- <a routerLink="/signin" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="material-icons">person</i>
                         <p class="hidden-lg hidden-md">Profile</p>
@@ -31,7 +52,7 @@
 
                 <li class="separator hidden-lg hidden-md"></li>
             </ul>
-            <form style="position:absolute;left:20%;top:7px;" class="navbar-form navbar-right" role="search">
+            <form style="position:absolute;left:30%;top:7px;" class="navbar-form navbar-right" role="search">
                 <div class="form-group form-search is-empty">
                     <!-- <input (input)="onFormInput($event)" value={{name}} type="text" class="form-control" placeholder="Search"> -->
                     <input style='width:300px !important' #searchBox class="form-control" (keyup)="search(searchBox.value)" placeholder="Search for a sport" (focus)="onFocusMethod()" (blur)="onBlurMethod()"/>
@@ -42,15 +63,15 @@
                         <div class="ripple-container"></div>
                     </button>
                     <div style="width:500px" *ngFor='let sport of sports' (mousedown)="sendSports(sport.id,sport.name)" class='search-result'>
-                        <div class="row" style='background-color: rgba(0,0,0,0.95)'>
-                            <div style="margin:2px 0 !important; color:white; font-size:110%" class='col-md-12' >See all {{sport?.name}} events</div>
+                        <div class="row black">
+                            <div style="margin:2px 0 !important; font-size:110%" class='col-md-12 white' >See all {{sport?.name}} events</div>
                         </div>
                     </div>
                     <div style="width:500px" *ngFor='let event of events | async' (mousedown)="gotoDetail(event)" class='search-result'>
-                        <div class="row" style='background-color: rgba(0,0,0,0.95)'>
-                            <div style="margin:2px 0 !important; color:white;  font-size:110%" class='col-md-4'>{{event?.name}}</div>
-                            <div style="margin:2px 0 !important; color:white" class='col-md-4'>{{event?.sport?.name}}</div>
-                            <div style="margin:2px 0 !important; color:white" class='col-md-4'>{{event?.date | date:'EE d MMM'}}</div>
+                        <div class="row black">
+                            <div style="margin:2px 0 !important; font-size:110%" class='col-md-4 white'>{{event?.name}}</div>
+                            <div style="margin:2px 0 !important" class='col-md-4 white'>{{event?.sport?.name}}</div>
+                            <div style="margin:2px 0 !important;" class='col-md-4 white'>{{event?.date | date:'EE d MMM'}}</div>
                         </div>
                     </div>
                 </div>
@@ -69,5 +90,17 @@
             </form> -->
 
         </div>
+
     </div>
 </nav>
+<!-- <div>
+        <ul>
+                <button (click)="toggleMenu()" type="button" class="navbar-toggle elipsis" data-toggle="collapse"></button>
+                <li>Menu Item</li>
+                <li>Menu Item</li>
+                <li>Menu Item</li>
+                <li>Menu Item</li>
+                <li>Menu Item</li>
+                <li>Menu Item</li>
+            </ul>
+</div> -->

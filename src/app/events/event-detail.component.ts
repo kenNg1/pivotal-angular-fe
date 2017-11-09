@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild, OnDestroy } from '@angular/core';
 import { ActivatedRoute, ParamMap} from '@angular/router';
-import { Location } from '@angular/common';
+import { Location, DatePipe } from '@angular/common';
 import { SportService } from '../shared/sport.service';
 import { DistrictService } from '../shared/district.service';
 import { Event } from '../shared/event.model';
@@ -77,10 +77,11 @@ export class EventDetailComponent implements OnInit, OnDestroy {
     .switchMap((params: ParamMap) => this.eventService.getEvent(+params.get('id')))
     .subscribe(res => {
       this.event = res;
+      this.event.time = this.event.time.replace(/:\d\d([ ap]|$)/,'$1');
       if(this.user) {
-        if(this.user.email===this.event.User.email) {
+        if(this.user.email===this.event.User.email || this.user.email === 'alicia@pivotalsport.com') {
           this.enableButtons = true;
-        } else if(this.user.tier==='admin') {
+        } else if(this.user.tier ==='2' || this.user.tier === '3') {
           this.enableButtons = true;
         }
       }
@@ -156,6 +157,17 @@ export class EventDetailComponent implements OnInit, OnDestroy {
   goBack():void {
     window.scrollTo(0, 0);
     this.location.back();
+  }
+
+  onNavigate(event:Event):void {
+    console.log(event);
+    let url = '';
+    if (!/^http[s]?:\/\//.test(event.Sport.sportsExternalUrl)) {
+        url += 'http://';
+    }
+    url += event.Sport.sportsExternalUrl;
+    console.log(url);
+    window.open(url, '_blank');
   }
 
   delete(event:Event):void {

@@ -3,20 +3,14 @@
     <div class="container-fluid">
       <section id='landing-section-top'>
         <div class="row hero">
-          <img src="../assets/img/heroimage.jpg">
-          <h1 style="font-family: 'Exo 2', sans-serif; font-weight:300;">FIND YOUR SPORT</h1>
-          <form role="search">
-              <div id="search-box" class="form-group is-empty">
-                  <input style="text-align:center; font-size: 20px" type="text" class="form-control" placeholder="Search">
-                  <span class="material-input"></span>
-              </div>
-              <button style="visibility:hidden" type="submit" class="btn btn-white btn-round btn-just-icon">
-              </button>
-              <i style="color:white; font-size: 35px; position:relative; top: 10px" class="material-icons" (click)="randomLeft()">chevron_left</i>
-              <button *ngFor="let random of randoms" (click)="sendSport(random.id,random.name)" routerLink="/search" class="btn btn-info">{{random.name}}</button>
-              <i style="color:white; font-size: 35px; top: 10px; position:relative; user-select: none;
-              cursor: pointer; " class="material-icons" (click)="randomRight()">chevron_right</i>
-          </form>
+          <img src="../assets/img/pivotalbanner.jpg">
+          <h1>FIND YOUR SPORT</h1>
+        </div>
+        <div class="text-center">
+            <i id="left" class="material-icons" (click)="randomLeft()">chevron_left</i>
+            <button *ngFor="let random of randoms" (click)="sendSport(random.id,random.name)" routerLink="/search" class="btn btn-info">{{random.name}}</button>
+            <i id="right" class="material-icons" (click)="randomRight()">chevron_right</i>
+            <button id="more" class="btn btn-info" (click)="randomRight()">More...</button>            
         </div>
       </section>
 

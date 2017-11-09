@@ -14,7 +14,7 @@ export class SportSearchService {
 
   search(term:string):Observable<any> {
     return this.http
-      .get(`${environment.apiUrl}/api/events/?name=${term}`)
+      .get(`${environment.apiUrl}api/events/?name=${term}`)
       .map(response => response.json());
   }
 }

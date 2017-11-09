@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, OnDestroy } from '@angular/core';
+
 // import { AuthenticationService } from '../user/authentication.service'
 import { AuthService } from '../user/auth.service';
 import { SportService } from '../shared/sport.service';
@@ -32,13 +33,12 @@ import { Event } from '../shared/event.model';
     // tslint:disable-next-line:component-selector
     selector: 'navbar',
     templateUrl: 'navbar.component.html',
-    styleUrls: ['./navbar.component.scss']
+    styleUrls: ['./navbar.component.scss'],
 })
 
 export class NavbarComponent implements OnInit, OnDestroy {
 
     @ViewChild('searchBox') target:any;
-
     allowButtonClick =false;
     name = '';
     subscription: Subscription;
@@ -86,6 +86,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         console.log('destroy');
         this.subscription.unsubscribe();
     }
+
 
     logOut():void {
         this.authService.logout();
