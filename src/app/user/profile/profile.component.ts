@@ -8,6 +8,8 @@ import { Detail } from '../../shared/detail.model';
 import { CloudinaryOptions, CloudinaryUploader } from 'ng2-cloudinary';
 import { User } from '../user';
 
+declare var $:any;
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -57,10 +59,12 @@ import { User } from '../user';
 export class ProfileComponent implements OnInit {
 
   constructor(private authService: AuthService, private detailService:DetailService, private router:Router) {
+    
     this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any): any => {
         const res: any = JSON.parse(response);
         this.imageId = res.public_id;
         this.cloudinaryImage = JSON.parse(response).url;
+        $('.show-file').show();
         console.log(this.cloudinaryImage);
         return { item, response, status, headers };
       };
@@ -71,6 +75,15 @@ export class ProfileComponent implements OnInit {
   cloudinaryImage:string;
   imageId: string;
   user: User;
+
+  uploader: CloudinaryUploader = new CloudinaryUploader(
+    new CloudinaryOptions({ cloudName: 'dfk2numni', uploadPreset: 'aiehynsk' })
+  );
+  
+  routerCanDeactivate() {
+    return false; // false stops navigation, true continue navigation
+  }
+
   upload() {
     this.uploader.uploadAll();
   }
@@ -102,15 +115,13 @@ export class ProfileComponent implements OnInit {
   }
 
 
-  uploader: CloudinaryUploader = new CloudinaryUploader(
-    new CloudinaryOptions({ cloudName: 'dfk2numni', uploadPreset: 'aiehynsk' })
-  );
 
   submit(formValues:any) {
       console.log(formValues);
       this.detailService.updateUserDetail(formValues).then(
           response=> {
             this.userDetail = response.json();
+            alert('Changes saved!');
           });
   }
 

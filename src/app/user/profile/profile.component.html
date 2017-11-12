@@ -26,10 +26,11 @@
                                 <i class="material-icons">perm_identity</i>
                             </div>
                             <div class="card-content">
-                                <h4 class="card-title">Edit Profile -
-                                    <small class="category">Complete your profile</small>
-                                </h4>
+                                <h4 class="card-title">Edit Profile</h4>
                                 <form #userDetailsForm="ngForm" (ngSubmit)="submit(userDetailsForm.value)">
+                                    <div class="row text-center">
+                                        <button type="submit" class="btn btn-rose save">Click here to save</button>
+                                    </div>
                                      <div class="row">
                                         <div style='display:hidden'>
                                                     <input name="user_id" type="hidden" class="form-control" [ngModel]="this.id">
@@ -56,17 +57,17 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                           <br>
-                                            <label>Image: <span style='color:#e91e64'>(Choose file then press upload)</span></label>
+                                            <label>Image: <span style='color:#3366CC;'>(Choose file then press upload)</span></label>
                                             <input type="file" ng2FileSelect [uploader]="uploader" accept="image/*;capture=camera">
-                                            <button class='btn btn-primary btn-xs' (click)="upload()">Upload</button>
-                                            <cl-image [public-id]="imageId" [cloud-name]="uploader.cloudName" class="img"></cl-image>
-                                            <div class="form-group">
+                                            <button class='btn btn-primary btn-xs' style="background-color:#33CC33;" (click)="upload()">Upload</button>
+                                            
+                                            <div class="show-file form-group">
                                                 <input name="image" class="form-control" [ngModel]="this.cloudinaryImage">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label>Phone number: <span style='color:#e91e64'>(Please provide if you'd like to be contactable by phone)</span></label>
+                                                    <label>Phone number: <span style='color:#3366CC;'>(Please provide if you'd like to be contactable by phone)</span></label>
                                                     <div class="form-group label-floating">
                                                         <input name="contact" class="form-control" [ngModel]="this.userDetail?.contact">
                                                     </div>
@@ -97,7 +98,9 @@
                                             </div>
                                         </div>
                                     </div> -->
-                                    <button type="submit" class="btn btn-rose pull-right">Update Profile</button>
+                                    <div class="row text-center">
+                                            <button type="submit" class="btn btn2 btn-rose save">Click here to save</button>
+                                        </div>
                                     <div class="clearfix"></div>
                                 </form>
                             </div>

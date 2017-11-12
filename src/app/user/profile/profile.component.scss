@@ -5,3 +5,81 @@ input:hover{
 textarea:hover{
     cursor: pointer;
 }
+
+cl-image img {
+    max-width: 200px !important;
+    height: auto;
+}
+
+.show-file {
+    display:none;
+}
+
+.save {
+        color:#fff;
+        border:none;
+
+        
+        animation-name: wiggle;
+        animation-duration: 1.5s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    
+        //Firefox 1+
+        -webkit-animation-name: wiggle;
+        -webkit-animation-duration: 1.5s;
+        -webkit-animation-timing-function: linear;
+        -webkit-animation-iteration-count: infinite;
+    
+        //Safari 3-4
+        -moz-animation-name: wiggle;
+        -moz-animation-duration: 1.5s;
+        -moz-animation-timing-function: linear;
+        -moz-animation-iteration-count: infinite;
+    }
+        
+        @keyframes wiggle {  
+                0% {
+                    -webkit-transform:rotate(1deg);
+                }
+                50% {
+                    -webkit-transform:rotate(-1deg);
+                }
+                100% {
+                    -webkit-transform:rotate(1deg);
+                }
+            
+        }
+        
+        //Firefox 1+
+        @-webkit-keyframes wiggle {
+            0% {
+                -webkit-transform:rotate(1deg);
+            }
+            50% {
+                -webkit-transform:rotate(-1deg);
+            }
+            100% {
+                -webkit-transform:rotate(1deg);
+            }
+        }
+        
+        //Safari 3-4
+        @-moz-keyframes wiggle {  
+            0% {
+                -webkit-transform:rotate(1deg);
+            }
+            50% {
+                -webkit-transform:rotate(-1deg);
+            }
+            100% {
+                -webkit-transform:rotate(1deg);
+            }
+    }
+
+
+@media (min-height:800px){
+    .btn2 {
+        display:none;
+    }
+}
