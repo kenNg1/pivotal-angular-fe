@@ -16,8 +16,7 @@
                                         {{this.userDetail?.description}}
                                     </p>
                                     <button *ngIf="this.userDetail?.tier==3" routerLink="/admin/user-approval" class="btn btn-rose">Admin Panel</button>
-                                    <button *ngIf="enableButtons" class="btn btn-warning" (click)="gotoUsers()">All Users</button>
-                                    <button class="btn btn-rose">Change Password</button>                                    
+                                    <button *ngIf="enableButtons" class="btn btn-warning" (click)="gotoUsers()">All Users</button>                                 
                                 </div>
                             </div>
                         </div>

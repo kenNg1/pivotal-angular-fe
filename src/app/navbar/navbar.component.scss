@@ -3,14 +3,10 @@
   
 }
 
-.elipsis:after {
-  content: '\2807';
-  font-size: 50px;
-  z-index:1000;
-  position: fixed;
-  top: 30px;
-  right: 5px;
-  }
+.elipsis {
+  display: none;
+}
+
 
 button.btn.btn-primary.my-2.my-sm-0{
    background-color: #33CC33;   
@@ -58,8 +54,75 @@ button.btn.btn-primary.my-2.my-sm-0{
 //   height: 20px;
 // }
 
+.navbar-form {
+  position:absolute;
+  left:30%;
+  top:7px;
+ }
+
+ input.form-control {
+  width: 300px;
+}
+
+
 @media (max-width:360px) {
   a.navbar-brand {
-      font-size:25px !important;
+      font-size: 7vw;
   }
+}
+
+
+@media (max-width:770px) {
+
+}
+
+
+@media (max-width:990px) {
+  .hide-search {
+    display:none
+  }
+
+  .navbar-form {
+    position:absolute;
+    width:45%;
+    top:20px;
+    left:auto;
+    right:20%;
+    margin:auto;
+  }
+
+  .btn-just-icon {
+    position:absolute;
+
+  }
+
+  input.form-control {
+    width: 40vw;
+  }
+
+
+  a.navbar-brand {
+      margin-top: -5px;
+  }
+
+  .elipsis {
+    position:absolute;
+    right:0px;
+    top:60px;
+    display:inline;
+  }
+
+  .elipsis:after {
+    content: '\2807';
+    font-size: 50px;
+    z-index:1000;
+    position: absolute;
+    top: -35px;
+    right: 5px;
+    }
+}
+
+@media (max-width:1030px) {
+
+
 }

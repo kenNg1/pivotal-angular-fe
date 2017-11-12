@@ -55,6 +55,15 @@ export class EventService {
       .catch(this.handleError);
   }
 
+  updateAttendee(event: Event): Promise<Event> {
+    const url = `${this.eventsUrl}/${event.id}`;
+    return this.http
+      .put(url, JSON.stringify(event), {headers:this.headers})
+      .toPromise()
+      .then(response=> response.json() as Event)
+      .catch(this.handleError);
+  }
+
   create(formValues:any): Promise<Event> {
     return this.http
       .post(this.eventsUrl, JSON.stringify(formValues),{headers: this.headers})

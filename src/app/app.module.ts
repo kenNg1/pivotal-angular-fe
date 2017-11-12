@@ -8,7 +8,7 @@ import { HttpService } from './shared/http.service';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
-import { MdSliderModule, MdSelectModule , MdAutocompleteModule} from '@angular/material';
+import { MatSliderModule, MatSelectModule , MatAutocompleteModule} from '@angular/material';
 
 import { Angular2TokenService } from 'angular2-token';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
@@ -39,8 +39,8 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { LoginRouteGuard } from './login-route-guard';
 import { AdminRouteGuard } from './admin-route-guard';
 import { DummyComponent } from './navbar/dummy.component';
-import { CompatibilityModule } from '@angular/material';
-import {NoConflictStyleCompatibilityMode} from '@angular/material';
+// import { CompatibilityModule } from '@angular/material';
+// import {NoConflictStyleCompatibilityMode} from '@angular/material';
 import {MatMenuModule} from '@angular/material/menu';
 
 
@@ -63,11 +63,11 @@ import {MatMenuModule} from '@angular/material/menu';
   imports: [
     BrowserModule,
     AsyncLocalStorageModule,
-    MdSliderModule,
-    MdSelectModule,
-    MdAutocompleteModule,
-    CompatibilityModule,
-    NoConflictStyleCompatibilityMode,
+    MatSliderModule,
+    MatSelectModule,
+    MatAutocompleteModule,
+    // CompatibilityModule,
+    // NoConflictStyleCompatibilityMode,
     MatMenuModule,
     FormsModule,
     HttpModule,

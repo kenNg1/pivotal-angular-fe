@@ -1,19 +1,22 @@
 
-<nav style="height:60px;" class="navbar navbar-transparent navbar-absolute">
+<nav class="navbar navbar-transparent navbar-absolute">
 
-        <div mat-icon-button [matMenuTriggerFor]="menu" class="elipsis" style="position:absolute;right:0px; top:60px">
+        <div mat-icon-button [matMenuTriggerFor]="menu" class="elipsis">
         </div>
         <mat-menu #menu="matMenu">
         <button *ngIf="isLoggedIn()" routerLink="events/new-event" mat-menu-item >
-            <span>Add an Event</span>
+            <i class="material-icons" style="position:relative;top:5px">add</i><span>Add an Event</span>
         </button>
         <button *ngIf="isLoggedIn()" routerLink='/profile' mat-menu-item >
+            <i class="material-icons" style="position:relative;top:5px">face</i>            
             <span>Profile</span>
         </button>
         <button *ngIf="isLoggedIn()" (click)='logOut()' mat-menu-item >
+            <i class="material-icons" style="position:relative;top:5px">exit_to_app</i>
             <span>Log Out</span>
         </button>
         <button *ngIf="!isLoggedIn()" routerLink="/signin" mat-menu-item>
+            <i class="material-icons" style="position:relative;top:5px">exit_to_app</i>            
             <span>Login / Register</span>
         </button>
         </mat-menu>
@@ -24,38 +27,13 @@
             <!-- <button style="z-index:9999" (click)="gotoResults()" type="button" class="navbar-toggle" data-toggle="collapse">
                 <span class="sr-only">Toggle navigation</span>
             </button> -->
-            <img id="pivotal-logo" style="height:50px;float:left" src="../assets/img/logo.png" alt="">            
+            <img id="pivotal-logo" style="height:50px;float:left;margin-top:-5px" src="../assets/img/logo.png" alt="">            
             <a class="navbar-brand" routerLink="/"> PIVOTAL SPORT </a>
         </div>
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li *ngIf="isLoggedIn()">
-                    <button routerLink="events/new-event" class="btn btn-primary btn-round">
-                        <i class="material-icons">add</i>Add an Event</button>
-                </li>
-                 <!-- first two buttons, final list had this directive *ngIf="isLoggedIn()"  -->
-                <li *ngIf="isLoggedIn()">
-                    <button class='btn btn-outline-success my-2 my-sm-0' routerLink='/profile'>
-                        {{this.authService.email || user?.email}}</button>
-                </li>
-                <li *ngIf="isLoggedIn()">
-                    <button class='btn btn-outline-success my-2 my-sm-0' type='submit' (click)='logOut()'>Log Out </button>
-                </li>
-                <!-- end of above comment  -->
-                <li *ngIf="!isLoggedIn()">
-                  <button routerLink="/signin" class='btn btn-primary my-2 my-sm-0'>Log In / Register</button>
-                    <!-- <a routerLink="/signin" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="material-icons">person</i>
-                        <p class="hidden-lg hidden-md">Profile</p>
-                    </a> -->
-                </li>
-
-                <li class="separator hidden-lg hidden-md"></li>
-            </ul>
-            <form style="position:absolute;left:30%;top:7px;" class="navbar-form navbar-right" role="search">
+        <form class="hide-search navbar-form navbar-right" role="search">
                 <div class="form-group form-search is-empty">
                     <!-- <input (input)="onFormInput($event)" value={{name}} type="text" class="form-control" placeholder="Search"> -->
-                    <input style='width:300px !important' #searchBox class="form-control" (keyup)="search(searchBox.value)" placeholder="Search for a sport" (focus)="onFocusMethod()" (blur)="onBlurMethod()"/>
+                    <input #searchBox class="form-control" (keyup)="search(searchBox.value)" placeholder="Search for a sport" (focus)="onFocusMethod()" (blur)="onBlurMethod()"/>
                     <span class="material-input"></span>
                     <!-- use mousedown instead of click https://stackoverflow.com/questions/10652852/jquery-fire-click-before-blur-event -->
                     <button [disabled]="!allowButtonClick" (click)="gotoResults()" class="btn btn-white btn-round btn-just-icon">
@@ -76,6 +54,32 @@
                     </div>
                 </div>
             </form>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li *ngIf="isLoggedIn()">
+                    <button routerLink="events/new-event" class="btn btn-primary btn-round">
+                        <i class="material-icons">add</i>Add an Event</button>
+                </li>
+                 <!-- first two buttons, final list had this directive *ngIf="isLoggedIn()"  -->
+                <li *ngIf="isLoggedIn()">
+                    <button *ngIf="location.path()!='/profile'" class='btn btn-outline-success my-2 my-sm-0' routerLink='/profile'>
+                        {{this.authService.email || user?.email}}</button>
+                </li>
+                <li *ngIf="isLoggedIn()">
+                    <button *ngIf="location.path()=='/profile'" class='btn btn-outline-success my-2 my-sm-0' type='submit' (click)='logOut()'>Log Out </button>
+                </li>
+                <!-- end of above comment  -->
+                <li *ngIf="!isLoggedIn()">
+                  <button routerLink="/signin" class='btn btn-primary my-2 my-sm-0'>Log In / Register</button>
+                    <!-- <a routerLink="/signin" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="material-icons">person</i>
+                        <p class="hidden-lg hidden-md">Profile</p>
+                    </a> -->
+                </li>
+
+                <li class="separator hidden-lg hidden-md"></li>
+            </ul>
+
             <!-- <form class="example-form">
                     <md-form-field class="example-full-width">
                       <input mdInput placeholder="State" aria-label="State" [mdAutocomplete]="auto" [formControl]="stateCtrl">
@@ -93,6 +97,7 @@
 
     </div>
 </nav>
+
 <!-- <div>
         <ul>
                 <button (click)="toggleMenu()" type="button" class="navbar-toggle elipsis" data-toggle="collapse"></button>

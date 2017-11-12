@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from './user';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
+import { Location} from '@angular/common';
 
 @Component({
   selector: 'app-sign-up',
@@ -20,7 +21,7 @@ export class SignUpComponent implements OnInit {
   user_status: boolean;
   message: String;
 
-  constructor(private router: Router,public authService: AuthService, private formBuilder: FormBuilder) {
+  constructor(private router: Router,public authService: AuthService, private formBuilder: FormBuilder, private _location: Location) {
       this.user = new User;
     }
 
@@ -52,7 +53,7 @@ export class SignUpComponent implements OnInit {
               console.log('message',this.message);
             } else {
               // this.authService.setUser(res['user']);
-              this.router.navigate(['/events']);
+              this._location.back();
             }
 
         });

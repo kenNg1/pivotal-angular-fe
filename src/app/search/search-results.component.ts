@@ -49,12 +49,23 @@ export class SearchResultsComponent implements OnInit {
   ngOnInit() {
     this.eventService.getEvents().then(events => {
       this.events = events;
+
+      
+
       if(!Array.isArray(this.events[0].level)) {        
         for (let i=0;i<this.events.length;i++) {
           this.events[i].level = JSON.parse(JSON.stringify(this.events[i].level)
           .replace(/"{/g,'["').replace(/}"/g,'"]').replace(/,/g,'","'));
         }
       }
+
+        for (let i=0;i<this.events.length;i++) {
+          this.events[i].time = this.events[i].time.replace(/:\d\d([ ap]|$)/,'$1');
+        }
+      
+
+      
+
       this.visibleEvents = events;
       this.filteredEvents = events;
       this.sortDate();

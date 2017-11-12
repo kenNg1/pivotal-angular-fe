@@ -1,5 +1,25 @@
 <br>
-
+<div class="modalSignUp">
+        <div class="modal fade">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Modal title</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <p>Modal body text goes here.</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary">Save changes</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+</div>
 <div #changeEventModal class='modal'>
     <div class='modal-form'>
         <div class="card">
@@ -235,15 +255,15 @@
     </div>
 </div>
 
-<div style="margin-top:0px" class="main-content">
+<div class="main-content">
     <div class="container-fluid">
         <div class="col-md-8">
             <div class="card">
                 <div class="text-center card-header card-header-icon" data-background-color="rose">
                     <h1>{{this.event?.date | date:'EEE'| uppercase}}</h1>
                     <hr>
-                    <h3>{{this.event?.date | date:'d MMM'| uppercase}} </h3>
-                    <h3 id="time">{{event?.time }}</h3>
+                    <h3 class="date-time" >{{this.event?.date | date:'d MMM'| uppercase}} </h3>
+                    <h3 class="date-time" id="time">{{event?.time }}</h3>
                     <p id="small">{{this.event?.date | date:'EEE'| uppercase}} {{this.event?.date | date:'d MMM'| uppercase}} {{event?.time }}</p>
                 </div>
                 <br>
@@ -254,34 +274,39 @@
                         <button *ngIf="enableButtons" style="float:right; margin-top: 5px" class="btn btn-primary" (click)="showForm()">Edit</button>
                     </h2>
                     <br>
-                    <div class='icon col-md-2 col-xs-4'>
-                        <img style="width:24px" *ngIf="event?.terrain=='indoor'" src="../assets/img/playground.png">
-                        <i *ngIf="event?.terrain=='outdoor'" class="material-icons">terrain</i>
-                        <!-- if indoor use the insert_photo material icon -->
-                        <p>{{event?.terrain}}</p>
-                    </div>
+                    <div class="row">
+                        <div class='icon col-xs-6 col-sm-2 col-sm-offset-1'>
+                            <img style="width:24px" *ngIf="event?.terrain=='indoor'" src="../assets/img/playground.png">
+                            <i *ngIf="event?.terrain=='outdoor'" class="material-icons">terrain</i>
+                            <!-- if indoor use the insert_photo material icon -->
+                            <p>{{event?.terrain}}</p>
+                        </div>
 
-                    <div class='icon col-md-2 col-xs-4'>
-                        <i class="material-icons">insert_emoticon</i>
-                        <p>{{event?.intensity}}</p>
-                    </div>
+                        <div class='icon col-xs-6 col-sm-2'>
+                            <i class="material-icons">insert_emoticon</i>
+                            <p>{{event?.intensity}}</p>
+                        </div>
 
-                    <div class='icon col-md-2 col-xs-4'>
-                        <i class="material-icons">grade</i>
-                        <p *ngFor="let level of levels">{{level}}</p>
+                        <div class='icon col-xs-6 col-sm-2'>
+                            <i class="material-icons">grade</i>
+                            <p style="text-align:center;margin:2px;" *ngFor="let level of levels">{{level}}</p>
+                        </div>
+                        <!-- <div class='icon col-xs-4 col-sm-2'>
+    
+                        </div> -->
+                        <div class='icon col-xs-6 col-sm-2'>
+                            <i class="material-icons">face</i>
+                            <p>{{event?.max_ppl}} spaces available</p>
+                        </div>
                     </div>
-
-                    <div class='icon col-md-3 col-xs-4'>
-                        <i class="material-icons">face</i>
-                        <p>{{event?.max_ppl}} spaces available</p>
-                    </div>
-                    <br><br><br><br><br>
                 </div>
                 <hr>
                 <div class='card-content' style='margin:-20px 18px 0px 18px'>
-                    <h5 style="display:inline-block; margin: 10px 0 0 40px; font-size: 17px;">{{event?.address}}</h5>
-                    <a class="btn btn-rose pull-right" [href]="this.emailHyperlink">Register</a>
-                    <h4>{{event?.price | currency:'USD':true}} per session</h4>
+                    <p class="responsive-p">{{event?.address}}</p>
+                    <p class="responsive-p">{{event?.price | currency:'USD':true}} per session</p>
+                    <a *ngIf="!this.user" (click)="signUp()" class="btn btn-rose responsive-button">Register</a>
+                    <a *ngIf="this.user && !this.registered" (click)="saveAttendee()" class="btn btn-rose responsive-button" [href]="this.emailHyperlink">Register</a>
+                    <a *ngIf="this.user && this.registered" (click)="saveAttendee()" style="background-color:#33cc33;box-shadow:none" class="btn btn-rose responsive-button" [href]="this.emailHyperlink">Email {{event.User?.Detail?.firstName}} !</a>
                 </div>
             </div>
         </div>
@@ -294,9 +319,10 @@
                 </div>
 
                 <div *ngIf="event" class="card-content" style='margin-top:0'>
-                    <h3 class="card-title">{{event?.User?.Detail?.firstName}} {{event?.User?.Detail?.lastName}}</h3>
+                    <h3 class="card-title">Organised by {{event?.User?.Detail?.firstName}} {{event?.User?.Detail?.lastName}}</h3>
                     <h6 class="category text-gray">{{this.event?.User?.Detail.nickname}}</h6>
-                    <h4 class="btn btn-rose btn-simple">{{this.event?.User?.email}} | {{this.event?.User?.Detail?.contact}}</h4>
+                    <p style="font-size:100%;color:#3366CC">{{this.event?.User?.email}}</p>
+                    <p style="font-size:100%;color:#3366CC">{{this.event?.User?.Detail?.contact}}</p>
                     <p class="description">
                         {{event?.User?.Detail?.description}}
                     </p>
@@ -375,9 +401,9 @@
                                                 <tbody>
                                                     <tr>
                                                         <td>
-                                                            <i class="material-icons">language</i>
+                                                            <i class="material-icons" style="position:relative;top:5px">language</i>
+                                                            <a href="{{this.event?.org_website}}" target="_blank" style="color:blue">{{this.event?.org_website}}</a>
                                                         </td>
-                                                        <td style="color:blue">{{this.event?.org_website}}</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -395,7 +421,7 @@
                                             <li>Velit est vel animi laboriosam cupiditate natus tempora repellat omnis.</li>
                                             <li>Iste id adipisci rem aspernatur soluta cum voluptas vitae, natus.</li>
                                         </ul> -->
-                                        <button class="btn btn-info" (click)="onNavigate(event)">Find out more here</button> 
+                                        <button *ngIf="this.event?.Sport?.sportsExternalUrl" class="btn btn-info" (click)="onNavigate(event)">Find out more here</button> 
                                     </div>  
                                 </div>
                             </div>

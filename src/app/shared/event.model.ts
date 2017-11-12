@@ -18,4 +18,5 @@ export class Event {
     District?:any;
     User?:any;
     Sport?:any;
+    usersJoined?:any;
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, Input, OnDestroy } from '@angular/core';
+import { Location } from '@angular/common';
 
 // import { AuthenticationService } from '../user/authentication.service'
 import { AuthService } from '../user/auth.service';
@@ -49,7 +50,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     private searchTerms = new Subject<string>();
 
     constructor(private router: Router, private sportSearchService: SportSearchService, 
-        private authService: AuthService, private sportService: SportService) {
+        private authService: AuthService, private sportService: SportService, private location: Location    ) {
         setTimeout(() => this.allowButtonClick = true, 500);
 
         // this.subscription = authService.user$.subscribe((user)=> {return this.user=user} )
@@ -95,17 +96,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.router.navigate(['/']);
     }
 
-    // VERSION 1 Authentication
     isLoggedIn() {
         return !!this.user || this.authService.loggedIn; 
     }
-    // isLoggedOut():boolean{
-    //     return !this.authService.isLoggedIn(); 
-    // } 
-    // checking(){
-    //     // console.log(this.authService.validate())
-    //     console.log(this.authService.currentUser)
-    // }
 
     onFormInput(event:any) {
         this.name = event.target.value;

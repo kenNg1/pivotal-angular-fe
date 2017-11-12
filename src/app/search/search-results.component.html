@@ -37,15 +37,18 @@
                   </div>
                   <div class="card-content">
                         <div class="input-group">
-                            <span class="input-group-addon">
-                                <i class="material-icons">directions_run</i>
-                            </span>
-                            <div class="form-group label-floating">
-                                <md-select [(ngModel)]="selectedValue" class="district-select" name="district_id" placeholder="Sport" floatPlaceholder="never">
-                                    <md-option class="district-option" *ngFor="let sport of sports" [value]="searchedSport">
-                                        <div (click)='filterSport(sport.name, sport.id)' (click)="unselectDistrict()" >{{sport.name}}</div>
-                                    </md-option>
-                                </md-select>
+                                <span class="input-group-addon">
+                                        <i class="material-icons">directions_run</i>
+                                </span>
+                            <div class="form-group label-floating text-center">
+
+                                <mat-form-field>
+                                    <mat-select [(ngModel)]="selectedValue" class="district-select" name="district_id" placeholder="Sport">
+                                        <mat-option class="district-option" *ngFor="let sport of sports" [value]="searchedSport">
+                                            <div (click)='filterSport(sport.name, sport.id)' (click)="unselectDistrict()" >{{sport.name}}</div>
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
                             </div>
                         </div>
                         <h4 style='text-align:center'>or</h4>
@@ -63,16 +66,18 @@
                                 <i class="material-icons">location_on</i>
                             </span>
                             <div class="form-group label-floating">
-                              <md-select [(ngModel)]="selectedValueLocation" class="district-select" name="district_id" placeholder="District" floatPlaceholder="never">
-                                  <md-option class="district-option" *ngFor="let district of districts" [value]="searchedDistrict">
-                                      <div (click)='filterDistrict(district.name, district.id)' (click)="unselect()">{{district.name}}</div>
-                                  </md-option>
-                              </md-select>
+                            <mat-form-field>        
+                                <mat-select [(ngModel)]="selectedValueLocation" class="district-select" name="district_id" placeholder="District" floatPlaceholder="never">
+                                    <mat-option class="district-option" *ngFor="let district of districts" [value]="searchedDistrict">
+                                        <div (click)='filterDistrict(district.name, district.id)' (click)="unselect()">{{district.name}}</div>
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>  
                             </div>
                         </div>
                     </div>
                     <div class="footer text-center">
-                        <button type="submit" id='clearSearch' class="btn btn-rose btn-simple btn-wd btn-lg">Clear Search</button>
+                        <button type="submit" id='clearSearch' class="btn btn-rose btn-simple btn-wd btn-lg">See all events</button>
                     </div>
                   </div>
               </form>
@@ -117,15 +122,15 @@
 
                       <div class="col-md-4 col-sm-6">
                           <div class="click-enter-event"></div>
-                          <img style='height:150px;margin-left:-15px' [src]="event?.imageUpload">
+                          <img class="event-image" style='height:150px;margin-left:-15px' [src]="event?.imageUpload">
                       </div>
                       <div>
                         <div class="col-md-6 col-sm-6">
                           <div class="click-enter-event"></div>
-                          <h4 class="event-name">{{event?.name}} ({{event?.date | date}})</h4>
+                          <h4 class="event-name">{{event?.name}} </h4>
+                          <h4 class="event-name">({{event?.date | date}} at {{event?.time }})</h4>
                           <p class='event-location'>{{event?.district}}</p>
-                          <p style="display:inline" class='No of Players'>Signed Up: 8 | Needed: 2 (ADD LATER)</p>
-                          <div class="row icons">
+                          <div class="row icons text-center">
                           <br>
                               <div class='icon col-md-3 col-xs-4'>
                                 <img style="width:24px" *ngIf="event.terrain=='indoor'" src="../assets/img/playground.png">
@@ -151,13 +156,17 @@
                                 </div>
                               </div>
 
+                              <div class='icon col-md-3 col-xs-4'>
+                                <i class="material-icons">face</i>
+                                <p>{{event?.max_ppl}} spaces available</p>
+                                </div>
                           </div>
                         </div>
                           <div class="col-md-2">
                             <div class="click-enter-event"></div>
-                            <div style="margin-top:20px;" class='row'>
-                              <h3 style="margin-left:10px;" class='event-price'>${{event?.price}}</h3>
-                              <img id="avatar-placeholder" src="{{event?.User?.Detail?.image}}">
+                            <div style="margin-top:20px;" class='row text-center'>
+                              <h4 class='event-price'>${{event?.price}}</h4>
+                              <img style="margin-left:10px;margin-bottom:10px" id="avatar-placeholder" src="{{event?.User?.Detail?.image}}">
                             </div> 
                           </div>
                       </div>

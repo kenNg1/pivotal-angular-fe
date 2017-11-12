@@ -1,3 +1,15 @@
+.modalSignUp {
+    position: fixed;
+    display: none;
+    height: 100%;
+    width: 100%;
+    left: 0px;
+    top: 30px;   
+    overflow: auto; 
+    z-index:9999;
+    background-color: RGBA(0,0,0,0.5);
+}
+
 .modal {
     position: fixed;
     display: hidden;
@@ -28,11 +40,19 @@
     font-size: 14px;
 }
 
+.nav-tabs li {
+    margin: auto;
+    display:block;
+}
 
+.responsive-p {
+    font-size: 16px;
+    display:inline-block;
+    margin: 10px
+}
 
 h4 {
-    float:right;
-    margin:10px 30px 0 0
+    margin:10px 0
 }
 
 #time {
@@ -44,18 +64,44 @@ p#small {
     display:none;
 }
 
+.row {
+    margin-top:20px
+}
 
-@media (max-width:750px) {
-    h4 {
-        float: none;
-        margin:0
-    }
-
-
-
+div.main-content {
+    margin-top:0px;
 }
 
 @media (max-width:650px) {
+
+}
+
+@media (max-width:770px) {
+        div.main-content {
+            margin-top: -30px
+        }
+
+        .row {
+            margin-top:0px
+        }
+
+        .responsive-p {
+            display:block;
+            text-align:center;
+            margin: auto;
+            margin-bottom: 10px;
+            
+        }
+    
+        .responsive-button {
+            display:block;
+            margin: auto;
+            max-width: 200px;
+        } 
+    
+    }
+
+@media (max-width:845px) {
     div.text-center.card-header.card-header-icon {
         float: none !important;
         padding: 0 15px;
@@ -63,7 +109,16 @@ p#small {
         margin: 0 10px;
     }
 
-    div.text-center.card-header.card-header-icon h1, hr, #time, h3 {
+
+    div.icon.col-md-2.col-xs-4 {
+        padding-left:5px;
+        padding-right:5px;
+        line-height: 1px;
+        margin-bottom: 10px;
+
+    }
+
+    div.text-center.card-header.card-header-icon h1, #time, .date-time {
         display:none
     }
 

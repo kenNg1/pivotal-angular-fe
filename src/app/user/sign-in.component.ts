@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { User } from './user';
 import { Router } from '@angular/router';
+import { Location} from '@angular/common';
 
 @Component({
   selector: 'app-sign-in',
@@ -21,7 +22,7 @@ export class SignInComponent implements OnInit {
   err: String = "";
 
   constructor( private router: Router,
-    private authService: AuthService, private formBuilder: FormBuilder) {
+    private authService: AuthService, private formBuilder: FormBuilder,private _location: Location) {
       this.user = new User;
   }
 
@@ -50,7 +51,7 @@ export class SignInComponent implements OnInit {
             console.log('message',this.message);
           } else {
             // this.authService.setUser(res['user']);
-            this.router.navigate(['/events']);
+            this._location.back();
           }
       }, error => {
         this.err = 'Email or password does not match'
