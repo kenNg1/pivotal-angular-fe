@@ -7,7 +7,7 @@ import { Event } from '../shared/event.model';
   templateUrl: './event-thumbnail.component.html',
   styles: [`
     .card-product {
-      height: 320px !important;
+      height: 330px !important;
       position:relative;
     }
 
@@ -29,6 +29,10 @@ import { Event } from '../shared/event.model';
     img.img{
       max-height:100% !important;
       width:auto !important
+    }
+
+    p.category, div.price h4 {
+      margin-top: 5px;
     }
 
     @media (min-width:990px) and (max-width:1100px) {
