@@ -9,7 +9,6 @@ import { Event } from '../shared/event.model';
     .card-product {
       height: 320px !important;
       position:relative;
-      
     }
 
     .card-footer .price{
@@ -31,6 +30,18 @@ import { Event } from '../shared/event.model';
       max-height:100% !important;
       width:auto !important
     }
+
+    @media (min-width:990px) and (max-width:1100px) {
+
+      div.col-lg-3.col-md-3.col-sm-6 {
+        margin-right:70px        
+      }
+
+      div.card-product {
+        min-width:300px;
+      }
+    }
+
   `]
 })
 export class EventThumbnailComponent implements OnInit {
@@ -40,6 +51,8 @@ export class EventThumbnailComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+      this.event.time = this.event.time.replace(/:\d\d([ ap]|$)/,'$1');
+    
   }
 
 } 

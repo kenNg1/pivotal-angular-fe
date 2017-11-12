@@ -24,6 +24,7 @@ export class LandingComponent implements OnInit {
 
   getEvents(): void {
     this.eventService.getEvents().then(events => {
+
       this.events = events.sort(sortByDateAsc);
       if(Array.isArray(this.events[0].level)) {
         return null;
@@ -33,6 +34,7 @@ export class LandingComponent implements OnInit {
           .replace(/"{/g,'["').replace(/}"/g,'"]').replace(/,/g,'","'));
         }
       }
+
     });
   }
 
