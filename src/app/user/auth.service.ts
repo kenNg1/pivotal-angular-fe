@@ -19,6 +19,7 @@ export class AuthService {
   public firstName: string;
   public lastName: string;
   public email: string;
+  public username: string;
   public loggedIn = false;
   
   constructor(public http: Http) { }
@@ -75,6 +76,7 @@ export class AuthService {
       }));
     }
     this.email = JSON.parse(localStorage.getItem('currentUser')).email;
+    this.username = JSON.parse(localStorage.getItem('currentUser')).username;
     this.loggedIn = true;
     return body;
   }

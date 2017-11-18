@@ -1,11 +1,21 @@
+div.main-content {
+    margin-top: 0px;
+    padding: 30px 0;
+  }
+
+div.row.hero {
+    margin-left:0px;
+    margin-right:0px
+}
 
 #landing-section-top{
   height: 30vh;
+  margin-bottom: 33vh;
 }
 
 #landing-section-bottom{
-  margin-top: 30vh;
-}
+    margin-top: 25vh;
+  }
 
 #more {
     display:none;
@@ -34,23 +44,17 @@
 
 .hero{
     text-align:center;
+    width:100vw;
 }
 
-.hero img {
-    position: absolute;
-    z-index: -5;
-    width: 95%;
-    left: 2.5%;
-    top: 2%;
-}
 
 h1{
     // background-color: rgba(0,0,0,0.4);
     font-size: 5rem;
     color: #ffffff;
     width: 80%;
-    margin-left: 10%;
-    margin-top: 5%;
+    margin-left: 0%;
+    margin-top: -15%;
     border-radius: 5px;
     font-family: 'Noto Sans', sans-serif;
     font-weight:bold
@@ -84,6 +88,45 @@ h3{
     background-color: #3366CC;
     padding: 10px 15px;
 }
+
+.hero {
+    background: url("/assets/img/pivotalbanner.jpg") 50% no-repeat;
+    background-size: cover;
+    background-position: left;
+    height: 60vh;
+    text-align: center;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;       
+    }
+
+div.text-center {
+    margin-top: -15%;
+}
+
+
+@media (max-width:1270px) {
+    .hero img {
+        position: absolute;
+        z-index: -5;
+        width: auto;
+        left: 0%;
+        top: 2%;
+        max-height: 420px;
+    }
+
+    div.text-center {
+        margin-top: -21%;
+    }
+}
+
+
 
 @media (max-width:750px) {
     #left {
@@ -119,25 +162,23 @@ h3{
     h1{
         font-size: 4rem;
     }
-
-    #landing-section-bottom{
-        margin-top: 25vh;
-      }
-
-      .hero img {
-        width: auto;
-        height: 350px;
-    }
+      
 }
 
 @media (max-width:650px) {
     h1{
         font-size: 3.5rem;
         width: 90%;   
-        margin-left: 5%; 
-        margin-top: 20%;
+        margin-left: 2%; 
+        margin-top: -40%;
         background-color:rgba(58, 182, 58, 0.61);
         padding: 0px;       
+    }
+
+    div.row.hero {
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-bottom: -40%;
     }
 
     .btn-info {
@@ -149,14 +190,24 @@ h3{
     }
 }
 
-@media (max-width:1270px) {
-    .hero img {
-        position: absolute;
-        z-index: -5;
-        width: auto;
-        left: 0%;
-        top: 2%;
-        max-height: 420px;
+@media (max-height:450px) {
+    h1{
+        font-size: 3.5rem;
+        width: 90%;   
+        margin-left: 2%; 
+        margin-top: -30%;
+        background-color:rgba(58, 182, 58, 0.61);
+        padding: 0px;       
+    }
+
+    div.text-center {
+        margin-top: -10%;
+        margin-left: 2%;         
     }
 }
 
+@media (max-height:360px) {
+    #landing-section-top {
+        display:none;
+    }
+}

@@ -63,7 +63,7 @@
                  <!-- first two buttons, final list had this directive *ngIf="isLoggedIn()"  -->
                 <li *ngIf="isLoggedIn()">
                     <button *ngIf="location.path()!='/profile'" class='btn btn-outline-success my-2 my-sm-0' routerLink='/profile'>
-                        {{this.authService.email || user?.email}}</button>
+                        {{this.authService?.username || user?.username}}</button>
                 </li>
                 <li *ngIf="isLoggedIn()">
                     <button *ngIf="location.path()=='/profile'" class='btn btn-outline-success my-2 my-sm-0' type='submit' (dblclick)='logOut()'>Log Out </button>

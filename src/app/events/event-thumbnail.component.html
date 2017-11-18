@@ -2,7 +2,7 @@
 <div class="col-lg-3 col-md-3 col-sm-6">
           <div style="background: RGBA(255,255,255,0);" class="card card-product" [routerLink]="['/events',event.id]">  
             <div class="card-image" data-header-animation="false">
-                <a href="">
+                <a>
                     <img class="img" [src]="event?.imageUpload">
                 </a>
             </div>
@@ -11,7 +11,7 @@
 
                 </div>
                 <h4 class="card-title">
-                    <a style="color:#3366cc;" href="">{{event?.name | uppercase }}</a>
+                    <a style="color:#3366cc;">{{event?.name | uppercase }}</a>
                 </h4>
                 <div class="card-description" style="color:#505050;">
                     <div *ngIf="event?.level">

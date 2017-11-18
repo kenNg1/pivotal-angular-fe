@@ -13,10 +13,10 @@ import { AdminRouteGuard } from './admin-route-guard';
 import { DummyComponent } from './navbar/dummy.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/events', pathMatch: 'full' },
+  { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: 'events/new-event', component: NewEventComponent },
   { path: 'events/:id', component: EventDetailComponent},
-  { path: 'events', component: LandingComponent },
+  { path: '', component: LandingComponent },
   { path: 'search', component: SearchResultsComponent },
   { path: 'signin', component: SignInComponent, canActivate: [LoginRouteGuard]},
   { path: 'signup', component: SignUpComponent, canActivate: [LoginRouteGuard]},

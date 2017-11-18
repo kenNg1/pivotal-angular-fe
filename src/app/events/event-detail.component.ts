@@ -67,6 +67,7 @@ export class EventDetailComponent implements OnInit, OnDestroy {
         this.cloudinaryImage = JSON.parse(response).url;
         return { item, response, status, headers };
       };
+      
   }
 
   upload() {
@@ -76,6 +77,7 @@ export class EventDetailComponent implements OnInit, OnDestroy {
   // full blown Angular docs
   ngOnInit():void {
 
+
    this.user = JSON.parse(localStorage.getItem('currentUser'));
 
    this.subscription = this.route.paramMap
@@ -83,6 +85,8 @@ export class EventDetailComponent implements OnInit, OnDestroy {
     .subscribe(res => {
       this.event = res;
       this.event.time = this.event.time.replace(/:\d\d([ ap]|$)/,'$1');
+
+
       if(this.user) {
         if(this.user.email===this.event.User.email || this.user.email === 'alicia@pivotalsport.com') {
           this.enableButtons = true;
@@ -90,7 +94,6 @@ export class EventDetailComponent implements OnInit, OnDestroy {
           this.enableButtons = true;
         }
       }
-      window.scrollTo(0, 0);
       this.intensity = this.event.intensity;
       if(Array.isArray(this.event.level)) {
         this.levels = this.event.level;
@@ -120,7 +123,7 @@ export class EventDetailComponent implements OnInit, OnDestroy {
          this.emailHyperlink = str1.concat(str2,str3);
      });
 
-
+     
       if(this.event.usersJoined.indexOf(this.user.id)===-1) {
         this.registered = false;
       } else {
@@ -131,9 +134,11 @@ export class EventDetailComponent implements OnInit, OnDestroy {
       this.sportService.getSports().then(sports => {
       this.sports = sports;});
     this.districtService.getDistricts().then(districts => {
-      this.districts = districts;});
+      this.districts = districts;
+    });
   }
 
+  
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }

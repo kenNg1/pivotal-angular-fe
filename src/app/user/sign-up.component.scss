@@ -1,0 +1,31 @@
+
+@media (max-width:1000px){
+    .register-page .card-signup {
+        padding: 15px 0px;
+    }
+
+    div#extra-info-wrapper.card-content {
+        display:none;
+    }
+
+    // // .register-page .card-signup .info .info-title {
+    // //     color: #3C4858;
+    // //     margin: 24px 0 15px;
+    // // }
+
+    .extra-info {
+        display:none;
+    }
+
+    // .card .card-content {
+    //     padding: 5px 20px;
+    // }
+
+    // .form {
+    //     text-align:center
+    // }
+}
+
+.alert.alert-danger {
+   background-color: #f55a4ebd
+}

@@ -121,6 +121,11 @@ export class ProfileComponent implements OnInit {
       this.detailService.updateUserDetail(formValues).then(
           response=> {
             this.userDetail = response.json();
+            if(formValues.email) {
+                localStorage.setItem('currentUser', JSON.stringify({ 
+                    email: formValues.email 
+                  }));
+            }
             alert('Changes saved!');
           });
   }

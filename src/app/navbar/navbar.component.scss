@@ -1,6 +1,18 @@
+.container-fluid {
+  padding:0;
+  background-color:#f8f8f8;
+  margin-top:15px;
+  padding-bottom:5px;
+  border-bottom: 1px solid rgb(212, 212, 212);
+}
+
 .navbar-brand {
   font-family: 'Noto Sans', sans-serif;
   
+}
+
+.navbar-transparent {
+  padding:0;
 }
 
 .elipsis {

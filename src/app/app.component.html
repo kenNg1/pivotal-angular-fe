@@ -1,7 +1,12 @@
 
 <navbar></navbar> 
 <br><br>
-<div class="main-panel">
-    <router-outlet></router-outlet>
+<div id="mainDIV" class="main-panel" #scrollContainer>
+    <router-outlet (activate)="onActivate($event,scrollContainer)"></router-outlet>
+    <footer>
+        <div layout="row" layout-align="center center">
+            <h2>My Awesome Footer</h2>
+        </div>
+    </footer>
 </div>
- 
+

@@ -5,6 +5,10 @@ body {
     background-color: white;    
 }
 
+.main-panel {
+    position: relative;
+}
+
 .elipsis:after {
     color:red;
     content: '\2807';
@@ -13,4 +17,13 @@ body {
     position: fixed;
     top: 50px;
     right: 5px;
-    }
+}
+
+nav {
+    padding:0;
+    background-color:#f8f8f8;
+}
+
+footer {
+    background-color: #ccc;
+  }

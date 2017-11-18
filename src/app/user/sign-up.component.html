@@ -9,38 +9,29 @@
                             <h2 class="card-title text-center">Register</h2>
                             <div class="row">
                                 <div class="col-md-5 col-md-offset-1">
-                                    <div class="card-content">
-                                        <div class="info info-horizontal">
+                                    <div id="extra-info-wrapper" class="card-content">
+                                        <div class="info info-horizontal extra-info">
                                             <div class="icon icon-rose">
                                                 <i class="material-icons">favorite</i>
                                             </div>
                                             <div class="description">
                                                 <h4 class="info-title">Try New Sports</h4>
-                                                <p class="description">
-                                                    Lorem ipsum baby, bacon eggroll mixed with Ng Juice and Ken spinal fluid hamburger
-                                                </p>
                                             </div>
                                         </div>
-                                        <div class="info info-horizontal">
+                                        <div class="info info-horizontal extra-info">
                                             <div class="icon icon-primary">
                                                 <i class="material-icons">search</i>
                                             </div>
                                             <div class="description">
                                                 <h4 class="info-title">Find New Teams</h4>
-                                                <p class="description">
-                                                    Lorem ipsum baby, bacon eggroll mixed with Ng Juice and Ken spinal fluid hamburger
-                                                </p>
                                             </div>
                                         </div>
-                                        <div class="info info-horizontal">
+                                        <div class="info info-horizontal extra-info">
                                             <div class="icon icon-info">
                                                 <i class="material-icons">group</i>
                                             </div>
                                             <div class="description">
                                                 <h4 class="info-title">Join The Community</h4>
-                                                <p class="description">
-                                                    Lorem ipsum baby, bacon eggroll mixed with Ng Juice and Ken spinal fluid hamburger
-                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -66,16 +57,12 @@
                                                 </span>
                                                 <input type="text" name='firstName' #firstName="ngModel" ngModel class="form-control" placeholder="First Name..." required>
                                                 <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)" class="alert alert-danger" style='padding:5px;'>
-                                                    <div>
                                                       First name is required
-                                                    </div>
                                                 </div>
                                                 <span class="input-group-addon"></span>
                                                 <input type="text" name='lastName' ngModel  #lastName="ngModel" class="form-control" placeholder="Last Name..." required>
                                                 <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)" class="alert alert-danger" style='padding:5px;'>
-                                                    <div>
-                                                      Last name is required
-                                                    </div>
+                                                Last name is required
                                                 </div>
                                             </div>
                                             <div class="input-group">
@@ -84,9 +71,7 @@
                                                 </span>
                                                 <input type="text" name='username' #username="ngModel" (ngModel)='signupForm.username' class="form-control" placeholder="Username..." required>
                                                 <div *ngIf="username.errors && (username.dirty || username.touched)" class="alert alert-danger" style='padding:5px;'>
-                                                    <div>
                                                       Username is required
-                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="input-group">
@@ -95,9 +80,7 @@
                                                 </span>
                                                 <input type="email" name='email' #email="ngModel" (ngModel)='signupForm.email' class="form-control" placeholder="Email..." required>
                                                 <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger" style='padding:5px;'>
-                                                    <div>
                                                       Email is required
-                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="input-group">
@@ -106,9 +89,7 @@
                                                 </span>
                                                 <input type="password" name='password'  #password="ngModel" (ngModel)='signupForm.password' placeholder="Password..." class="form-control" required/>
                                                 <div *ngIf="password.errors && (password.dirty || password.touched)" class="alert alert-danger" style='padding:5px;'>
-                                                    <div>
                                                       Password is required
-                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="input-group">
@@ -117,9 +98,7 @@
                                                 </span>
                                                 <input type="password" name='passwordConfirmation'  #password2="ngModel" (ngModel)='signupForm.passwordConfirmation' placeholder="Password Confirmation..." class="form-control" required/>
                                                 <div *ngIf="password2.errors && (password2.dirty || password2.touched)" class="alert alert-danger" style='padding:5px;'>
-                                                    <div>
                                                       Password Confirmation is required
-                                                    </div>
                                                 </div>
                                             </div>
                                             <!-- If you want to add a checkbox to this form, uncomment this code -->

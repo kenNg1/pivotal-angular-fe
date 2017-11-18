@@ -59,20 +59,28 @@
                                           <br>
                                             <label>Image: <span style='color:#3366CC;'>(Choose file then press upload)</span></label>
                                             <input type="file" ng2FileSelect [uploader]="uploader" accept="image/*;capture=camera">
-                                            <button class='btn btn-primary btn-xs' style="background-color:#33CC33;" (click)="upload()">Upload</button>
+                                            <button class='btn btn-primary btn-xs' style="background-color:#33CC33;" type="button" (click)="upload()">Upload</button>
                                             
                                             <div class="show-file form-group">
                                                 <input name="image" class="form-control" [ngModel]="this.cloudinaryImage">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label>Phone number: <span style='color:#3366CC;'>(Please provide if you'd like to be contactable by phone)</span></label>
-                                                    <div class="form-group label-floating">
-                                                        <input name="contact" class="form-control" [ngModel]="this.userDetail?.contact">
-                                                    </div>
+                                            <div class="form-group">
+                                                <label>Phone number: <span style='color:#3366CC;'>(Please provide if you'd like to be contactable by phone)</span></label>
+                                                <div class="form-group label-floating">
+                                                    <input name="contact" type="tel" class="form-control" [ngModel]="this.userDetail?.contact">
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Email:</label>
+                                                <div class="form-group label-floating">
+                                                    <input name="email" disabled="disabled" type="email" class="form-control" [ngModel]="this.user?.email">
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
