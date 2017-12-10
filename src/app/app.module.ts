@@ -42,6 +42,7 @@ import { DummyComponent } from './navbar/dummy.component';
 // import { CompatibilityModule } from '@angular/material';
 // import {NoConflictStyleCompatibilityMode} from '@angular/material';
 import {MatMenuModule} from '@angular/material/menu';
+import { AboutusComponent } from './aboutus/aboutus.component';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import {MatMenuModule} from '@angular/material/menu';
     ProfileComponent,
     UserApprovalComponent,
     DummyComponent,
+    AboutusComponent,
   ],
   imports: [
     BrowserModule,

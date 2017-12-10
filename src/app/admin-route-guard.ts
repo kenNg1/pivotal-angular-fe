@@ -12,7 +12,7 @@ export class AdminRouteGuard implements CanActivate {
     canActivate() {
         const id=JSON.parse(localStorage.getItem('currentUser')).id;
         const email=JSON.parse(localStorage.getItem('currentUser')).email;
-        if(email === 'alicia@pivotalsport.com') {
+        if(email === 'alicia@pivotalsport.com' || 'johann.ruffie@gmail.com') {
             return true;
         }
         return this.detailService.getDetail(id).then(detail => {

@@ -263,6 +263,20 @@
                     </div>
                 </div>
                 <div class="row">
+                    <label class="col-sm-2 label-on-left">Length</label>
+                    <div class="col-sm-10">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input ngModel name='length' type="text" class="form-control" placeholder="In minutes (e.g: 120)" required #length="ngModel">
+                            <div *ngIf="length.errors && (length.dirty || length.touched)" class="alert alert-danger" style='padding:5px; width: 500px;'>
+                                <div [hidden]="!name.errors.required">
+                                    Event length is required!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <label class="col-sm-2 label-on-left">Address</label>
                     <div class="col-sm-10">
                         <div class="form-group label-floating is-empty">
