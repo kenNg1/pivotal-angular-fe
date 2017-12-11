@@ -11,7 +11,8 @@ export class Event {
     price?: number;
     imageUpload?: string;
     date?: Date;
-    time?: string;        
+    time?: string;
+    length?: number;        
     address?: string;
     // virtual attribute
     userImgSrc?:string;
