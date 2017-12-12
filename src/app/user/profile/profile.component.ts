@@ -98,7 +98,7 @@ export class ProfileComponent implements OnInit {
                      this.userDetail = detail.json();
                     //  console.log(this.userDetail.image)
                     if(this.user) {
-                        if(this.user.email === 'alicia@pivotalsport.com') {
+                        if(this.user.email === 'alicia@pivotalsport.com' || this.user.email === 'johann.ruffie@gmail.com') {
                           this.enableButtons = true;
                         } else if(this.user.tier ==='2' || this.user.tier === '3') {
                           this.enableButtons = true;

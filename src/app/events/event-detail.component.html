@@ -200,6 +200,16 @@
                         </div>
                     </div>
                     <div class="row">
+                        <label class="col-sm-2 label-on-left">Length</label>
+                        <div class="col-sm-10">
+                            <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                <input [ngModel]="event?.length" name='length' type="text" class="form-control" placeholder="e.g: 120">
+                                <span class="help-block">Formulate in minutes (e.g.: Type 120 for a 2 hours event.)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <label class="col-sm-2 label-on-left">Date</label>
                         <div class="col-sm-10">
                             <div class="form-group label-floating is-empty">
@@ -264,7 +274,7 @@
                     <hr>
                     <h3 class="date-time" >{{this.event?.date | date:'d MMM'| uppercase}} </h3>
                     <h3 class="date-time" id="time">{{event?.time }}</h3>
-                    <h3 class="date-time">{{event?.length }} min</h3>
+                    <h3 class="date-time">{{this.event?.length }} min</h3>
                     <p id="small">{{this.event?.date | date:'EEE'| uppercase}} {{this.event?.date | date:'d MMM'| uppercase}} {{event?.time }}</p>
                 </div>
                 <br>
