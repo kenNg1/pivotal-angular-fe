@@ -274,8 +274,8 @@
                     <hr>
                     <h3 class="date-time" >{{this.event?.date | date:'d MMM'| uppercase}} </h3>
                     <h3 class="date-time" id="time">{{event?.time }}</h3>
-                    <h3 class="date-time">{{this.event?.length }} min</h3>
-                    <p id="small">{{this.event?.date | date:'EEE'| uppercase}} {{this.event?.date | date:'d MMM'| uppercase}} {{event?.time }}</p>
+                    <h3 class="date-time">{{event?.length}} min</h3>
+                    <p id="small">{{this.event?.date | date:'EEE'| uppercase}} {{this.event?.date | date:'d MMM'| uppercase}} {{event?.time }} {{event?.length}}</p>
                 </div>
                 <br>
                 <div class="card-content text-center">
