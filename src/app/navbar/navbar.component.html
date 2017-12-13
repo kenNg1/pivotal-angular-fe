@@ -60,22 +60,48 @@
                     <button routerLink="events/new-event" class="btn btn-primary btn-round">
                         <i class="material-icons">add</i>Add an Event</button>
                 </li>
+                <li>
+                    <button mat-icon-button [matMenuTriggerFor]="menu" addSvgIcon="../assets/img/menu.svg" class='btn btn-outline-success my-2 my-sm-0'>
+                        <mat-icon *ngIf="isLoggedIn()" getSvgIconFromUrl="../assets/img/menu.svg">{{this.authService?.username || user?.username}</mat-icon>
+                        <mat-icon *ngIf="!isLoggedIn()">Not Loged</mat-icon>
+                        <i class="material-icons">list</i>
+                    </button>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item>
+                                <mat-icon>dialpad</mat-icon>
+                                <span>My Account</span>
+                            </button>
+                            <button mat-menu-item disabled>
+                                <mat-icon>voicemail</mat-icon>
+                                <span>Check voicemail</span>
+                            </button>
+                            <button mat-menu-item>
+                                <mat-icon>notifications_off</mat-icon>
+                                <span>Disable alerts</span>
+                            </button>
+                        </mat-menu>
+                </li>
                  <!-- first two buttons, final list had this directive *ngIf="isLoggedIn()"  -->
-                <li *ngIf="isLoggedIn()">
+               
+               <!--
+                 <li *ngIf="isLoggedIn()">
                     <button *ngIf="location.path()!='/profile'" class='btn btn-outline-success my-2 my-sm-0' routerLink='/profile'>
                         {{this.authService?.username || user?.username}}</button>
                 </li>
                 <li *ngIf="isLoggedIn()">
                     <button *ngIf="location.path()=='/profile'" class='btn btn-outline-success my-2 my-sm-0' type='submit' (dblclick)='logOut()'>Log Out </button>
-                </li>
+                </li> 
+            -->
                 <!-- end of above comment  -->
+                <!--
                 <li *ngIf="!isLoggedIn()">
                   <button routerLink="/signin" class='btn btn-primary my-2 my-sm-0'>Log In / Register</button>
                     <!-- <a routerLink="/signin" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="material-icons">person</i>
                         <p class="hidden-lg hidden-md">Profile</p>
                     </a> -->
-                </li>
+               <!-- </li>
+            -->
 
                 <li class="separator hidden-lg hidden-md"></li>
             </ul>

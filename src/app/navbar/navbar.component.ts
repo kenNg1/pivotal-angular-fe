@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, Input, OnDestroy } from '@angular/core';
 import { Location } from '@angular/common';
+import {MatIconModule} from '@angular/material/icon';
 
 // import { AuthenticationService } from '../user/authentication.service'
 import { AuthService } from '../user/auth.service';
