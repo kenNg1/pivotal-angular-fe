@@ -25,5 +25,33 @@ nav {
 }
 
 footer {
-    background-color: #ccc;
-  }
+    background-color: rgb(80, 80, 80);
+    color: white;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+li {
+    display:block;
+}
+
+h5 {
+    text-transform: uppercase;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+hr {
+    border-color: #3366CC;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+p.email {
+    font-style: italic;
+}
+
+@media (min-width: 767px){
+    
+        .hidden-md{
+            display: none;
+        }
+}

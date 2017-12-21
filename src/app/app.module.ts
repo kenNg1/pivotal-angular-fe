@@ -8,7 +8,7 @@ import { HttpService } from './shared/http.service';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
-import { MatSliderModule, MatSelectModule , MatAutocompleteModule} from '@angular/material';
+import { MatSliderModule, MatSelectModule , MatAutocompleteModule, MatDialogModule, MatDialogRef, MatIconModule} from '@angular/material';
 
 import { Angular2TokenService } from 'angular2-token';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
@@ -43,6 +43,7 @@ import { DummyComponent } from './navbar/dummy.component';
 // import {NoConflictStyleCompatibilityMode} from '@angular/material';
 import {MatMenuModule} from '@angular/material/menu';
 import { AboutusComponent } from './aboutus/aboutus.component';
+import { ContactusComponent } from './contactus/contactus.component';
 
 
 @NgModule({
@@ -61,6 +62,7 @@ import { AboutusComponent } from './aboutus/aboutus.component';
     UserApprovalComponent,
     DummyComponent,
     AboutusComponent,
+    ContactusComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,6 +73,8 @@ import { AboutusComponent } from './aboutus/aboutus.component';
     // CompatibilityModule,
     // NoConflictStyleCompatibilityMode,
     MatMenuModule,
+    MatDialogModule,
+    MatIconModule,
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,
@@ -83,6 +87,10 @@ import { AboutusComponent } from './aboutus/aboutus.component';
     })
   ],
   bootstrap: [AppComponent],
+  entryComponents: [
+    AboutusComponent,
+    ContactusComponent
+  ],
   providers: [
     {
       provide: HttpService,

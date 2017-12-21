@@ -1,12 +1,48 @@
-
-<navbar></navbar> 
+<navbar></navbar>
 <br><br>
 <div id="mainDIV" class="main-panel" #scrollContainer>
     <router-outlet (activate)="onActivate($event,scrollContainer)"></router-outlet>
-    <footer>
-        <div layout="row" layout-align="center center">
-            <h2>Pivotal Sport</h2>
+
+<!--Footer-->
+<footer class="footer text-center">
+        <hr>
+        <div class="container-fluid">
+            <div class="row">
+                <!--First column-->
+                <div class="col-md-3">
+                    <h5>Pivotal sport</h5>
+                    <p>Connecting you to sports!</p>
+                    <p class="email">info@pivotalsport.com</p>
+                </div>
+                <!--/.First column-->
+                <hr class="hidden-md">
+                <!--Second column-->
+                <div class="col-md-3">
+                    <h5>useful links!</h5>
+                    <ul>
+                        <li (click)="openDialog('aboutus')">About Us</li>
+                        <li (click)="openDialog('contactus')">Contact Us</li>
+                    </ul>
+                </div>
+                <hr class="hidden-md">
+                <div class="col-md-3">
+                    <h5>TERMS OF USE</h5>
+                    <ul>
+                        <li>Terms And Conditions</li>
+                        <li>Privacy Policy</li>
+                    </ul>
+                </div>
+                <hr class="hidden-md">
+                <div class="col-md-3">
+                        <h5>SOCIAL MEDIA</h5>
+                        <ul>
+                            <li>Facebook like icone</li>
+                            <li>Facebook share icone</li>
+                        </ul>
+                </div>
+            </div>
         </div>
+        <hr>
+        <br>
     </footer>
 </div>
-

@@ -1,0 +1,19 @@
+<div mat-dialog-title class="header">
+    <h4>Contact us</h4>
+</div>
+<div class="container-fluid">
+    <div class="card">
+      <form #ContactUs="ngForm" (ngSubmit)="sendemail()" class="form-horizontal">
+          <mat-dialog-content>
+              <input #firstname="ngModel" ngModel type="text" class="form-control" name="FirstName" placeholder="First Name">
+              <input #lastname="ngModel" ngModel type="text" class="form-control" name="LastName" placeholder="Last Name">
+              <input #email="ngModel" ngModel type="text" class="form-control" name="EmailAddress" placeholder="Email Address">
+              <input #request="ngModel" ngModel type="text" class="form-control" name="Request" placeholder="Your request...">
+          </mat-dialog-content>
+          <div id="centrer"> 
+            <button type="submit" class="btn btn-close"><h4>Send</h4></button>
+            <button type="button" mat-dialog-close class="btn btn-close"><h4>Cancel</h4></button>
+          </div>
+      </form>
+    </div>
+</div>

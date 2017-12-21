@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, Input, OnDestroy } from '@angular/core';
 import { Location } from '@angular/common';
 import {MatIconModule} from '@angular/material/icon';
+import {MatDialog, MatDialogRef} from '@angular/material';
 
 // import { AuthenticationService } from '../user/authentication.service'
 import { AuthService } from '../user/auth.service';
@@ -27,6 +28,8 @@ import 'rxjs/add/operator/distinctUntilChanged';
  
 import { SportSearchService } from '../search/sport-search.service';
 import { Event } from '../shared/event.model';
+import { AboutusComponent } from '../aboutus/aboutus.component';
+import { ContactusComponent } from '../contactus/contactus.component';
 
 // end of search-as-you-type
 
@@ -41,6 +44,8 @@ import { Event } from '../shared/event.model';
 export class NavbarComponent implements OnInit, OnDestroy {
 
     @ViewChild('searchBox') target:any;
+    aboutusRef: MatDialogRef<AboutusComponent>;
+    contactusRef: MatDialogRef<ContactusComponent>;
     allowButtonClick =false;
     name = '';
     subscription: Subscription;
@@ -51,14 +56,32 @@ export class NavbarComponent implements OnInit, OnDestroy {
     private searchTerms = new Subject<string>();
 
     constructor(private router: Router, private sportSearchService: SportSearchService, 
-        private authService: AuthService, private sportService: SportService, private location: Location    ) {
+        private authService: AuthService, private sportService: SportService, private location: Location, private dialog: MatDialog) {
         setTimeout(() => this.allowButtonClick = true, 500);
+        
 
         // this.subscription = authService.user$.subscribe((user)=> {return this.user=user} )
         // this.authService.verify().subscribe((res)=>this.message = res['message'])
-        
     } 
-
+ 
+    openDialog(file: string): void {
+        if(file === "aboutus") {
+        this.aboutusRef = this.dialog.open(AboutusComponent,{
+            width: '80%',
+            hasBackdrop: true,
+            backdropClass: 'backdrop',
+            position:{top:'80px'}
+        });
+      }
+      else {
+        this.contactusRef = this.dialog.open(ContactusComponent,{
+            width: '80%',
+            hasBackdrop: true,
+            backdropClass: 'backdrop',
+            position:{top:'80px'}
+      });
+    }
+}
     // to enable search-as-you-type
     ngOnInit():void {
         this.user = JSON.parse(localStorage.getItem('currentUser'));
