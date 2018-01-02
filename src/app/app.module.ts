@@ -44,6 +44,10 @@ import { DummyComponent } from './navbar/dummy.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { ContactusComponent } from './contactus/contactus.component';
+import { EmailService } from './shared/email.service';
+import { URLSearchParams } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -77,6 +81,7 @@ import { ContactusComponent } from './contactus/contactus.component';
     MatIconModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     ReactiveFormsModule,
@@ -98,7 +103,7 @@ import { ContactusComponent } from './contactus/contactus.component';
       deps: [XHRBackend, RequestOptions]
     },
   EventService,SportService,DistrictService,SportSearchService,Angular2TokenService,
-    AuthService, DetailService, {provide: LocationStrategy, useClass: HashLocationStrategy},LoginRouteGuard, AdminRouteGuard]
+    AuthService, DetailService, EmailService, {provide: LocationStrategy, useClass: HashLocationStrategy},LoginRouteGuard, AdminRouteGuard]
 })
 export class AppModule {}
 

@@ -3,7 +3,7 @@
 </div>
 <div class="container-fluid">
     <div class="card">
-      <form #ContactUs="ngForm" (ngSubmit)="sendemail()" class="form-horizontal">
+      <form #ContactUs="ngForm" (ngSubmit)="sendemail('postmaster@sandbox5d796cd8475b41b3a6768617c0663a70.mailgun.org','johann.ruffie@gmail.com','Testsubject','ca marche')" class="form-horizontal">
           <mat-dialog-content>
               <input #firstname="ngModel" ngModel type="text" class="form-control" name="FirstName" placeholder="First Name">
               <input #lastname="ngModel" ngModel type="text" class="form-control" name="LastName" placeholder="Last Name">
