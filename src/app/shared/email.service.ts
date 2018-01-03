@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { URLSearchParams } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
-const DOMAIN_NAME_PLACEHOLDER = 'sandbox5d796cd8475b41b3a6768617c0663a70.mailgun.org';
+const DOMAIN_NAME_PLACEHOLDER = 'pivotalsport.com';
 const SETTING_API_KEY_NAME = 'key-d2d2df0980d3eff66e1b3046e03df6ec';
 
 @Injectable()
@@ -26,12 +26,13 @@ export class EmailService {
 
   public async sendMail(from: string, to: string, subject: string, message: string): Promise<boolean> {
     const body = this._getSendMailRequestBody(from, to, subject, message);
-    alert(body);
+    
     const result = await this.http.post(this._apiHost, body, {
       headers: this._headers,
       responseType: 'text'
     }).toPromise();
 
+    alert(body);
     return true;
   }
   private _getSendMailRequestBody(from: string, to: string, subject: string, message: string) {

@@ -47,6 +47,7 @@ import { ContactusComponent } from './contactus/contactus.component';
 import { EmailService } from './shared/email.service';
 import { URLSearchParams } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import {MatInputModule} from '@angular/material/input';
 
 
 
@@ -73,6 +74,7 @@ import { HttpClientModule } from '@angular/common/http';
     AsyncLocalStorageModule,
     MatSliderModule,
     MatSelectModule,
+    MatInputModule,
     MatAutocompleteModule,
     // CompatibilityModule,
     // NoConflictStyleCompatibilityMode,

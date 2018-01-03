@@ -3,16 +3,36 @@
 </div>
 <div class="container-fluid">
     <div class="card">
-      <form #ContactUs="ngForm" (ngSubmit)="sendemail('postmaster@sandbox5d796cd8475b41b3a6768617c0663a70.mailgun.org','johann.ruffie@gmail.com','Testsubject','ca marche')" class="form-horizontal">
+      <form novalidate [formGroup]="contactusForm" (ngSubmit)="onSubmit()" class="form-horizontal">
           <mat-dialog-content>
-              <input #firstname="ngModel" ngModel type="text" class="form-control" name="FirstName" placeholder="First Name">
-              <input #lastname="ngModel" ngModel type="text" class="form-control" name="LastName" placeholder="Last Name">
-              <input #email="ngModel" ngModel type="text" class="form-control" name="EmailAddress" placeholder="Email Address">
-              <input #request="ngModel" ngModel type="text" class="form-control" name="Request" placeholder="Your request...">
+                <md-input-container dividerColor="{(formErrors.firstname) ? 'warn' : 'primary'}">
+                    <input mdInput formControlName="firstname" class="form-control" placeholder="First Name" type="text" required>
+                            <md-hint>
+                            <span [hidden]="!(formErrors.firstname)" class="alert alert-danger">
+                                {{formErrors.firstname}}</span>
+                            </md-hint>
+                </md-input-container>
+                <md-input-container dividerColor="{(formErrors.lastname) ? 'warn' : 'primary'}">
+                    <input mdInput formControlName="lastname" class="form-control" placeholder="Last Name" type="text" required>
+                            <md-hint>
+                            <span [hidden]="!(formErrors.lastname)" class="alert alert-danger">
+                                {{formErrors.lastname}}</span>
+                            </md-hint>
+                </md-input-container>
+                <md-input-container dividerColor="{(formErrors.email) ? 'warn' : 'primary'}">
+                    <input formControlName="email" class="form-control" placeholder="Email" type="email" required>
+                            <md-hint>
+                            <span [hidden]="!(formErrors.email)" class="alert alert-danger">
+                                {{formErrors.email}}</span>
+                            </md-hint>
+                </md-input-container>
+                <md-input-container>
+                    <textarea formControlName="message" rows="5"  type="text" class="form-control" placeholder="Your request..." required ></textarea>
+                </md-input-container>
           </mat-dialog-content>
-          <div id="centrer"> 
-            <button type="submit" class="btn btn-close"><h4>Send</h4></button>
-            <button type="button" mat-dialog-close class="btn btn-close"><h4>Cancel</h4></button>
+          <div id="centrer">
+            <button type="button" mat-dialog-close class="btn btn-close"><h4>Cancel</h4></button> 
+            <button type="submit" [disabled]="contactusForm.invalid" class="btn btn-close"><h4>Send</h4></button>
           </div>
       </form>
     </div>
