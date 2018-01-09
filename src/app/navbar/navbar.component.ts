@@ -65,15 +65,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
     } 
  
     openDialog(file: string): void {
-        if(file === "aboutus") {
+        if(file === 'aboutus') {
         this.aboutusRef = this.dialog.open(AboutusComponent,{
             width: '80%',
             hasBackdrop: true,
             backdropClass: 'backdrop',
             position:{top:'80px'}
         });
-      }
-      else {
+      } else if (file === 'contactus') {
         this.contactusRef = this.dialog.open(ContactusComponent,{
             width: '80%',
             hasBackdrop: true,

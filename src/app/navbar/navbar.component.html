@@ -61,21 +61,30 @@
                 </li>
                 <li>
                     <button mat-icon-button [matMenuTriggerFor]="menu" class='btn btn-primary my-2 my-sm-0'>
-                        <span *ngIf="isLoggedIn()">{{this.authService?.username || user?.username}</span>
-                        <span *ngIf="!isLoggedIn()">Not Loged</span>
-                        <i class="material-icons">list</i>
+                        <span *ngIf="isLoggedIn()">{{this.authService?.username || user?.username}}</span>
+                        <span *ngIf="!isLoggedIn()">Menu</span>
+                        <i class="material-icons">filter_list</i>
                     </button>
                         <mat-menu #menu="matMenu" yPosition="below">
                             <button mat-menu-item class='dialog'>
                                 <mat-icon>dialpad</mat-icon>
                                 <span>My Account</span>
                             </button>
+                            <button *ngIf="isLoggedIn()" routerLink='/profile' mat-menu-item class='dialog'>
+                                    <mat-icon>&#xE851;</mat-icon>
+                                    <span>My Account</span>
+                                    <span *ngIf="!isLoggedIn()" routerLink="/signin">Log In / Register</span>
+                            </button>
+                            <button *ngIf="!isLoggedIn()" routerLink='/signin' mat-menu-item class='dialog'>
+                                <mat-icon>input</mat-icon>
+                                <span>Log In / Register</span>
+                            </button>
                             <button mat-menu-item (click)="openDialog('aboutus')"> 
-                                <mat-icon>About Us</mat-icon>
-                                <span>About Us</span>
+                                <mat-icon>&#xE88F;</mat-icon>
+                                <span>About</span>
                             </button>
                             <button mat-menu-item (click)="openDialog('contactus')">
-                                <mat-icon>notifications_off</mat-icon>
+                                <mat-icon>email</mat-icon>
                                 <span>Contact Us</span>
                             </button>
                         </mat-menu>

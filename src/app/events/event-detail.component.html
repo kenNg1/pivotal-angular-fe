@@ -421,8 +421,9 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="settings">
-                                        <h4>How to play:</h4>
-                                        <p><span>{{this.event?.Sport?.description}}</span></p>
+                                        <h4>How to play:</h4><p > </p>
+                                        <span><p [innerHTML]="this.event?.Sport?.description"></p></span>
+                                        <!-- <p [innerHTML]="this.event?.Sport?.description"><span>{{this.event?.Sport?.description}}</span></p> -->
                                         <hr>
                                         <!-- <h4>Rules:</h4>
                                         <ul>

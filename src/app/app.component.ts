@@ -9,7 +9,7 @@ import { ContactusComponent } from '../app/contactus/contactus.component';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app'; 
+  title = 'app';
   aboutusRef: MatDialogRef<AboutusComponent>;
   contactusRef: MatDialogRef<ContactusComponent>;
 

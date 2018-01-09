@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatDialogModule } from '@angular/material';
 import {MatInputModule} from '@angular/material/input';
 import { EmailService } from '../shared/email.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Contact } from '../shared/contact.model';
+import { User } from '../user/user';
+import { AuthService } from '../user/auth.service';
+import { DetailService } from '../user/detail.service';
+import { Detail } from '../shared/detail.model';
 
 /*const from = 'postmaster@sandbox5d796cd8475b41b3a6768617c0663a70.mailgun.org';
 const to = 'johann.ruffie@gmail.com';
@@ -19,6 +23,9 @@ export class ContactusComponent implements OnInit {
 
   contactusForm: FormGroup;
   contactus: Contact;
+  userDetail:Detail;
+  id:number;
+  user:User;
   formErrors = {
     'firstname': '',
     'lastname': '',
@@ -38,15 +45,23 @@ export class ContactusComponent implements OnInit {
     },
     'email': {
       'required':      'Email is required.',
-      'email':         'Email not in valid format.'
+      'email':         'Email format is not valid.'
     },
   };
 
-  constructor(private emailsender: EmailService, private fb: FormBuilder) { 
+  constructor(private emailsender: EmailService, private fb: FormBuilder, private detailService: DetailService) { 
     this.createForm();
   }
 
   ngOnInit() {
+    /* this.id = JSON.parse(localStorage.getItem('currentUser')).id;
+    this.user = JSON.parse(localStorage.getItem('currentUser'));
+    
+    this.detailService.getDetail(this.id).then(detail => {
+                //  this.id = detail.json().id
+                 this.userDetail = detail.json();
+  }); */
+  
   }
 
   createForm(): void {
@@ -56,6 +71,18 @@ export class ContactusComponent implements OnInit {
       email: ['', [Validators.required, Validators.email] ],
       message: ''
     });
+    /* this.contactusForm.reset({
+      firstname: this.userDetail.firstName,
+      lastname: this.userDetail.lastName,
+      email: this.user.email,
+      message: ''
+    });
+    this.contactusForm.setValue({
+      firstname:'johann',
+      lastname: 'ruffie',
+      message:'johann@pivotalsport.com'
+  }); */
+    
     this.contactusForm.valueChanges
     .subscribe(data => this.onValueChanged(data));
     this.onValueChanged(); // (re)set validation messages now
@@ -84,6 +111,14 @@ export class ContactusComponent implements OnInit {
   onSubmit() {
     this.contactus = this.contactusForm.value;
     console.log(this.contactus);
+    const from = 'postmaster@pivotalsport.com';
+    this.emailsender.sendMail({
+      from:'postmaster@pivotalsport.com',
+      to:'johann.ruffie@gmail.com',
+      name:'Testsubject',
+      text:'ca marche yep'})
+      .subscribe(data => console.log('ca marche'+ data),
+    err => console.log(err));
     this.contactusForm.reset({
       firstname: '',
       lastname: '',
