@@ -6,6 +6,9 @@
         <button *ngIf="isLoggedIn()" routerLink="events/new-event" mat-menu-item >
             <i class="material-icons" style="position:relative;top:5px">add</i><span>Add an Event</span>
         </button>
+        <button *ngIf="!isLoggedIn()" routerLink="signin" mat-menu-item >
+            <i class="material-icons" style="position:relative;top:5px">add</i><span>Add an Event</span>
+        </button>
         <button *ngIf="isLoggedIn()" routerLink='/profile' mat-menu-item >
             <i class="material-icons" style="position:relative;top:5px">face</i>            
             <span>Profile</span>
@@ -55,40 +58,29 @@
         </form>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
+                <li id="menu" (click)="openDialog('aboutus')">About Us</li>
+                <li id="menu">Blog</li>
+                <li id="menu">FAQs</li>
+                <li id="menu" (click)="openDialog('contactus')">Contact Us</li>
                 <li *ngIf="isLoggedIn()">
-                    <button routerLink="events/new-event" class="btn btn-primary btn-round">
+                    <button routerLink="events/new-event" class="btn blue">
                         <i class="material-icons">add</i>Add an Event</button>
                 </li>
-                <li>
-                    <button mat-icon-button [matMenuTriggerFor]="menu" class='btn btn-primary my-2 my-sm-0'>
-                        <span *ngIf="isLoggedIn()">{{this.authService?.username || user?.username}}</span>
-                        <span *ngIf="!isLoggedIn()">Menu</span>
-                        <i class="material-icons">filter_list</i>
-                    </button>
-                        <mat-menu #menu="matMenu" yPosition="below">
-                            <button mat-menu-item class='dialog'>
-                                <mat-icon>dialpad</mat-icon>
-                                <span>My Account</span>
-                            </button>
-                            <button *ngIf="isLoggedIn()" routerLink='/profile' mat-menu-item class='dialog'>
-                                    <mat-icon>&#xE851;</mat-icon>
-                                    <span>My Account</span>
-                                    <span *ngIf="!isLoggedIn()" routerLink="/signin">Log In / Register</span>
-                            </button>
-                            <button *ngIf="!isLoggedIn()" routerLink='/signin' mat-menu-item class='dialog'>
-                                <mat-icon>input</mat-icon>
-                                <span>Log In / Register</span>
-                            </button>
-                            <button mat-menu-item (click)="openDialog('aboutus')"> 
-                                <mat-icon>&#xE88F;</mat-icon>
-                                <span>About</span>
-                            </button>
-                            <button mat-menu-item (click)="openDialog('contactus')">
-                                <mat-icon>email</mat-icon>
-                                <span>Contact Us</span>
-                            </button>
-                        </mat-menu>
+                <li *ngIf="!isLoggedIn()">
+                        <button routerLink="signin" class="btn blue">
+                            <i class="material-icons">add</i>Add an Event</button>
                 </li>
+                <li>
+                    <button class='btn btn-primary my-2 my-sm-0'>
+                        <span *ngIf="isLoggedIn() && location.path()!='/profile'" routerLink='/profile'>{{this.authService?.username || user?.username}}</span>
+                        <span *ngIf="!isLoggedIn()" routerLink='/signin'>Login / Sign Up</span>
+                        <span *ngIf="location.path()=='/profile'" (click)='logOut()'>Logout</span>
+                    </button>
+                </li>
+                            <!-- <button *ngIf="isLoggedIn()" (click)="logOut()" mat-menu-item class='dialog'>
+                                <mat-icon>&#xE033;</mat-icon>
+                                <span>Log out</span>
+                        </button> -->
                  <!-- first two buttons, final list had this directive *ngIf="isLoggedIn()"  -->
                
                <!--

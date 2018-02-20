@@ -1,20 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { URLSearchParams } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Observable';
-import { Http, Response } from '@angular/http';
+import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/observable/throw';
 
 import { environment } from '../../environments/environment';
 
-/* 
-const DOMAIN_NAME_PLACEHOLDER = 'pivotalsport.com';
-const SETTING_API_KEY_NAME = 'key-d2d2df0980d3eff66e1b3046e03df6ec';*/
+
 
 @Injectable()
 export class EmailService {
-  private emailUrl = environment.apiUrl + 'api/email'; // URL to web api
+  headers: Headers;
+  private emailUrl = environment.apiUrl + 'api/emails'; // URL to web api
 
  /* private readonly _apiHost = `https://api.mailgun.net/v3/${DOMAIN_NAME_PLACEHOLDER}/messages`;
 
@@ -36,10 +34,13 @@ export class EmailService {
     return params;
   } */
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) { 
+    this.headers = new Headers({'Content-Type': 'application/json'});
+  }
 
+  
   sendMail(data) {
-    return this.http.post(this.emailUrl, data)
+    return this.http.post(this.emailUrl, data, {headers: this.headers})
     .map(res => res.json())
     .catch(this._errorHandler);
   }

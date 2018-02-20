@@ -138,19 +138,19 @@ export class SearchResultsComponent implements OnInit {
 
   filterBeginner() {
     this.visibleEvents = this.filteredEvents.filter(function(event){
-      return event.level.toLowerCase() === 'beginners';
+      return event.level.includes('beginners');
     });
   }
 
   filterIntermediate() {
     this.visibleEvents = this.filteredEvents.filter(function(event){
-      return event.level.toLowerCase() === 'intermediate';
+      return event.level.includes('intermediate');
     });
   }
 
   filterAdvanced() {
     this.visibleEvents = this.filteredEvents.filter(function(event){
-      return event.level.toLowerCase() === 'advanced';
+      return event.level.includes('advanced');
     });
   }
 

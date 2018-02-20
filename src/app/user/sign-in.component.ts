@@ -19,7 +19,7 @@ export class SignInComponent implements OnInit {
   message: String;
   user: User;
   user_status: boolean;
-  err: String = "";
+  err: String = '';
 
   constructor( private router: Router,
     private authService: AuthService, private formBuilder: FormBuilder,private _location: Location) {
@@ -44,8 +44,7 @@ export class SignInComponent implements OnInit {
       this.authService.loginUser(this.user).subscribe(res=> {
           console.log('response',res);
           this.user_status = res['success'];
-          console.log('hihihi')
-          console.log(res)
+          console.log(res);
           if(res['ok'] === false) {
             this.message = res['message'];
             console.log('message',this.message);
@@ -54,7 +53,7 @@ export class SignInComponent implements OnInit {
             this._location.back();
           }
       }, error => {
-        this.err = 'Email or password does not match'
+        this.err = 'Email or password does not match';
       }
     );
 

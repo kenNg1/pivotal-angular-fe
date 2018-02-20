@@ -5,7 +5,7 @@ export class Event {
     sport_id?: number;
     district_id?: number;
     user_id?: number;
-    level?: string;
+    level?: Array<string>;
     intensity?: string;
     terrain?: string;
     price?: number;

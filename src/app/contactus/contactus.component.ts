@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import { EmailService } from '../shared/email.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Contact } from '../shared/contact.model';
@@ -26,6 +26,7 @@ export class ContactusComponent implements OnInit {
   userDetail:Detail;
   id:number;
   user:User;
+
   formErrors = {
     'firstname': '',
     'lastname': '',
@@ -118,7 +119,7 @@ export class ContactusComponent implements OnInit {
       name:'Testsubject',
       text:'ca marche yep'})
       .subscribe(data => console.log('ca marche'+ data),
-    err => console.log(err));
+      err => console.log(err));
     this.contactusForm.reset({
       firstname: '',
       lastname: '',

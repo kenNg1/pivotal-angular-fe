@@ -25,42 +25,62 @@ nav {
 }
 
 footer {
-    background-color: rgb(80, 80, 80);
+    background-color: #3074DC;
     color: white;
     font-family: 'Noto Sans', sans-serif;
+    border:solid black;
 }
 
 li {
-    display:block;
     cursor: pointer;
+    padding-right:20px;
+    margin-right:5%;
 }
 
-h5 {
-    text-transform: uppercase;
-    font-family: 'Noto Sans', sans-serif;
+#footer-containers {
+    padding-bottom:0;
+    padding-top:3%;
+    margin-bottom: 0;
 }
+
+#links {
+    float: right;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    
+}
+
+a {
+    text-transform: none;
+    float: right;
+}
+
+
+a:visited {
+    color: white;
+}
+
+a:hover {
+    color: white;
+}
+
+#pivotal-logo {
+    height : 8vh;
+    float: left;
+  }
+
 
 hr {
-    border-color: #3366CC;
+    border-color: white;
     margin-left: 10%;
     margin-right: 10%;
 }
 
-p.email {
-    font-style: italic;
-}
+
 
 @media (min-width: 767px){
     
         .hidden-md{
             display: none;
         }
-}
-
-div.construction {
-    color:#3366CC;
-    font-size: 40px;
-    font-style: bold;
-    text-align: center;
-    line-height: 40px;
 }

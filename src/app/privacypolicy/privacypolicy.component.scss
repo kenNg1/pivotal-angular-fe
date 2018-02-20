@@ -1,0 +1,53 @@
+.header{
+    position: sticky;
+    background-color: #33CC33;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.6);
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+}
+
+h4 {
+    color:white;
+    text-align: center;
+    padding: 5px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+mat-dialog-content {
+   overflow: auto;
+   justify-content: space-around;
+}
+
+div#main {
+    display: flex;
+    justify-content:space-around;
+    padding: 5px;
+}
+div#title {
+    display: flex;
+    justify-content:space-around;
+    padding: 5px;
+    text-decoration: underline;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+
+#centrer{
+    text-align: center;
+}
+button.btn.btn-close {
+    position: sticky;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.6);
+    background-color: #3366CC;
+    text-align: center;
+    padding: 5px;
+}

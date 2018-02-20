@@ -47,7 +47,14 @@ import { ContactusComponent } from './contactus/contactus.component';
 import { EmailService } from './shared/email.service';
 import { URLSearchParams } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
+import { PrivacypolicyComponent } from './privacypolicy/privacypolicy.component';
+import { TermsconditionsComponent } from './termsconditions/termsconditions.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { NgxCarouselModule } from 'ngx-carousel';
+import { MatNativeDateModule } from '@angular/material';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 
@@ -68,6 +75,8 @@ import {MatInputModule} from '@angular/material/input';
     DummyComponent,
     AboutusComponent,
     ContactusComponent,
+    PrivacypolicyComponent,
+    TermsconditionsComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,11 +85,16 @@ import {MatInputModule} from '@angular/material/input';
     MatSelectModule,
     MatInputModule,
     MatAutocompleteModule,
+    NgxCarouselModule,
     // CompatibilityModule,
     // NoConflictStyleCompatibilityMode,
     MatMenuModule,
+    MatNativeDateModule,
+    MatExpansionModule,
+    MatCheckboxModule,
     MatDialogModule,
     MatIconModule,
+    MatDatepickerModule,
     FormsModule,
     HttpModule,
     HttpClientModule,
@@ -96,7 +110,9 @@ import {MatInputModule} from '@angular/material/input';
   bootstrap: [AppComponent],
   entryComponents: [
     AboutusComponent,
-    ContactusComponent
+    ContactusComponent,
+    PrivacypolicyComponent,
+    TermsconditionsComponent
   ],
   providers: [
     {
@@ -105,7 +121,7 @@ import {MatInputModule} from '@angular/material/input';
       deps: [XHRBackend, RequestOptions]
     },
   EventService,SportService,DistrictService,SportSearchService,Angular2TokenService,
-    AuthService, DetailService, EmailService, {provide: LocationStrategy, useClass: HashLocationStrategy},LoginRouteGuard, AdminRouteGuard]
+    AuthService, DetailService, {provide: LocationStrategy, useClass: HashLocationStrategy},LoginRouteGuard, AdminRouteGuard, EmailService]
 })
 export class AppModule {}
 

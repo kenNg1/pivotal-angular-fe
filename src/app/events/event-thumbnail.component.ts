@@ -56,7 +56,5 @@ export class EventThumbnailComponent implements OnInit {
 
   ngOnInit() {
       this.event.time = this.event.time.replace(/:\d\d([ ap]|$)/,'$1');
-    
   }
-
 } 

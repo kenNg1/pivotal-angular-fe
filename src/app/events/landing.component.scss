@@ -47,20 +47,7 @@ div.row.hero {
     width:100vw;
 }
 
-
-h1{
-    // background-color: rgba(0,0,0,0.4);
-    font-size: 5rem;
-    color: #ffffff;
-    width: 80%;
-    margin-left: 0%;
-    margin-top: -15%;
-    border-radius: 5px;
-    font-family: 'Noto Sans', sans-serif;
-    font-weight:bold
-}
-
-h3{
+#body{
     color:#3366CC;
     font-family: 'Noto Sans', sans-serif;    
 }
@@ -85,8 +72,12 @@ h3{
 }
 
 .btn-info {
-    background-color: #3366CC;
-    padding: 10px 15px;
+    padding: 5px 5px;
+    margin-top:0px;
+    width:16%;
+    height:5%; 
+    text-transform: none;
+    white-space:normal;
 }
 
 .hero {
@@ -106,9 +97,62 @@ h3{
             justify-content: center;       
     }
 
-div.text-center {
-    margin-top: -15%;
+.hero-image {
+    background-image: url("/assets/img/pivotalbanner.jpg");
+
+    /* Set a specific height */
+    height: 200%;
+
+    /* Position and center the image to scale nicely on all screens */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    justify-content: center;  
 }
+
+.hero-text {
+    background-color: rgba(48,116,220,0.5);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-top-right-radius:25px;
+    border-top-left-radius: 25px;
+    transform: translate(-50%, -50%);
+    color: white;
+    justify-content: center;
+    
+}
+
+.hero-text h1 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 3vw;
+}
+.hero-text h3 {
+    margin-left:5%;
+    margin-right:5%;
+    text-align: center;
+    font-size: 2vw;
+}
+
+#sports-list {
+    background-color: rgba(52,199,52,0.6);
+    text-align:center;
+    margin-left:5%;
+    margin-right:5%;
+    margin-bottom: 5%;
+    border-radius:5px;
+}
+
+.hero-text button {
+    background-color: white;
+    color: #34C734;
+    font-size: 1em;
+    text-align: center;
+    overflow:hidden;
+}
+
 
 
 @media (max-width:1270px) {
@@ -211,3 +255,36 @@ div.text-center {
         display:none;
     }
 }
+
+
+.leftRs {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    width: 50px;
+    height: 50px;
+    box-shadow: 1px 2px 10px -1px rgba(0, 0, 0, .3);
+    border-radius: 999px;
+    left: 0;
+}
+
+.rightRs {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    width: 50px;
+    height: 50px;
+    box-shadow: 1px 2px 10px -1px rgba(0, 0, 0, .3);
+    border-radius: 999px;
+    right: 0;
+}
+
+mat-checkbox {
+    margin: 0px;
+    cursor: pointer;
+    padding-left: 5px;
+    padding-right: 0;
+    line-height: 15px;
+  }

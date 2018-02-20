@@ -1,5 +1,5 @@
 
-<br>
+<!--<br>
 <br>
 <br>
 <br>
@@ -8,50 +8,38 @@
 <br>
 <br>
 <div class="construction">We are working on Pivotal Sport at the moment so that we can bring you the best of sport in Hong Kong. If you want to know more about what we do, find us at alicia@pivotalsport.com. Thank you!</div>
+-->
 
-<!--
 <navbar></navbar>
 <br><br>
 <div id="mainDIV" class="main-panel" #scrollContainer>
     <router-outlet (activate)="onActivate($event,scrollContainer)"></router-outlet>
-   
-
-<footer class="footer text-center">
-        <hr>
+<footer class="footer">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-3">
-                    <h5>Pivotal sport</h5>
-                    <p>Connecting you to sports!</p>
-                    <p class="email">info@pivotalsport.com</p>
-                </div>
-                <hr class="hidden-md">
-                <div class="col-md-3">
-                    <h5>useful links!</h5>
+                <div class="col-sm-4">
                     <ul>
-                        <li (click)="openDialog('aboutus')">About Us</li>
-                        <li (click)="openDialog('contactus')">Contact Us</li>
+                        <li>
+                            <a routerLink="/"><img id="pivotal-logo" src="../assets/img/logo-black.png" alt=""></a>
+                        </li>
+                        <li>
+                            <a routerLink="/">© Pivotal Sport. Conduit to sports in Hong Kong</a>
+                        </li>
                     </ul>
                 </div>
                 <hr class="hidden-md">
-                <div class="col-md-3">
-                    <h5>TERMS OF USE</h5>
+                <div class="col-sm-4" id="footer-containers">
+                        <a href="https://www.facebook.com/pivotalsporthk" target="_blank"><img src="../assets/img/facebook.png" height="25px" width="25px" style="background-color:white;"></a>                    
+                </div>
+                <div class="col-sm-4" id="footer-containers">
                     <ul>
-                        <li>Terms And Conditions</li>
-                        <li>Privacy Policy</li>
+                        <li (click)="openDialog('privacypolicy')" id="links">Privacy Policy</li>
+                        <li (click)="openDialog('termsconditions')" id="links">Terms</li>                        
+                        <li (click)="openDialog('contactus')" id="links">Contact Us</li>
+                        <li (click)="openDialog('aboutus')" id="links">About Us</li>
                     </ul>
-                </div>
-                <hr class="hidden-md">
-                <div class="col-md-3">
-                        <h5>SOCIAL MEDIA</h5>
-                        <ul>
-                            <li>Facebook like icone</li>
-                            <li>Facebook share icone</li>
-                        </ul>
-                </div>
+                </div>                
             </div>
         </div>
-        <hr>
-        <br>
     </footer>
-</div> -->
+</div> 
